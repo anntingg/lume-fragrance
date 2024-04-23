@@ -291,6 +291,10 @@ table {
     box-sizing: border-box;
 }
 
+body, html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Noto Sans TC", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
     font-style: normal;
@@ -475,11 +479,7 @@ section {
 /* 共用區 */
 .events-box, .members-box {
     height: 500px;
-<<<<<<< HEAD
     padding: 0 8%;
-=======
-    padding: 0 10%;
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -493,20 +493,12 @@ section {
 .btn {
     width: 270px;
     height: 68px;
-<<<<<<< HEAD
     margin-top: 40px;
-=======
-    margin-top: 50px;
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--white);
-<<<<<<< HEAD
     border-radius: 99px 0 99px 0;
-=======
-    border-radius: 999px 0 999px 0;
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
 }
 
 .btn img {
@@ -538,23 +530,20 @@ section {
     background-size: cover;
 }
 
+.members-box h2, .members-box p, .members-box a{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 .star {
     display: flex;
-<<<<<<< HEAD
-=======
-    position: relative;
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
 }
 
 .star img {
     width: 40px;
 }
 
-<<<<<<< HEAD
 .star-line {
-=======
-.star .line {
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
     width: 260px;
     margin: 0 10px;
     position: relative;
@@ -562,15 +551,10 @@ section {
     border-bottom: 1px solid var(--font-grey);
 }
 
-<<<<<<< HEAD
 .star-down {
     justify-content: flex-end;
 }
 
-.members-box h2, .members-box p, .members-box a{
-    margin-left: 50px;
-    margin-right: 50px;
-}
 
 /* 文章專欄區 */
 .articles-box {
@@ -597,7 +581,7 @@ section {
     background: var(--gradient-2);
 }
 
-/* 卡片裡面的排版 */
+/* 卡片內部的排版 */
 .article-card > img {
     aspect-ratio: 1.13 / 1; 
     object-fit: cover;
@@ -605,14 +589,6 @@ section {
 
 .content {
     padding: 20px 24px 30px;
-}
-
-.content h2, .content p {
-    margin-bottom: 20px;
-}
-
-.content h2{
-    text-wrap: nowrap;
 }
 
 .article-title {
@@ -625,6 +601,14 @@ section {
     position: relative;
     bottom: 30px;
     border-bottom: 1px solid var(--black);
+}
+
+.content h2, .content p {
+    margin-bottom: 20px;
+}
+
+.content h2{
+    text-wrap: nowrap;
 }
 
 .line-clamp {
@@ -653,18 +637,6 @@ section {
     width: 60px;
     margin-left:10px;
 }
-=======
-.down {
-    justify-content: flex-end;
-}
-
-.members-box h2, .members-box p{
-    padding: 0 50px;
-}
-
-
-
->>>>>>> d1b5d5d383c45ff1a647e820cda566ead7c668ca
 
 /* 會員制度頁 */
 /* 會員等級區 */
