@@ -516,6 +516,7 @@ section {
 }
 
 .events-box h2 {
+    width: fit-content;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--font-grey);
 }
@@ -682,35 +683,35 @@ section {
     border: 2px solid transparent;
     background:
         linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(135deg, rgb(227, 227, 227, .5), rgb(227, 227, 227, 1)) border-box;
+        linear-gradient(135deg, rgba(227, 227, 227, .5), rgba(227, 227, 227, 1)) border-box;
 }
 
 .general .level-info {
-    background: linear-gradient(45deg, rgb(164, 213, 190, .6), rgb(164, 213, 190, .3), rgb(164, 213, 190, .6));
+    background: linear-gradient(45deg, rgba(164, 213, 190, .6), rgba(164, 213, 190, .3), rgba(164, 213, 190, .6));
 }
 
 .gold {
     border: 2px solid transparent;
     background:
         linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(135deg, rgb(255, 247, 225, .7), rgb(224, 201, 143, .7)) border-box;
+        linear-gradient(135deg, rgba(255, 247, 225, .7), rgba(224, 201, 143, .7)) border-box;
 }
 
 .gold .level-info {
-    background: linear-gradient(45deg, rgb(224, 201, 143, .6), rgb(224, 201, 143, .3), rgb(224, 201, 143, .6));
+    background: linear-gradient(45deg, rgba(224, 201, 143, .6), rgba(224, 201, 143, .3), rgba(224, 201, 143, .6));
 }
 
 .diamond {
     border: 2px solid transparent;
     /* background: #fff padding-box; */
     background:
-        linear-gradient(rgb(137, 209, 239, .1), rgb(137, 209, 239, .1)) padding-box,
+        linear-gradient(rgba(137, 209, 239, .1), rgba(137, 209, 239, .1)) padding-box,
         linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(135deg, rgb(219, 230, 252, .7), rgb(112, 195, 242, .7)) border-box;
+        linear-gradient(135deg, rgba(219, 230, 252, .7), rgba(112, 195, 242, .7)) border-box;
 }
 
 .diamond .level-info {
-    background: linear-gradient(45deg, rgb(137, 209, 239, .6), rgb(137, 209, 239, .3), rgb(137, 209, 239, .6));
+    background: linear-gradient(45deg, rgba(137, 209, 239, .6), rgba(137, 209, 239, .3), rgba(137, 209, 239, .6));
 }
 
 /* 權益說明區 */
