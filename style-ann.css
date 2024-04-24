@@ -332,11 +332,11 @@ section {
     margin-top: 8px;
 }
 
-/* banner 區 */
+/* 最新消息和會員制度 cover 區 */
 .cover {
     height: 100vh;
     max-width: 1440px;
-    padding: 0 144px 20px;
+    padding: 0 144px;
     margin: auto auto;
     display: flex;
     flex-direction: column;
@@ -418,8 +418,10 @@ section {
 
 /* 錨點按鈕 */
 .anchor {
+    height: 25vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
 }
 
@@ -750,4 +752,53 @@ section {
 .follow-us img {
     width: 40px;
     margin: 0 5px;
+}
+
+
+/* 商品總覽頁 */
+/* cover banner區 */
+.banner-box-p {
+    height: 75vh;
+    max-height: 520px;
+    margin-top: 10%;
+    position: relative;
+}
+
+.banner-bg-p {
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    object-fit: cover;
+    /* object-position:top; */
+    overflow: hidden;
+    border-radius: 100px 0 100px 0;
+}
+
+.banner-gradient {
+    width: 40%;
+    position: absolute;
+    z-index: 2;
+    top: -100px;
+    left: -150px;
+    object-fit: fill;
+    transform: rotate(250deg);
+}
+
+.banner-logo-p {
+    width: 18%;
+    position: absolute;
+    z-index: 3;
+    top: -30px;
+    left: -55px;
+    object-fit: contain;
+}
+
+
+/* cover 標題區 */
+.title-p {
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
