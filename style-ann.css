@@ -147,20 +147,26 @@ table {
     /* 主色調 
     --primary-color:; */
     /* 背景漸層 */
-    --gradient: 
-    linear-gradient(120deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-    linear-gradient(210deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%),
-    linear-gradient(340deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%);
-    --gradient-2: 
-    linear-gradient(120deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%),
-    linear-gradient(210deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-    linear-gradient(340deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%);
+    --gradient:
+        linear-gradient(120deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%);
+    --gradient-2:
+        linear-gradient(120deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(210deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(340deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%);
+    --gradient-pink:
+        linear-gradient(90deg, rgba(238, 179, 207, 0.6), rgba(238, 179, 207, 1));
+    --gradient-blue:
+        linear-gradient(90deg, rgba(136, 207, 238, 0.5), rgba(136, 207, 238, 0.1));
+    --gradient-green:
+        linear-gradient(90deg, rgba(163, 212, 188, 0.5), rgba(163, 212, 188, 0.1));
     /* 遮色片漸層 */
     --overlay:
-    linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
-    linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
-    linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, .3) 30%, rgba(255, 255, 255, .8) 20%, rgba(255, 255, 255, .3) 30%);
+        linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, .3) 30%, rgba(255, 255, 255, .8) 20%, rgba(255, 255, 255, .3) 30%);
 
 }
 
@@ -168,143 +174,239 @@ table {
 /* 內文(黑體) */
 .ch-sans-light-s {
     font-weight: 300;
-    letter-spacing: 0.1em;    /* 增加了字距 */
     line-height: 190%;
     font-size: 14px;
+    letter-spacing: 0.1em;
+    /* 增加了字距 */
     /* color: #000;  body 預設為黑色*/
 }
 
 .ch-sans-light-m {
     font-weight: 300;
-    letter-spacing: 0.1em;
     line-height: 190%;
     font-size: 16px;
+    letter-spacing: 0.1em;
     /* color: #000;  body 預設為黑色*/
 }
 
 .ch-sans-thin-l {
     /*葉形按鈕*/
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     font-size: 20px;
+    letter-spacing: 0.1em;
     /* color: #000;  body 預設為黑色*/
 }
 
 .ch-sans-thin-xl {
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     font-size: 24px;
+    letter-spacing: 0.1em;
     /* color: #000;  body 預設為黑色*/
 }
 
 .en-sans-light-s {
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 12px;
+    letter-spacing: 0.1em;
 }
 
 .en-sans-light-m {
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 14px;
+    letter-spacing: 0.1em;
 }
 
 .en-sans-light-l {
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 20px;
+    letter-spacing: 0.1em;
 }
 
 .en-sans-light-xl {
     font-weight: 100;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 24px;
+    letter-spacing: 0.1em;
 }
 
 /* 標題(明體) */
 .serif-medium-footer {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 20px;
+    letter-spacing: 0.1em;
 }
 
 .serif-medium-s {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 100%;
     color: #666;
     font-size: 24px;
+    letter-spacing: 0.1em;
 }
 
 .serif-medium-m {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 150%;
     color: #666;
     font-size: 32px;
+    letter-spacing: 0.1em;
 }
 
 .serif-medium-l {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 150%;
     color: #666;
     font-size: 44px;
+    letter-spacing: 0.1em;
 }
 
 .serif-medium-xl {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 140%;
     color: #666;
     font-size: 64px;
+    letter-spacing: 0.1em;
 }
 
 .serif-medium-xxl {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
-    letter-spacing: 0.1em;
     line-height: 120%;
     color: #666;
     font-size: 72px;
+    letter-spacing: 0.1em;
 }
+
+
+@media (max-width: 992px) {
+
+    /* 黑體 - 英 */
+    .en-sans-light-l {
+        /* 原本 20px */
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
+
+    .en-sans-light-xl {
+        /* 原本 24px */
+        font-size: 20px;
+        letter-spacing: 0.1em;
+    }
+
+    /* 標題明體 */
+    .serif-medium-m {
+        /* 原本 32px */
+        font-size: 28px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-l {
+        /* 原本 44px */
+        font-size: 36px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xl {
+        /* 原本 64px --> 還未測試，也許和 576px 共用 */
+        font-size: 44px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xxl {
+        /* 原本 72px --> 還未測試，也許和 576px 共用 */
+        font-size: 64px;
+        letter-spacing: 0.1em;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    /* 內文黑體 - 中 */
+    .ch-sans-light-m {
+        /* 原本 16px */
+        letter-spacing: 0.1em;
+        font-size: 14px;
+    }
+
+    .ch-sans-thin-l {
+        /*葉形按鈕*/
+        /* 原本 20px */
+        letter-spacing: 0.1em;
+        font-size: 16px;
+    }
+
+    .ch-sans-thin-xl {
+        /* 原本 24px */
+        letter-spacing: 0.1em;
+        font-size: 20px;
+    }
+
+    /* 內文黑體 - 英 --> 沿用 992px */
+
+    /* 標題明體 */
+    .serif-medium-s {
+        /* 原本 24px */
+        font-size: 20px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-m {
+        /* 原本 32px */
+        font-size: 24px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-l {
+        /* 原本 44px */
+        font-size: 32px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xl {
+        /* 原本 64px --> 還未測試 */
+        font-size: 44px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xxl {
+        /* 原本 72px --> 還未測試 */
+        font-size: 64px;
+        letter-spacing: 0.1em;
+    }
+}
+
 
 /* 共用區 */
 * {
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     scroll-behavior: smooth;
 }
 
 body {
     font-family: "Noto Sans TC", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
     font-style: normal;
-    color: var(--dark);
-}
-
-.container {
-    padding: 0 144px;
-    margin: auto auto;
-    max-width: 1440px;
+    color: var(--black);
 }
 
 img {
@@ -314,8 +416,26 @@ img {
 
 a {
     display: block;
-    color: var(--dark);
+    color: var(--black);
     text-decoration: none;
+}
+
+.container {
+    padding: 0 10vw;
+    margin: auto auto;
+    max-width: 1440px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 8%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 6%;
+    }
 }
 
 
@@ -325,24 +445,38 @@ section {
 }
 
 .title-m {
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 .title-m h1 {
     margin-top: 8px;
 }
 
-/* 最新消息和會員制度 cover 區 */
+/* 共用 cover 區 */
 .cover {
     height: 100vh;
     max-width: 1440px;
-    padding: 0 144px;
+    padding: 0 10vw;
     margin: auto auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+@media (max-width: 1200px) {
+    .cover {
+        height: fit-content;
+        padding: 0 8vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .cover {
+        padding: 0 6vw;
+    }
+}
+
+/* 會員制度和最新消息 - cover 上方區塊 */
 .top-box {
     display: flex;
     justify-content: space-between;
@@ -367,7 +501,8 @@ section {
     object-fit: cover;
 }
 
-.overlay {
+.banner-box::after {
+    content: "";
     width: 100%;
     height: 100%;
     position: absolute;
@@ -376,7 +511,7 @@ section {
     mix-blend-mode: overlay;
 }
 
-.banner-logo{
+.banner-logo {
     width: fit-content;
     height: 100%;
     position: absolute;
@@ -393,14 +528,17 @@ section {
     text-align: right;
 }
 
-.title-l h1, .title-l h2 {
+.title-l h1,
+.title-l h2 {
     position: relative;
     z-index: 2;
 }
 
-.title-line {
+.title-l h2::after {
+    content: "";
     height: 65px;
     margin: 50px 0 25px;
+    display: block;
     position: relative;
     z-index: 2;
     border-right: 1px solid var(--font-grey);
@@ -418,11 +556,11 @@ section {
 
 /* 錨點按鈕 */
 .anchor {
-    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    flex: 1;
 }
 
 .anchor::before,
@@ -479,7 +617,8 @@ section {
 
 /* 最新消息頁 */
 /* 共用區 */
-.events-box, .members-box {
+.events-box,
+.members-box {
     height: 500px;
     padding: 0 8%;
     display: flex;
@@ -488,7 +627,10 @@ section {
     border-radius: 100px 0 100px 0;
 }
 
-.events-box p, .events-box h2, .members-box p, .members-box h2{
+.events-box p,
+.events-box h2,
+.members-box p,
+.members-box h2 {
     margin: 10px 0;
 }
 
@@ -505,15 +647,15 @@ section {
 
 .btn img {
     width: 60px;
-    margin-left:30px;
+    margin-left: 30px;
 }
 
 /* 活動訊息區 */
 .events-box {
     align-items: flex-end;
     background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 65%),
-    url("images/bg-events.jpg") center;
+        linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 65%),
+        url("images/bg-events.jpg") center;
     background-size: cover;
 }
 
@@ -527,13 +669,15 @@ section {
 .members-box {
     align-items: flex-start;
     background:
-    linear-gradient(90deg, rgba(164, 213, 190, 0.5), rgba(164, 213, 190, 0.1)),
-    linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
-    url("images/bg-members-only.jpg") center;
+        linear-gradient(90deg, rgba(164, 213, 190, 0.5), rgba(164, 213, 190, 0.1)),
+        linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
+        url("images/bg-members-only.jpg") center;
     background-size: cover;
 }
 
-.members-box h2, .members-box p, .members-box a{
+.members-box h2,
+.members-box p,
+.members-box a {
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -585,8 +729,8 @@ section {
 }
 
 /* 卡片內部的排版 */
-.article-card > img {
-    aspect-ratio: 1.13 / 1; 
+.article-card>img {
+    aspect-ratio: 1.13 / 1;
     object-fit: cover;
 }
 
@@ -594,13 +738,14 @@ section {
     padding: 20px 10% 30px;
 }
 
-.content h2, .content p {
+.content h2,
+.content p {
     margin-bottom: 20px;
 }
 
 .content h2 {
     display: flex;
-    text-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .content h2::after {
@@ -615,10 +760,10 @@ section {
 
 .line-clamp {
     overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .date {
@@ -637,7 +782,7 @@ section {
 
 .btn-s img {
     width: 60px;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 /* 會員制度頁 */
@@ -744,9 +889,7 @@ section {
     border-radius: 0 0 0 100px;
     background:
         linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(120deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-        linear-gradient(210deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%),
-        linear-gradient(340deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%) border-box;
+        var(--gradient) border-box;
 }
 
 .follow-us img {
@@ -756,11 +899,10 @@ section {
 
 
 /* 商品總覽頁 */
-/* cover banner區 */
+/* cover banner 區 */
 .banner-box-p {
-    height: 75vh;
-    max-height: 520px;
-    margin-top: 10%;
+    /* 高度寫在 RWD */
+    margin-top: 10vh;
     position: relative;
 }
 
@@ -769,36 +911,362 @@ section {
     position: absolute;
     z-index: 1;
     object-fit: cover;
-    /* object-position:top; */
+    object-position: top;
+    /* 靠上對齊，換照片時要刪掉 */
     overflow: hidden;
     border-radius: 100px 0 100px 0;
 }
 
-.banner-gradient {
-    width: 40%;
+.banner-box-p::after {
+    content: "";
+    width: 100%;
+    height: 100%;
     position: absolute;
     z-index: 2;
-    top: -100px;
-    left: -150px;
+    background: var(--overlay);
+    mix-blend-mode: overlay;
+    border-radius: 100px 0 100px 0;
+}
+
+.banner-gradient {
+    width: 400px;
+    position: absolute;
+    z-index: 3;
+    top: -80px;
+    left: -120px;
     object-fit: fill;
     transform: rotate(250deg);
 }
 
 .banner-logo-p {
-    width: 18%;
+    width: 200px;
     position: absolute;
-    z-index: 3;
-    top: -30px;
-    left: -55px;
+    z-index: 4;
+    top: -28px;
+    left: -56px;
     object-fit: contain;
 }
 
+@media (min-width: 1201px) {
+    .banner-box-p {
+        height: 75vh;
+        max-height: 520px;
+    }
+}
 
-/* cover 標題區 */
+@media (max-width: 1200px) {
+    .banner-box-p {
+        aspect-ratio: 2 / 1;
+        margin-top: 100px;
+    }
+
+    .banner-gradient {
+        top: -80px;
+        left: -100px;
+    }
+
+    .banner-logo-p {
+        top: -28px;
+        left: -36px;
+    }
+}
+
+@media (max-width: 992px) {
+    .banner-gradient {
+        width: 320px;
+        top: -80px;
+        left: -50px;
+    }
+
+    .banner-logo-p {
+        width: 160px;
+        top: -24px;
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-box-p {
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-box-p {
+        margin-top: 60px;
+    }
+
+    .banner-bg-p {
+        border-radius: 60px 0 60px 0;
+    }
+
+    .banner-box-p::after {
+        border-radius: 60px 0 60px 0;
+    }
+
+    .banner-gradient {
+        width: 160px;
+        top: -40px;
+        left: -20px;
+    }
+
+    .banner-logo-p {
+        width: 80px;
+        top: -16px;
+        left: 0;
+    }
+}
+
+/* 標題區 */
 .title-p {
-    height: 25vh;
+    padding: 30px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
 }
+
+.title-p h1 {
+    margin-top: 4px;
+}
+
+@media (max-width: 576px) {
+    .title-p {
+        padding: 30px 0 0;
+    }
+    
+}
+
+
+/* 分類錨點區 */
+.products {
+    display: flex;
+}
+
+.anchor-p {
+    height: 90vh;
+    max-height: 700px;
+    margin: 150px 50px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 5vh;
+    left: 0;
+    white-space: nowrap;
+}
+
+.anchor-p h2 {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--black);
+}
+
+@media (max-width: 1200px) {
+    .anchor-p {
+        margin: 150px 30px 0 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .anchor-p {
+        height: 90vh;
+        max-height: 600px;
+    }
+}
+
+/* 商品總覽區 */
+/* 分類標題 */
+.product-title {
+    margin: 40px 0 60px;
+}
+
+.product-title a {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.product-title h1 {
+    width: 320px;
+    padding-left: 100px;
+}
+
+.product-title h1::before,
+.product-title h1::after {
+    content: "";
+    width: 264px;
+    height: 30px;
+    position: absolute;
+}
+
+.product-title h1::before {
+    top: 0;
+    left: 0;
+    z-index: -2;
+    background: var(--gradient-blue);
+}
+
+.product-title h1::after {
+    top: 16px;
+    left: 16px;
+    z-index: -1;
+    background: var(--gradient-green);
+}
+
+.btn-subtype {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: var(--gradient-pink);
+}
+
+.btn-subtype::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: solid;
+    border-width: 21px 0 21px 41px;
+    border-color: var(--white) var(--white) var(--white) transparent;
+    position: absolute;
+    top: -1px;
+    left: 0;
+}
+
+@media (max-width: 992px) {
+    .product-title h1 {
+        width: 240px;
+        padding-left: 60px;
+    }
+
+    .product-title h1::before,
+    .product-title h1::after {
+        width: 184px;
+    }
+
+    .btn-subtype {
+        width: 32px;
+        height: 32px;
+    }
+
+    .btn-subtype::after {
+        border-width: 17px 0 17px 34px;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-title h1 {
+        width: 168px;
+        padding-left: 20px;
+    }
+
+    .product-title h1::before,
+    .product-title h1::after {
+        width: 128px;
+        height: 24px;
+    }
+
+    .product-title h1::after {
+        top: 12px;
+        left: 12px;
+    }
+
+    .btn-subtype {
+        width: 24px;
+        height: 24px;
+    }
+
+    .btn-subtype::after {
+        border-width: 13px 0 13px 26px;
+    }
+}
+
+
+/* 系列標題 */
+#perfume>h2 {
+    margin: 60px 0 30px;
+    text-align: center;
+}
+
+/* 商品卡片框線 */
+.product-box {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5%;
+    grid-auto-rows: minmax(0, auto);
+}
+
+@media (max-width: 992px) {
+    .product-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .product-box {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 40px;
+    }
+}
+
+/* 商品卡片樣式 */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-card img {
+    aspect-ratio: 1 / 1;
+    border-radius: 33% 0 33% 0;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin-top: 10px;
+}
+
+.product-card p {
+    margin-top: 6px;
+}
+
+
+/*
+RWD 斷點
+-----------------------
+1200px 以上：電腦
+(993-) 1200px：大型平板（iPad Pro）
+(769-) 992px：平板（iPad）
+(577-) 768px：大型手機（iPad mini）
+576px 以下：手機
+*/
+
+/*
+@media (min-width: 1201px) {}
+@media (max-width: 1200px) {}
+@media (max-width: 992px) {}
+@media (max-width: 768px) {}
+@media (max-width: 576px) {}
+*/
+
+/* 
+.test {
+    height: 80vh;
+    margin: 10px;
+    width: 30vw;
+    background: var(--gradient);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+} */
