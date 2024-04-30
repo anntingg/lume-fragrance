@@ -1072,7 +1072,6 @@ section {
     .anchor-p {
         height: 90vh;
         max-height: 600px;
-        margin: 150px 16px 0 0;
     }
 }
 
@@ -1190,12 +1189,6 @@ section {
     text-align: center;
 }
 
-@media (max-width: 576px) {
-    #perfume>h2 {
-        padding-right: 20px;
-    }
-}
-
 /* 商品卡片框線 */
 .product-box {
     display: grid;
@@ -1221,7 +1214,6 @@ section {
     .product-box {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 40px;
-        padding-right: 20px;
     }
 }
 
