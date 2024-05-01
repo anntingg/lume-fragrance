@@ -911,8 +911,6 @@ section {
     position: absolute;
     z-index: 1;
     object-fit: cover;
-    object-position: top;
-    /* 靠上對齊，換照片時要刪掉 */
     overflow: hidden;
     border-radius: 100px 0 100px 0;
 }
@@ -1237,6 +1235,85 @@ section {
 
 .product-card p {
     margin-top: 6px;
+}
+
+/* 子分類頁面 - 香水 */
+.series {
+    height: 200px;
+    padding: 20px 0;
+    margin: 20px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gradient);
+    border-radius: 10px;
+}
+
+.series h1 {
+    width: 264px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--font-grey);
+}
+
+.series p {
+    padding: 0 48px;
+    flex: 1;
+    line-height: 150%;
+}
+
+@media (max-width: 992px) {
+    .series h1 {
+        width: 200px;
+        height: 100%;
+    }
+    .series p {
+        padding: 0 20px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .series {
+        height: fit-content;
+        padding: 40px 80px;
+        flex-direction: column;
+    }
+    .series h1 {
+        width: 100%;
+        height: fit-content;
+        padding-bottom: 20px;
+        border-right: 0 solid;
+        border-bottom: 1px solid var(--font-grey);
+    }
+    
+    .series p {
+        padding: 20px 0 0;
+        text-align: justify;
+    }
+}
+
+@media (max-width: 576px) {
+    .series {
+        height: fit-content;
+        padding: 24px;
+        flex-direction: column;
+    }
+    .series h1 {
+        width: 100%;
+        height: fit-content;
+        padding-bottom: 20px;
+        border-right: 0 solid;
+        border-bottom: 1px solid var(--font-grey);
+    }
+    
+    .series p {
+        padding: 20px 0 0;
+        text-align: justify;
+    }
+    
 }
 
 
