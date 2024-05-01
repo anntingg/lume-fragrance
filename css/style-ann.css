@@ -329,8 +329,8 @@ table {
     }
 
     .serif-medium-xxl {
-        /* 原本 72px --> 還未測試，也許和 576px 共用 */
-        font-size: 64px;
+        /* 原本 72px */
+        font-size: 56px;
         letter-spacing: 0.1em;
     }
 }
@@ -358,7 +358,13 @@ table {
         font-size: 20px;
     }
 
-    /* 內文黑體 - 英 --> 沿用 992px */
+    /* 內文黑體 - 英  */
+    /* en-sans-light-l --> 沿用 992px*/
+    .en-sans-light-xl {
+        /* 原本 24px */
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
 
     /* 標題明體 */
     .serif-medium-s {
@@ -381,13 +387,13 @@ table {
 
     .serif-medium-xl {
         /* 原本 64px --> 還未測試 */
-        font-size: 44px;
+        font-size: 32px;
         letter-spacing: 0.1em;
     }
 
     .serif-medium-xxl {
-        /* 原本 72px --> 還未測試 */
-        font-size: 64px;
+        /* 原本 72px */
+        font-size: 32px;
         letter-spacing: 0.1em;
     }
 }
@@ -461,6 +467,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -487,7 +494,7 @@ section {
 /* 左方圖 */
 .banner-box {
     width: 76%;
-    height: 75vh;
+    aspect-ratio: 1.5 / 1;
     max-height: 600px;
     position: relative;
     overflow: hidden;
@@ -554,8 +561,54 @@ section {
     transform: rotate(250deg);
 }
 
+
+@media (max-width: 1200px) {
+    .banner-box {
+        width: 70%;
+    }
+
+    .title-l img {
+        width: 240px;
+        right: -72px;
+        bottom: -60px;
+    }
+    
+}
+
+@media (max-width: 576px) {
+    .top-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-box {
+        width: 100%;
+    }
+
+    .title-l {
+        padding-top: 32px;
+        position: relative;
+        text-align: center;
+    }
+
+    .title-l h2::after {
+        display: none;
+    }
+
+    .title-l h1,
+    .title-l h2 {
+        padding: 4px;
+    }
+
+    .title-l img {
+        display: none;
+    }
+
+}
+
 /* 錨點按鈕 */
 .anchor {
+    padding-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -582,7 +635,7 @@ section {
 }
 
 .anchor a {
-    padding: 26px 58px;
+    padding: 24px 56px;
     position: relative;
     cursor: pointer;
 }
@@ -591,6 +644,7 @@ section {
     padding: 22px 0;
     position: relative;
     z-index: 2;
+    text-align: center;
     border-bottom: 2px solid transparent;
     transition: all .5s;
 }
@@ -613,6 +667,50 @@ section {
 
 .anchor a:hover img {
     opacity: 0.6;
+}
+
+@media (max-width: 1200px) {
+    .anchor::before,
+    .anchor::after {
+        display: none;
+    }
+
+    .anchor a {
+        padding: 24px 48px;
+    }
+
+    .anchor a h2 {
+        border-bottom: 0px solid var(--font-grey);
+        font-size: 20px;
+    }
+    
+    .anchor a img {
+        width: 80px;
+        top: 16px;
+        left: 30px;
+        opacity: 0.6;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .anchor {
+        padding-top: 10px;
+    }
+
+    .anchor a {
+        padding: 24px 16px;
+    }
+
+    .anchor a h2 {
+        font-size: 16px;
+    }
+
+    .anchor a img {
+        width: 64px;
+        top: 24px;
+        left: 0;
+    }
 }
 
 /* 最新消息頁 */
@@ -825,6 +923,21 @@ section {
     text-align: right;
 }
 
+@media (max-width: 1200px) {}
+@media (max-width: 992px) {}
+@media (max-width: 768px) {}
+@media (max-width: 576px) {
+    .levels-box {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .level-card {
+        width: 80%;
+        margin: 20px 0;
+    }
+}
+
 /* 不同等級的顏色設定 */
 .general {
     border: 2px solid transparent;
@@ -867,6 +980,7 @@ section {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: justify;
     border-radius: 0 100px 0 100px;
     background: var(--gradient);
 }
@@ -896,6 +1010,27 @@ section {
     width: 40px;
     margin: 0 5px;
 }
+
+@media (max-width: 1200px) {}
+@media (max-width: 992px) {}
+@media (max-width: 768px) {}
+@media (max-width: 576px) {
+    .notes-box ul {
+        margin: 56px 20px 56px 40px ;
+    }
+
+    .follow-us {
+        padding: 40px 20px;
+        width: 100%;
+        border-radius: 0 0 0 100px;
+    }
+    
+    .follow-us img {
+        width: 40px;
+        margin: 0 5px;
+    }
+}
+
 
 
 /* 商品總覽頁 */
@@ -1033,7 +1168,7 @@ section {
     .title-p {
         padding: 30px 0 0;
     }
-    
+
 }
 
 
@@ -1293,10 +1428,11 @@ section {
         width: 200px;
         height: 100%;
     }
+
     .series p {
         padding: 0 20px;
     }
-    
+
 }
 
 @media (max-width: 768px) {
@@ -1305,6 +1441,7 @@ section {
         padding: 40px 80px;
         flex-direction: column;
     }
+
     .series h1 {
         width: 100%;
         height: fit-content;
@@ -1312,7 +1449,7 @@ section {
         border-right: 0 solid;
         border-bottom: 1px solid var(--font-grey);
     }
-    
+
     .series p {
         padding: 20px 0 0;
         text-align: justify;
@@ -1325,6 +1462,7 @@ section {
         padding: 24px;
         flex-direction: column;
     }
+
     .series h1 {
         width: 100%;
         height: fit-content;
@@ -1332,7 +1470,7 @@ section {
         border-right: 0 solid;
         border-bottom: 1px solid var(--font-grey);
     }
-    
+
     .series p {
         padding: 20px 0 0;
         text-align: justify;
@@ -1342,12 +1480,12 @@ section {
         width: 184px;
         height: 68px;
     }
-    
+
     .btn-color img {
         display: none;
     }
-    
-    
+
+
 }
 
 /* 子分類頁面 - 其他 */
@@ -1356,14 +1494,13 @@ section.subtype {
     min-height: 700px;
     margin-top: 150px;
     display: flex;
-    align-items: center;
 }
 
 @media (max-width: 576px) {
     section.subtype {
         margin-top: 20px;
     }
-    
+
 }
 
 
@@ -1388,12 +1525,12 @@ RWD 斷點
 /* 
 .test {
     height: 80vh;
-    margin: 10px;
+    margin: 50px 10px;
     width: 30vw;
-    background: var(--gradient);
+    background: #6666667c;
     backdrop-filter: blur(10px);
     position: fixed;
     right: 0;
     top: 0;
     z-index: 99;
-} */
+}  */
