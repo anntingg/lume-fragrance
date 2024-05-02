@@ -762,7 +762,7 @@ section {
 
 .events-box h2 {
     width: fit-content;
-    padding-bottom: 20px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--font-grey);
 }
 
@@ -803,8 +803,6 @@ section {
     justify-content: flex-end;
 }
 
-@media (min-width: 1201px) {}
-
 @media (max-width: 1200px) {
 
     .events-box,
@@ -812,8 +810,6 @@ section {
         padding: 0 4%;
     }
 
-    .events-box p,
-    .events-box h2,
     .members-box p,
     .members-box h2 {
         margin-top: 4px;
@@ -821,12 +817,16 @@ section {
     }
 
     .members-box .btn-white {
-        margin-top: 0px;
+        margin-top: 8px;
     }
 
 }
 
 @media (max-width: 992px) {
+
+    .events-box {
+        padding: 0 6%;
+    }
 
     .events-box p,
     .events-box h2,
@@ -834,20 +834,42 @@ section {
     .members-box h2 {
         font-size: 24px;
         line-height: 150%;
+        letter-spacing: 0.1em;
     }
 
-    .btn-white {
-        width: 200px;
+    .events-box .btn-white {
+        width: 180px;
+        height: 56px;
+    }
+
+    .members-box  .btn-white {
+        width: 240px;
         height: 56px;
     }
 
     .btn-white img {
-        width: 48px;
         margin-left: 10px;
     }
 
-    .events-box h2 {
-        padding-bottom: 10px;
+    .members-box .btn-white {
+        margin-top: 4px;
+    }
+
+    .members-box h2,
+    .members-box p,
+    .members-box a {
+        margin-left: 36px;
+        margin-right: 36px;
+    }
+
+    .star img {
+        width: 32px;
+    }
+
+    .star-line {
+        width: 200px;
+        margin: 0 8px;
+        bottom: 16px;
     }
 
 }
@@ -859,7 +881,6 @@ section {
     .events-box,
     .members-box {
         aspect-ratio: 1.5 / 1;
-        padding: 0 20px;
         border-radius: 60px 0 60px 0;
         background-size: 120%;
     }
@@ -872,19 +893,34 @@ section {
         background-position: left;
     }
 
+    .events-box {
+        padding: 0 4%;
+    }
+
     .events-box p,
     .events-box h2,
     .members-box p,
     .members-box h2 {
         font-size: 16px;
         line-height: 150%;
+        letter-spacing: 0.1em;
+    }
+
+    .events-box p,
+    .events-box h2 {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .members-box p,
+    .members-box h2 {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     .btn-white {
-        width: 128px;
-        height: 48px;
-        margin-top: 10px;
         font-size: 16px;
+        letter-spacing: 0.1em;
     }
 
     .btn-white img {
@@ -892,21 +928,32 @@ section {
         margin-left: 4px;
     }
 
+    .events-box .btn-white {
+        margin-top: 20px;
+        width: 128px;
+        height: 44px;
+    }
+
+    .members-box .btn-white {
+        width: 160px;
+        height: 44px;
+    }
+
     .members-box h2,
     .members-box p,
     .members-box a {
-        margin-left: 32px;
-        margin-right: 32px;
+        margin-left: 24px;
+        margin-right: 24px;
     }
 
     .star img {
-        width: 32px;
+        width: 24px;
     }
 
     .star-line {
         width: 120px;
         margin: 0 4px;
-        bottom: 16px;
+        bottom: 12px;
     }
 
 }
