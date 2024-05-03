@@ -1,6 +1,6 @@
 $(function () {
     $("#btn-top").click(function () {
-        $("html, body").animate({ scrollTop: 0 }, "fast", "swing");
+        $("html, body").animate({ scrollTop: 0 }, "fast");
     });
 
     $(window).scroll(function () {
