@@ -323,7 +323,7 @@ table {
     }
 
     .serif-medium-xl {
-        /* 原本 64px --> 還未測試，也許和 576px 共用 */
+        /* 原本 64px --> 還未使用 */
         font-size: 44px;
         letter-spacing: 0.1em;
     }
@@ -386,7 +386,7 @@ table {
     }
 
     .serif-medium-xl {
-        /* 原本 64px --> 還未測試 */
+        /* 原本 64px --> 還未使用 */
         font-size: 32px;
         letter-spacing: 0.1em;
     }
@@ -398,6 +398,37 @@ table {
     }
 }
 
+/* Top 按鈕 */
+#btn-top {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 99;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url("../images/top-defualt.svg");
+    background-size: contain;
+    transition: .5s;
+}
+
+#btn-top:hover {
+    background-image: url("../images/top-hover.svg");
+}
+
+@media (max-width: 576px) {
+    #btn-top {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;    
+        z-index: 99;
+    }
+}
 
 /* 共用區 */
 * {
@@ -462,6 +493,7 @@ section {
 .cover {
     height: 100vh;
     max-width: 1440px;
+    max-height: 1080px;
     padding: 0 10vw;
     margin: auto auto;
     display: flex;
@@ -572,7 +604,6 @@ section {
         right: -72px;
         bottom: -60px;
     }
-
 }
 
 @media (max-width: 576px) {
@@ -608,7 +639,6 @@ section {
 
 /* 錨點按鈕 */
 .anchor {
-    padding-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -670,6 +700,10 @@ section {
 }
 
 @media (max-width: 1200px) {
+
+    .anchor {
+        padding-top: 40px;
+    }
 
     .anchor::before,
     .anchor::after {
@@ -956,7 +990,6 @@ section {
     }
 
 }
-
 
 /* 文章專欄區 */
 .articles-box {
