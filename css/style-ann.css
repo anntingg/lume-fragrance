@@ -875,8 +875,6 @@ section {
 
 }
 
-@media (max-width: 768px) {}
-
 @media (max-width: 576px) {
 
     .events-box,
@@ -913,6 +911,10 @@ section {
     .members-box h2 {
         margin-top: 4px;
         margin-bottom: 4px;
+    }
+
+    .events-box h2 {
+        padding-bottom: 4px;
     }
 
     .btn-white {
@@ -999,9 +1001,15 @@ section {
     .article-card {
         width: 45%;
     }
-}
 
-@media (max-width: 768px) {}
+    .down {
+        margin-top: 0;
+    }
+
+    .up {
+        margin-bottom: 0;
+    }
+}
 
 @media (max-width: 576px) {
     .articles-box {
@@ -1016,15 +1024,6 @@ section {
         width: 80%;
     }
 
-    .down {
-        margin-top: 0;
-        background: var(--gradient);
-    }
-
-    .up {
-        margin-bottom: 0;
-        background: var(--gradient-2);
-    }
 }
 
 /* 卡片內部的排版 */
@@ -1138,25 +1137,29 @@ section {
     }
 
     .level-card {
-        width: 42%;
-        margin: 20px;
+        width: 45%;
     }
 
-    /* .levels-box {
-        flex-direction: column;
-        align-items: center;
-    } 
+    .level-card:first-child {
+        margin: 0 50px 50px;
+    }
 
-    .level-card {
-        width: 320px;
-        margin: 20px 0;
-    } */
-
+    .level-card:nth-child(2) {
+        margin-right: 10%;
+    }
 }
 
 @media (max-width: 576px) {
     .level-card {
         width: 80%;
+        margin: 20px 0;
+    }
+
+    .level-card:first-child {
+        margin: 20px 0;
+    }
+
+    .level-card:nth-child(2) {
         margin: 20px 0;
     }
 }
