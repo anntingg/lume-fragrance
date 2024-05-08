@@ -22,10 +22,10 @@ $(function () {
         // 當視窗底部抵達 footer 時，Top 按鈕新增 class="position" 覆蓋原本定位
         if (currentBottomPos >= (footerPos)) {
             $('.btn-top').addClass("position");
-          }else {
+        } else {
             $('.btn-top').removeClass("position");
-          };   
-        
+        };
+
         // let footerPos = $("footer").offset().top;
         // let windowBottomPos = $(this).scrollTop() + window.innerHeight;
         // let newPos = windowBottomPos - footerPos + 40;
@@ -38,44 +38,32 @@ $(function () {
 
 
         // ------------商品總覽錨點--------------
-
-        // anchorProduct.click(function(){
-        //     $(anchorProduct).removeClass("active");
-        //     $(this).addClass("active");
-        // });
-
         let currentTopPos = $(this).scrollTop();
         let anchorProduct = $(".anchor-p a");
-        
-        anchorProduct.each(function(){
+        let anchorTriangle = $(".anchor-p a span");
+
+        anchorProduct.each(function () {
             let linkSection = $(this).attr("href"); //取得錨點連結的屬性值
-            let sectionTop =  Math.floor($(linkSection).offset().top);  // 抓上面屬性值的座標中 Top 位置
+            let sectionTop = ($(linkSection).offset().top) -1;  // 抓上面屬性值的座標中 Top 位置
             let sectionBottom = sectionTop + $(linkSection).outerHeight();
 
-            console.log(currentTopPos);
-            // console.log($("#perfume").offset().top);
-            // console.log($("#travel-spray").offset().top);
-            // console.log($("#diffuse").offset().top);
-            // console.log($("#candle").offset().top);
-            // console.log($("#lip-gloss").offset().top);
-            console.log($("#facial-mask").offset().top);
-            
-            if (currentTopPos >= sectionTop && currentTopPos <= sectionBottom ) {
+            // console.log(currentTopPos);
+            // console.log($("#facial-mask").offset().top);
+
+            if (currentTopPos >= sectionTop && currentTopPos <= sectionBottom) {
                 $(anchorProduct).removeClass("active");
+                $(anchorTriangle).removeClass("active");
                 $(this).addClass("active");
+                $(this).find("span").addClass("active");
+
             } else {
                 $(this).removeClass("active");
+                $(this).find("span").removeClass("active");
             }
 
         });
 
-        // $(".anchor-p a").click(function () {
-        //     let linkSection = $(this).attr("href"); //取得錨點連結的屬性值
-        //     let sectionTop = $(linkSection).offset().top;  // 抓上面屬性值的座標中 Top 位置
-        //     $("html, body").animate({ scrollTop: sectionTop }, 200);
-        // });
-                  
-    
+
     });
 
 })

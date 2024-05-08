@@ -45,7 +45,6 @@
                         <header className="product-title">
                             <a href={`./${pageName}.html`}>
                                 <h1 className="serif-medium-l">{type}</h1>
-                                <span className="btn-subtype"></span>
                             </a>
                         </header>
                     )
@@ -87,7 +86,7 @@
                                     <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
                                     <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
                                 </div>
-                                <div className="title-p">
+                                <div id="products" className="title-p">
                                     <h2 className="en-sans-light-l">Products</h2>
                                     <h1 className="serif-medium-l">商品總覽</h1>
                                 </div>
@@ -95,15 +94,13 @@
 
                             <div className="container products">
                                 <div className="anchor-p ch-sans-light-m">
-                                    <div href="#">
-                                        <h2>商品總覽<br />Products</h2>
-                                    </div>
-                                    <a href="#perfume">香水<br />Perfume</a>
-                                    <a href="#travel-spray">針管香水<br />Travel Spray</a>
-                                    <a href="#diffuse">室內擴香<br />Diffuse</a>
-                                    <a href="#candle">香氛蠟燭<br />Candle</a>
-                                    <a href="#lip-gloss">唇油<br />Lip Gloss</a>
-                                    <a href="#facial-mask">面膜<br />Facial Mask</a>
+                                    <a href="#products"><span></span>商品總覽<br />Products</a>
+                                    <a href="#perfume"><span></span>香水<br />Perfume</a>
+                                    <a href="#travel-spray"><span></span>針管香水<br />Travel Spray</a>
+                                    <a href="#diffuse"><span></span>室內擴香<br />Diffuse</a>
+                                    <a href="#candle"><span></span>香氛蠟燭<br />Candle</a>
+                                    <a href="#lip-gloss"><span></span>唇油<br />Lip Gloss</a>
+                                    <a href="#facial-mask"><span></span>面膜<br />Facial Mask</a>
                                 </div>
 
                                 <div className="all-products">
@@ -145,9 +142,11 @@
 
                             </div>
                         </main>
+                        
                         <footer>
                             <button className="btn-top"></button>
                         </footer>
+                        
                     </>
                 )
             };
