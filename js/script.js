@@ -1,15 +1,83 @@
 $(function () {
-    $("#btn-top").click(function () {
+    $(".btn-top").click(function () {
         $("html, body").animate({ scrollTop: 0 }, "fast");
     });
 
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $("#btn-top").stop().fadeTo("", 1);
+
+        // ------------Top 按鈕--------------
+        // Top 按鈕捲動超過 200px 時，按鈕才出現
+        let showTop = 200;
+        if ($(this).scrollTop() > showTop) {
+            $(".btn-top").stop().fadeTo("", 1);
         } else {
-            $("#btn-top").stop().fadeTo("", 0);
+            $(".btn-top").stop().fadeTo("", 0);
         }
+
+        // 取出 footer 和視窗底部位置
+        let footerPos = $("footer").offset().top;
+        let currentBottomPos = $(this).scrollTop() + window.innerHeight;
+        // console.log(footerPos, windowBottomPos);
+
+        // 當視窗底部抵達 footer 時，Top 按鈕新增 class="position" 覆蓋原本定位
+        if (currentBottomPos >= (footerPos)) {
+            $('.btn-top').addClass("position");
+          }else {
+            $('.btn-top').removeClass("position");
+          };   
+        
+        // let footerPos = $("footer").offset().top;
+        // let windowBottomPos = $(this).scrollTop() + window.innerHeight;
+        // let newPos = windowBottomPos - footerPos + 40;
+        // // console.log(footerPos, windowBottomPos);
+        // if (windowBottomPos > footerPos) {
+        //     $('.btn-top').css({'bottom' : newPos});
+        //   }else{
+        //     $('.btn-top').css({'bottom' : 40});
+        //   };   
+
+
+        // ------------商品總覽錨點--------------
+
+        // anchorProduct.click(function(){
+        //     $(anchorProduct).removeClass("active");
+        //     $(this).addClass("active");
+        // });
+
+        let currentTopPos = $(this).scrollTop();
+        let anchorProduct = $(".anchor-p a");
+        
+        anchorProduct.each(function(){
+            let linkSection = $(this).attr("href"); //取得錨點連結的屬性值
+            let sectionTop =  Math.floor($(linkSection).offset().top);  // 抓上面屬性值的座標中 Top 位置
+            let sectionBottom = sectionTop + $(linkSection).outerHeight();
+
+            console.log(currentTopPos);
+            // console.log($("#perfume").offset().top);
+            // console.log($("#travel-spray").offset().top);
+            // console.log($("#diffuse").offset().top);
+            // console.log($("#candle").offset().top);
+            // console.log($("#lip-gloss").offset().top);
+            console.log($("#facial-mask").offset().top);
+            
+            if (currentTopPos >= sectionTop && currentTopPos <= sectionBottom ) {
+                $(anchorProduct).removeClass("active");
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+
+        });
+
+        // $(".anchor-p a").click(function () {
+        //     let linkSection = $(this).attr("href"); //取得錨點連結的屬性值
+        //     let sectionTop = $(linkSection).offset().top;  // 抓上面屬性值的座標中 Top 位置
+        //     $("html, body").animate({ scrollTop: sectionTop }, 200);
+        // });
+                  
+    
     });
+
 })
 
 

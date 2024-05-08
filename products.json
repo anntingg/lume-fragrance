@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1.1,
+        "type": "香水",
+        "series": "自然系列",
+        "titleCn": "山茶花",
+        "titleEn": "Camillia",
+        "imgName": "3D-1-s.png"
+    },
+    {
+        "id": 1.2,
+        "type": "香水",
+        "series": "自然系列",
+        "titleCn": "杏桃花蜂蜜",
+        "titleEn": "Nectarine Blossom & Honey",
+        "imgName": "3D-2-s.png"
+    },
+    {
+        "id": 1.3,
+        "type": "香水",
+        "series": "自然系列",
+        "titleCn": "神聖森林",
+        "titleEn": "Sacred Forest",
+        "imgName": "3D-3-s.png"
+    },
+    {
+        "id": 1.4,
+        "type": "香水",
+        "series": "費洛蒙系列",
+        "titleCn": "娜拉",
+        "titleEn": "Nara",
+        "imgName": "product-4.jpg"
+    },
+    {
+        "id": 1.5,
+        "type": "香水",
+        "series": "費洛蒙系列",
+        "titleCn": "白日夢",
+        "titleEn": "Daydreams",
+        "imgName": "product-7.jpg"
+    },
+    {
+        "id": 2.1,
+        "type": "針管香水",
+        "series": "",
+        "titleCn": "銀色山泉",
+        "titleEn": "Silver Spring",
+        "imgName": "3D-1-s.png"
+    },
+    {
+        "id": 2.2,
+        "type": "針管香水",
+        "series": "",
+        "titleCn": "沙漠玫瑰",
+        "titleEn": "Desert Rose",
+        "imgName": "3D-2-s.png"
+    },
+    {
+        "id": 2.3,
+        "type": "針管香水",
+        "series": "",
+        "titleCn": "高貴工藝",
+        "titleEn": "Craftsmanship",
+        "imgName": "3D-3-s.png"
+    },
+    {
+        "id": 3.1,
+        "type": "室內擴香",
+        "series": "",
+        "titleCn": "山茶花",
+        "titleEn": "Camillia",
+        "imgName": "product-6.jpg"
+    },
+    {
+        "id": 3.2,
+        "type": "室內擴香",
+        "series": "",
+        "titleCn": "杏桃花蜂蜜",
+        "titleEn": "Nectarine Blossom & Honey",
+        "imgName": "product-4.jpg"
+    },
+    {
+        "id": 3.3,
+        "type": "室內擴香",
+        "series": "",
+        "titleCn": "神聖森林",
+        "titleEn": "Sacred Forest",
+        "imgName": "product-7.jpg"
+    },
+    {
+        "id": 4.1,
+        "type": "香氛蠟燭",
+        "series": "",
+        "titleCn": "山茶花",
+        "titleEn": "Camillia",
+        "imgName": "product-8.jpg"
+    },
+    {
+        "id": 4.2,
+        "type": "香氛蠟燭",
+        "series": "",
+        "titleCn": "杏桃花蜂蜜",
+        "titleEn": "Nectarine Blossom & Honey",
+        "imgName": "3D-1-s.png"
+    },
+    {
+        "id": 4.3,
+        "type": "香氛蠟燭",
+        "series": "",
+        "titleCn": "神聖森林",
+        "titleEn": "Sacred Forest",
+        "imgName": "product-6.jpg"
+    },
+    {
+        "id": 5.1,
+        "type": "唇油",
+        "series": "",
+        "titleCn": "薰衣草",
+        "titleEn": "Lavender",
+        "imgName": "3D-1-s.png"
+    },
+    {
+        "id": 5.2,
+        "type": "唇油",
+        "series": "",
+        "titleCn": "黑醋栗",
+        "titleEn": "Blackcurrants",
+        "imgName": "product-5.jpg"
+    },
+    {
+        "id": 5.3,
+        "type": "唇油",
+        "series": "",
+        "titleCn": "玫瑰",
+        "titleEn": "Rose",
+        "imgName": "3D-3-s.png"
+    },
+    {
+        "id": 6.1,
+        "type": "面膜",
+        "series": "",
+        "titleCn": "薰衣草",
+        "titleEn": "Lavender",
+        "imgName": "3D-3-s.png"
+    },
+    {
+        "id": 6.2,
+        "type": "面膜",
+        "series": "",
+        "titleCn": "黑醋栗",
+        "titleEn": "Blackcurrants",
+        "imgName": "product-4.jpg"
+    },
+    {
+        "id": 6.3,
+        "type": "面膜",
+        "series": "",
+        "titleCn": "玫瑰",
+        "titleEn": "Rose",
+        "imgName": "3D-2-s.png"
+    }
+]

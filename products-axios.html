@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume Fragrance | 商品總覽 Products</title>
+    <link rel="stylesheet" href="./css/style-ann.css">
+</head>
+
+<body>
+    <header>
+        <!-- <div class="test"></div> -->
+    </header>
+    <!-- 以上 header 擺放選單 -->
+
+    <main>
+        <div class="cover">
+            <div class="banner-box-p">
+                <img class="banner-bg-p" src="./images/banner-products-1.jpg" alt="香氛蠟燭" />
+                <img class="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
+                <img class="banner-gradient" src="./images/gradient.png" alt="漸層" />
+            </div>
+            <div class="title-p">
+                <h2 class="en-sans-light-l">Products</h2>
+                <h1 class="serif-medium-l">商品總覽</h1>
+            </div>
+        </div>
+
+        <div class="container products">
+            <div class="anchor-p ch-sans-light-m">
+                <a href="./products.html">
+                    <h2>商品總覽<br />Products</h2>
+                </a>
+                <a href="#perfume">香水<br />Perfume</a>
+                <a href="#travel-spray">針管香水<br />Travel Spray</a>
+                <a href="#diffuse">室內擴香<br />Diffuse</a>
+                <a href="#candle">香氛蠟燭<br />Candle</a>
+                <a href="#lip-gloss">唇油<br />Lip Gloss</a>
+                <a href="#facial-mask">面膜<br />Facial Mask</a>
+            </div>
+
+            <div id="root"></div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <button class="btn-top"></button>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./js/script.js"></script>
+
+    <!-- React -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/babel">
+
+        // 使用 Axios 發送 HTTP 請求
+        (async () => {
+            const data = await axios.get('./products.json');
+            const products = data.data;
+            // console.log(data);
+            // console.log(products);
+
+            const App = () => {
+
+                // 資料解構：被解構的名稱，必須是 props 內的名稱 => return 內就不用寫 props.
+                // const { imgName, titleCn, titleEn } = props;
+
+                const ProductTitle = ({ type, pageName }) => {
+                    return (
+                        <header className="product-title">
+                            <a href={`./${pageName}.html`}>
+                                <h1 className="serif-medium-l">{type}</h1>
+                                <span className="btn-subtype"></span>
+                            </a>
+                        </header>
+                    )
+                }
+
+                const ProductCard = ({ titleCn, titleEn, imgName }) => {
+                    return (
+                        <a className="product-card" href="#">
+                            <img src={`./images/${imgName}`} alt="" />
+                            <h3 className="ch-sans-thin-xl">{titleCn}</h3>
+                            <p className="ch-sans-light-s">{titleEn}</p>
+                        </a>
+                    )
+                }
+
+                const ProductBox = ({ showType, showSeries }) => {
+                    return (
+                        <div className="product-box">
+                            {
+                                products.map((products) => {
+                                    if (products.type == showType && products.series == showSeries) {
+                                        return <ProductCard key={products.id} titleCn={products.titleCn} titleEn={products.titleEn} imgName={products.imgName} />
+                                    }
+                                })
+                            }
+                        </div>
+                    )
+                }
+
+                return (
+                    <>
+                        <div className="all-products">
+                            <section id="perfume">
+                                <ProductTitle type="香水" pageName="perfume" />
+
+                                <h2 className="serif-medium-m">自然系列</h2>
+                                <ProductBox showType="香水" showSeries="自然系列" />
+
+                                <h2 className="serif-medium-m">費洛蒙系列</h2>
+                                <ProductBox showType="香水" showSeries="費洛蒙系列" />
+                            </section>
+
+                            <section id="travel-spray">
+                                <ProductTitle type="針管香水" pageName="travel-spray" />
+                                <ProductBox showType="針管香水" showSeries="" />
+                            </section>
+
+                            <section id="diffuse">
+                                <ProductTitle type="室內擴香" pageName="travel-spray" />
+                                <ProductBox showType="室內擴香" showSeries="" />
+                            </section>
+
+                            <section id="candle">
+                                <ProductTitle type="香氛蠟燭" pageName="travel-spray" />
+                                <ProductBox showType="香氛蠟燭" showSeries="" />
+                            </section>
+
+                            <section id="lip-gloss">
+                                <ProductTitle type="唇油" pageName="travel-spray" />
+                                <ProductBox showType="唇油" showSeries="" />
+                            </section>
+
+                            <section id="facial-mask">
+                                <ProductTitle type="面膜" pageName="travel-spray" />
+                                <ProductBox showType="面膜" showSeries="" />
+                            </section>
+
+                        </div>
+
+                    </>
+                )
+            };
+
+            ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+        })();
+
+    </script>
+
+
+</body>
+
+</html>
