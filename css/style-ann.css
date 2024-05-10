@@ -1589,8 +1589,8 @@ section {
 
 @keyframes buttonMove {
     0% { transform: translateX(0);}
-    30% { transform: translateX(20%); filter: brightness(1.05); }
-    86% { transform: translateX(0); } 
+    40% { transform: translateX(20%); filter: brightness(1.05); }
+    80% { transform: translateX(0); } 
 }
 
 @media (max-width: 992px) {
