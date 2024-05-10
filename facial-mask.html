@@ -11,13 +11,13 @@
     <meta property="og:locale" content="zh-Hant-TW" />
     <meta property="og:type" content="website">
     <!-- 每頁標題 -->
-    <meta property="og:title" content="Lume Fragrance | 商品總覽 Products">
+    <meta property="og:title" content="Lume Fragrance | 面膜 Facial Mask">
     <meta property="og:description" content="Lume Fragrance - 每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。">
     <meta property="og:site_name" content="Lume Fragrance 官方形象網站">
     <!-- <meta property="og:url" content=""> -->
     <!-- <meta property="og:image" content=""> -->
 
-    <title>Lume Fragrance | 商品總覽 Products</title>
+    <title>Lume Fragrance | 面膜 Facial Mask</title>
     <link rel="stylesheet" href="./css/style-ann.css">
 </head>
 
@@ -51,62 +51,55 @@
             const App = () => {
 
                 // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
-                const typeList = [
+                const anchorList = [
+                    {
+                        id: 0,
+                        typeLink: "./products.html",
+                        typeCn: "商品總覽",
+                        typeEn: "Products",
+                    },
                     {
                         id: 1,
-                        typeId: "perfume",
+                        typeLink: "./perfume.html",
                         typeCn: "香水",
                         typeEn: "Perfume",
-                        series1: "自然系列",
-                        series2: "費洛蒙系列",
                     },
                     {
                         id: 2,
-                        typeId: "travel-spray",
+                        typeLink: "./travel-spray.html",
                         typeCn: "針管香水",
                         typeEn: "Travel Spray",
                     },
                     {
                         id: 3,
-                        typeId: "diffuse",
+                        typeLink: "./diffuse.html",
                         typeCn: "室內擴香",
                         typeEn: "Diffuse",
                     },
                     {
                         id: 4,
-                        typeId: "candle",
+                        typeLink: "./candle.html",
                         typeCn: "香氛蠟燭",
                         typeEn: "Candle",
                     },
                     {
                         id: 5,
-                        typeId: "lip-gloss",
+                        typeLink: "./lip-gloss.html",
                         typeCn: "唇油",
                         typeEn: "Lip Gloss",
                     },
                     {
                         id: 6,
-                        typeId: "facial-mask",
+                        typeLink: "#facial-mask",
                         typeCn: "面膜",
                         typeEn: "Facial Mask",
                     },
                 ]
 
                 // 元件：錨點按鈕
-                const Anchor = ({ typeId, typeCn, typeEn }) => {
+                const Anchor = ({ typeLink, typeCn, typeEn }) => {
                     return (
-                        <a href={`#${typeId}`}><span></span>{typeCn}<br />{typeEn}</a>
-                    )
-                }
-
-                // 元件：Section 標題
-                const ProductTitle = ({ typeCn, typeId }) => {
-                    return (
-                        <header className="product-title">
-                            <a href={`./${typeId}.html`}>
-                                <h1 className="serif-medium-l">{typeCn}</h1>
-                            </a>
-                        </header>
+                        <a href={typeLink}><span></span>{typeCn}<br />{typeEn}</a>
                     )
                 }
 
@@ -136,73 +129,40 @@
                     )
                 }
 
-                // 元件：Section：判斷是否有子系列 => 目前設定最多三個系列，若未來有更多系列再新增
-                const Section = ({ typeCn, typeId, series1, series2, series3 }) => {
-
-                    const SeriesBox = ({ series }) => {
-                        if (typeof series !== "undefined") {
-                            return (
-                                <>
-                                    <h2 className="serif-medium-m">{series}</h2>
-                                    <ProductBox showType={typeCn} showSeries={series} />
-                                </>
-                            )
-                        }
-                    }
-
-                    if (typeof series1 !== "undefined") {
-                        return (
-                            <section id={typeId}>
-                                <ProductTitle typeCn={typeCn} typeId={typeId} />
-                                <SeriesBox series={series1} />
-                                <SeriesBox series={series2} />
-                                <SeriesBox series={series3} />
-                            </section>
-                        )
-                    } else {
-
-                        return (
-                            <section id={typeId}>
-                                <ProductTitle typeCn={typeCn} typeId={typeId} />
-                                <ProductBox showType={typeCn} showSeries="" />
-                            </section>
-                        )
-                    }
-                }
-
                 return (
                     <>
                         <header></header>
-                        
+
                         <main>
                             <div className="cover">
                                 <div className="banner-box-p">
-                                    <img className="banner-bg-p" src="./images/banner-1.jpg" alt="香氛蠟燭" />
+                                    <img className="banner-bg-p" src="./images/banner-4.jpg" alt="面膜" />
                                     <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
                                     <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
                                 </div>
-                                <div id="products" className="title-p">
-                                    <h2 className="en-sans-light-l">Products</h2>
-                                    <h1 className="serif-medium-l">商品總覽</h1>
+                                <div id="facial-mask" className="title-p">
+                                    <h2 className="en-sans-light-l">Facial Mask</h2>
+                                    <h1 className="serif-medium-l">面膜</h1>
                                 </div>
                             </div>
 
                             <div className="container products">
                                 <div className="anchor-p ch-sans-light-m">
-                                    <Anchor typeId="products" typeCn="商品總覽" typeEn="Products" />
                                     {
-                                        typeList.map((typeList) => {
-                                            return <Anchor key={typeList.id} typeId={typeList.typeId} typeCn={typeList.typeCn} typeEn={typeList.typeEn} />
+                                        anchorList.map((anchorList) => {
+                                            return <Anchor key={anchorList.id} typeLink={anchorList.typeLink} typeCn={anchorList.typeCn} typeEn={anchorList.typeEn} />
                                         })
                                     }
                                 </div>
 
                                 <div className="all-products">
-                                    {
-                                        typeList.map((typeList) => {
-                                            return <Section key={typeList.id} typeCn={typeList.typeCn} typeId={typeList.typeId} series1={typeList.series1} series2={typeList.series2} series3={typeList.series3} />
-                                        })
-                                    }
+                                    <section className="subtype">
+                                        <ProductBox showType="面膜" showSeries="" />
+                                    </section>
+
+                                    <a className="btn-color ch-sans-thin-l" href="./products.html">
+                                        <span>返回商品總覽</span><img src="./images/arrow-right.svg" alt="箭頭" />
+                                    </a>
                                 </div>
 
                             </div>

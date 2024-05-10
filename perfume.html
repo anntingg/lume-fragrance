@@ -4,104 +4,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- meta 設定 -->
+    <meta name="description" content="Lume Fragrance 官方形象網站：每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。">
+    <meta name="keywords" content="香水, 針管香水, 室內擴香, 香氛蠟燭, 唇油, 面膜">
+    <meta name="company" content="Lume Fragrance">
+    <meta property="og:locale" content="zh-Hant-TW" />
+    <meta property="og:type" content="website">
+     <!-- 每頁標題 -->
+    <meta property="og:title" content="Lume Fragrance | 香水 Perfume">
+    <meta property="og:description" content="Lume Fragrance - 每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。">
+    <meta property="og:site_name" content="Lume Fragrance 官方形象網站">
+    <!-- <meta property="og:url" content=""> -->
+    <!-- <meta property="og:image" content=""> -->
+
     <title>Lume Fragrance | 香水 Perfume</title>
     <link rel="stylesheet" href="./css/style-ann.css">
 </head>
 
 <body>
-    <header>
-        <!-- <div class="test"></div> -->
-    </header>
-    <!-- 以上 header 擺放選單 -->
+    <div id="root"></div>
+    <button class="btn-top"></button>
 
-    <main>
-        <div class="cover">
-            <div class="banner-box-p">
-                <img class="banner-bg-p" src="./images/banner-news.jpg" alt="香水">
-                <img class="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance">
-                <img class="banner-gradient" src="./images/gradient.png" alt="漸層">
-            </div>
-            <div class="title-p">
-                <h2 class="en-sans-light-l">Perfume</h2>
-                <h1 class="serif-medium-l">香水</h1>
-            </div>
-        </div>
-
-        <div class="container products">
-            <div class="anchor-p ch-sans-light-m">
-                <a href="./products.html"><h2>商品總覽<br />Products</h2></a>
-                <a href="./perfume.html">香水<br />Perfume</a>
-                <a href="./travel-spray.html">針管香水<br />Travel Spray</a>
-                <a href="#">室內擴香<br />Diffuse</a>
-                <a href="#">香氛蠟燭<br />Candle</a>
-                <a href="#">唇油<br />Lip Gloss</a>
-                <a href="#">面膜<br />Facial Mask</a>
-            </div>
-
-            <div class="all-products">
-                <section id="series-1">
-                    <header class="series">
-                        <h1 class="serif-medium-m">自然系列</h1>
-                        <p class="ch-sans-thin-l">馥郁花香，清甜柔和，演繹著清新優雅的魅力。</p>
-                    </header>
-
-                    <div class="product-box">
-                        <a class="product-card" href="#">
-                            <img src="./images/3D-1-s.png" alt="">
-                            <h3 class="ch-sans-thin-xl">山茶花</h3>
-                            <p class="ch-sans-light-s">Camillia</p>
-                        </a>
-                        <a class="product-card" href="#">
-                            <img src="./images/3D-2-s.png" alt="">
-                            <h3 class="ch-sans-thin-xl">杏桃花蜂蜜</h3>
-                            <p class="ch-sans-light-s">Nectarine Blossom & Honey</p>
-                        </a>
-                        <a class="product-card" href="#">
-                            <img src="./images/3D-3-s.png" alt="">
-                            <h3 class="ch-sans-thin-xl">神聖森林</h3>
-                            <p class="ch-sans-light-s">Sacred Forest</p>
-                        </a>
-                    </div>
-
-                </section>
-
-                <section id="series-2">
-                    <header class="series">
-                        <h1 class="serif-medium-m">費洛蒙系列</h1>
-                        <p class="ch-sans-thin-l">鮮明香氣圍繞著您的感官，令人愉悅振奮的吸引力。</p>
-                    </header>
-
-                    <div class="product-box">
-                        <a class="product-card" href="#">
-                            <img src="./images/3D-2-s.png" alt="">
-                            <h3 class="ch-sans-thin-xl">娜拉</h3>
-                            <p class="ch-sans-light-s">Nara</p>
-                        </a>
-                        <a class="product-card" href="#">
-                            <img src="./images/3D-1-s.png" alt="">
-                            <h3 class="ch-sans-thin-xl">白日夢</h3>
-                            <p class="ch-sans-light-s">Daydreams</p>
-                        </a>
-                    </div>
-                </section>
-
-                <a class="btn-color ch-sans-thin-l" href="./products.html">
-                    返回商品總覽<img src="./images/arrow-right.svg" alt="箭頭">
-                </a>
-
-            </div>
-
-        </div>
-
-    </main>
-
-    <footer>
-        <button class="btn-top"></button>
-    </footer>
-
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="./js/script.js"></script>
+
+    <!-- React -->
+    <script type="text/babel">
+
+        // JSON 建立陣列資料
+        const requestURL = "./products.json";
+        let request = new XMLHttpRequest();
+        request.open("GET", requestURL);
+        request.responseType = "json";
+        request.send();
+
+        request.onload = function () {
+            // 將 JSON 資料丟給 products 變數 => 單項商品詳細資料
+            const products = request.response;
+            // console.log(products);
+
+            const App = () => {
+
+                // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
+                const anchorList = [
+                    {
+                        id: 0,
+                        typeLink: "./products.html",
+                        typeCn: "商品總覽",
+                        typeEn: "Products",
+                    },
+                    {
+                        id: 1,
+                        typeLink: "#perfume",
+                        typeCn: "香水",
+                        typeEn: "Perfume",
+                    },
+                    {
+                        id: 2,
+                        typeLink: "./travel-spray.html",
+                        typeCn: "針管香水",
+                        typeEn: "Travel Spray",
+                    },
+                    {
+                        id: 3,
+                        typeLink: "./diffuse.html",
+                        typeCn: "室內擴香",
+                        typeEn: "Diffuse",
+                    },
+                    {
+                        id: 4,
+                        typeLink: "./candle.html",
+                        typeCn: "香氛蠟燭",
+                        typeEn: "Candle",
+                    },
+                    {
+                        id: 5,
+                        typeLink: "./lip-gloss.html",
+                        typeCn: "唇油",
+                        typeEn: "Lip Gloss",
+                    },
+                    {
+                        id: 6,
+                        typeLink: "./facial-mask.html",
+                        typeCn: "面膜",
+                        typeEn: "Facial Mask",
+                    },
+                ]
+
+                // 元件：錨點按鈕
+                const Anchor = ({ typeLink, typeCn, typeEn }) => {
+                    return (
+                        <a href={typeLink}><span></span>{typeCn}<br />{typeEn}</a>
+                    )
+                }
+
+                // 元件：Section 標題
+                const SeriesTitle = ({ seriesName, seriesIntro }) => {
+                    return (
+                        <header className="series">
+                            <h1 className="serif-medium-m">{seriesName}</h1>
+                            <p className="ch-sans-thin-l">{seriesIntro}</p>
+                        </header>
+                    )
+                }
+
+                // 元件：單個商品項目
+                const ProductCard = ({ type, titleCn, titleEn, imgName, pageName }) => {
+                    return (
+                        <a className="product-card" href={`./${pageName}.html`}>
+                            <img src={`./images/${imgName}`} alt={`${titleCn}${type}`} />
+                            <h3 className="ch-sans-thin-xl">{titleCn}</h3>
+                            <p className="ch-sans-light-s">{titleEn}</p>
+                        </a>
+                    )
+                }
+
+                // 元件：商品列表 => 使用 map 跑單個商品項目
+                const ProductBox = ({ showType, showSeries }) => {
+                    return (
+                        <div className="product-box">
+                            {
+                                products.map((products) => {
+                                    if (products.type == showType && products.series == showSeries) {
+                                        return <ProductCard key={products.id} type={products.type} titleCn={products.titleCn} titleEn={products.titleEn} imgName={products.imgName} pageName={products.pageName} />
+                                    }
+                                })
+                            }
+                        </div>
+                    )
+                }
+
+                // 元件：Section：系列標題 + 商品列表
+                const Section = ({ typeCn, seriesName, seriesIntro }) => {
+                    return (
+                        <section>
+                            <SeriesTitle seriesName={seriesName} seriesIntro={seriesIntro} />
+                            <ProductBox showType={typeCn} showSeries={seriesName} />
+                        </section>
+                    )
+                }
+
+                return (
+                    <>
+                        <header></header>
+
+                        <main>
+                            <div className="cover">
+                                <div className="banner-box-p">
+                                    <img className="banner-bg-p" src="./images/banner-5.jpg" alt="香水" />
+                                    <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
+                                    <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
+                                </div>
+                                <div id="perfume" className="title-p">
+                                    <h2 className="en-sans-light-l">Perfume</h2>
+                                    <h1 className="serif-medium-l">香水</h1>
+                                </div>
+                            </div>
+
+                            <div className="container products">
+                                <div className="anchor-p ch-sans-light-m">
+                                    {
+                                        anchorList.map((anchorList) => {
+                                            return <Anchor key={anchorList.id} typeLink={anchorList.typeLink} typeCn={anchorList.typeCn} typeEn={anchorList.typeEn} />
+                                        })
+                                    }
+                                </div>
+
+                                <div className="all-products">
+                                    <Section typeCn="香水" seriesName="自然系列" seriesIntro="馥郁花香，清甜柔和，演繹著清新優雅的魅力。" />
+                                    <Section typeCn="香水" seriesName="費洛蒙系列" seriesIntro="鮮明香氣圍繞著您的感官，令人愉悅振奮的吸引力。" />
+
+                                    <a className="btn-color ch-sans-thin-l" href="./products.html">
+                                        <span>返回商品總覽</span><img src="./images/arrow-right.svg" alt="箭頭" />
+                                    </a>
+                                </div>
+
+                            </div>
+                        </main>
+
+                        <footer>
+                            {/*<button className="btn-top"></button>*/}
+                        </footer>
+
+                    </>
+                )
+            };
+
+            ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+        };
+
+    </script>
+
 
 </body>
 
