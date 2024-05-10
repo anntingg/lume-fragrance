@@ -10,6 +10,7 @@
 
 <body>
     <div id="root"></div>
+    <button class="btn-top"></button>
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -30,27 +31,73 @@
         request.send();
 
         request.onload = function () {
-            // 將 JSON 資料內容丟給 products 變數
+            // 將 JSON 資料丟給 products 變數 => 單項商品詳細資料
             const products = request.response;
             // console.log(products);
 
             const App = () => {
 
-                // 資料解構：被解構的名稱，必須是 props 內的名稱 => return 內就不用寫 props.
-                // const { imgName, titleCn, titleEn } = props;
+                // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
+                const typeList = [
+                    {
+                        id: 1,
+                        typeId: "perfume",
+                        typeCn: "香水",
+                        typeEn: "Perfume",
+                        series1: "自然系列",
+                        series2: "費洛蒙系列",
+                    },
+                    {
+                        id: 2,
+                        typeId: "travel-spray",
+                        typeCn: "針管香水",
+                        typeEn: "Travel Spray",
+                    },
+                    {
+                        id: 3,
+                        typeId: "diffuse",
+                        typeCn: "室內擴香",
+                        typeEn: "Diffuse",
+                    },
+                    {
+                        id: 4,
+                        typeId: "candle",
+                        typeCn: "香氛蠟燭",
+                        typeEn: "Candle",
+                    },
+                    {
+                        id: 5,
+                        typeId: "lip-gloss",
+                        typeCn: "唇油",
+                        typeEn: "Lip Gloss",
+                    },
+                    {
+                        id: 6,
+                        typeId: "facial-mask",
+                        typeCn: "面膜",
+                        typeEn: "Facial Mask",
+                    },
+                ]
 
-                // Section 標題
-                const ProductTitle = ({ type, pageName }) => {
+                // 元件：錨點按鈕
+                const Anchor = ({ typeId, typeCn, typeEn }) => {
+                    return (
+                        <a href={`#${typeId}`}><span></span>{typeCn}<br />{typeEn}</a>
+                    )
+                }
+
+                // 元件：Section 標題
+                const ProductTitle = ({ typeCn, typeId }) => {
                     return (
                         <header className="product-title">
-                            <a href={`./${pageName}.html`}>
-                                <h1 className="serif-medium-l">{type}</h1>
+                            <a href={`./${typeId}.html`}>
+                                <h1 className="serif-medium-l">{typeCn}</h1>
                             </a>
                         </header>
                     )
                 }
 
-                // 每個商品項目
+                // 元件：單個商品項目
                 const ProductCard = ({ type, titleCn, titleEn, imgName }) => {
                     return (
                         <a className="product-card" href="#">
@@ -61,7 +108,7 @@
                     )
                 }
 
-                // 用迴圈跑商品列表
+                // 元件：商品列表 => 使用 map 跑單個商品項目
                 const ProductBox = ({ showType, showSeries }) => {
                     return (
                         <div className="product-box">
@@ -76,9 +123,44 @@
                     )
                 }
 
+                // 元件：Section：判斷是否有子系列 => 目前設定最多三個系列，若未來有更多系列再新增
+                const Section = ({ typeCn, typeId, series1, series2, series3 }) => {
+
+                    const SeriesBox = ({ series }) => {
+                        if (typeof series !== "undefined") {
+                            return (
+                                <>
+                                    <h2 className="serif-medium-m">{series}</h2>
+                                    <ProductBox showType={typeCn} showSeries={series} />
+                                </>
+                            )
+                        }
+                    }
+
+                    if (typeof series1 !== "undefined") {
+                        return (
+                            <section id={typeId}>
+                                <ProductTitle typeCn={typeCn} typeId={typeId} />
+                                <SeriesBox series={series1} />
+                                <SeriesBox series={series2} />
+                                <SeriesBox series={series3} />
+                            </section>
+                        )
+                    } else {
+
+                        return (
+                            <section id={typeId}>
+                                <ProductTitle typeCn={typeCn} typeId={typeId} />
+                                <ProductBox showType={typeCn} showSeries="" />
+                            </section>
+                        )
+                    }
+                }
+
                 return (
                     <>
                         <header></header>
+                        
                         <main>
                             <div className="cover">
                                 <div className="banner-box-p">
@@ -94,59 +176,29 @@
 
                             <div className="container products">
                                 <div className="anchor-p ch-sans-light-m">
-                                    <a href="#products"><span></span>商品總覽<br />Products</a>
-                                    <a href="#perfume"><span></span>香水<br />Perfume</a>
-                                    <a href="#travel-spray"><span></span>針管香水<br />Travel Spray</a>
-                                    <a href="#diffuse"><span></span>室內擴香<br />Diffuse</a>
-                                    <a href="#candle"><span></span>香氛蠟燭<br />Candle</a>
-                                    <a href="#lip-gloss"><span></span>唇油<br />Lip Gloss</a>
-                                    <a href="#facial-mask"><span></span>面膜<br />Facial Mask</a>
+                                    <Anchor typeId="products" typeCn="商品總覽" typeEn="Products" />
+                                    {
+                                        typeList.map((typeList) => {
+                                            return <Anchor key={typeList.id} typeId={typeList.typeId} typeCn={typeList.typeCn} typeEn={typeList.typeEn} />
+                                        })
+                                    }
                                 </div>
 
                                 <div className="all-products">
-                                    <section id="perfume">
-                                        <ProductTitle type="香水" pageName="perfume" />
-
-                                        <h2 className="serif-medium-m">自然系列</h2>
-                                        <ProductBox showType="香水" showSeries="自然系列" />
-
-                                        <h2 className="serif-medium-m">費洛蒙系列</h2>
-                                        <ProductBox showType="香水" showSeries="費洛蒙系列" />
-                                    </section>
-
-                                    <section id="travel-spray">
-                                        <ProductTitle type="針管香水" pageName="travel-spray" />
-                                        <ProductBox showType="針管香水" showSeries="" />
-                                    </section>
-
-                                    <section id="diffuse">
-                                        <ProductTitle type="室內擴香" pageName="travel-spray" />
-                                        <ProductBox showType="室內擴香" showSeries="" />
-                                    </section>
-
-                                    <section id="candle">
-                                        <ProductTitle type="香氛蠟燭" pageName="travel-spray" />
-                                        <ProductBox showType="香氛蠟燭" showSeries="" />
-                                    </section>
-
-                                    <section id="lip-gloss">
-                                        <ProductTitle type="唇油" pageName="travel-spray" />
-                                        <ProductBox showType="唇油" showSeries="" />
-                                    </section>
-
-                                    <section id="facial-mask">
-                                        <ProductTitle type="面膜" pageName="travel-spray" />
-                                        <ProductBox showType="面膜" showSeries="" />
-                                    </section>
+                                    {
+                                        typeList.map((typeList) => {
+                                            return <Section key={typeList.id} typeCn={typeList.typeCn} typeId={typeList.typeId} series1={typeList.series1} series2={typeList.series2} series3={typeList.series3} />
+                                        })
+                                    }
                                 </div>
 
                             </div>
                         </main>
-                        
+
                         <footer>
-                            <button className="btn-top"></button>
+                            {/*<button className="btn-top"></button>*/}
                         </footer>
-                        
+
                     </>
                 )
             };

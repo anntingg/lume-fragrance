@@ -1480,6 +1480,7 @@ section {
 .anchor-p a {
     display: flex;
     align-items: center;
+    /* color: #888; */
 }
 
 .anchor-p a:first-child {
@@ -1488,13 +1489,12 @@ section {
 }
 
 .anchor-p a:hover {
-    color: #89D1EF;
-    /* background-color: rgba(137, 208, 239, 0.2); */
+    color: #1886B4;
+    /* color: var(--black); */
 }
 
 .anchor-p a.active {
     color: #1EA7E1;
-    /* border-bottom: 1px solid #89D1EF; */
 }
 
 .anchor-p a span {
@@ -1529,7 +1529,7 @@ section {
     .anchor-p {
         height: 90vh;
         max-height: 600px;
-        margin: 150px 24px 20px 0;
+        margin: 150px 16px 20px 0;
     }
 }
 
@@ -1580,6 +1580,17 @@ section {
     aspect-ratio: 1 / 1;
     clip-path: polygon(0 0,100% 50%,0 100%);
     background: var(--gradient-pink);
+    animation: buttonMove 1.6s ease-out infinite;
+}
+
+/* .product-title a:hover::after {
+    animation: buttonMove 1.2s ease-out infinite;
+} */
+
+@keyframes buttonMove {
+    0% { transform: translateX(0);}
+    30% { transform: translateX(20%); filter: brightness(1.05); }
+    86% { transform: translateX(0); } 
 }
 
 @media (max-width: 992px) {
@@ -1658,6 +1669,12 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: all 0.5s;
+}
+
+.product-card:hover {
+    transform: scale(110%);
+    filter: brightness(110%);
 }
 
 .product-card img {
@@ -1668,10 +1685,12 @@ section {
 
 .product-card h3 {
     margin-top: 10px;
+    transition: all 0.5s
 }
 
 .product-card p {
     margin-top: 6px;
+    transition: all 0.5s
 }
 
 /* 子分類頁面 - 香水 */
