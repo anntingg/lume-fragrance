@@ -148,13 +148,13 @@ table {
     --primary-color:; */
     /* 背景漸層 */
     --gradient:
-        linear-gradient(120deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-        linear-gradient(210deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%),
-        linear-gradient(340deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%);
+        linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%);
     --gradient-2:
-        linear-gradient(120deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%),
-        linear-gradient(210deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-        linear-gradient(340deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%);
+        linear-gradient(120deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(210deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(340deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%);
     --gradient-pink:
         linear-gradient(90deg, rgba(238, 179, 207, 0.6), rgba(238, 179, 207, 1));
     --gradient-blue:
@@ -485,7 +485,7 @@ footer {
         width: 48px;
         height: 48px;
         bottom: 20px;
-        right: 20px;    
+        right: 20px;
         z-index: 99;
     }
 
@@ -579,6 +579,17 @@ section {
     z-index: 3;
     object-fit: contain;
     mix-blend-mode: color-dodge;
+    animation: logoMove 1s 0.5s both;
+}
+
+@keyframes logoMove {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 /* 右方標題 */
@@ -597,8 +608,8 @@ section {
 
 .title-l h2::after {
     content: "";
-    height: 65px;
-    margin: 50px 0 25px;
+    height: 68px;
+    margin: 40px 0 32px;
     display: block;
     position: relative;
     z-index: 2;
@@ -626,6 +637,20 @@ section {
         right: -72px;
         bottom: -60px;
     }
+}
+
+@media (max-width: 992px) {
+    .title-l h2::after {
+        height: 56px;
+        margin: 32px 0 24px;
+    } 
+}
+
+@media (max-width: 768px) {
+    .title-l h2::after {
+        height: 52px;
+        margin: 28px 0 16px;
+    } 
 }
 
 @media (max-width: 576px) {
@@ -708,7 +733,7 @@ section {
 .anchor a img {
     width: 100px;
     position: absolute;
-    top: 10px;
+    top: 4px;
     left: 30px;
     z-index: 1;
     object-fit: fill;
@@ -743,7 +768,7 @@ section {
 
     .anchor a img {
         width: 80px;
-        top: 12px;
+        top: 8px;
         left: 30px;
         opacity: 0.6;
     }
@@ -780,7 +805,33 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     border-radius: 100px 0 100px 0;
+    overflow: hidden;
+}
+
+.events-box::after,
+.members-box::after {
+    content: "";
+    width: 0;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: var(--overlay);
+    mix-blend-mode: overlay;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    transition: all 0.8s;
+}
+
+.events-box:hover:after, .members-box:hover::after {
+    width: 120%
+}
+
+.events-box>div, .members-box> div, .members-box .btn-white {
+    position: relative;
+    z-index: 1;
 }
 
 .events-box p,
@@ -798,13 +849,46 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     background-color: var(--white);
     border-radius: 99px 0 99px 0;
+    overflow: hidden;
+}
+
+.btn-white::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background: var(--gradient);
+    transition: all 0.5s;
+}
+
+.events-box:hover .btn-white::after, .members-box:hover .btn-white::after {
+    left: 0;
+}
+
+.btn-white span {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-white div {
+    width: 60px;
+    margin-left: 30px;
+    position: relative;
+    z-index: 2;
 }
 
 .btn-white img {
-    width: 60px;
-    margin-left: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.events-box:hover .btn-white img, .members-box:hover .btn-white img {
+    animation: arrowMove 0.7s 0.1s;
 }
 
 /* 活動訊息區 */
@@ -834,7 +918,7 @@ section {
 
 .members-box h2,
 .members-box p,
-.members-box a {
+.members-box .btn-white {
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -881,7 +965,7 @@ section {
 @media (max-width: 992px) {
 
     .events-box,
-    .members-box  {
+    .members-box {
         padding: 0 6%;
     }
 
@@ -899,12 +983,12 @@ section {
         height: 56px;
     }
 
-    .members-box  .btn-white {
+    .members-box .btn-white {
         width: 240px;
         height: 56px;
     }
 
-    .btn-white img {
+    .btn-white div {
         margin-left: 10px;
     }
 
@@ -914,7 +998,7 @@ section {
 
     .members-box h2,
     .members-box p,
-    .members-box a {
+    .members-box .btn-white {
         margin-left: 36px;
         margin-right: 36px;
     }
@@ -978,7 +1062,7 @@ section {
         letter-spacing: 0.1em;
     }
 
-    .btn-white img {
+    .btn-white div {
         width: 32px;
         margin-left: 4px;
     }
@@ -996,7 +1080,7 @@ section {
 
     .members-box h2,
     .members-box p,
-    .members-box a {
+    .members-box .btn-white {
         margin-left: 20px;
         margin-right: 20px;
     }
@@ -1082,9 +1166,19 @@ section {
 }
 
 /* 卡片內部的排版 */
-.article-card>img {
+.article-card a {
+    width: 100%;
+    height: 100%;
+}
+
+.article-img {
     aspect-ratio: 1.13 / 1;
     object-fit: cover;
+    transition: all 0.5s;
+}
+
+.article-card:hover .article-img {
+    filter: brightness(110%);
 }
 
 .content {
@@ -1128,14 +1222,47 @@ section {
     height: 68px;
     display: flex;
     justify-content: center;
+    position: relative;
     align-items: center;
     background-color: var(--white);
     border-radius: 99px 0 99px 0;
+    overflow: hidden;
+}
+
+.btn-s::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background: var(--gradient);
+    transition: all 0.5s;
+}
+
+.article-card:hover .btn-s::after {
+    left: 0;
+}
+
+.btn-s span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-s div {
+    width: 60px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .btn-s img {
-    width: 60px;
-    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.article-card:hover .btn-s img {
+    animation: arrowMove 0.7s 0.1s;
 }
 
 /* 會員制度頁 */
@@ -1276,21 +1403,40 @@ section {
 
 .follow-us {
     width: 100%;
-    padding: 0 9%;
+    position: relative;
     border: 2px solid transparent;
     border-radius: 0 0 0 100px;
     background:
         linear-gradient(#fff, #fff) padding-box,
         var(--gradient) border-box;
+    overflow: hidden;
+}
+
+.follow-us::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--gradient-2);
+    opacity: 0;
+    transition: all 0.8s;
+}
+
+.follow-us:hover::after {
+    opacity: 1;
 }
 
 .follow-us a {
     width: 100%;
     height: 100%;
-    padding: 24px 0;
+    padding: 24px 9%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 1;
     text-align: justify;
 }
 
@@ -1315,8 +1461,11 @@ section {
     }
 
     .follow-us {
-        padding: 0 36px;
         border-radius: 0 0 0 80px;
+    }
+
+    .follow-us a {
+        padding: 24px 36px;
     }
 }
 
@@ -1502,7 +1651,7 @@ section {
     height: 12px;
     aspect-ratio: 1 / 1;
     margin-right: 4px;
-    clip-path: polygon(0 0,100% 50%,0 100%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
     background: var(--gradient-blue);
     opacity: 0;
 }
@@ -1577,25 +1726,34 @@ section {
 .product-title a::after {
     content: "";
     display: block;
-    height:40px;
+    height: 40px;
     aspect-ratio: 1 / 1;
-    clip-path: polygon(0 0,100% 50%,0 100%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
     background: var(--gradient-pink);
-    animation: buttonMove 2s ease-out infinite;
+    /* animation: buttonMove 2s ease-out infinite; */
 }
 
 .product-title a:hover {
     filter: brightness(110%)
 }
 
-/* .product-title a:hover::after {
-    animation: buttonMove 1.2s ease-out infinite;
-} */
+.product-title a:hover::after {
+    animation: buttonMove 2s ease-out infinite;
+}
 
 @keyframes buttonMove {
-    0% { transform: translateX(0);}
-    30% { transform: translateX(20%); filter: brightness(110%); }
-    60% { transform: translateX(0); } 
+    0% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(20%);
+        filter: brightness(110%);
+    }
+
+    60% {
+        transform: translateX(0);
+    }
 }
 
 @media (max-width: 992px) {
@@ -1651,13 +1809,20 @@ section {
     justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 5%;
-    grid-row-gap: 48px;
+    grid-row-gap: 32px;
     grid-auto-rows: minmax(0, auto);
+}
+
+@media (max-width: 1200px) {
+    .product-box {
+        grid-column-gap: 4%;
+    }
 }
 
 @media (max-width: 992px) {
     .product-box {
         grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 6%;
     }
 }
 
@@ -1738,12 +1903,34 @@ section {
     overflow: hidden;
 }
 
-/* .btn-color img {
+.btn-color::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background: var(--gradient);
+    transition: all 0.8s;
+
+}
+
+.btn-color:hover::after {
+    left: 0;
+    filter: brightness(120%);
+}
+
+.btn-color span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-color div {
     width: 60px;
     margin-left: 10px;
     position: relative;
     z-index: 1;
-} */
+}
 
 .btn-color img {
     width: 100%;
@@ -1755,39 +1942,13 @@ section {
 }
 
 @keyframes arrowMove {
-    from { width: 0;}
-    to { width: 100%; }
-}
+    from {
+        width: 0;
+    }
 
-
-.btn-color div {
-    width: 60px;
-    margin-left: 10px;
-    position: relative;
-    z-index: 1;
-}
-
-.btn-color span {
-    position: relative;
-    z-index: 1;
-}
-
-.btn-color::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    left: -100%;
-    top: 0;
-    background: var(--gradient);
-    transition: all 0.8s;
-    
-}
-
-.btn-color:hover::after {
-    left: 0;
-    filter: brightness(120%);
+    to {
+        width: 100%;
+    }
 }
 
 @media (max-width: 992px) {
@@ -1848,7 +2009,7 @@ section {
         height: 68px;
     }
 
-    .btn-color img {
+    .btn-color div {
         display: none;
     }
 

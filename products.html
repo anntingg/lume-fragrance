@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <!-- 每頁標題 -->
     <meta property="og:title" content="Lume Fragrance | 商品總覽 Products">
-    <meta property="og:description" content="Lume Fragrance - 每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。">
+    <meta property="og:description" content="Lume Fragrance 官方形象網站：每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。">
     <meta property="og:site_name" content="Lume Fragrance 官方形象網站">
     <!-- <meta property="og:url" content=""> -->
     <!-- <meta property="og:image" content=""> -->
@@ -23,7 +23,7 @@
 
 <body>
     <div id="root"></div>
-    <button class="btn-top"></button>
+    <footer><button class="btn-top"></button></footer>
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -93,7 +93,7 @@
                 ]
 
                 // 元件：錨點按鈕
-                const Anchor = ({ typeId, typeCn, typeEn }) => {
+                const AnchorP = ({ typeId, typeCn, typeEn }) => {
                     return (
                         <a href={`#${typeId}`}><span></span>{typeCn}<br />{typeEn}</a>
                     )
@@ -189,10 +189,10 @@
 
                             <div className="container products">
                                 <div className="anchor-p ch-sans-light-m">
-                                    <Anchor typeId="products" typeCn="商品總覽" typeEn="Products" />
+                                    <AnchorP typeId="products" typeCn="商品總覽" typeEn="Products" />
                                     {
                                         typeList.map((typeList) => {
-                                            return <Anchor key={typeList.id} typeId={typeList.typeId} typeCn={typeList.typeCn} typeEn={typeList.typeEn} />
+                                            return <AnchorP key={typeList.id} typeId={typeList.typeId} typeCn={typeList.typeCn} typeEn={typeList.typeEn} />
                                         })
                                     }
                                 </div>
@@ -208,9 +208,9 @@
                             </div>
                         </main>
 
-                        <footer>
-                            {/*<button className="btn-top"></button>*/}
-                        </footer>
+                        {/*<footer>
+                            <button className="btn-top"></button>
+                        </footer>*/}
 
                     </>
                 )
