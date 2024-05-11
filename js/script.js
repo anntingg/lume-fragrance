@@ -1,8 +1,11 @@
-$(function () {
-    $(".btn-top").click(function () {
-        $("html, body").animate({ scrollTop: 0 }, "fast");
+const scrollTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // This animates the scroll behavior
     });
+};
 
+$(function () {
     $(window).scroll(function () {
 
         // ------------Top 按鈕--------------
@@ -25,17 +28,6 @@ $(function () {
         } else {
             $('.btn-top').removeClass("position");
         };
-
-        // let footerPos = $("footer").offset().top;
-        // let windowBottomPos = $(this).scrollTop() + window.innerHeight;
-        // let newPos = windowBottomPos - footerPos + 40;
-        // // console.log(footerPos, windowBottomPos);
-        // if (windowBottomPos > footerPos) {
-        //     $('.btn-top').css({'bottom' : newPos});
-        //   }else{
-        //     $('.btn-top').css({'bottom' : 40});
-        //   };   
-
 
         // ------------商品總覽錨點--------------
         let currentTopPos = $(this).scrollTop();
@@ -62,7 +54,6 @@ $(function () {
             }
 
         });
-
 
     });
 
