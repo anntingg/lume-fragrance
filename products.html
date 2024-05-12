@@ -34,6 +34,8 @@
 
     <!-- React -->
     <script type="text/babel">
+        // 取出 useState & useEffect 的方法
+        const { useState, useEffect } = React;
 
         // JSON 建立陣列資料
         const requestURL = "./products.json";
@@ -169,6 +171,72 @@
                     }
                 }
 
+                //-------------------輪播圖-------------------
+                // useState 語法 => [前者為變數, 後者是寫入變數的方法] = useState（初始值） 
+                const [currentSlide, setCurrentSlide] = useState(0);
+
+                // 建立輪播圖陣列 => 圖片檔名
+                const slides = [
+                    "banner-1.jpg",
+                    "banner-2.jpg",
+                    "banner-3.jpg",
+                    "banner-4.jpg",
+                    "banner-5.jpg",
+                    "banner-6.jpg"
+                ];
+
+                // 播放前一張／後一張的函式
+                const prevSlide = () => {
+                    setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
+                const nextSlide = () => {
+                    setCurrentSlide((currentSlide + 1) % slides.length);
+                }
+
+                // useEffect：每 3 秒播放下一張 => 當 [currentSlide] 變動時，會重新執行函式
+                useEffect(() => {
+                    const intervalId = setInterval(nextSlide, 3000);
+                    // return 的函式，React 將在下次執行 effect 前執行，清除前一個 render 的 effect
+                    return () => { clearInterval(intervalId) };
+                }, [currentSlide]);
+
+                // 建立輪播圖元件 => 使用 map 迴圈
+                const Carousel = () => {
+                    return (
+                        <div className="banner-bg-p">
+                            {
+                                slides.map((element, index) => (
+                                    <img
+                                        key={index}
+                                        className={`carousel ${index === currentSlide ? "active" : ""}`}
+                                        src={`./images/${element}`}
+                                        alt="Lume Fragrance 主打商品"
+                                    />
+                                ))
+                            }
+                        </div>
+                    )
+                }
+
+                // 建立指示長條元件 => 使用 map 迴圈
+                const Navigation = () => {
+                    return (
+                        <div className="navigation">
+                            {
+                                slides.map((element, index) => {
+                                    return (
+                                        <span
+                                            key={index}
+                                            className={`indicator ${index === currentSlide ? "active" : ""}`}
+                                            onClick={() => { setCurrentSlide(index); }}
+                                        ></span>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                }
+
                 return (
                     <>
                         <header></header>
@@ -176,7 +244,10 @@
                         <main>
                             <div className="cover">
                                 <div className="banner-box-p">
-                                    <img className="banner-bg-p" src="./images/banner-1.jpg" alt="香氛蠟燭" />
+                                    <Carousel />
+                                    <Navigation />
+                                    <button className="btn-prev" onClick={prevSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
+                                    <button className="btn-next" onClick={nextSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
                                     <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
                                     <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
                                 </div>
