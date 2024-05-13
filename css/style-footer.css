@@ -1,0 +1,172 @@
+	@charset "UTF-8";
+	/* a {
+		color: #666;
+	}
+	 */
+
+	footer {
+		display: flex;
+		background: var(--gradient);
+		height: 340px;
+		padding: 30px;
+
+		position: relative;
+		/* 新增 */
+		box-sizing: content-box;
+		overflow: hidden;
+	}
+
+	footer .bg {
+		object-fit: contain;
+		width: fit-content;
+		height: 100%;
+		position: absolute;
+		left: 80px;
+		top: 0;
+
+		opacity: 0.5;
+	}
+
+	footer .star-1 {
+		object-fit: contain;
+		width: fit-content;
+		height: 120px;
+		position: absolute;
+		right: 600px;
+		bottom: 20px;
+
+		opacity: 0.4;
+	}
+
+	footer .star-2 {
+		object-fit: contain;
+		width: fit-content;
+		height: 70px;
+		position: absolute;
+		right: 25px;
+		bottom: 25px;
+
+		opacity: 0.4;
+	}
+
+	footer .star-3 {
+		object-fit: contain;
+		width: fit-content;
+		height: 35px;
+		position: absolute;
+		right: 100px;
+		bottom: 60px;
+
+		opacity: 0.4;
+	}
+
+	footer .star-4 {
+		object-fit: contain;
+		width: fit-content;
+		height: 35px;
+		position: absolute;
+		right: 30px;
+		top: 30px;
+
+		opacity: 0.4;
+	}
+
+	footer .content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin: 0 150px;
+		/* width: 1140px; */
+
+		z-index: 1;
+	}
+
+	footer .content img {
+		object-fit: contain;
+		width: 220px;
+	}
+
+	footer .center {
+		align-self: flex-end;
+	}
+
+	footer .social {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 20px;
+	}
+
+	footer .center img {
+		width: 30px;
+	}
+
+	footer .serif-medium-footer {
+		display: flex;
+		justify-content: space-between;
+		align-content: space-between;
+		flex-wrap: wrap;
+		width: 240px;
+		height: 140px;
+	}
+
+	footer .serif-medium-footer a {
+		color: #666;
+	}
+
+	footer .serif-medium-footer a:nth-child(odd) {
+		margin-right: 60px;
+	}
+
+	/* 電腦 1401px */
+	@media (min-width: 1401px) {}
+
+	/* 電腦 (993-) 1400px */
+	@media (max-width: 1400px) {}
+
+	/* 平板 (992-) 1200px */
+	@media (max-width: 1200px) {
+		footer .content {
+			margin: 0 auto;
+			width: 80%;
+		}
+	}
+
+	/* 平板 (768-) 992px */
+	@media (max-width: 992px) {
+		footer .content {
+			margin: 0 auto;
+			width: 90%;
+		}
+
+		footer .bg {
+			left: 0;
+		}
+	}
+
+	/* 小型手機 768px 以下 */
+	@media (max-width: 768px) {
+		footer {
+			height: 450px;
+		}
+
+		footer .content {
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+		}
+
+		footer .content>img {
+			width: 100px;
+			order: 0;
+		}
+
+		footer .content .center {
+			align-self: center;
+			order: 3;
+		}
+
+		footer .content .serif-medium-footer {
+			margin: 30px 0;
+		}
+	}

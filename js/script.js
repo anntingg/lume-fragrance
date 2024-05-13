@@ -1,5 +1,10 @@
-const scrollTop = () => {
-    window.scrollTo({
+// 若在 React 框架中，直接用 onClick 事件呼叫函式
+const scrollToTop = () => {
+    document.body.scrollTo({
+        top: 0,
+        behavior: "smooth" // This animates the scroll behavior
+    });
+    document.documentElement.scrollTo({
         top: 0,
         behavior: "smooth" // This animates the scroll behavior
     });
@@ -17,6 +22,7 @@ $(function () {
             $(".btn-top").stop().fadeTo("", 0);
         }
 
+        /*
         // 取出 footer 和視窗底部位置
         let footerPos = $("footer").offset().top;
         let currentBottomPos = $(this).scrollTop() + window.innerHeight;
@@ -26,7 +32,8 @@ $(function () {
             $('.btn-top').addClass("position");
         } else {
             $('.btn-top').removeClass("position");
-        };
+        };       
+        */    
 
         // ------------商品總覽錨點--------------
         let currentTopPos = $(this).scrollTop();

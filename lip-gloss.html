@@ -19,6 +19,7 @@
 
     <title>Lume Fragrance | 唇油 Lip Gloss</title>
     <link rel="stylesheet" href="./css/style-ann.css">
+    <link rel="stylesheet" href="./css/style-footer.css">
 </head>
 
 <body>
@@ -34,6 +35,7 @@
 
     <!-- React -->
     <script type="text/babel">
+        const { useState, useEffect } = React;
 
         // JSON 建立陣列資料
         const requestURL = "./products.json";
@@ -128,6 +130,69 @@
                     )
                 }
 
+                                //-------------------輪播圖-------------------
+                                const Carousel = () => {
+                    // useState 語法 => [前者為變數, 後者是寫入變數的方法] = useState（初始值） 
+                    const [currentSlide, setCurrentSlide] = useState(0);
+
+                    // 建立圖片陣列 => 使用 map 迴圈跑輪播圖和指示長條
+                    const slides = [
+                        "banner-1.jpg",
+                        "banner-2.jpg",
+                        "banner-3.jpg",
+                        "banner-4.jpg",
+                        "banner-5.jpg",
+                        "banner-6.jpg"
+                    ];
+
+                    // 播放前一張／後一張的函式
+                    const prevSlide = () => {
+                        setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+                    }
+                    const nextSlide = () => {
+                        setCurrentSlide((currentSlide + 1) % slides.length);
+                    }
+
+                    // useEffect：每 3 秒播放下一張 => 當 [currentSlide] 變動時，會重新執行函式
+                    useEffect(() => {
+                        const intervalId = setInterval(nextSlide, 3000);
+                        // return 的函式，React 將在下次執行 effect 前執行，清除前一個 render 的 effect
+                        return () => { clearInterval(intervalId) };
+                    }, [currentSlide]);
+
+                    return (
+                        <>
+                            <div className="banner-bg-p">
+                                {
+                                    slides.map((element, index) => (
+                                        <img
+                                            key={index}
+                                            className={`carousel ${index === currentSlide ? "active" : ""}`}
+                                            src={`./images/${element}`}
+                                            alt="Lume Fragrance 主打商品"
+                                        />
+                                    ))
+                                }
+                            </div>
+                            <div className="navigation">
+                                {
+                                    slides.map((element, index) => {
+                                        return (
+                                            <span
+                                                key={index}
+                                                className={`indicator ${index === currentSlide ? "active" : ""}`}
+                                                onClick={() => { setCurrentSlide(index); }}
+                                            ></span>
+                                        )
+                                    })
+                                }
+                            </div>
+                            <button className="btn-prev" onClick={prevSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
+                            <button className="btn-next" onClick={nextSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
+                        </>
+                    )
+                }
+
                 return (
                     <>
                         <header></header>
@@ -135,7 +200,7 @@
                         <main>
                             <div className="cover">
                                 <div className="banner-box-p">
-                                    <img className="banner-bg-p" src="./images/banner-3.jpg" alt="唇油" />
+                                    <Carousel />
                                     <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
                                     <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
                                 </div>
@@ -168,7 +233,31 @@
                         </main>
 
                         <footer>
-                            <button className="btn-top" onClick={scrollTop}></button>
+                            <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />
+                            <img className="star-1" src="./img/star-w.svg" alt="" />
+                            <img className="star-2" src="./img/star-w.svg" alt="" />
+                            <img className="star-3" src="./img/star-w.svg" alt="" />
+                            <img className="star-4" src="./img/star-w.svg" alt="" />
+                            <div className="content">
+                                <img src="./img/LOGO-07.png" alt="" />
+                                <div className="center">
+                                    <div className="social">
+                                        <a href="#"><img src="./img/icon/FB.svg" alt="" /></a>
+                                        <a href="#"><img src="./img/icon/IG.svg" alt="" /></a>
+                                        <a href="#"><img src="./img/icon/LINE.svg" alt="" /></a>
+                                    </div>
+                                    <small className="en-sans-light-m">© 2024 Lumé, inc</small>
+                                </div>
+                                <div className="serif-medium-footer">
+                                    <a href="./index.html">首頁</a>
+                                    <a href="./news.html">最新消息</a>
+                                    <a href="./products.html">商品總覽</a>
+                                    <a href="./membership.html">會員制度</a>
+                                    <a href="#">品牌故事</a>
+                                    <a href="#">聯絡我們</a>
+                                </div>
+                            </div>
+                            <button className="btn-top" onClick={scrollToTop}></button>
                         </footer>
 
                     </>

@@ -177,8 +177,7 @@ table {
     line-height: 190%;
     font-size: 14px;
     letter-spacing: 0.1em;
-    /* 增加了字距 */
-    /* color: #000;  body 預設為黑色*/
+    color: var(--black);
 }
 
 .ch-sans-light-m {
@@ -186,7 +185,7 @@ table {
     line-height: 190%;
     font-size: 16px;
     letter-spacing: 0.1em;
-    /* color: #000;  body 預設為黑色*/
+    color: var(--black);
 }
 
 .ch-sans-thin-l {
@@ -195,7 +194,7 @@ table {
     line-height: 100%;
     font-size: 20px;
     letter-spacing: 0.1em;
-    /* color: #000;  body 預設為黑色*/
+    color: var(--black);
 }
 
 .ch-sans-thin-xl {
@@ -203,13 +202,13 @@ table {
     line-height: 100%;
     font-size: 24px;
     letter-spacing: 0.1em;
-    /* color: #000;  body 預設為黑色*/
+    color: var(--black);
 }
 
 .en-sans-light-s {
     font-weight: 100;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 12px;
     letter-spacing: 0.1em;
 }
@@ -217,7 +216,7 @@ table {
 .en-sans-light-m {
     font-weight: 100;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 14px;
     letter-spacing: 0.1em;
 }
@@ -225,7 +224,7 @@ table {
 .en-sans-light-l {
     font-weight: 100;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 20px;
     letter-spacing: 0.1em;
 }
@@ -233,7 +232,7 @@ table {
 .en-sans-light-xl {
     font-weight: 100;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 24px;
     letter-spacing: 0.1em;
 }
@@ -243,7 +242,7 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 20px;
     letter-spacing: 0.1em;
 }
@@ -252,7 +251,7 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 100%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 24px;
     letter-spacing: 0.1em;
 }
@@ -261,7 +260,7 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 150%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 32px;
     letter-spacing: 0.1em;
 }
@@ -270,7 +269,7 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 150%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 44px;
     letter-spacing: 0.1em;
 }
@@ -279,7 +278,7 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 140%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 64px;
     letter-spacing: 0.1em;
 }
@@ -288,11 +287,10 @@ table {
     font-family: "Noto Serif TC", serif;
     font-weight: 500;
     line-height: 120%;
-    color: #666;
+    color: var(--font-grey);
     font-size: 72px;
     letter-spacing: 0.1em;
 }
-
 
 @media (max-width: 992px) {
 
@@ -418,12 +416,19 @@ body {
 img {
     display: block;
     width: 100%;
+    object-fit: cover;
 }
 
 a {
     display: block;
     color: var(--black);
     text-decoration: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .container {
@@ -444,13 +449,6 @@ a {
     }
 }
 
-/* footer */
-footer {
-    height: 300px;
-    position: relative;
-    background: var(--gradient);
-}
-
 /* Top 按鈕 */
 .btn-top {
     width: 60px;
@@ -461,20 +459,17 @@ footer {
     bottom: 40px;
     right: 40px;
     z-index: 99;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
     background-image: url("../images/top-defualt.svg");
     background-size: contain;
     transition: .5s;
 }
-
+/* 
 .position {
     position: absolute;
     top: -40px;
     right: 40px;
     transform: translate(0, -100%);
-}
+} */
 
 .btn-top:hover {
     background-image: url("../images/top-hover.svg");
@@ -486,13 +481,13 @@ footer {
         height: 48px;
         bottom: 20px;
         right: 20px;
-        z-index: 99;
+        z-index: 999;
     }
 
-    .position {
+    /* .position {
         top: -20px;
         right: 20px;
-    }
+    } */
 }
 
 
@@ -1181,21 +1176,21 @@ section {
     filter: brightness(110%);
 }
 
-.content {
+.article-card .content {
     padding: 20px 10% 30px;
 }
 
-.content h2,
-.content p {
+.article-card .content h2,
+.article-card .content p {
     margin-bottom: 20px;
 }
 
-.content h2 {
+.article-card .content h2 {
     display: flex;
     white-space: nowrap;
 }
 
-.content h2::after {
+.article-card .content h2::after {
     content: "";
     width: 100%;
     height: 0.5px;
@@ -1517,9 +1512,6 @@ section {
     top: 50%;
     z-index: 10;
     transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 }
 
 .btn-prev img, .btn-next img {

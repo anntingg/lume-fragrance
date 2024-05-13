@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* Top 按鈕 */
+.btn-top {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 99;
+    background-image: url("../images/top-defualt.svg");
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-top:hover {
+    background-image: url("../images/top-hover.svg");
+}
+
+/* 
+.position {
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    transform: translate(0, -100%);
+} */
+
+@media (max-width: 576px) {
+    .btn-top {
+        width: 48px;
+        height: 48px;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+    }
+
+    /* .position {
+        top: -20px;
+        right: 20px;
+    } */
+}
