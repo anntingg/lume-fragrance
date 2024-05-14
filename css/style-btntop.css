@@ -39,6 +39,10 @@
         z-index: 999;
     }
 
+    .btn-top:hover {
+        background-image: url("../images/top-defualt.svg");
+    }
+
     /* .position {
         top: -20px;
         right: 20px;
