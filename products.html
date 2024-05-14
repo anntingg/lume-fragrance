@@ -20,7 +20,8 @@
 
     <title>Lume Fragrance | 商品總覽 Products</title>
     <!-- 手動設定 favicon -->
-    <link rel="icon" href="./images/favicon.png">
+    <!-- <link rel="icon" href="./images/favicon.png"> -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style-ann.css">
     <link rel="stylesheet" href="./css/style-footer.css">
 </head>
@@ -259,16 +260,16 @@
                                 <div className="anchor-p ch-sans-light-m">
                                     <AnchorP typeId="products" typeCn="商品總覽" typeEn="Products" />
                                     {
-                                        typeList.map((typeList) => {
-                                            return <AnchorP key={typeList.id} typeId={typeList.typeId} typeCn={typeList.typeCn} typeEn={typeList.typeEn} />
+                                        typeList.map((type) => {
+                                            return <AnchorP key={type.id} typeId={type.typeId} typeCn={type.typeCn} typeEn={type.typeEn} />
                                         })
                                     }
                                 </div>
 
                                 <div className="all-products">
                                     {
-                                        typeList.map((typeList) => {
-                                            return <Section key={typeList.id} typeCn={typeList.typeCn} typeId={typeList.typeId} series1={typeList.series1} series2={typeList.series2} series3={typeList.series3} />
+                                        typeList.map((type) => {
+                                            return <Section key={type.id} typeCn={type.typeCn} typeId={type.typeId} series1={type.series1} series2={type.series2} series3={type.series3} />
                                         })
                                     }
                                 </div>
