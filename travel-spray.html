@@ -18,8 +18,9 @@
     <meta property="og:url" content="https://anntingg.github.io/lume-fragrance/">
     <meta property="og:image" content="https://anntingg.github.io/lume-fragrance/images/LOGO-og.png">
 
-
     <title>Lume Fragrance | 針管香水 Travel Spray Perfume</title>
+    <!-- 手動設定 favicon -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style-ann.css">
     <link rel="stylesheet" href="./css/style-footer.css">
 </head>
@@ -122,9 +123,9 @@
                     return (
                         <div className="product-box">
                             {
-                                products.map((products) => {
-                                    if (products.type == showType && products.series == showSeries) {
-                                        return <ProductCard key={products.id} type={products.type} titleCn={products.titleCn} titleEn={products.titleEn} imgName={products.imgName} pageName={products.pageName} />
+                                products.map((product) => {
+                                    if (product.type == showType && product.series == showSeries) {
+                                        return <ProductCard key={product.id} type={product.type} titleCn={product.titleCn} titleEn={product.titleEn} imgName={product.imgName} pageName={product.pageName} />
                                     }
                                 })
                             }
@@ -132,8 +133,8 @@
                     )
                 }
 
-                                //-------------------輪播圖-------------------
-                                const Carousel = () => {
+                //-------------------輪播圖-------------------
+                const Carousel = () => {
                     // useState 語法 => [前者為變數, 後者是寫入變數的方法] = useState（初始值） 
                     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -215,8 +216,8 @@
                             <div className="container products">
                                 <div className="anchor-p ch-sans-light-m">
                                     {
-                                        anchorList.map((anchorList) => {
-                                            return <AnchorP key={anchorList.id} typeLink={anchorList.typeLink} typeCn={anchorList.typeCn} typeEn={anchorList.typeEn} />
+                                        anchorList.map((anchor) => {
+                                            return <AnchorP key={anchor.id} typeLink={anchor.typeLink} typeCn={anchor.typeCn} typeEn={anchor.typeEn} />
                                         })
                                     }
                                 </div>

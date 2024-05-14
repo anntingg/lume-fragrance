@@ -18,8 +18,9 @@
     <meta property="og:url" content="https://anntingg.github.io/lume-fragrance/">
     <meta property="og:image" content="https://anntingg.github.io/lume-fragrance/images/LOGO-og.png">
 
-
     <title>Lume Fragrance | 會員制度 Membership</title>
+    <!-- 手動設定 favicon -->
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style-ann.css">
     <link rel="stylesheet" href="./css/style-footer.css">
 </head>
@@ -164,8 +165,8 @@
 
                                 <div className="levels-box">
                                     {
-                                        levelList.map((levelList) => {
-                                            return <LevelCard key={levelList.id} className={levelList.className} name={levelList.name} info={levelList.info} item1={levelList.item1} item2={levelList.item2} item3a={levelList.item3a} item3b={levelList.item3b} item4={levelList.item4} item5={levelList.item5} />
+                                        levelList.map((level) => {
+                                            return <LevelCard key={level.id} className={level.className} name={level.name} info={level.info} item1={level.item1} item2={level.item2} item3a={level.item3a} item3b={level.item3b} item4={level.item4} item5={level.item5} />
                                         })
                                     }
                                 </div>
@@ -197,32 +198,32 @@
                     </main>
 
                     <footer>
-                            <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />
-                            <img className="star-1" src="./img/star-w.svg" alt="" />
-                            <img className="star-2" src="./img/star-w.svg" alt="" />
-                            <img className="star-3" src="./img/star-w.svg" alt="" />
-                            <img className="star-4" src="./img/star-w.svg" alt="" />
-                            <div className="content">
-                                <img src="./img/LOGO-07.png" alt="" />
-                                <div className="center">
-                                    <div className="social">
-                                        <a href="#"><img src="./img/icon/FB.svg" alt="" /></a>
-                                        <a href="#"><img src="./img/icon/IG.svg" alt="" /></a>
-                                        <a href="#"><img src="./img/icon/LINE.svg" alt="" /></a>
-                                    </div>
-                                    <small className="en-sans-light-m">© 2024 Lumé, inc</small>
+                        <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />
+                        <img className="star-1" src="./img/star-w.svg" alt="" />
+                        <img className="star-2" src="./img/star-w.svg" alt="" />
+                        <img className="star-3" src="./img/star-w.svg" alt="" />
+                        <img className="star-4" src="./img/star-w.svg" alt="" />
+                        <div className="content">
+                            <img src="./img/LOGO-07.png" alt="" />
+                            <div className="center">
+                                <div className="social">
+                                    <a href="#"><img src="./img/icon/FB.svg" alt="" /></a>
+                                    <a href="#"><img src="./img/icon/IG.svg" alt="" /></a>
+                                    <a href="#"><img src="./img/icon/LINE.svg" alt="" /></a>
                                 </div>
-                                <div className="serif-medium-footer">
-                                    <a href="./index.html">首頁</a>
-                                    <a href="./news.html">最新消息</a>
-                                    <a href="./products.html">商品總覽</a>
-                                    <a href="./membership.html">會員制度</a>
-                                    <a href="#">品牌故事</a>
-                                    <a href="#">聯絡我們</a>
-                                </div>
+                                <small className="en-sans-light-m">© 2024 Lumé, inc</small>
                             </div>
-                            <button className="btn-top" onClick={scrollToTop}></button>
-                        </footer>
+                            <div className="serif-medium-footer">
+                                <a href="./index.html">首頁</a>
+                                <a href="./news.html">最新消息</a>
+                                <a href="./products.html">商品總覽</a>
+                                <a href="./membership.html">會員制度</a>
+                                <a href="#">品牌故事</a>
+                                <a href="#">聯絡我們</a>
+                            </div>
+                        </div>
+                        <button className="btn-top" onClick={scrollToTop}></button>
+                    </footer>
 
                 </>
             )
