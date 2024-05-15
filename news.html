@@ -22,6 +22,7 @@
     <!-- 手動設定 favicon -->
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style-ann.css">
+    <link rel="stylesheet" href="./css/style-menu.css">
     <link rel="stylesheet" href="./css/style-footer.css">
 </head>
 
@@ -130,7 +131,51 @@
 
             return (
                 <>
-                    <header></header>
+                    <header className="header">
+                        <nav>
+                            <input type="checkbox" id="switch" />
+                            <label className="label-container" for="switch"><span><img src="./images/list-cloes.svg" /></span> </label>
+                            <ul className="menu">
+                                <li><a className="contact-link serif-medium-s" href="./index.html">首頁
+                                    <small className="enText en-sans-light-s">Home</small></a>
+                                </li>
+                                <li>
+                                    <a className="serif-medium-s" href="./products.html">商品總覽
+                                        <small className="enText en-sans-light-s">Products</small></a>
+                                </li>
+                                <li className="box-container">
+                                    <div className="list-container">
+                                        <ul className="list-A">
+                                            <li><a className="contact-link ch-sans-thin-l" href="./perfume.html">香水</a></li>
+                                            <li><a className="contact-link ch-sans-thin-l" href="./diffuse.html">室內擴香</a></li>
+                                            <li><a className="contact-link ch-sans-thin-l" href="./lip-gloss.html">唇油</a></li>
+                                        </ul>
+                                        <ul className="list-B">
+                                            <li><a className="contact-link ch-sans-thin-l" href="./travel-spray.html">針管香水</a></li>
+                                            <li><a className="contact-link ch-sans-thin-l" href="./candle.html">香氛蠟燭</a></li>
+                                            <li><a className="contact-link ch-sans-thin-l" href="./facial-mask.html">面膜</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li className="box-line">
+                                    <div className="list-element-line"></div>
+                                </li>
+                                <li><a className="contact-link serif-medium-s" href="./story.html">品牌故事
+                                    <small className="enText en-sans-light-s">Brand Story</small></a>
+                                </li>
+                                <li><a className="contact-link serif-medium-s" href="./news.html">最新消息
+                                    <small className="enText en-sans-light-s">News</small></a>
+                                </li>
+                                <li><a className="contact-link serif-medium-s" href="./membership.html">會員制度
+                                    <small className="enText en-sans-light-s">Membership</small></a>
+                                </li>
+                                <li> <a className="contact-link serif-medium-s" href="./contact.html">聯絡我們
+                                    <small className="enText en-sans-light-s">Contact</small> </a>
+                                    <img className="logo-right" src="./images/LOGO-08.png" alt="" />
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
 
                     <main>
 

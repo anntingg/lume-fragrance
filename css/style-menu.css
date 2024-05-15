@@ -122,7 +122,7 @@ nav {
 
     /* 背景顏色 */
     background: var(--gradient);
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 50px;
@@ -221,6 +221,10 @@ li .enText {
 /* logo與li水平排列 */
 .menu .contact-link {
     float: left;
+}
+
+.menu .enText {
+    font-family: "Noto Sans TC", sans-serif;
 }
 
 
