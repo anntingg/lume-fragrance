@@ -682,7 +682,7 @@
 
 		height: 100%;
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 
 		opacity: 0.5;
 	}
@@ -694,7 +694,7 @@
 
 		height: 85px;
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 	}
 
 	#introduce .star-blue {
@@ -704,7 +704,7 @@
 
 		height: 40px;
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 	}
 
 	#introduce .star-green {
@@ -714,7 +714,7 @@
 
 		height: 40px;
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 	}
 
 
@@ -1441,9 +1441,8 @@
 
 	footer .bg {
 		object-fit: contain;
-		/* width: fit-content; */
-		height: 100%;
 		width: auto;
+		height: 100%;
 		position: absolute;
 		left: 80px;
 		top: 0;
@@ -1453,7 +1452,7 @@
 
 	footer .star-1 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 120px;
 		position: absolute;
 		right: 600px;
@@ -1464,7 +1463,7 @@
 
 	footer .star-2 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 70px;
 		position: absolute;
 		right: 25px;
@@ -1475,7 +1474,7 @@
 
 	footer .star-3 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 35px;
 		position: absolute;
 		right: 100px;
@@ -1486,7 +1485,7 @@
 
 	footer .star-4 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 35px;
 		position: absolute;
 		right: 30px;
@@ -1831,7 +1830,7 @@
 
 	#pd-related .arrow img {
 		height: 30px;
-		width: fit-content;
+		width: auto;
 	}
 
 	#pd-related .arrow a:nth-of-type(1) {

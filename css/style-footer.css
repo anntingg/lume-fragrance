@@ -18,10 +18,8 @@
 
 	footer .bg {
 		object-fit: contain;
-		/* width: fit-content; */
-		height: 100%;
 		width: auto;
-		aspect-ratio: 1146 / 924;
+		height: 100%;
 		position: absolute;
 		left: 80px;
 		top: 0;
@@ -31,7 +29,7 @@
 
 	footer .star-1 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 120px;
 		position: absolute;
 		right: 600px;
@@ -42,7 +40,7 @@
 
 	footer .star-2 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 70px;
 		position: absolute;
 		right: 25px;
@@ -53,7 +51,7 @@
 
 	footer .star-3 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 35px;
 		position: absolute;
 		right: 100px;
@@ -64,7 +62,7 @@
 
 	footer .star-4 {
 		object-fit: contain;
-		width: fit-content;
+		width: auto;
 		height: 35px;
 		position: absolute;
 		right: 30px;
