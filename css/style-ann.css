@@ -1726,6 +1726,7 @@ section {
 /* 分類錨點區 */
 .products {
     display: flex;
+    justify-content: space-between;
 }
 
 .anchor-p {
