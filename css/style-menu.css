@@ -8,7 +8,7 @@
 }
 
 /* NavBar */
-header {
+.header {
     position: relative;
 }
 
@@ -31,13 +31,15 @@ nav {
     float: right;
     padding-top: 25px;
 
-
-    img {
+    span {
         position: absolute;
         /* 使用固定定位 */
         z-index: 1000;
         margin: 40px 50px;
         right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -50,15 +52,19 @@ nav {
     width: auto;
 }
 
-.label-container::after {
+.label-container span {
+    position: relative;
+}
+
+.label-container span::after {
     content: "Menu";
     position: absolute;
-    transform: translateY(800%) translateX(-260%);
+    bottom: -20px;
     z-index: 1000;
     font-weight: 100;
     letter-spacing: 0.1em;
     line-height: 100%;
-    color: #000;
+    color: #666;
     font-size: 12px;
 }
 
@@ -66,19 +72,12 @@ nav {
 /* 選中時的圖片 */
 #switch:checked+.label-container img {
     content: url(../images/list-cloes.svg);
-    transform: rotate(70deg);
+    transform: rotate(45deg);
     width: auto;
 }
 
-#switch:checked+.label-container::after {
+#switch:checked+.label-container span::after {
     content: "Close";
-    transform: translateY(800%) translateX(-260%);
-    z-index: 1000;
-    font-weight: 100;
-    letter-spacing: 0.1em;
-    line-height: 100%;
-    color: #000;
-    font-size: 12px;
 }
 
 /* menu*/
@@ -111,153 +110,116 @@ nav {
 
 
 .menu {
-    /* 收和後，避免他全部水平排列。 */
+    /* 收起來時歸零 */
     height: 0;
+    /* 避免打開時產生震動動畫感(高度同展開後的高度。) */
+    max-height: 650px;
+
     display: flex;
+    /* 動畫收和過程中維持垂直 */
     flex-direction: column;
     /* 自動內距寬高 */
     justify-content: space-between;
+
     /* 背景顏色 */
     background: var(--gradient);
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(5px);
-    -webkit-ackdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-radius: 50px;
+
     overflow: hidden;
     /* 動畫秒數 */
     transition: .5s;
-    width: 450px;
+    width: 400px;
     /* 使用固定定位，讓她永遠浮在畫面上 */
     position: fixed;
     z-index: 999;
     /* 畫面靠右 */
     right: 0;
     margin: 30px;
+    padding: 0 30px;
 
     li {
-        /* 包住整個內容，點開後會顯示表單裡的字 */
         overflow: hidden;
-        /* border: 1px solid #000; */
         text-align: left;
-        padding: 30px;
-
-        li {
-            padding: 10px;
-        }
 
         a,
         small {
             text-decoration: none;
             display: block;
-            line-height: 30px;
+            line-height: 1.3;
             text-align: left;
-
-
         }
 
         a:hover {
             color: #000;
         }
 
-        /* 星星滾動 */
-        .animation {
-            position: absolute;
-            width: 55px;
-            display: none;
-            z-index: -5;
-        }
-
-        /*.contact-link:hover+.animation {
-            display: inline-block;
-            animation: rollIn .55s linear forwards;
-        }
-        .contact-link+.animation {
-            display: inline-block;
-            animation: rollOut .55s linear forwards;
-        } */
     }
-}
-
-/* 滾進來的動畫設定。 */
-/* @keyframes rollIn {
-    100% {
-        transform: translateX(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateX(200px) rotate(180deg);
-    }
-
-    0% {
-        transform: translateX(400px) rotate(360deg);
-    }
-} */
-/* 滾出去的動畫設定。 */
-/* @keyframes rollOut {
-    0% {
-        transform: translateX(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateX(200px) rotate(180deg);
-    }
-
-    100% {
-        transform: translateX(400px) rotate(360deg);
-    }
-} */
-
-
-/* 子分類的ul樣式變更 */
-ul.list-A li,
-ul.list-B li {
-    /* 圖跟字的距離 */
-    padding-left: 24px;
-    background: url(../images/ulStely.svg) no-repeat left center;
-    background-size: 13px;
 }
 
 input:checked~.menu {
     /* 點開後的高度 */
-    height: 60vh;
-    max-height: 730px;
-    width: 450px;
+    height: 90vh;
+    max-height: 650px;
+    width: 400px;
     display: flex;
     flex-direction: column;
+    padding: 30px;
 }
 
-.menu .list-container {
-    display: flex;
+/* 子分類的ul樣式變更 */
+.menu .box-container {
+    height: 20%;
+
+    .list-container {
+        /* A、B盒子從垂直變水平 */
+        display: flex;
+        height: 100%;
+
+        .list-A,
+        .list-B {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            li {
+                /* li樣式變更 */
+                background: url(../images/ulStely.svg) no-repeat left center;
+                background-size: 13px;
+
+                /* li圖跟字的距離 */
+                padding-left: 24px;
+            }
+        }
+    }
 }
 
-.list-A,
-.list-B {
-    flex: 1;
-    overflow: hidden;
-    height: 250px;
-}
 
 
 /* 底線樣式 */
 .list-element-line {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin: auto;
     border-bottom: 1px solid #ccc;
 }
 
 /* 英文字樣式修正 */
 li .enText {
     display: flex;
-    margin-left: 3px;
-    overflow: hidden;
+    margin-left: 2px;
 }
 
-li img {
+/* 右下logo設定 */
+.logo-right {        /* li img*/
+    float: right;
     width: 100px;
-    float: right
 }
 
+/* logo與li水平排列 */
 .menu .contact-link {
     float: left;
 }
@@ -265,68 +227,60 @@ li img {
 
 
 /* RWD 斷點 */
-/* 電腦 1200px 以上 */
-@media (min-width: 1201px) {
-    input:checked~.menu {
-        height: 100%;
-    }
-}
+/* 電腦 1200px以上 */
+/* @media (min-width:1201px) {} */
 
-/* 大型平板 (993-) 1200px */
-@media (max-width: 1200px) {
-    input:checked~.menu {
-        height: 100%;
-    }
-}
+/* 大型平板(993-)1200px */
+/* @media (max-width:1200px) {} */
 
 /* 平板 (769-) 992px */
 @media (max-width: 992px) {
     .menu {
-        width: 40%;
+        width: 55%;
     }
 
     input:checked~.menu {
-        width: 40%;
+        width: 55%;
         height: 80%;
-    }
-
-    .menu .list-container,
-    .list-element-line {
-        display: none;
     }
 }
 
 /* 手機 (577-) 768px */
 @media (max-width: 768px) {
     .menu {
-        width: 60%;
+        width: 55%;
     }
 
     input:checked~.menu {
-        height: 70%;
-        width: 60%;
+        height: 80%;
+        width: 55%;
     }
 
-    .menu li .logo-right {
-        display: none;
-    }
 
-    .menu .list-container,
-    .list-element-line {
-        display: none;
-    }
 }
 
-    /* 小型手機 576px 以下 */
-    @media (max-width: 576px) {
-        .menu {
-            width: 60%;
-        }
-
-        input:checked~.menu {
-            height: 80%;
-            width: 60%;
-        }
+/* 小型手機 576px 以下 */
+@media (max-width: 576px) {
+    .label-container span {
+        margin: 10px 15px;
     }
 
-    /* menu end */
+    .menu {
+        margin: 20px;
+        width: 55%;
+    }
+
+    input:checked~.menu {
+        height: 60%;
+        width: 55%;
+    }
+
+    .menu .box-container,
+    .menu .box-line,
+    .logo-right {
+        display: none;
+    }
+
+}
+
+/* menu end */

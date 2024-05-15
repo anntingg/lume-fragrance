@@ -1,0 +1,392 @@
+@charset "UTF-8";
+
+@media (max-width: 992px) {
+
+    /* 黑體 - 英 */
+    .en-sans-light-l {
+        /* 原本 20px */
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
+
+    .en-sans-light-xl {
+        /* 原本 24px */
+        font-size: 20px;
+        letter-spacing: 0.1em;
+    }
+
+    /* 標題明體 */
+    .serif-medium-m {
+        /* 原本 32px */
+        font-size: 28px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-l {
+        /* 原本 44px */
+        font-size: 36px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xl {
+        /* 原本 64px --> 還未使用 */
+        font-size: 44px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xxl {
+        /* 原本 72px */
+        font-size: 56px;
+        letter-spacing: 0.1em;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    /* 內文黑體 - 中 */
+    .ch-sans-light-m {
+        /* 原本 16px */
+        letter-spacing: 0.1em;
+        font-size: 14px;
+    }
+
+    .ch-sans-thin-l {
+        /*葉形按鈕*/
+        /* 原本 20px */
+        letter-spacing: 0.1em;
+        font-size: 16px;
+    }
+
+    .ch-sans-thin-xl {
+        /* 原本 24px */
+        letter-spacing: 0.1em;
+        font-size: 20px;
+    }
+
+    /* 內文黑體 - 英  */
+    /* en-sans-light-l --> 沿用 992px*/
+    .en-sans-light-xl {
+        /* 原本 24px */
+        font-size: 16px;
+        letter-spacing: 0.1em;
+    }
+
+    /* 標題明體 */
+    .serif-medium-s {
+        /* 原本 24px */
+        font-size: 20px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-m {
+        /* 原本 32px */
+        font-size: 24px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-l {
+        /* 原本 44px */
+        font-size: 32px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xl {
+        /* 原本 64px --> 還未使用 */
+        font-size: 32px;
+        letter-spacing: 0.1em;
+    }
+
+    .serif-medium-xxl {
+        /* 原本 72px */
+        font-size: 32px;
+        letter-spacing: 0.1em;
+    }
+}
+
+
+/* 共用 cover 區 */
+.cover {
+    max-width: 1440px;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    padding: 0 10vw;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    .cover {
+        height: fit-content;
+        min-height: 0;
+        padding: 0 8vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .cover {
+        padding: 0 6vw;
+    }
+}
+
+/* 會員制度和最新消息 - cover 上方區塊 */
+.top-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
+
+/* 左方圖 */
+.banner-box {
+    width: 76%;
+    aspect-ratio: 1.5 / 1;
+    /* max-height: 540px; */
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 999px 0;
+}
+
+.banner-bg {
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    object-fit: cover;
+}
+
+.banner-box::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background: var(--overlay);
+    mix-blend-mode: overlay;
+}
+
+.banner-logo {
+    width: fit-content;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    object-fit: contain;
+    mix-blend-mode: color-dodge;
+    animation: logoMove 1s 0.5s both;
+}
+
+@keyframes logoMove {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 右方標題 */
+.title-l {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+}
+
+.title-l h1,
+.title-l h2 {
+    position: relative;
+    z-index: 2;
+}
+
+.title-l h2::after {
+    content: "";
+    height: 68px;
+    margin: 40px 0 32px;
+    display: block;
+    position: relative;
+    z-index: 2;
+    border-right: 1px solid var(--font-grey);
+}
+
+.title-l img {
+    position: absolute;
+    z-index: 1;
+    right: -90px;
+    bottom: -70px;
+    object-fit: fill;
+    opacity: 0.6;
+    transform: rotate(250deg);
+}
+
+
+@media (max-width: 1200px) {
+    .banner-box {
+        width: 70%;
+    }
+
+    .title-l img {
+        width: 240px;
+        right: -72px;
+        bottom: -60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .title-l h2::after {
+        height: 56px;
+        margin: 32px 0 24px;
+    } 
+}
+
+@media (max-width: 768px) {
+    .title-l h2::after {
+        height: 52px;
+        margin: 28px 0 16px;
+    } 
+}
+
+@media (max-width: 576px) {
+    .top-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-box {
+        width: 100%;
+    }
+
+    .title-l {
+        padding-top: 32px;
+        position: relative;
+        text-align: center;
+    }
+
+    .title-l h2::after {
+        display: none;
+    }
+
+    .title-l h1,
+    .title-l h2 {
+        padding: 4px;
+    }
+
+    .title-l img {
+        display: none;
+    }
+
+}
+
+/* 錨點按鈕 */
+.anchor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+.anchor::before,
+.anchor::after {
+    content: "";
+    width: 18%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    background: var(--font-grey);
+}
+
+.anchor::before {
+    left: 0;
+}
+
+.anchor::after {
+    right: 0;
+}
+
+.anchor a {
+    padding: 12px 56px;
+    position: relative;
+    cursor: pointer;
+}
+
+.anchor a h2 {
+    padding: 22px 0;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    transition: all .5s;
+}
+
+.anchor a:hover h2 {
+    border-bottom: 2px solid var(--font-grey);
+}
+
+.anchor a img {
+    width: 100px;
+    position: absolute;
+    top: 4px;
+    left: 30px;
+    z-index: 1;
+    object-fit: fill;
+    transform: rotate(70deg);
+    opacity: 0;
+    transition: all .5s;
+}
+
+.anchor a:hover img {
+    opacity: 0.6;
+}
+
+@media (max-width: 1200px) {
+
+    .anchor {
+        padding-top: 40px;
+    }
+
+    .anchor::before,
+    .anchor::after {
+        display: none;
+    }
+
+    .anchor a {
+        padding: 12px 48px;
+    }
+
+    .anchor a h2 {
+        border-bottom: 0px solid var(--font-grey);
+        font-size: 20px;
+    }
+
+    .anchor a img {
+        width: 80px;
+        top: 8px;
+        left: 30px;
+        opacity: 0.6;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .anchor {
+        padding-top: 10px;
+    }
+
+    .anchor a {
+        padding: 12px 16px;
+    }
+
+    .anchor a h2 {
+        font-size: 16px;
+    }
+
+    .anchor a img {
+        width: 64px;
+        top: 16px;
+        left: 0;
+    }
+}
