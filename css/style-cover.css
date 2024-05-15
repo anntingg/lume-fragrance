@@ -3,39 +3,13 @@
 @media (max-width: 992px) {
 
     /* 黑體 - 英 */
-    .en-sans-light-l {
-        /* 原本 20px */
-        font-size: 16px;
-        letter-spacing: 0.1em;
-    }
-
-    .en-sans-light-xl {
-        /* 原本 24px */
+    .cover .en-sans-light-xl {
         font-size: 20px;
         letter-spacing: 0.1em;
     }
 
     /* 標題明體 */
-    .serif-medium-m {
-        /* 原本 32px */
-        font-size: 28px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-l {
-        /* 原本 44px */
-        font-size: 36px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-xl {
-        /* 原本 64px --> 還未使用 */
-        font-size: 44px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-xxl {
-        /* 原本 72px */
+    .cover .serif-medium-xxl {
         font-size: 56px;
         letter-spacing: 0.1em;
     }
@@ -44,60 +18,14 @@
 
 @media (max-width: 576px) {
 
-    /* 內文黑體 - 中 */
-    .ch-sans-light-m {
-        /* 原本 16px */
-        letter-spacing: 0.1em;
-        font-size: 14px;
-    }
-
-    .ch-sans-thin-l {
-        /*葉形按鈕*/
-        /* 原本 20px */
-        letter-spacing: 0.1em;
-        font-size: 16px;
-    }
-
-    .ch-sans-thin-xl {
-        /* 原本 24px */
-        letter-spacing: 0.1em;
-        font-size: 20px;
-    }
-
-    /* 內文黑體 - 英  */
-    /* en-sans-light-l --> 沿用 992px*/
-    .en-sans-light-xl {
+    .cover .en-sans-light-xl {
         /* 原本 24px */
         font-size: 16px;
         letter-spacing: 0.1em;
     }
 
-    /* 標題明體 */
-    .serif-medium-s {
-        /* 原本 24px */
-        font-size: 20px;
-        letter-spacing: 0.1em;
-    }
 
-    .serif-medium-m {
-        /* 原本 32px */
-        font-size: 24px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-l {
-        /* 原本 44px */
-        font-size: 32px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-xl {
-        /* 原本 64px --> 還未使用 */
-        font-size: 32px;
-        letter-spacing: 0.1em;
-    }
-
-    .serif-medium-xxl {
+    .cover .serif-medium-xxl {
         /* 原本 72px */
         font-size: 32px;
         letter-spacing: 0.1em;
@@ -228,6 +156,11 @@
         width: 70%;
     }
 
+    .title-l h2::after {
+        height: 56px;
+        margin: 32px 0 24px;
+    } 
+
     .title-l img {
         width: 240px;
         right: -72px;
@@ -237,15 +170,8 @@
 
 @media (max-width: 992px) {
     .title-l h2::after {
-        height: 56px;
-        margin: 32px 0 24px;
-    } 
-}
-
-@media (max-width: 768px) {
-    .title-l h2::after {
-        height: 52px;
-        margin: 28px 0 16px;
+        height: 40px;
+        margin: 24px 0 16px;
     } 
 }
 
