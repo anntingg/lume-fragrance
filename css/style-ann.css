@@ -1777,6 +1777,7 @@ section {
 }
 
 .all-products {
+    flex:1;
     padding-bottom: 100px;
     display: flex;
     flex-direction: column;
@@ -1921,7 +1922,6 @@ section {
 
 /* 商品卡片框線 */
 .product-box {
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 5%;
