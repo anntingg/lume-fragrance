@@ -52,7 +52,102 @@
         request.onload = function () {
             // 將 JSON 資料丟給 products 變數 => 單項商品詳細資料
             const products = request.response;
-            // console.log(products);
+
+            // 元件：錨點按鈕
+            const AnchorP = ({ typeLink, typeCn, typeEn }) => {
+                return (
+                    <a href={typeLink}><span></span>{typeCn}<br />{typeEn}</a>
+                )
+            }
+
+            // 元件：單個商品項目
+            const ProductCard = ({ type, titleCn, titleEn, imgName, pageName }) => {
+                return (
+                    <a className="product-card" href={`./${pageName}.html`}>
+                        <img src={`./images/${imgName}`} alt={`${titleCn}${type}`} />
+                        <h3 className="ch-sans-thin-xl">{titleCn}</h3>
+                        <p className="ch-sans-light-s">{titleEn}</p>
+                    </a>
+                )
+            }
+
+            // 元件：商品列表 => 使用 map 跑單個商品項目
+            const ProductBox = ({ showType, showSeries }) => {
+                return (
+                    <div className="product-box">
+                        {
+                            products.map((product) => {
+                                if (product.type == showType && product.series == showSeries) {
+                                    return <ProductCard key={product.id} type={product.type} titleCn={product.titleCn} titleEn={product.titleEn} imgName={product.imgName} pageName={product.pageName} />
+                                }
+                            })
+                        }
+                    </div>
+                )
+            }
+
+            //-------------------輪播圖-------------------
+            const Carousel = () => {
+                // useState 語法 => [前者為變數, 後者是寫入變數的方法] = useState（初始值） 
+                const [currentSlide, setCurrentSlide] = useState(0);
+
+                // 建立圖片陣列 => 使用 map 迴圈跑輪播圖和指示長條
+                const slides = [
+                    "banner-1.jpg",
+                    "banner-2.jpg",
+                    "banner-3.jpg",
+                    "banner-4.jpg",
+                    "banner-5.jpg",
+                    "banner-6.jpg"
+                ];
+
+                // 播放前一張／後一張的函式
+                const prevSlide = () => {
+                    setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
+                const nextSlide = () => {
+                    setCurrentSlide((currentSlide + 1) % slides.length);
+                }
+
+                // useEffect：每 3 秒播放下一張 => 當 [currentSlide] 變動時，會重新執行函式
+                useEffect(() => {
+                    const intervalId = setInterval(nextSlide, 3000);
+                    // return 的函式，React 將在下次執行 effect 前執行，清除前一個 render 的 effect
+                    return () => { clearInterval(intervalId) };
+                }, [currentSlide]);
+
+                return (
+                    <>
+                        <div className="banner-bg-p">
+                            {
+                                slides.map((element, index) => (
+                                    <img
+                                        key={index}
+                                        className={`carousel ${index === currentSlide ? "active" : ""}`}
+                                        src={`./images/${element}`}
+                                        alt="Lume Fragrance 主打商品"
+                                    />
+                                ))
+                            }
+                        </div>
+                        <div className="navigation">
+                            {
+                                slides.map((element, index) => {
+                                    return (
+                                        <span
+                                            key={index}
+                                            className={`indicator ${index === currentSlide ? "active" : ""}`}
+                                            onClick={() => { setCurrentSlide(index); }}
+                                        ></span>
+                                    )
+                                })
+                            }
+                        </div>
+                        <button className="btn-prev" onClick={prevSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
+                        <button className="btn-next" onClick={nextSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
+                    </>
+                )
+            }
 
             const App = () => {
 
@@ -102,108 +197,12 @@
                     },
                 ]
 
-                // 元件：錨點按鈕
-                const AnchorP = ({ typeLink, typeCn, typeEn }) => {
-                    return (
-                        <a href={typeLink}><span></span>{typeCn}<br />{typeEn}</a>
-                    )
-                }
-
-                // 元件：單個商品項目
-                const ProductCard = ({ type, titleCn, titleEn, imgName, pageName }) => {
-                    return (
-                        <a className="product-card" href={`./${pageName}.html`}>
-                            <img src={`./images/${imgName}`} alt={`${titleCn}${type}`} />
-                            <h3 className="ch-sans-thin-xl">{titleCn}</h3>
-                            <p className="ch-sans-light-s">{titleEn}</p>
-                        </a>
-                    )
-                }
-
-                // 元件：商品列表 => 使用 map 跑單個商品項目
-                const ProductBox = ({ showType, showSeries }) => {
-                    return (
-                        <div className="product-box">
-                            {
-                                products.map((product) => {
-                                    if (product.type == showType && product.series == showSeries) {
-                                        return <ProductCard key={product.id} type={product.type} titleCn={product.titleCn} titleEn={product.titleEn} imgName={product.imgName} pageName={product.pageName} />
-                                    }
-                                })
-                            }
-                        </div>
-                    )
-                }
-
-                //-------------------輪播圖-------------------
-                const Carousel = () => {
-                    // useState 語法 => [前者為變數, 後者是寫入變數的方法] = useState（初始值） 
-                    const [currentSlide, setCurrentSlide] = useState(0);
-
-                    // 建立圖片陣列 => 使用 map 迴圈跑輪播圖和指示長條
-                    const slides = [
-                        "banner-1.jpg",
-                        "banner-2.jpg",
-                        "banner-3.jpg",
-                        "banner-4.jpg",
-                        "banner-5.jpg",
-                        "banner-6.jpg"
-                    ];
-
-                    // 播放前一張／後一張的函式
-                    const prevSlide = () => {
-                        setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
-                    }
-                    const nextSlide = () => {
-                        setCurrentSlide((currentSlide + 1) % slides.length);
-                    }
-
-                    // useEffect：每 3 秒播放下一張 => 當 [currentSlide] 變動時，會重新執行函式
-                    useEffect(() => {
-                        const intervalId = setInterval(nextSlide, 3000);
-                        // return 的函式，React 將在下次執行 effect 前執行，清除前一個 render 的 effect
-                        return () => { clearInterval(intervalId) };
-                    }, [currentSlide]);
-
-                    return (
-                        <>
-                            <div className="banner-bg-p">
-                                {
-                                    slides.map((element, index) => (
-                                        <img
-                                            key={index}
-                                            className={`carousel ${index === currentSlide ? "active" : ""}`}
-                                            src={`./images/${element}`}
-                                            alt="Lume Fragrance 主打商品"
-                                        />
-                                    ))
-                                }
-                            </div>
-                            <div className="navigation">
-                                {
-                                    slides.map((element, index) => {
-                                        return (
-                                            <span
-                                                key={index}
-                                                className={`indicator ${index === currentSlide ? "active" : ""}`}
-                                                onClick={() => { setCurrentSlide(index); }}
-                                            ></span>
-                                        )
-                                    })
-                                }
-                            </div>
-                            <button className="btn-prev" onClick={prevSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
-                            <button className="btn-next" onClick={nextSlide}><img src="./images/icon-arrow.svg" alt="" /></button>
-                        </>
-                    )
-                }
-
                 return (
                     <>
                         <header className="header">
                             <nav>
                                 <input type="checkbox" id="switch" />
-                                <label className="label-container" for="switch"><span><img src="./images/list-cloes.svg" /></span> </label>
+                                <label className="label-container" htmlFor="switch"><span><img src="./images/list-cloes.svg" /></span> </label>
                                 <ul className="menu">
                                     <li><a className="contact-link serif-medium-s" href="./index.html">首頁
                                         <small className="enText en-sans-light-s">Home</small></a>

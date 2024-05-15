@@ -39,36 +39,55 @@
 
     <!-- React -->
     <script type="text/babel">
-        const App = () => {
+        // 元件：錨點按鈕
+        const Anchor = ({ sectionId, sectionCn }) => {
+            return (
+                <a href={sectionId}>
+                    <h2 className="serif-medium-s">{sectionCn}</h2>
+                    <img src="./images/gradient.png" alt="漸層" />
+                </a>
+            )
+        }
 
-            // 元件：錨點按鈕
-            const Anchor = ({ sectionId, sectionCn }) => {
-                return (
-                    <a href={sectionId}>
-                        <h2 className="serif-medium-s">{sectionCn}</h2>
-                        <img src="./images/gradient.png" alt="漸層" />
+        // 元件：Section 標題
+        const TitleM = ({ sectionCn, sectionEn }) => {
+            return (
+                <header className="title-m">
+                    <h3 className="en-sans-light-m">{sectionEn}</h3>
+                    <h1 className="serif-medium-m">{sectionCn}</h1>
+                </header>
+            )
+        }
+
+        // 元件：白色按鈕
+        const BtnWhite = ({ text }) => {
+            return (
+                <div className="btn-white ch-sans-thin-l">
+                    <span>{text}</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
+                </div>
+            )
+        }
+
+        // 元件：文章卡片 
+        const ArticleCard = ({ className, imgName, imgAlt, title, content, date }) => {
+            return (
+                <article className={`article-card ${className}`}>
+                    <a href="#">
+                        <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
+                        <div className="content">
+                            <h2 className="ch-sans-thin-l">{title}</h2>
+                            <p className="line-clamp ch-sans-light-s">{content}</p>
+                            <p className="date en-sans-light-m">{date}</p>
+                            <div className="btn-s ch-sans-thin-l">
+                                <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
+                            </div>
+                        </div>
                     </a>
-                )
-            }
+                </article>
+            )
+        }
 
-            // 元件：Section 標題
-            const TitleM = ({ sectionCn, sectionEn }) => {
-                return (
-                    <header className="title-m">
-                        <h3 className="en-sans-light-m">{sectionEn}</h3>
-                        <h1 className="serif-medium-m">{sectionCn}</h1>
-                    </header>
-                )
-            }
-
-            // 元件：白色按鈕
-            const BtnWhite = ({ text }) => {
-                return (
-                    <div className="btn-white ch-sans-thin-l">
-                        <span>{text}</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
-                    </div>
-                )
-            }
+        const App = () => {
 
             // 陣列：文章專欄內容 => 使用 map 跑文章卡片
             const articleList = [
@@ -110,31 +129,12 @@
                 },
             ]
 
-            // 元件：文章卡片 
-            const ArticleCard = ({ className, imgName, imgAlt, title, content, date }) => {
-                return (
-                    <article className={`article-card ${className}`}>
-                        <a href="#">
-                            <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
-                            <div className="content">
-                                <h2 className="ch-sans-thin-l">{title}</h2>
-                                <p className="line-clamp ch-sans-light-s">{content}</p>
-                                <p className="date en-sans-light-m">{date}</p>
-                                <div className="btn-s ch-sans-thin-l">
-                                    <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                )
-            }
-
             return (
                 <>
                     <header className="header">
                         <nav>
                             <input type="checkbox" id="switch" />
-                            <label className="label-container" for="switch"><span><img src="./images/list-cloes.svg" /></span> </label>
+                            <label className="label-container" htmlFor="switch"><span><img src="./images/list-cloes.svg" /></span> </label>
                             <ul className="menu">
                                 <li><a className="contact-link serif-medium-s" href="./index.html">首頁
                                     <small className="enText en-sans-light-s">Home</small></a>
@@ -239,7 +239,7 @@
 
                             <section id="articles">
                                 <TitleM sectionCn="文章專欄" sectionEn="Articles" />
-                                <div class="articles-box">
+                                <div className="articles-box">
                                     {
                                         articleList.map((article) => {
                                             return <ArticleCard key={article.id} className={article.className} imgName={article.imgName} imgAlt={article.imgAlt} title={article.title} content={article.content} date={article.date} />
