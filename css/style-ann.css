@@ -1921,8 +1921,8 @@ section {
 
 /* 商品卡片框線 */
 .product-box {
+    flex: 1;
     display: grid;
-    justify-content: space-between;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 5%;
     grid-row-gap: 32px;
