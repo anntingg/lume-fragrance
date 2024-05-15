@@ -1,13 +1,12 @@
 @charset "UTF-8";
 
-/* 選單開始 */
 /* menu */
+/* NavBar */
 
-* {
+.header * {
     box-sizing: border-box;
 }
 
-/* NavBar */
 .header {
     position: relative;
 }
