@@ -1559,6 +1559,7 @@
 		}
 
 		footer .bg {
+			width: fit-content;
 			left: 0;
 		}
 	}
