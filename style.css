@@ -1441,8 +1441,9 @@
 
 	footer .bg {
 		object-fit: contain;
-		width: fit-content;
+		/* width: fit-content; */
 		height: 100%;
+		width: auto;
 		position: absolute;
 		left: 80px;
 		top: 0;
