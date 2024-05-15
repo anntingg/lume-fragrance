@@ -17,9 +17,9 @@ $(function () {
         // Top 按鈕捲動超過 200px 時，按鈕才出現
         let showTop = 200;
         if ($(this).scrollTop() > showTop) {
-            $(".btn-top").stop().fadeTo("", 1);
+            $(".btn-top").stop().fadeTo("fast", 1);
         } else {
-            $(".btn-top").stop().fadeTo("", 0);
+            $(".btn-top").stop().fadeTo("fast", 0);
         }
 
         /*
