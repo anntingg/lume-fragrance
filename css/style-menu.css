@@ -15,7 +15,8 @@ nav {
     position: fixed;
     top: 0;
     right: 30px;
-    width: 100%;
+    /* width: 100%; */
+    width: auto;
     float: right;
     z-index: 999;
 }
