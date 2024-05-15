@@ -524,7 +524,7 @@ section {
 
 @media (max-width: 1200px) {
     .cover {
-        height: fit-content;
+        height: auto;
         min-height: 0;
         padding: 0 8vw;
     }
@@ -572,7 +572,7 @@ section {
 }
 
 .banner-logo {
-    width: fit-content;
+    width: auto;
     height: 100%;
     position: absolute;
     z-index: 3;
@@ -900,7 +900,7 @@ section {
 }
 
 .events-box h2 {
-    width: fit-content;
+    width: auto;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--font-grey);
 }
@@ -1805,7 +1805,7 @@ section {
 }
 
 .product-title a {
-    width: fit-content;
+    width: auto;
     display: flex;
     align-items: center;
     position: relative;
@@ -2081,14 +2081,14 @@ section {
 
 @media (max-width: 768px) {
     .series {
-        height: fit-content;
+        height: auto;
         padding: 40px 80px;
         flex-direction: column;
     }
 
     .series h1 {
         width: 100%;
-        height: fit-content;
+        height: auto;
         padding-bottom: 20px;
         border-right: 0 solid;
         border-bottom: 1px solid var(--font-grey);
@@ -2102,14 +2102,14 @@ section {
 
 @media (max-width: 576px) {
     .series {
-        height: fit-content;
+        height: auto;
         padding: 24px;
         flex-direction: column;
     }
 
     .series h1 {
         width: 100%;
-        height: fit-content;
+        height: auto;
         padding-bottom: 20px;
         border-right: 0 solid;
         border-bottom: 1px solid var(--font-grey);
@@ -2134,7 +2134,7 @@ section {
 
 /* 子分類頁面 - 其他 */
 section.subtype {
-    height: fit-content;
+    height: auto;
     min-height: 700px;
     margin-top: 150px;
     display: flex;

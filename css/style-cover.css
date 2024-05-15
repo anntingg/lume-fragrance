@@ -121,7 +121,7 @@
 
 @media (max-width: 1200px) {
     .cover {
-        height: fit-content;
+        height: auto;
         min-height: 0;
         padding: 0 8vw;
     }
@@ -169,7 +169,7 @@
 }
 
 .banner-logo {
-    width: fit-content;
+    width: auto;
     height: 100%;
     position: absolute;
     z-index: 3;
