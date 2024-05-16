@@ -30,6 +30,7 @@ nav {
     position: relative;
     float: right;
     padding-top: 25px;
+    cursor: pointer;
 }
 
 .label-container span {

@@ -1743,7 +1743,7 @@ section {
 .anchor-p a {
     display: flex;
     align-items: center;
-    /* color: #888; */
+    transition: all 0.5s;
 }
 
 .anchor-p a:first-child {
@@ -1753,7 +1753,6 @@ section {
 
 .anchor-p a:hover {
     color: #1886B4;
-    /* color: var(--black); */
 }
 
 .anchor-p a.active {
