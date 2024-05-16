@@ -481,6 +481,8 @@ section {
 .background {
     position: relative;
     width: 100%;
+
+    overflow: hidden;
 }
 
 .background .from-bg-L {
