@@ -1430,167 +1430,6 @@
 	}
 
 	/* 頁尾 */
-	footer {
-		display: flex;
-		background: var(--gradient);
-		height: 340px;
-		padding: 30px;
-
-		position: relative;
-	}
-
-	footer .bg {
-		object-fit: contain;
-		width: auto;
-		height: 100%;
-		position: absolute;
-		left: 80px;
-		top: 0;
-
-		opacity: 0.5;
-	}
-
-	footer .star-1 {
-		object-fit: contain;
-		width: auto;
-		height: 120px;
-		position: absolute;
-		right: 600px;
-		bottom: 20px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-2 {
-		object-fit: contain;
-		width: auto;
-		height: 70px;
-		position: absolute;
-		right: 25px;
-		bottom: 25px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-3 {
-		object-fit: contain;
-		width: auto;
-		height: 35px;
-		position: absolute;
-		right: 100px;
-		bottom: 60px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-4 {
-		object-fit: contain;
-		width: auto;
-		height: 35px;
-		position: absolute;
-		right: 30px;
-		top: 30px;
-
-		opacity: 0.4;
-	}
-
-	footer .content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		margin: 0 150px;
-		/* width: 1140px; */
-
-		z-index: 1;
-	}
-
-	footer .content img {
-		object-fit: contain;
-		width: 220px;
-	}
-
-	footer .center {
-		align-self: flex-end;
-	}
-
-	footer .social {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 20px;
-	}
-
-	footer .center img {
-		width: 30px;
-	}
-
-	footer .serif-medium-footer {
-		display: flex;
-		justify-content: space-between;
-		align-content: space-between;
-		flex-wrap: wrap;
-		width: 240px;
-		height: 140px;
-	}
-
-	footer .serif-medium-footer a:nth-child(odd) {
-		margin-right: 60px;
-	}
-
-	/* 電腦 1401px */
-	@media (min-width: 1401px) {}
-
-	/* 電腦 (993-) 1400px */
-	@media (max-width: 1400px) {}
-
-	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px) {
-		footer .content {
-			margin: 0 auto;
-			width: 80%;
-		}
-	}
-
-	/* 平板 (768-) 992px */
-	@media (max-width: 992px) {
-		footer .content {
-			margin: 0 auto;
-			width: 90%;
-		}
-
-		footer .bg {
-			left: 0;
-		}
-	}
-
-	/* 小型手機 768px 以下 */
-	@media (max-width: 768px) {
-		footer {
-			height: 450px;
-		}
-
-		footer .content {
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-evenly;
-		}
-
-		footer .content>a img {
-			width: 100px;
-			order: 0;
-		}
-
-		footer .content .center {
-			align-self: center;
-			order: 3;
-		}
-
-		footer .content .serif-medium-footer {
-			margin: 30px 0;
-		}
-	}
-
-
 
 	/*                dfiffuse-Nectarine               */
 
@@ -1614,6 +1453,11 @@
 		justify-content: space-between;
 		width: 490px;
 
+	}
+
+	.bread p{
+		display: flex;
+		flex-flow: wrap;
 	}
 
 	#pd-cover .text h1 {
@@ -1652,11 +1496,11 @@
 
 	/* 前中後調 */
 
-	#pd-cover .text div:nth-of-type(2) {
+	#pd-cover .text .introduction  {
 		position: relative;
 	}
 
-	#pd-cover .text div:nth-of-type(2) img {
+	#pd-cover .text .quotes {
 		position: absolute;
 		width: 37px;
 		left: -20px;
@@ -1674,10 +1518,11 @@
 		position: relative;
 	}
 
-	#pd-cover .img span {
+	#pd-cover .img::before {
+		content: "";
 		display: block;
-		width: 480px;
-		height: 600px;
+		width: 100%;
+		height: 100%;
 		border: 1px solid #666;
 		border-radius: 999px 999px 0 0;
 
@@ -1693,8 +1538,8 @@
 
 	#pd-cover .img img:nth-of-type(1) {
 		width: 40px;
-		right: 40px;
-		top: 60px;
+		right: -20px;
+		top: 40%;
 	}
 
 	#pd-cover .img img:nth-of-type(2) {
@@ -1723,6 +1568,145 @@
 	#pd-cover .notes div:nth-of-type(2) {
 		border-right: 1px solid #000;
 		border-left: 1px solid #000;
+	}
+
+	/* 電腦 1401px */
+	@media (min-width: 1401px) {
+	}
+
+	/* 電腦 (1200-) 1400px */
+	@media (max-width: 1400px) {}
+
+	/* 平板 (992-) 1200px */
+	@media (max-width: 1200px) {
+		#pd-cover .content{
+			width: 90%;
+		}
+
+		#pd-cover .text{
+			margin-right: 100px;
+		}
+
+		#pd-cover .text .title h2{
+			line-height: 1.5em;
+		}
+
+		#pd-cover .img {
+			width: 400px;
+			height: 500px;
+		}
+
+		#pd-cover .notes{
+			width: 90%;
+		}
+	}
+
+	/* 平板 (576/769-) 992px */
+	@media (max-width: 992px) {
+		#pd-cover .content{
+			flex-direction: column;
+			width: 80%;
+			margin: 60px auto;
+		}
+
+		#pd-cover .text{
+			order: 1;
+			width: 100%;
+			margin-top: 50px;
+			height: 450px;
+		}
+
+		#pd-cover .quotes{
+			display: none;
+		}
+
+		#pd-cover .img{
+			width:70%;
+			height: 500px;
+			margin: 0px auto;
+			margin-bottom: 20px;
+		}
+
+		#pd-cover {
+			background-position: 50% 65%;
+		}
+
+		#pd-cover .notes{
+			width: 80%;
+			padding:0px;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		#pd-cover .notes .item{
+			padding: 20px 0px;
+		}
+
+		#pd-cover .notes div:nth-of-type(2) {
+			border: none;
+			border-top: 1px solid #000;
+			border-bottom: 1px solid #000;
+		}
+	}
+
+	/* 小型手機 768px 以下 */
+	@media (max-width: 768px) {
+	}
+
+	/* 小型手機 576px 以下 */
+	@media (max-width: 576px) {
+		#pd-cover .text{
+			height: auto;
+		}
+
+		#pd-cover .text .title{
+			text-align: center;
+		}
+		#pd-cover .text .title h1{
+			font-size: 45px;
+		}
+
+		#pd-cover .text .title h2{
+			font-size: 14px;
+		}
+
+		#pd-cover .title-gradient{
+			height: 200px;
+			width: 300px;
+			left: -110px;
+		}
+
+		#pd-cover .text .introduction .ch-sans-light-m{
+			font-size: 14px;
+		}
+
+		#pd-cover .img{
+			width: 90%;
+			height: 350px;
+		}
+
+		.ribbon{
+			position: static;
+			width: 170px;
+			height: 40px;
+			border-radius: 99px;
+			margin: 45px auto;
+		}
+
+		.ribbon h3{
+			writing-mode: horizontal-tb;
+			line-height: 40px;
+			text-align: center;
+			padding-top: 0px;
+		}
+
+		.ribbon::before{
+			display: none;
+		}
+
+		.bread{
+			display: none;
+		}
 	}
 
 	/* 注意事項 */
