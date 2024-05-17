@@ -1844,16 +1844,16 @@ section {
     aspect-ratio: 1 / 1;
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     background: var(--gradient-pink);
-    /* animation: buttonMove 2s ease-out infinite; */
+    animation: buttonMove 2s ease-out infinite;
 }
 
 .product-title a:hover {
     filter: brightness(110%)
 }
 
-.product-title a:hover::after {
+/* .product-title a:hover::after {
     animation: buttonMove 2s ease-out infinite;
-}
+} */
 
 @keyframes buttonMove {
     0% {
