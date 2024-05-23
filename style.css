@@ -1679,6 +1679,7 @@
 
 	.button-shadow{
 		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		border-radius: 99px 0 99px 0;
 		overflow: visible;
 	}
 
