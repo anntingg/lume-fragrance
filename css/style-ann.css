@@ -461,15 +461,15 @@ button {
     z-index: 99;
     background-image: url("../images/top-defualt.svg");
     background-size: contain;
-    transition: .5s;
+    transition: background-image .5s;
 }
-/* 
-.position {
+
+/* .position {
     position: absolute;
     top: -40px;
     right: 40px;
     transform: translate(0, -100%);
-} */
+}  */
 
 .btn-top:hover {
     background-image: url("../images/top-hover.svg");
@@ -551,7 +551,7 @@ section {
     /* max-height: 540px; */
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 999px 0;
+    border-radius: 0 0 80% 0;
 }
 
 .banner-bg {
@@ -578,7 +578,7 @@ section {
     z-index: 3;
     object-fit: contain;
     mix-blend-mode: color-dodge;
-    animation: logoMove 1s 0.5s both;
+    animation: logoMove 1s 0.3s both;
 }
 
 @keyframes logoMove {

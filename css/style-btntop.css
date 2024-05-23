@@ -15,7 +15,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: .5s;
+    transition: background-image .5s;
 }
 
 .btn-top:hover {
