@@ -303,7 +303,7 @@ html {
 body {
     font-family: "Noto Sans TC", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
     font-style: normal;
-    color: var(--dark);
+    color: var(--black);
 }
 
 .container {
@@ -319,7 +319,7 @@ img {
 
 a {
     display: block;
-    color: var(--dark);
+    color: var(--black);
     text-decoration: none;
 }
 

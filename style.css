@@ -322,10 +322,61 @@
 
 		background-color: #fff;
 		border-radius: 99px 0 99px 0;
+		overflow: hidden;
+
+		position: relative;
 	}
 
 	.leaf-btn-w img {
 		width: 60px;
+	}
+
+	
+	/* 漸層色塊 */
+	.leaf-btn-w::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: -100%;
+		top: 0;
+		background: var(--gradient);
+		transition: all 0.5s;
+	}
+	
+	/* hover 時，漸層色片由左至右 */
+	.leaf-btn-w:hover::after {
+		left: 0;
+	}
+	
+	/* 按鈕中的文字，z-index:2 --> 才會在漸層色塊上面 */
+	.leaf-btn-w h5 {
+		position: relative;
+		z-index: 2;
+	}
+	
+	/* 按鈕中的箭頭包 div --> 箭頭改變寬度時 div 不動；z-index:2 --> 才會在漸層色塊上面 */
+	.leaf-btn-w div {
+		width: 60px;
+		/* margin-left: 30px; */
+		position: relative;
+		z-index: 2;
+	}
+	
+	.leaf-btn-w img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	/* hover 時，箭頭寬度改變 */
+	.leaf-btn-w:hover img {
+		animation: arrowMove 0.7s 0.1s;
+	}
+	
+	@keyframes arrowMove {
+		from {width: 0;}
+	
+		to {width: 100%;}
 	}
 
 	/* 葉形按鈕-彩色 */
@@ -342,10 +393,51 @@
 
 		background: var(--gradient);
 		border-radius: 99px 0 99px 0;
+		overflow: hidden;
+		position: relative;
 	}
 
 	.leaf-btn-c img {
 		width: 60px;
+	}
+
+	.leaf-btn-c::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: -100%;
+		top: 0;
+		background: var(--gradient);
+		transition: all 0.8s;
+	
+	}
+	
+	/* hover 時，多了增加亮度 120% */
+	.leaf-btn-c:hover::after {
+		left: 0;
+		filter: brightness(120%);
+	}
+	
+	.leaf-btn-c h5 {
+		position: relative;
+		z-index: 1;
+	}
+	
+	.leaf-btn-c div {
+		width: 60px;
+		/* margin-left: 10px; */
+		position: relative;
+		z-index: 1;
+	}
+	
+	.leaf-btn-c img {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.leaf-btn-c:hover img {
+		animation: arrowMove 0.7s 0.1s;
 	}
 
 	/* 錨點導航 */
@@ -532,27 +624,60 @@
 
 	.cover-banner {
 		width: 933px;
-		/* height: 742px; */
-		/* background-color: #666	; */
-		background-image: url(./img/3D-1.png);
+		height: 742px;
+		/* background-color: #666	;
+		background-image: url(./img/3D-1.jpg);
 		background-position: center;
-		background-size: cover;
-		border-radius: 0 0 0 999px;
+		background-size: cover; */
+		/* border-radius: 0 0 0 999px; */
 
 		position: relative;
 	}
 
-	.cover-banner::after {
+	.cover-banner .banner-bg-p {
+		height: 100%;
+		border-radius: 0 0 0 var(--short-side);
+		/* z-index: -1; */
+		overflow: hidden;
+	}
+
+	.carousel-cover {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		display: none;
+	}
+
+	.carousel-cover.active {
+		display: block;
+		animation: slideFade 3s both;
+	}
+
+	@keyframes slideFade {
+		0% {
+			opacity: 0;
+		}
+
+		5%,
+		95% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
+
+	.cover-banner::before {
 		content: "";
 		width: 100%;
 		height: 100%;
-		border-radius: 0 0 0 999px;
-		/* background-size: cover; */
+		border-radius: 0 0 0 var(--short-side);
 		background: var(--gradient);
 		background-color: rgba(255, 255, 255, 0.4);
-		/* opacity: 50%; */
 		mix-blend-mode: overlay;
 		position: absolute;
+		z-index: 10;
 	}
 
 	.cover-quotes {
@@ -562,13 +687,119 @@
 		position: absolute;
 		right: -70px;
 		top: 180px;
-		z-index: 1;
+		z-index: 20;
 	}
 
 	.cover-quotes img {
 		width: 40px;
 		margin-right: 30px;
 	}
+
+	/* banner輪播區 */
+	/* 前後按鈕 */
+	.btn-prev,
+	.btn-next {
+		width: 48px;
+		height: 48px;
+		/* 手機版時裡面圖片置中 */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 50%;
+		z-index: 10;
+		transform: translateY(-50%);
+	}
+
+	.btn-prev img,
+	.btn-next img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.btn-prev {
+		left: 16px;
+	}
+
+	.btn-next {
+		right: 16px;
+	}
+
+	.btn-next img {
+		transform: rotateY(180deg);
+	}
+
+	/* 指示長條 */
+	.navigation {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		right: 5%;
+		bottom: 5%;
+		z-index: 10;
+		/* transform: translateX(-50%); */
+	}
+
+	/* 電腦 1401px */
+	@media (min-width: 1401px) {}
+
+	/* 電腦 (1200-) 1400px */
+	@media (max-width: 1400px) {}
+
+	/* 平板 (992-) 1200px */
+	@media (max-width: 1200px) {
+		.navigation{
+			transform: rotate(90deg) translateX(50%);
+			transform-origin: right;
+			bottom: 50%;
+		}
+	}
+
+	/* 平板 (576/769-) 992px */
+	@media (max-width: 992px) {}
+
+	/* 小型手機 768px 以下 */
+	@media (max-width: 768px) {}
+
+	/* 小型手機 576px 以下 */
+	@media (max-width: 576px) {}
+
+	.indicator {
+		width: 48px;
+		height: 3px;
+		margin: 0 8px;
+		display: block;
+		position: relative;
+		background-color: #808080;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.indicator::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: -100%;
+		top: 0;
+		background-color: black;
+	}
+
+	.indicator.active::after {
+		animation: indicatorMove 3s linear;
+	}
+
+	@keyframes indicatorMove {
+		from {
+			left: -100%
+		}
+
+		to {
+			left: 0
+		}
+	}
+
 
 	/* 電腦 1401px */
 	@media (min-width: 1401px) {
@@ -586,6 +817,7 @@
 		.cover-banner {
 			height: 742px;
 		}
+
 		.cover-logo>img {
 			width: 200px;
 		}
@@ -593,12 +825,12 @@
 
 	/* 平板 (992-) 1200px */
 	@media (max-width: 1200px) {
-		#cover{
+		#cover {
 			width: 90%;
 			margin: auto;
 		}
 
-		.cover-logo{
+		.cover-logo {
 			margin-right: 50px;
 		}
 	}
@@ -606,7 +838,7 @@
 	/* 平板 (576-) 992px */
 	@media (max-width: 992px) {
 		#cover {
-			width:100%;
+			width: 100%;
 			position: relative;
 			margin: 0;
 		}
@@ -760,7 +992,7 @@
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px){
+	@media (max-width: 1200px) {
 		#introduce {
 			width: 80%;
 			padding-bottom: 40px;
@@ -909,8 +1141,9 @@
 	#carousel .img {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		margin-top: 130px;
-		overflow: hidden;
+		/* overflow: hidden; */
 
 		position: relative;
 		z-index: 99;
@@ -924,6 +1157,32 @@
 		margin: 0 20px;
 	}
 
+	#carousel .item-1 {
+		transform: scale(1.3);
+		/* z-index: 0; */
+	}
+
+	#carousel .carousel {
+		display: flex;
+		justify-content: center;
+		transform: translateX(calc(var(--move-distance) * 1.5));
+		z-index: 99;
+		position: relative;
+	}
+
+	#carousel .center {
+		order: 1;
+	}
+
+	#carousel .left {
+		order: 0;
+	}
+
+	#carousel .right {
+		order: 2;
+		z-index: -1;
+	}
+
 	/* 電腦 1401px */
 	@media (min-width: 1401px) {}
 
@@ -931,7 +1190,7 @@
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px){
+	@media (max-width: 1200px) {
 		.corner-2 {
 			margin-bottom: -70px;
 		}
@@ -1027,7 +1286,7 @@
 	}
 
 	#product .index-product-left .img {
-		/* background-image: url(./img/3D-1.png); */
+		/* background-image: url(./img/3D-1.jpg); */
 		background-position: center;
 		background-size: cover;
 		width: 740px;
@@ -1044,20 +1303,20 @@
 		text-align: right;
 	}
 
-	#product .index-product-left .text div {
+	#product .index-product-left .text>div {
 		margin-top: 80px;
 		/* position: relative; */
 	}
 
-	#product .index-product-left .text div h2 {
+	#product .index-product-left .text>div h2 {
 		margin-bottom: 20px;
 	}
 
-	#product .index-product-left .text div h1 {
+	#product .index-product-left .text>div h1 {
 		position: relative;
 	}
 
-	#product .index-product-left .text div img {
+	#product .index-product-left .text>div img {
 		position: absolute;
 		right: -145px;
 		top: -80px;
@@ -1094,20 +1353,20 @@
 		/* text-align: right; */
 	}
 
-	#product .index-product-right .text div {
+	#product .index-product-right .text>div {
 		margin-top: 80px;
 		/* position: relative; */
 	}
 
-	#product .index-product-right .text div h2 {
+	#product .index-product-right .text>div h2 {
 		margin-bottom: 20px;
 	}
 
-	#product .index-product-right .text div h1 {
+	#product .index-product-right .text>div h1 {
 		position: relative;
 	}
 
-	#product .index-product-right .text div img {
+	#product .index-product-right .text>div img {
 		position: absolute;
 		left: -145px;
 		top: -80px;
@@ -1124,7 +1383,7 @@
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px){
+	@media (max-width: 1200px) {
 		#product {
 			margin: 0 0 80px 0;
 		}
@@ -1153,8 +1412,7 @@
 	}
 
 	/* 平板 (576-) 992px */
-	@media (max-width: 992px) {
-	}
+	@media (max-width: 992px) {}
 
 	/* 小型手機 576px 以下 */
 	@media (max-width: 576px) {
@@ -1241,15 +1499,15 @@
 
 	/* 商品圖片 */
 	#index-perfume .img {
-		background-image: url(./img/3D-1.png);
+		background-image: url(./img/3D-1.jpg);
 	}
 
 	#index-facecare .img {
-		background-image: url(./img/3D-2.png);
+		background-image: url(./img/3D-2.jpg);
 	}
 
 	#index-diffuse .img {
-		background-image: url(./img/3D-3.png);
+		background-image: url(./img/3D-3.jpg);
 	}
 
 	/* 最新消息 */
@@ -1262,10 +1520,12 @@
 		margin: 80px auto;
 		border-radius: 80px 0 80px 0;
 		background: var(--gradient);
+		min-height: 273px;
 	}
 
 	.color-block-text .title {
 		display: flex;
+		z-index: 10;
 	}
 
 	.color-block-text .title h2 {
@@ -1287,7 +1547,27 @@
 
 	.color-block-text .leaf-btn-w {
 		align-self: flex-end;
+		z-index: 10;
 	}
+
+	.color-block-text.item2 {
+		position: relative;
+	}
+
+	.color-block-text.item2>h3 {
+		line-height: 2.5em;
+		text-align: center;
+		z-index: 10;
+	}
+
+	/* .color-block-text.item2>img{
+		position: absolute;
+		opacity: .5;
+		width: 200px;
+		left:215px;
+		bottom: 20px;
+		transform: rotate(-25deg);
+	} */
 
 	/* 電腦 1401px */
 	@media (min-width: 1401px) {}
@@ -1296,10 +1576,12 @@
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px){
+	@media (max-width: 1200px) {
 		.color-block-text {
 			width: calc(90% - 80px);
 			flex-direction: column;
+
+			min-height: 450px;
 		}
 
 		.color-block-text .title {
@@ -1325,11 +1607,13 @@
 	}
 
 	/* 平板 (576-) 992px */
-	@media (max-width: 992px) {
-	}
+	@media (max-width: 992px) {}
 
 	/* 小型手機 768px 以下 */
 	@media (max-width: 768px) {
+
+
+
 		.color-block-text li a {
 			flex-direction: column;
 			width: 100%;
@@ -1340,6 +1624,21 @@
 			display: none;
 		}
 
+		.color-block-text.item2>h3 {
+			line-height: 2em;
+		}
+
+	}
+
+	/* 小型手機 768px 以下 */
+	@media (max-width: 400px) {
+		.color-block-text {
+			min-height: 540px;
+		}
+
+		.color-block-text.item2>h3 {
+			font-size: 20px;
+		}
 	}
 
 	/* 聯繫我們 */
@@ -1388,7 +1687,7 @@
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px){
+	@media (max-width: 1200px) {
 		#contact .content {
 			width: 80%;
 		}
@@ -1430,166 +1729,7 @@
 	}
 
 	/* 頁尾 */
-	/* 頁尾 */
-	footer {
-		display: flex;
-		background: var(--gradient);
-		height: 340px;
-		padding: 30px;
 
-		position: relative;
-	}
-
-	footer .bg {
-		object-fit: contain;
-		width: fit-content;
-		height: 100%;
-		position: absolute;
-		left: 80px;
-		top: 0;
-
-		opacity: 0.5;
-	}
-
-	footer .star-1 {
-		object-fit: contain;
-		width: fit-content;
-		height: 120px;
-		position: absolute;
-		right: 600px;
-		bottom: 20px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-2 {
-		object-fit: contain;
-		width: fit-content;
-		height: 70px;
-		position: absolute;
-		right: 25px;
-		bottom: 25px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-3 {
-		object-fit: contain;
-		width: fit-content;
-		height: 35px;
-		position: absolute;
-		right: 100px;
-		bottom: 60px;
-
-		opacity: 0.4;
-	}
-
-	footer .star-4 {
-		object-fit: contain;
-		width: fit-content;
-		height: 35px;
-		position: absolute;
-		right: 30px;
-		top: 30px;
-
-		opacity: 0.4;
-	}
-
-	footer .content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		margin: 0 150px;
-		/* width: 1140px; */
-
-		z-index: 1;
-	}
-
-	footer .content img {
-		object-fit: contain;
-		width: 220px;
-	}
-
-	footer .center {
-		align-self: flex-end;
-	}
-
-	footer .social {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 20px;
-	}
-
-	footer .center img {
-		width: 30px;
-	}
-
-	footer .serif-medium-footer {
-		display: flex;
-		justify-content: space-between;
-		align-content: space-between;
-		flex-wrap: wrap;
-		width: 240px;
-		height: 140px;
-	}
-
-	footer .serif-medium-footer a:nth-child(odd) {
-		margin-right: 60px;
-	}
-
-	/* 電腦 1401px */
-	@media (min-width: 1401px) {}
-
-	/* 電腦 (993-) 1400px */
-	@media (max-width: 1400px) {}
-
-	/* 平板 (992-) 1200px */
-	@media (max-width: 1200px) {
-		footer .content {
-			margin: 0 auto;
-			width: 80%;
-		}
-	}
-
-	/* 平板 (768-) 992px */
-	@media (max-width: 992px) {
-		footer .content {
-			margin: 0 auto;
-			width: 90%;
-		}
-
-		footer .bg {
-			left: 0;
-		}
-	}
-
-	/* 小型手機 768px 以下 */
-	@media (max-width: 768px) {
-		footer {
-			height: 450px;
-		}
-
-		footer .content {
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-evenly;
-		}
-
-		footer .content>a img {
-			width: 100px;
-			order: 0;
-		}
-
-		footer .content .center {
-			align-self: center;
-			order: 3;
-		}
-
-		footer .content .serif-medium-footer {
-			margin: 30px 0;
-		}
-	}
 
 	/*                dfiffuse-Nectarine               */
 
@@ -1615,7 +1755,7 @@
 
 	}
 
-	.bread p{
+	.bread p {
 		display: flex;
 		flex-flow: wrap;
 	}
@@ -1656,7 +1796,7 @@
 
 	/* 前中後調 */
 
-	#pd-cover .text .introduction  {
+	#pd-cover .text .introduction {
 		position: relative;
 	}
 
@@ -1670,7 +1810,7 @@
 	#pd-cover .img {
 		width: 480px;
 		height: 600px;
-		background-image: url(./img/3D-3.png);
+		background-image: url(./img/3D-3.jpg);
 		background-position: center;
 		background-size: cover;
 		border-radius: 999px 999px 0 0;
@@ -1731,23 +1871,22 @@
 	}
 
 	/* 電腦 1401px */
-	@media (min-width: 1401px) {
-	}
+	@media (min-width: 1401px) {}
 
 	/* 電腦 (1200-) 1400px */
 	@media (max-width: 1400px) {}
 
 	/* 平板 (992-) 1200px */
 	@media (max-width: 1200px) {
-		#pd-cover .content{
+		#pd-cover .content {
 			width: 90%;
 		}
 
-		#pd-cover .text{
+		#pd-cover .text {
 			margin-right: 100px;
 		}
 
-		#pd-cover .text .title h2{
+		#pd-cover .text .title h2 {
 			line-height: 1.5em;
 		}
 
@@ -1756,32 +1895,32 @@
 			height: 500px;
 		}
 
-		#pd-cover .notes{
+		#pd-cover .notes {
 			width: 90%;
 		}
 	}
 
 	/* 平板 (576/769-) 992px */
 	@media (max-width: 992px) {
-		#pd-cover .content{
+		#pd-cover .content {
 			flex-direction: column;
 			width: 80%;
 			margin: 60px auto;
 		}
 
-		#pd-cover .text{
+		#pd-cover .text {
 			order: 1;
 			width: 100%;
 			margin-top: 50px;
 			height: 450px;
 		}
 
-		#pd-cover .quotes{
+		#pd-cover .quotes {
 			display: none;
 		}
 
-		#pd-cover .img{
-			width:70%;
+		#pd-cover .img {
+			width: 70%;
 			height: 500px;
 			margin: 0px auto;
 			margin-bottom: 20px;
@@ -1791,14 +1930,14 @@
 			background-position: 50% 65%;
 		}
 
-		#pd-cover .notes{
+		#pd-cover .notes {
 			width: 80%;
-			padding:0px;
+			padding: 0px;
 			flex-direction: column;
 			align-items: center;
 		}
 
-		#pd-cover .notes .item{
+		#pd-cover .notes .item {
 			padding: 20px 0px;
 		}
 
@@ -1810,42 +1949,42 @@
 	}
 
 	/* 小型手機 768px 以下 */
-	@media (max-width: 768px) {
-	}
+	@media (max-width: 768px) {}
 
 	/* 小型手機 576px 以下 */
 	@media (max-width: 576px) {
-		#pd-cover .text{
+		#pd-cover .text {
 			height: auto;
 		}
 
-		#pd-cover .text .title{
+		#pd-cover .text .title {
 			text-align: center;
 		}
-		#pd-cover .text .title h1{
+
+		#pd-cover .text .title h1 {
 			font-size: 45px;
 		}
 
-		#pd-cover .text .title h2{
+		#pd-cover .text .title h2 {
 			font-size: 14px;
 		}
 
-		#pd-cover .title-gradient{
+		#pd-cover .title-gradient {
 			height: 200px;
 			width: 300px;
 			left: -110px;
 		}
 
-		#pd-cover .text .introduction .ch-sans-light-m{
+		#pd-cover .text .introduction .ch-sans-light-m {
 			font-size: 14px;
 		}
 
-		#pd-cover .img{
+		#pd-cover .img {
 			width: 90%;
 			height: 350px;
 		}
 
-		.ribbon{
+		.ribbon {
 			position: static;
 			width: 170px;
 			height: 40px;
@@ -1853,25 +1992,26 @@
 			margin: 45px auto;
 		}
 
-		.ribbon h3{
+		.ribbon h3 {
 			writing-mode: horizontal-tb;
 			line-height: 40px;
 			text-align: center;
 			padding-top: 0px;
 		}
 
-		.ribbon::before{
+		.ribbon::before {
 			display: none;
 		}
 
-		.bread{
+		.bread {
 			display: none;
 		}
 	}
 
 	/* 注意事項 */
 	#pd-precautions {
-		justify-content: flex-start
+		justify-content: flex-start;
+		min-height: 0;
 	}
 
 	#pd-precautions .ch-sans-light-m {
@@ -1928,15 +2068,15 @@
 	}
 
 	#pd-related .i-1 .img {
-		background-image: url(./img/3D-1.png);
+		background-image: url(./img/3D-1.jpg);
 	}
 
 	#pd-related .i-2 .img {
-		background-image: url(./img/3D-2.png);
+		background-image: url(./img/3D-2.jpg);
 	}
 
 	#pd-related .i-3 .img {
-		background-image: url(./img/3D-3.png);
+		background-image: url(./img/3D-3.jpg);
 	}
 
 	#pd-related .i-4 .img {
@@ -1959,7 +2099,7 @@
 	}
 
 	#pd-related .i-5 .img {
-		background-image: url(./img/3D-2.png);
+		background-image: url(./img/3D-2.jpg);
 	}
 
 	#pd-related .arrow {

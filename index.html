@@ -22,9 +22,9 @@
     <title>Lume Fragrance | 官方形象網站</title>
     <!-- 手動設定 favicon -->
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/style-menu.css">
-    <!-- <link rel="stylesheet" href="./css/style-footer.css"> -->
+    <link rel="stylesheet" href="./css/style-footer.css">
     <link rel="stylesheet" href="./css/style-btntop.css">
 
 </head>
@@ -95,6 +95,16 @@
             </div>
 
             <div class="cover-banner">
+                <div class="banner-bg-p">
+                    <img class="carousel-cover" src="./img/3D-1.jpg" alt="" />
+                    <img class="carousel-cover" src="./img/3D-2.jpg" alt="" />
+                    <img class="carousel-cover" src="./img/3D-3.jpg" alt="" />
+                    <img class="carousel-cover" src="./img/2.jpg" alt="" />
+                </div>
+                <!-- <button class="btn-prev"><img src="./img/icon-arrow.svg" alt=""></button>
+                <button class="btn-next"><img src="./img/icon-arrow.svg" alt=""></button> -->
+                <div class="navigation"></div>
+
                 <!-- 右上引號文字 -->
                 <div class="cover-quotes">
                     <img src="./img/quotes.svg" alt="">
@@ -131,7 +141,9 @@
                 <a class="leaf-btn-w" href="./story.html">
 
                     <h5 class="ch-sans-thin-l">品牌故事</h5>
-                    <img src="./img/buttom-arrow.svg" alt="">
+                    <div>
+                        <img src="./img/buttom-arrow.svg" alt="">
+                    </div>
 
                 </a>
             </div>
@@ -150,13 +162,25 @@
                 <h2 class="en-sans-light-l">Fragrance is not only a taste, but also a companion in life.</h2>
             </div>
 
-            <div class="img">
-                <img src="./img/3D-1.png" alt="">
-                <img src="./img/3D-2.png" alt="">
-                <img src="./img/3D-3.png" alt="">
+            <div class="carousel">
+                <div class="img center">
+                    <img class="item-1" src="./img/3D-1.jpg" alt="">
+                    <img src="./img/3D-2.jpg" alt="">
+                    <img src="./img/3D-3.jpg" alt="">
+                    <img src="./img/3D-1.jpg" alt="">
+                </div>
 
-                <img src="./img/3D-1.png" alt="">
-                <img src="./img/3D-2.png" alt="">
+                <div class="img left">
+                    <img src="./img/3D-1.jpg" alt="">
+                    <img src="./img/3D-2.jpg" alt="">
+                    <img class="item" src="./img/3D-3.jpg" alt="">
+                </div>
+
+                <div class="img right">
+                    <img src="./img/3D-2.jpg" alt="">
+                    <img src="./img/3D-3.jpg" alt="">
+                    <img src="./img/3D-1.jpg" alt="">
+                </div>
             </div>
 
             <img class="gradient-line-1" src="./img/gradient-line-w.svg" alt="">
@@ -213,7 +237,9 @@
                         <p class="serif-medium-s">瓶裝香水／針管香水</p>
                         <a class="leaf-btn-c" href="./products.html">
                             <h5 class="ch-sans-thin-l">more</h5>
-                            <img src="./img/buttom-arrow.svg" alt="">
+                            <div>
+                                <img src="./img/buttom-arrow.svg" alt="">
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -238,7 +264,9 @@
                         <p class="serif-medium-s">室內擴香／香氛蠟燭</p>
                         <a class="leaf-btn-c" href="./products.html">
                             <h5 class="ch-sans-thin-l">more</h5>
-                            <img src="./img/buttom-arrow.svg" alt="">
+                            <div>
+                                <img src="./img/buttom-arrow.svg" alt="">
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -262,7 +290,9 @@
                         <p class="serif-medium-s">面膜／脣油</p>
                         <a class="leaf-btn-c" href="./products.html">
                             <h5 class="ch-sans-thin-l">more</h5>
-                            <img src="./img/buttom-arrow.svg" alt="">
+                            <div>
+                                <img src="./img/buttom-arrow.svg" alt="">
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -278,17 +308,17 @@
                 <h3 class="serif-medium-m">News</h3>
                 <span></span>
                 <div class="buttom">
-                    <a href="#news-activity">
+                    <a href="" class="button1">
                         <h2 class="serif-medium-s">活動資訊</h2>
                         <img src="./img/gradient.png" alt="">
                     </a>
 
-                    <a href="#news-member">
+                    <a href="" class="button2">
                         <h2 class="serif-medium-s">會員獨享</h2>
                         <img src="./img/gradient.png" alt="">
                     </a>
 
-                    <a href="#news-article">
+                    <a href="" class="button3">
                         <h2 class="serif-medium-s">文章專欄</h2>
                         <img src="./img/gradient.png" alt="">
                     </a>
@@ -296,54 +326,133 @@
             </div>
 
             <!-- 色塊背景文字 -->
-            <div class="color-block-text">
-                <div class="title">
-                    <h2 class="serif-medium-m">活動資訊</h2>
-                    <h3 class="en-sans-light-m">Events Information</h3>
+            <div class="news-text">
+                <div class="color-block-text item1">
+                    <div class="title">
+                        <h2 class="serif-medium-m">活動資訊</h2>
+                        <h3 class="en-sans-light-m">Events Information</h3>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a class="leaf-btn-w" href="./news.html">
+                        <h5 class="ch-sans-thin-l">more</h5>
+                        <div>
+                            <img src="./img/buttom-arrow.svg" alt="">
+                        </div>
+                    </a>
                 </div>
 
-                <ul>
-                    <li>
-                        <a href="./news.html">
-                            <p class="ch-sans-light-m">2023.04.05</p>
-                            <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
-                        </a>
-                    </li>
+                <div class="color-block-text item2">
 
-                    <li>
-                        <a href="./news.html">
-                            <p class="ch-sans-light-m">2023.04.05</p>
-                            <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
-                        </a>
-                    </li>
+                    <!-- <img src="./img/star-w.svg" alt=""> -->
 
-                    <li>
-                        <a href="./news.html">
-                            <p class="ch-sans-light-m">2023.04.05</p>
-                            <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
-                        </a>
-                    </li>
+                    <div class="title">
+                        <h2 class="serif-medium-m">會員獨享</h2>
+                        <h3 class="en-sans-light-m">Events Information</h3>
+                    </div>
 
-                    <li>
-                        <a href="./news.html">
-                            <p class="ch-sans-light-m">2023.04.05</p>
-                            <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
-                        </a>
-                    </li>
+                    <h3 class="serif-medium-m">
+                        加入會員 享多重優惠<br>
+                        單筆結帳 最高85折<br>
+                        生日禮券 最高$800
+                    </h3>
 
-                    <li>
-                        <a href="./news.html">
-                            <p class="ch-sans-light-m">2023.04.05</p>
-                            <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
-                        </a>
-                    </li>
-                </ul>
+                    <a class="leaf-btn-w" href="./membership.html">
+                        <h5 class="ch-sans-thin-l">more</h5>
+                        <div>
+                            <img src="./img/buttom-arrow.svg" alt="">
+                        </div>
+                    </a>
+                </div>
 
-                <a class="leaf-btn-w" href="./news.html">
-                    <h5 class="ch-sans-thin-l">more</h5>
-                    <img src="./img/buttom-arrow.svg" alt="">
-                </a>
+                <div class="color-block-text item3">
+                    <div class="title">
+                        <h2 class="serif-medium-m">文章專欄</h2>
+                        <h3 class="en-sans-light-m">Events Information</h3>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <p class="ch-sans-light-m">2023.04.05</p>
+                                <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a class="leaf-btn-w" href="./news.html">
+                        <h5 class="ch-sans-thin-l">more</h5>
+                        <div>
+                            <img src="./img/buttom-arrow.svg" alt="">
+                        </div>
+                    </a>
+                </div>
             </div>
+
         </section>
 
         <!-- 聯繫我們 -->
@@ -358,7 +467,9 @@
 
                 <a class="leaf-btn-w" href="./contact.html">
                     <h5 class="ch-sans-thin-l">more</h5>
-                    <img src="./img/buttom-arrow.svg" alt="">
+                    <div>
+                        <img src="./img/buttom-arrow.svg" alt="">
+                    </div>
                 </a>
             </div>
         </section>
@@ -400,10 +511,9 @@
 
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/script3.js"></script>
+    <script src="./js/script-tab.js"></script>
+    <script src="./js/script-carousel.js"></script>
 </body>
 
 </html>
