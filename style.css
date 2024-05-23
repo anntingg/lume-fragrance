@@ -1678,9 +1678,10 @@
 	}
 
 	.button-shadow{
-		padding: 30px;
-		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		padding: 32px;
+		transform: translateX(32px);
 		border-radius: 99px 0 99px 0;
+		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
 		overflow: visible;
 	}
 
