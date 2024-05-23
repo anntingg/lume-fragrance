@@ -1,4 +1,4 @@
-let slides = document.querySelectorAll('.carousel');    // 所有輪播圖，為一組陣列
+let slides = document.querySelectorAll('.carousel-cover');    // 所有輪播圖，為 NodeList，一組集合物件，可用 forEach 跑迴圈
 let btnPrev = document.querySelector(".btn-prev");
 let btnNext = document.querySelector(".btn-next");
 let navigation = document.querySelector('.navigation');
@@ -62,15 +62,15 @@ function restartInterval (){
     // console.log(intervalId);
 }
 
-btnPrev.addEventListener("click", ()=> {
-    prevSlide();
-    restartInterval();
-});
+// btnPrev.addEventListener("click", ()=> {
+//     prevSlide();
+//     restartInterval();
+// });
 
-btnNext.addEventListener("click", ()=>{
-    nextSlide();
-    restartInterval();
-});
+// btnNext.addEventListener("click", ()=>{
+//     nextSlide();
+//     restartInterval();
+// });
 
 
 
