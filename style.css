@@ -1677,9 +1677,15 @@
 		rotate: 200deg;
 	}
 
-	#contact .leaf-btn-w {
+	.button-shadow{
 		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		overflow: visible;
 	}
+
+	/* #contact .leaf-btn-w {
+		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		overflow: visible;
+	} */
 
 	/* 電腦 1401px */
 	@media (min-width: 1401px) {}
@@ -1730,7 +1736,6 @@
 	}
 
 	/* 頁尾 */
-
 
 	/*                dfiffuse-Nectarine               */
 
