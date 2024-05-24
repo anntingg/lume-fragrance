@@ -1299,11 +1299,11 @@ section {
 
 .article-row>div {
     display: flex;
-    margin-right: 8vw;
+    margin-right: 6vw;
 }
 
 .article-row>div h2 {
-    margin-left: 8vw;
+    margin-left: 6vw;
     white-space: nowrap;
 }
 
@@ -1311,7 +1311,7 @@ section {
     white-space: nowrap;
 }
 
-.article-row .article-title {
+.article-row >p {
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1407,11 +1407,13 @@ section {
         padding: 3vh 0;
     }
 
-    .article-row .article-title {
+    .article-row >p {
         margin-top: 1.2vh;
-        text-overflow: visible;
         white-space: wrap;
         text-align: justify;
+        display: -webkit-box;	/*多行省略*/
+        -webkit-box-orient: vertical;	/*多行省略*/
+        -webkit-line-clamp: 2;	/*多行省略*/
     }
 
     .pagination {
