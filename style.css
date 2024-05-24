@@ -331,7 +331,7 @@
 		width: 60px;
 	}
 
-	
+
 	/* 漸層色塊 */
 	.leaf-btn-w::after {
 		content: "";
@@ -343,18 +343,18 @@
 		background: var(--gradient);
 		transition: all 0.5s;
 	}
-	
+
 	/* hover 時，漸層色片由左至右 */
 	.leaf-btn-w:hover::after {
 		left: 0;
 	}
-	
+
 	/* 按鈕中的文字，z-index:2 --> 才會在漸層色塊上面 */
 	.leaf-btn-w h5 {
 		position: relative;
 		z-index: 2;
 	}
-	
+
 	/* 按鈕中的箭頭包 div --> 箭頭改變寬度時 div 不動；z-index:2 --> 才會在漸層色塊上面 */
 	.leaf-btn-w div {
 		width: 60px;
@@ -362,21 +362,25 @@
 		position: relative;
 		z-index: 2;
 	}
-	
+
 	.leaf-btn-w img {
 		width: 100%;
 		height: 100%;
 	}
-	
+
 	/* hover 時，箭頭寬度改變 */
 	.leaf-btn-w:hover img {
 		animation: arrowMove 0.7s 0.1s;
 	}
-	
+
 	@keyframes arrowMove {
-		from {width: 0;}
-	
-		to {width: 100%;}
+		from {
+			width: 0;
+		}
+
+		to {
+			width: 100%;
+		}
 	}
 
 	/* 葉形按鈕-彩色 */
@@ -410,32 +414,32 @@
 		top: 0;
 		background: var(--gradient);
 		transition: all 0.8s;
-	
+
 	}
-	
+
 	/* hover 時，多了增加亮度 120% */
 	.leaf-btn-c:hover::after {
 		left: 0;
 		filter: brightness(120%);
 	}
-	
+
 	.leaf-btn-c h5 {
 		position: relative;
 		z-index: 1;
 	}
-	
+
 	.leaf-btn-c div {
 		width: 60px;
 		/* margin-left: 10px; */
 		position: relative;
 		z-index: 1;
 	}
-	
+
 	.leaf-btn-c img {
 		width: 100%;
 		height: 100%;
 	}
-	
+
 	.leaf-btn-c:hover img {
 		animation: arrowMove 0.7s 0.1s;
 	}
@@ -569,6 +573,16 @@
 		height: 250px;
 		rotate: 200deg;
 	}
+
+	/* 小型手機 576px 以下 */
+	@media (max-width: 576px) {
+		.title-gradient {
+			height: 200px;
+			width: 300px;
+			left: -110px;
+		}
+	}
+
 
 	/* container */
 	/* .container {
@@ -749,7 +763,7 @@
 
 	/* 平板 (992-) 1200px */
 	@media (max-width: 1200px) {
-		.navigation{
+		.navigation {
 			transform: rotate(90deg) translateX(50%);
 			transform-origin: right;
 			bottom: 50%;
@@ -1680,13 +1694,13 @@
 	.button-shadow{
 		padding: 32px;
 		transform: translateX(32px);
-		border-radius: 99px 0 99px 0;
 		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
 		overflow: visible;
 	}
 
 	/* #contact .leaf-btn-w {
 		filter: drop-shadow(5px 5px 20px rgba(0, 0, 0, 0.1));
+		overflow: visible;
 	} */
 
 	/* 電腦 1401px */
@@ -1742,6 +1756,7 @@
 	}
 
 	/* 頁尾 */
+	
 
 	/*                dfiffuse-Nectarine               */
 
@@ -1981,12 +1996,6 @@
 			font-size: 14px;
 		}
 
-		#pd-cover .title-gradient {
-			height: 200px;
-			width: 300px;
-			left: -110px;
-		}
-
 		#pd-cover .text .introduction .ch-sans-light-m {
 			font-size: 14px;
 		}
@@ -2141,6 +2150,168 @@
 
 
 
+	/* 文章單一頁面 */
+
+	.news-page-bg{
+		position: absolute;
+		top: 20%;
+		z-index: -1;
+	}
+
+	#news-page {
+		width: 1140px;
+		margin: 100px auto;
+	}
+
+	#news-page .bread {
+		margin-bottom: 100px;
+	}
+
+	#news-page .text {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.share {
+		background-image: url(./img/share.svg);
+		background-size: contain;
+		width: 50px;
+		height: 50px;
+		transition: all .2s ease-in-out;
+	}
+
+	.share:hover {
+		background-image: url(./img/share-c.svg);
+		
+	}
+
+	#news-page .date {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: end;
+	}
+
+	#news-page .text .title {
+		position: relative;
+	}
+
+	#news-page .text .title h1 {
+		margin-bottom: 10px;
+
+	}
+
+	#news-page .banner {
+		margin: 100px 0;
+		border-radius: 100px 0 100px 0;
+		height: 500px;
+		width: 100%;
+		background-image: url(./img/3.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+
+	#news-page article ul {
+		margin: 10px 0px 40px 0px;
+		list-style: disc;
+	}
+
+	#news-page article h3 {
+		line-height: 1.5em;
+	}
+
+	#news-page .leaf-btn-c {
+		margin: 0 auto;
+		margin-top: 100px;
+	}
+
+	/* 電腦 1401px */
+	@media (min-width: 1401px) {}
+
+	/* 電腦 (1200-) 1400px */
+	@media (max-width: 1400px) {}
+
+	/* 平板 (992-) 1200px */
+	@media (max-width: 1200px) {
+		#news-page {
+			width: 80%;
+		}
+
+		#news-page .text .title h1 {
+			font-size: 50px;
+		}
+
+		#news-page .text .title h2 {
+			font-size: 20px;
+		}
+
+		#news-page .banner {
+			margin: 60px auto;
+			height: 350px;
+		}
+
+		#news-page .bread {
+			margin-bottom: 60px;
+		}
+	}
+
+	/* 平板 (576/769-) 992px */
+	@media (max-width: 992px) {}
+
+	/* 小型手機 768px 以下 */
+	@media (max-width: 768px) {}
+
+	/* 小型手機 576px 以下 */
+	@media (max-width: 576px) {
+		#news-page .text {
+			flex-direction: column;
+			align-items: start;
+		}
+
+		#news-page .text .title {
+			order: 1;
+		}
+
+		#news-page .text .date {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+
+			width: 100%;
+			margin-bottom: 30px;
+		}
+
+		#news-page .share {
+			order: 1;
+			width: 30px;
+			height: 30px;
+		}
+
+		#news-page .banner {
+			margin: 40px auto;
+			height: 200px;
+			border-radius: 60px 0 60px 0;
+		}
+
+		#news-page .text .title {
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		#news-page .text .title h1 {
+			font-size: 35px;
+		}
+
+		#news-page .text .title h2 {
+			font-size: 18px;
+		}
+	}
+
+
+
+
+
 
 
 
@@ -2163,3 +2334,11 @@
 
 	/* 小型手機 576px 以下 */
 	@media (max-width: 576px) {}
+
+
+	/* 
+	合併後修改：
+	刪除 footer
+	width: fit-content => width: auto
+	.button-shadow => @media (max-width: 992px) 
+	*/

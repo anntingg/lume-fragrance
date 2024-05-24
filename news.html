@@ -36,6 +36,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/script-pagination.js"></script>
 
     <!-- React -->
     <script type="text/babel">
@@ -68,27 +69,8 @@
             )
         }
 
-        // 元件：文章卡片 
-        const ArticleCard = ({ className, imgName, imgAlt, title, content, date }) => {
-            return (
-                <article className={`article-card ${className}`}>
-                    <a href="#">
-                        <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
-                        <div className="content">
-                            <h2 className="ch-sans-thin-l">{title}</h2>
-                            <p className="line-clamp ch-sans-light-s">{content}</p>
-                            <p className="date en-sans-light-m">{date}</p>
-                            <div className="btn-s ch-sans-thin-l">
-                                <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            )
-        }
-
-        const App = () => {
-
+        // 元件：文章區塊
+        const ArticleBox = () => {
             // 陣列：文章專欄內容 => 使用 map 跑文章卡片
             const articleList = [
                 {
@@ -99,6 +81,7 @@
                     title: "新品上市",
                     content: "高貴工藝針管香水 - 散發典雅光澤，擁有細緻工藝的講究，充滿儀式感的包裝。",
                     date: "2024.04.01",
+                    pageLink: "./news-page.html"
                 },
                 {
                     id: 2,
@@ -108,6 +91,7 @@
                     title: "商品情報",
                     content: "山茶花香水 - 以花香打造春夏清新氣息，帶有豐富的層次感。",
                     date: "2024.03.25",
+                    pageLink: "./news-page.html"
                 },
                 {
                     id: 3,
@@ -117,6 +101,7 @@
                     title: "專訪報導",
                     content: "關於品牌起源 - 堅持打造高質感香水，讓每一位顧客擁有專屬儀式感。",
                     date: "2023.12.16",
+                    pageLink: "./news-page.html"
                 },
                 {
                     id: 4,
@@ -126,8 +111,176 @@
                     title: "商品情報",
                     content: "神聖森林擴香 - 沉穩、優雅與低調的大自然氣息，散發樸實的芳香。",
                     date: "2023.11.21",
+                    pageLink: "./news-page.html"
                 },
             ]
+
+            // 元件：文章卡片 
+            const ArticleCard = ({ className, imgName, imgAlt, title, content, date, pageLink }) => {
+                return (
+                    <article className={`article-card ${className}`}>
+                        <a href={pageLink}>
+                            <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
+                            <div className="content">
+                                <h2 className="ch-sans-thin-l">{title}</h2>
+                                <p className="line-clamp ch-sans-light-s">{content}</p>
+                                <p className="date en-sans-light-m">{date}</p>
+                                <div className="btn-s ch-sans-thin-l">
+                                    <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                )
+            }
+
+            return (
+                <div className="articles-box">
+                    {
+                        articleList.map((article) => {
+                            return <ArticleCard key={article.id} className={article.className} imgName={article.imgName} imgAlt={article.imgAlt} title={article.title} content={article.content} date={article.date} pageLink={article.pageLink} />
+                        })
+                    }
+                </div>
+            )
+        }
+
+        // 元件：文章列表
+        const ArticleListBox = () => {
+            // 陣列：文章列表內容
+
+            // 元件：
+
+            return (
+
+                <div className="article-list">
+                    <div id="article-page1" className="article-page show">
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2024.04.15</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2024.04.01</p>
+                                <h2>新品上市</h2>
+                            </div>
+                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2024.03.01</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2024.02.25</p>
+                                <h2>商品情報</h2>
+                            </div>
+                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2024.01.16</p>
+                                <h2>專訪報導</h2>
+                            </div>
+                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水</p>
+                        </a>
+
+                    </div>
+
+                    <div id="article-page2" className="article-page">
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.12.16</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.11.28</p>
+                                <h2>商品情報</h2>
+                            </div>
+                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.10.01</p>
+                                <h2>專訪報導</h2>
+                            </div>
+                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.08.15</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.07.01</p>
+                                <h2>新品上市</h2>
+                            </div>
+                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
+                        </a>
+                    </div>
+
+                    <div id="article-page3" className="article-page">
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.06.10</p>
+                                <h2>專訪報導</h2>
+                            </div>
+                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.05.15</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.04.22</p>
+                                <h2>新品上市</h2>
+                            </div>
+                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.03.12</p>
+                                <h2>活動消息</h2>
+                            </div>
+                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
+                        </a>
+                        <a className="article-row ch-sans-light-m" href="./news-page.html">
+                            <div>
+                                <p>2023.02.28</p>
+                                <h2>商品情報</h2>
+                            </div>
+                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
+                        </a>
+                    </div>
+
+                    <div className="pagination serif-medium-s ">
+                        {/*<div className="arrow-prev"><img src="./images/icon-arrow-grey.svg" alt="" /></div>*/}
+                        <div className="page-number active" onClick={(event) => showArticlePage(event.target, '#article-page1')}>1</div>
+                        <div className="page-number" onClick={(event) => showArticlePage(event.target, '#article-page2')}>2</div>
+                        <div className="page-number" onClick={(event) => showArticlePage(event.target, '#article-page3')}>3</div>
+                        {/*<div className="arrow-next"><img className="arrow-right" src="./images/icon-arrow-grey.svg" alt="" /></div>*/}
+                    </div>
+                </div>
+            )
+        }
+
+        const App = () => {
 
             return (
                 <>
@@ -205,7 +358,7 @@
 
                             <section id="events">
                                 <TitleM sectionCn="活動訊息" sectionEn="Events" />
-                                <a className="events-box" href="#">
+                                <a className="events-box" href="./news-page.html">
                                     <div>
                                         <div className="serif-medium-m">
                                             <p>5.1 ~ 5.15</p>
@@ -239,13 +392,9 @@
 
                             <section id="articles">
                                 <TitleM sectionCn="文章專欄" sectionEn="Articles" />
-                                <div className="articles-box">
-                                    {
-                                        articleList.map((article) => {
-                                            return <ArticleCard key={article.id} className={article.className} imgName={article.imgName} imgAlt={article.imgAlt} title={article.title} content={article.content} date={article.date} />
-                                        })
-                                    }
-                                </div>
+                                <ArticleBox />
+                                <ArticleListBox />
+
                             </section>
 
                         </div>
