@@ -148,126 +148,147 @@
         // 元件：文章列表
         const ArticleListBox = () => {
             // 陣列：文章列表內容
+            const articleListAll = [
+                {
+                    id: 1,
+                    date: "2024.04.15",
+                    type: "活動消息",
+                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 2,
+                    date: "2024.04.01",
+                    type: "新品上市",
+                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 3,
+                    date: "2024.03.01",
+                    type: "活動消息",
+                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 4,
+                    date: "2024.02.25",
+                    type: "商品情報",
+                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 5,
+                    date: "2024.01.16",
+                    type: "專訪報導",
+                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 6,
+                    date: "2023.12.16",
+                    type: "活動消息",
+                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 7,
+                    date: "2023.11.28",
+                    type: "商品情報",
+                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 8,
+                    date: "2023.10.01",
+                    type: "專訪報導",
+                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 9,
+                    date: "2023.08.15",
+                    type: "活動消息",
+                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 10,
+                    date: "2023.07.01",
+                    type: "新品上市",
+                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 11,
+                    date: "2023.06.10",
+                    type: "專訪報導",
+                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 12,
+                    date: "2023.05.15",
+                    type: "活動消息",
+                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 13,
+                    date: "2023.04.22",
+                    type: "新品上市",
+                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 14,
+                    date: "2023.03.12",
+                    type: "活動消息",
+                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 15,
+                    date: "2023.02.28",
+                    type: "商品情報",
+                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
+                    link: "./news-page.html",
+                },
+            ]
 
             // 元件：
+            const ArticleRow = ({ articleListDate, articleListType, articleListTitle, articleListLink }) => {
+                return (
+                    <a className="article-row ch-sans-light-m" href={articleListLink}>
+                        <div>
+                            <p>{articleListDate}</p>
+                            <h2>{articleListType}</h2>
+                        </div>
+                        <p>{articleListTitle}</p>
+                    </a>
+                )
+            }
+
+            const ArticlePage = ({pageNumber, toggleClass, startId, endId}) => {
+                return (
+                    <div id={`article-page${pageNumber}`} className={`article-page ${toggleClass}`}>
+                        {
+                            articleListAll.map((articleEach) => {
+                                if (articleEach.id >= startId && articleEach.id <= endId) {
+                                    return <ArticleRow key={articleEach.id} articleListDate={articleEach.date} articleListType={articleEach.type} articleListTitle={articleEach.title} articleListLink={articleEach.link} />
+                                }
+                            })
+                        }
+                    </div>
+                )
+            }
 
             return (
 
                 <div className="article-list">
-                    <div id="article-page1" className="article-page show">
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2024.04.15</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2024.04.01</p>
-                                <h2>新品上市</h2>
-                            </div>
-                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2024.03.01</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2024.02.25</p>
-                                <h2>商品情報</h2>
-                            </div>
-                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2024.01.16</p>
-                                <h2>專訪報導</h2>
-                            </div>
-                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水</p>
-                        </a>
-
-                    </div>
-
-                    <div id="article-page2" className="article-page">
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.12.16</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.11.28</p>
-                                <h2>商品情報</h2>
-                            </div>
-                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.10.01</p>
-                                <h2>專訪報導</h2>
-                            </div>
-                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造每一位顧客的專屬儀式感</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.08.15</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.07.01</p>
-                                <h2>新品上市</h2>
-                            </div>
-                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
-                        </a>
-                    </div>
-
-                    <div id="article-page3" className="article-page">
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.06.10</p>
-                                <h2>專訪報導</h2>
-                            </div>
-                            <p>關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.05.15</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 </p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.04.22</p>
-                                <h2>新品上市</h2>
-                            </div>
-                            <p>高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感 </p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.03.12</p>
-                                <h2>活動消息</h2>
-                            </div>
-                            <p>Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品</p>
-                        </a>
-                        <a className="article-row ch-sans-light-m" href="./news-page.html">
-                            <div>
-                                <p>2023.02.28</p>
-                                <h2>商品情報</h2>
-                            </div>
-                            <p>山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息</p>
-                        </a>
-                    </div>
+                    <ArticlePage pageNumber={1} toggleClass="show" startId={1} endId={5}/>
+                    <ArticlePage pageNumber={2} toggleClass="" startId={6} endId={10}/>
+                    <ArticlePage pageNumber={3} toggleClass="" startId={11} endId={15}/>
 
                     <div className="pagination serif-medium-s ">
                         {/*<div className="arrow-prev"><img src="./images/icon-arrow-grey.svg" alt="" /></div>*/}
