@@ -1718,6 +1718,10 @@
 		#contact .content a {
 			margin-top: 70px;
 		}
+
+		.button-shadow {
+			transform: translateX(0);
+		}
 	}
 
 	/* 小型手機 576px 以下 */
