@@ -1197,7 +1197,7 @@ section {
     white-space: nowrap;
 }
 
-.article-card .content h2::after {
+/* .article-card .content h2::after {
     content: "";
     width: 100%;
     height: 0.5px;
@@ -1205,9 +1205,10 @@ section {
     position: relative;
     top: 10px;
     background: var(--font-grey);
-}
+} */
 
 .line-clamp {
+    text-align: justify;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1328,7 +1329,7 @@ section {
 
 .pagination {
     width: 100%;
-    padding: 48px 0 16px;
+    padding-top: 24px;
 }
 
 .arrow-prev,
@@ -1399,7 +1400,6 @@ section {
 }
 
 @media (max-width: 992px) {}
-
 @media (max-width: 768px) {}
 
 @media (max-width: 576px) {
@@ -1417,13 +1417,13 @@ section {
     }
 
     .pagination {
-        padding: 20px 0 16px;
+        padding-top: 16px;
     }
     
     .arrow-prev,
     .arrow-next,
     .page-number {
-        margin: 0 4px;
+        margin: 0 2px;
     }
 }
 

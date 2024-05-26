@@ -36,10 +36,12 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/script-pagination.js"></script>
 
     <!-- React -->
     <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
         // 元件：錨點按鈕
         const Anchor = ({ sectionId, sectionCn }) => {
             return (
@@ -69,76 +71,219 @@
             )
         }
 
-        // 元件：文章區塊
-        const ArticleBox = () => {
-            // 陣列：文章專欄內容 => 使用 map 跑文章卡片
-            const articleList = [
-                {
-                    id: 1,
-                    className: "down",
-                    imgName: "3D-2-s.png",
-                    imgAlt: "高貴工藝針管香水",
-                    title: "新品上市",
-                    content: "高貴工藝針管香水 - 散發典雅光澤，擁有細緻工藝的講究，充滿儀式感的包裝。",
-                    date: "2024.04.01",
-                    pageLink: "./news-page.html"
-                },
-                {
-                    id: 2,
-                    className: "up",
-                    imgName: "3D-1-s.png",
-                    imgAlt: "山茶花香水",
-                    title: "商品情報",
-                    content: "山茶花香水 - 以花香打造春夏清新氣息，帶有豐富的層次感。",
-                    date: "2024.03.25",
-                    pageLink: "./news-page.html"
-                },
-                {
-                    id: 3,
-                    className: "down",
-                    imgName: "3D-3-s.png",
-                    imgAlt: "神聖森林香水",
-                    title: "專訪報導",
-                    content: "關於品牌起源 - 堅持打造高質感香水，讓每一位顧客擁有專屬儀式感。",
-                    date: "2023.12.16",
-                    pageLink: "./news-page.html"
-                },
-                {
-                    id: 4,
-                    className: "up",
-                    imgName: "3D-2-s.png",
-                    imgAlt: "神聖森林擴香",
-                    title: "商品情報",
-                    content: "神聖森林擴香 - 沉穩、優雅與低調的大自然氣息，散發樸實的芳香。",
-                    date: "2023.11.21",
-                    pageLink: "./news-page.html"
-                },
-            ]
+        // -------------------文章專欄---------------------
+        // 陣列：文章列表內容
+        const articleList = [
+            {
+                id: 1,
+                date: "2024.04.15",
+                type: "活動消息",
+                shortTitle: "母親節獻禮",
+                longTitle: "母親節獻禮優惠　｜　4.28 ~ 5.15 香水類商品限時7折，加贈精美禮盒包裝",
+                content: "母親節是我們表達對媽媽深厚愛意的最佳時機。今年母親節，讓我們以一瓶充滿愛與溫馨的香水，為媽媽送上最真摯的祝福。香水不僅是一種禮物，更是一種心意的傳達，讓她在生活中的每一瞬間都能感受到您的陪伴與關愛。",
+                link: "./news-page.html",
+                imgName: "bg-events.jpg",
+            },
+            {
+                id: 2,
+                date: "2024.04.10",
+                type: "新品上市",
+                shortTitle: "高貴工藝針管香水",
+                longTitle: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
+                content: "體驗來自頂級調香師的傑作，讓香水散發出高貴典雅的氣息。高貴工藝針管香水結合了傳統工藝與現代設計，讓您擁有細緻工藝的講究。",
+                link: "./news-page.html",
+                imgName: "3D-2-s.png",
+            },
+            {
+                id: 3,
+                date: "2024.03.15",
+                type: "活動消息",
+                shortTitle: "Lume 年中慶",
+                longTitle: "Lume 年中慶　｜　4.01 ~ 04.30 全館不限商品9折優惠，加入會員限時贈品",
+                content: "一年一度的年中慶正式開啟，多重好禮等你來拿！快來加入 Lume 會員，享受精選好禮。",
+                link: "./news-page.html",
+                imgName: "bg-events.jpg",
+            },
+            {
+                id: 4,
+                date: "2024.02.25",
+                type: "商品情報",
+                shortTitle: "山茶花香水",
+                longTitle: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣息",
+                content: "探索山茶花香水的純淨香氣，感受來自大自然的清新花香，帶有豐富的層次感，宛如置身於花園之中，無論在哪個場合皆適合使用。",
+                link: "./news-page.html",
+                imgName: "3D-1-s.png",
+            },
+            {
+                id: 5,
+                date: "2024.01.16",
+                type: "專訪報導",
+                shortTitle: "關於品牌起源",
+                longTitle: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水",
+                content: "每一瓶香水，都是一場私密的心靈之旅。香氛不僅僅是一種味道，更是生活中的陪伴者。Lume Fragrance 堅持讓每一位顧客擁有專屬儀式感。",
+                link: "./news-page.html",
+                imgName: "3D-3-s.png",
+            },
+            {
+                id: 6,
+                date: "2023.12.16",
+                type: "商品情報",
+                shortTitle: "神聖森林擴香",
+                longTitle: "神聖森林擴香　｜　 2023 冬季的獨特選擇，讓您展現沉穩、優雅與低調的魅力",
+                content: "走進神聖森林的懷抱，感受樸實的大自然芳香。神聖森林擴香融合了多種天然植物精華，幫助您放鬆身心，重獲內心的平靜與平衡。",
+                link: "./news-page.html",
+                imgName: "product-4.jpg",
+            },
+            {
+                id: 7,
+                date: "2023.11.28",
+                type: "商品情報",
+                shortTitle: "杏桃花蜂蜜擴香",
+                longTitle: "杏桃花蜂蜜室內擴香　｜　 秋天最適合的香調，讓您沉浸於甜美的花香氣息",
+                content: "杏桃花與蜂蜜的完美結合，讓甜美香氣環繞您的生活空間。杏桃花蜂蜜擴香融合了自然的果香與蜂蜜的溫潤，營造出一個甜蜜、溫馨的居家氛圍，不僅能提升空間品味，更帶給您心靈的愉悅與舒適。",
+                link: "./news-page.html",
+                imgName: "product-5.jpg",
+            },
+            {
+                id: 8,
+                date: "2023.10.01",
+                type: "專訪報導",
+                shortTitle: "關於品牌創辦人",
+                longTitle: "關於品牌創辦人　｜　 堅持 Lume Fragrance 品牌理念，創造顧客的專屬儀式感",
+                content: "進入「Healing Life」的領域，女性在這個快節奏的時代裡，利用香氛尋找療癒與平靜。每一瓶香水都是一場私密的心靈之旅，讓每位女性都能在外展現創造力和堅強的同時，尋找內心的寧靜與療癒。",
+                link: "./news-page.html",
+                imgName: "product-6.jpg",
+            },
+            {
+                id: 9,
+                date: "2023.08.01",
+                type: "商品情報",
+                shortTitle: "玫瑰面膜",
+                longTitle: "玫瑰面膜　｜　沉浸玫瑰的香氛中，享受來自大自然的呵護，打造柔嫩健康的肌膚",
+                content: "玫瑰面膜甄選珍貴玫瑰精華，結合多種天然保濕成分，富含抗氧化劑，提升肌膚彈性，撫平細紋，打造柔嫩光滑的健康肌膚。",
+                link: "./news-page.html",
+                imgName: "product-7.jpg",
+            },
+            {
+                id: 10,
+                date: "2023.07.01",
+                type: "新品上市",
+                shortTitle: "山茶花香氛蠟燭",
+                longTitle: "山茶花香氛蠟燭　｜　2023 夏季新選擇，讓您的生活充滿花香氣息",
+                content: "點亮山茶花香氛蠟燭，讓空氣充滿優雅的花香中，為您創造一個寧靜而溫馨的環境。這款香氛蠟燭以山茶花的清新香氣為主調，融合了大自然的純淨精華，為您帶來舒適與放鬆的愉悅感受。",
+                link: "./news-page.html",
+                imgName: "3D-1-s.png",
+            },
+            {
+                id: 11,
+                date: "2023.02.28",
+                type: "商品情報",
+                shortTitle: "神聖森林香水",
+                longTitle: "神聖森林香水　｜　 2023 春天最適合的香調！讓您感受以大自然的沉穩氣息",
+                content: "神聖森林香水融合了大自然的精華，捕捉了森林深處的清新芬芳，帶您走進一場神秘的旅程，為您帶來一份平靜與寧靜。",
+                link: "./news-page.html",
+                imgName: "3D-2-s.png",
+            },
+            {
+                id: 12,
+                date: "2023.06.10",
+                type: "專訪報導",
+                shortTitle: "門市空間打造",
+                longTitle: "門市空間打造　｜　 Lume Fragrance 創造舒適的空間感，讓您放鬆挑選喜歡的香調",
+                content: "我們致力於創建一個獨特而引人入勝的門市空間，安心舒適的空間感，讓每一位顧客放鬆挑選喜歡的香調。",
+                link: "./news-page.html",
+                imgName: "3D-3-s.png",
+            },
+            {
+                id: 13,
+                date: "2023.05.01",
+                type: "商品情報",
+                shortTitle: "娜拉香水",
+                longTitle: "娜拉香水　｜　 感受費洛蒙系列的獨特魅力，讓鮮明香氣圍繞著您的感官。",
+                content: "費洛蒙系列是專為現代自信女性而設計，釋放出迷人的魅力及自信的氣場，讓您在人群中獨具吸引力。",
+                link: "./news-page.html",
+                imgName: "product-6.jpg",
+            },
+            {
+                id: 14,
+                date: "2023.04.22",
+                type: "商品情報",
+                shortTitle: "薰衣草唇油",
+                longTitle: "薰衣草唇油　｜　 2023 春天的獨特選擇，感受薰衣草的療癒香氣",
+                content: "薰衣草唇油為溫和滋潤護理產品，精心選用天然薰衣草精油，結合多種植物油精華，能夠深層滋潤雙唇，修護乾燥裂紋，散發出自然的健康光澤。",
+                link: "./news-page.html",
+                imgName: "product-7.jpg",
+            },
+            {
+                id: 15,
+                date: "2023.03.12",
+                type: "新品上市",
+                shortTitle: "黑醋栗面膜",
+                longTitle: "黑醋栗面膜　｜　結合多種天然保濕成分，為您的肌膚帶來奢華的護理體驗！",
+                content: "黑醋栗面膜是一款專為肌膚提供深層修護和滋潤的面膜產品。採用天然黑醋栗提取物和多種滋潤成分，能夠滲透肌膚底層，改善暗沉無光肌膚，讓您的肌膚重獲光澤與彈性。",
+                link: "./news-page.html",
+                imgName: "product-4.jpg",
+            },
+        ]
 
-            // 元件：文章卡片 
-            const ArticleCard = ({ className, imgName, imgAlt, title, content, date, pageLink }) => {
-                return (
-                    <article className={`article-card ${className}`}>
-                        <a href={pageLink}>
-                            <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
-                            <div className="content">
-                                <h2 className="ch-sans-thin-l">{title}</h2>
-                                <p className="line-clamp ch-sans-light-s">{content}</p>
-                                <p className="date en-sans-light-m">{date}</p>
-                                <div className="btn-s ch-sans-thin-l">
-                                    <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
-                                </div>
+        // 元件：文章卡片 
+        const ArticleCard = ({ className, imgName, imgAlt, title, content, date, pageLink }) => {
+            return (
+                <article className={`article-card ${className}`}>
+                    <a href={pageLink}>
+                        <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
+                        <div className="content">
+                            <h2 className="ch-sans-thin-l">{title}</h2>
+                            <p className="line-clamp ch-sans-light-s">{content}</p>
+                            <p className="date en-sans-light-m">{date}</p>
+                            <div className="btn-s ch-sans-thin-l">
+                                <span>more</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
                             </div>
-                        </a>
-                    </article>
-                )
-            }
+                        </div>
+                    </a>
+                </article>
+            )
+        }
+
+        // 元件：文章卡片區塊
+        const ArticleBox = () => {
+
+            // 篩選需要帶入的文章 => 去除活動消息類別後的前 4 個
+            const filteredArticles = articleList.filter(article => article.type !== "活動消息").slice(0, 4);
 
             return (
                 <div className="articles-box">
                     {
+                        filteredArticles.map((article, index) => {
+                            return <ArticleCard key={article.id} className={(index % 2 === 0) ? "up" : "down"} imgName={article.imgName} imgAlt={article.shortTitle} title={article.shortTitle} content={article.content} date={article.date} pageLink={article.pageLink} />
+                        })
+                    }
+                </div>
+            )
+        }
+
+        // 元件：每一條文章
+        const ArticleRow = ({ articleDate, articleType, articleTitle, articleLink }) => {
+            return (
+                <a className="article-row ch-sans-light-m" href={articleLink}>
+                    <div>
+                        <p>{articleDate}</p>
+                        <h2>{articleType}</h2>
+                    </div>
+                    <p>{articleTitle}</p>
+                </a>
+            )
+        }
+
+        // 元件：每一頁文章
+        const ArticlePage = ({ pageNumber, isActive, startId, endId }) => {
+            return (
+                <div id={`article-page${pageNumber}`} className={`article-page ${isActive ? "show" : ""}`}>
+                    {
                         articleList.map((article) => {
-                            return <ArticleCard key={article.id} className={article.className} imgName={article.imgName} imgAlt={article.imgAlt} title={article.title} content={article.content} date={article.date} pageLink={article.pageLink} />
+                            if (article.id >= startId && article.id <= endId) {
+                                return <ArticleRow key={article.id} articleDate={article.date} articleType={article.type} articleTitle={article.longTitle} articleLink={article.link} />
+                            }
                         })
                     }
                 </div>
@@ -147,155 +292,35 @@
 
         // 元件：文章列表
         const ArticleListBox = () => {
-            // 陣列：文章列表內容
-            const articleListAll = [
-                {
-                    id: 1,
-                    date: "2024.04.15",
-                    type: "活動消息",
-                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 2,
-                    date: "2024.04.01",
-                    type: "新品上市",
-                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 3,
-                    date: "2024.03.01",
-                    type: "活動消息",
-                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 4,
-                    date: "2024.02.25",
-                    type: "商品情報",
-                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 5,
-                    date: "2024.01.16",
-                    type: "專訪報導",
-                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 6,
-                    date: "2023.12.16",
-                    type: "活動消息",
-                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 7,
-                    date: "2023.11.28",
-                    type: "商品情報",
-                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 8,
-                    date: "2023.10.01",
-                    type: "專訪報導",
-                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 9,
-                    date: "2023.08.15",
-                    type: "活動消息",
-                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 10,
-                    date: "2023.07.01",
-                    type: "新品上市",
-                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 11,
-                    date: "2023.06.10",
-                    type: "專訪報導",
-                    title: "關於品牌起源　｜　 Lume Fragrance 的獨特理念，堅持打造高質感香水，創造專屬儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 12,
-                    date: "2023.05.15",
-                    type: "活動消息",
-                    title: "母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折，精美禮盒包裝 ",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 13,
-                    date: "2023.04.22",
-                    type: "新品上市",
-                    title: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 14,
-                    date: "2023.03.12",
-                    type: "活動消息",
-                    title: "Lume 年中慶　｜　3.01 ~ 03.31　全館不限商品9折優惠，加入會員限時贈品",
-                    link: "./news-page.html",
-                },
-                {
-                    id: 15,
-                    date: "2023.02.28",
-                    type: "商品情報",
-                    title: "山茶花香水　｜　 2024 春天最適合的香調！讓您感受以花香打造的清新氣",
-                    link: "./news-page.html",
-                },
-            ]
+            const [activePage, setActivePage] = useState(1);
+            const showArticlePage = (pageNumber) => setActivePage(pageNumber);
 
-            // 元件：
-            const ArticleRow = ({ articleListDate, articleListType, articleListTitle, articleListLink }) => {
-                return (
-                    <a className="article-row ch-sans-light-m" href={articleListLink}>
-                        <div>
-                            <p>{articleListDate}</p>
-                            <h2>{articleListType}</h2>
-                        </div>
-                        <p>{articleListTitle}</p>
-                    </a>
-                )
-            }
+            const changePage = (changeNumber) => {
+                const totalPages = Math.ceil(articleList.length / 5);
+                let newPageNumber = activePage + changeNumber;
 
-            const ArticlePage = ({pageNumber, toggleClass, startId, endId}) => {
-                return (
-                    <div id={`article-page${pageNumber}`} className={`article-page ${toggleClass}`}>
-                        {
-                            articleListAll.map((articleEach) => {
-                                if (articleEach.id >= startId && articleEach.id <= endId) {
-                                    return <ArticleRow key={articleEach.id} articleListDate={articleEach.date} articleListType={articleEach.type} articleListTitle={articleEach.title} articleListLink={articleEach.link} />
-                                }
-                            })
-                        }
-                    </div>
-                )
-            }
+                if (newPageNumber < 1) {
+                    newPageNumber = totalPages;
+                } else if (newPageNumber > totalPages) {
+                    newPageNumber = 1;
+                }
+
+                setActivePage(newPageNumber);
+            };
 
             return (
 
                 <div className="article-list">
-                    <ArticlePage pageNumber={1} toggleClass="show" startId={1} endId={5}/>
-                    <ArticlePage pageNumber={2} toggleClass="" startId={6} endId={10}/>
-                    <ArticlePage pageNumber={3} toggleClass="" startId={11} endId={15}/>
+                    <ArticlePage pageNumber={1} isActive={activePage === 1} startId={1} endId={5}/>
+                    <ArticlePage pageNumber={2} isActive={activePage === 2} startId={6} endId={10} />
+                    <ArticlePage pageNumber={3} isActive={activePage === 3} startId={11} endId={15} />
 
                     <div className="pagination serif-medium-s ">
-                        {/*<div className="arrow-prev"><img src="./images/icon-arrow-grey.svg" alt="" /></div>*/}
-                        <div className="page-number active" onClick={(event) => showArticlePage(event.target, '#article-page1')}>1</div>
-                        <div className="page-number" onClick={(event) => showArticlePage(event.target, '#article-page2')}>2</div>
-                        <div className="page-number" onClick={(event) => showArticlePage(event.target, '#article-page3')}>3</div>
-                        {/*<div className="arrow-next"><img className="arrow-right" src="./images/icon-arrow-grey.svg" alt="" /></div>*/}
+                        <div className="arrow-prev" onClick={() => changePage(-1)}><img src="./images/icon-arrow-grey.svg" alt="" /></div>
+                        <div className={`page-number ${activePage === 1 ? "active" : ""}`} onClick={() => showArticlePage(1)}>1</div>
+                        <div className={`page-number ${activePage === 2 ? "active" : ""}`} onClick={() => showArticlePage(2)}>2</div>
+                        <div className={`page-number ${activePage === 3 ? "active" : ""}`} onClick={() => showArticlePage(3)}>3</div>
+                        <div className="arrow-next" onClick={() => changePage(1)}><img className="arrow-right" src="./images/icon-arrow-grey.svg" alt="" /></div>
                     </div>
                 </div>
             )
@@ -415,7 +440,6 @@
                                 <TitleM sectionCn="文章專欄" sectionEn="Articles" />
                                 <ArticleBox />
                                 <ArticleListBox />
-
                             </section>
 
                         </div>
