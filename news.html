@@ -71,22 +71,104 @@
             )
         }
 
+        //-------------------活動消息輪播-------------------
+        // 單個活動消息
+        const EventBox = ({ className, eventLink, eventDate, eventTitle, eventContent }) => {
+            return (
+                <a className={className} href={eventLink}>
+                    <div>
+                        <div className="serif-medium-m">
+                            <p>{eventDate}</p>
+                            <h2>{eventTitle}</h2>
+                            <p>{eventContent}</p>
+                        </div>
+                        <BtnWhite text="more" />
+                    </div>
+                </a>
+            )
+        }
+
+        const CarouselEvent = () => {
+            const [currentEvent, setCurrentEvent] = useState(0);
+
+            // 建立活動內容陣列 => 使用 map 迴圈跑輪播和指示長條
+            const eventList = [
+                {
+                    id: 1,
+                    className: "event1",
+                    date: "4.28 ~ 5.15",
+                    title: "母親節獻禮優惠",
+                    content: "香水類 限時7折",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 2,
+                    className: "event2",
+                    date: "4.01 ~ 4.30",
+                    title: "Lume 年中慶",
+                    content: "全館不限商品9折",
+                    link: "./news-page.html",
+                },
+                {
+                    id: 3,
+                    className: "event3",
+                    date: "3.01 ~ 5.31",
+                    title: "春季限定好禮",
+                    content: "消費即送面膜1張",
+                    link: "./news-page.html",
+                },
+            ]
+
+            // 播放前一張／後一張的函式
+            const prevEvent = () => {
+                setCurrentEvent((currentEvent - 1 + eventList.length) % eventList.length);
+            }
+            const nextEvent = () => {
+                setCurrentEvent((currentEvent + 1) % eventList.length);
+            }
+
+            // useEffect：每 3 秒播放下一張 => 當 [currentEvent] 變動時，會重新執行函式
+            useEffect(() => {
+                const intervalIdEvent = setInterval(nextEvent, 3000);
+                // return 的函式，React 將在下次執行 effect 前執行，清除前一個 render 的 effect
+                return () => { clearInterval(intervalIdEvent) };
+            }, [currentEvent]);
+
+            return (
+                <>
+                    <div className="carousel-event">
+                        {
+                            eventList.map((event, index) => {
+                                return <EventBox key={event.id} className={`events-box ${index === currentEvent ? "active" : ""} ${event.className}`} eventLink={event.link} eventDate={event.date} eventTitle={event.title} eventContent={event.content} />
+                            })
+                        }
+                        <div className="navigation events">
+                            {
+                                eventList.map((element, index) => {
+                                    return (
+                                        <span
+                                            key={index}
+                                            className={`indicator ${index === currentEvent ? "active" : ""}`}
+                                            onClick={() => { setCurrentEvent(index); }}
+                                        ></span>
+                                    )
+                                })
+                            }
+                        </div>
+                        <button className="btn-prev" onClick={prevEvent}><img src="./images/icon-arrow.svg" alt="" /></button>
+                        <button className="btn-next" onClick={nextEvent}><img src="./images/icon-arrow.svg" alt="" /></button>
+
+                    </div>
+                </>
+            )
+        }
+
         // -------------------文章專欄---------------------
         // 陣列：文章列表內容
         const articleList = [
             {
                 id: 1,
                 date: "2024.04.15",
-                type: "活動消息",
-                shortTitle: "母親節獻禮",
-                longTitle: "母親節獻禮優惠　｜　4.28 ~ 5.15 香水類商品限時7折，加贈精美禮盒包裝",
-                content: "母親節是我們表達對媽媽深厚愛意的最佳時機。今年母親節，讓我們以一瓶充滿愛與溫馨的香水，為媽媽送上最真摯的祝福。香水不僅是一種禮物，更是一種心意的傳達，讓她在生活中的每一瞬間都能感受到您的陪伴與關愛。",
-                link: "./news-page.html",
-                imgName: "bg-events.jpg",
-            },
-            {
-                id: 2,
-                date: "2024.04.10",
                 type: "新品上市",
                 shortTitle: "高貴工藝針管香水",
                 longTitle: "高貴工藝針管香水　｜　春末夏初的新選擇，讓您擁有細緻工藝的儀式感",
@@ -95,14 +177,24 @@
                 imgName: "3D-2-s.png",
             },
             {
+                id: 2,
+                date: "2024.04.02",
+                type: "商品情報",
+                shortTitle: "玫瑰面膜",
+                longTitle: "玫瑰面膜　｜　沉浸玫瑰的香氛中，享受來自大自然的呵護，打造柔嫩健康的肌膚",
+                content: "玫瑰面膜甄選珍貴玫瑰精華，結合多種天然保濕成分，富含抗氧化劑，提升肌膚彈性，撫平細紋，打造柔嫩光滑的健康肌膚。",
+                link: "./news-page.html",
+                imgName: "product-7.jpg",
+            },
+            {
                 id: 3,
                 date: "2024.03.15",
-                type: "活動消息",
-                shortTitle: "Lume 年中慶",
-                longTitle: "Lume 年中慶　｜　4.01 ~ 04.30 全館不限商品9折優惠，加入會員限時贈品",
-                content: "一年一度的年中慶正式開啟，多重好禮等你來拿！快來加入 Lume 會員，享受精選好禮。",
+                type: "新品上市",
+                shortTitle: "杏桃花蜂蜜擴香",
+                longTitle: "杏桃花蜂蜜室內擴香　｜　 杏桃花與蜂蜜的完美結合，讓甜美香氣環繞您的生活空間",
+                content: "杏桃花蜂蜜擴香融合了自然的果香與蜂蜜的溫潤，營造出一個甜蜜、溫馨的居家氛圍，不僅能提升空間品味，更帶給您心靈的愉悅與舒適。",
                 link: "./news-page.html",
-                imgName: "bg-events.jpg",
+                imgName: "product-5.jpg",
             },
             {
                 id: 4,
@@ -138,9 +230,9 @@
                 id: 7,
                 date: "2023.11.28",
                 type: "商品情報",
-                shortTitle: "杏桃花蜂蜜擴香",
-                longTitle: "杏桃花蜂蜜室內擴香　｜　 秋天最適合的香調，讓您沉浸於甜美的花香氣息",
-                content: "杏桃花與蜂蜜的完美結合，讓甜美香氣環繞您的生活空間。杏桃花蜂蜜擴香融合了自然的果香與蜂蜜的溫潤，營造出一個甜蜜、溫馨的居家氛圍，不僅能提升空間品味，更帶給您心靈的愉悅與舒適。",
+                shortTitle: "杏桃花蜂蜜蠟燭",
+                longTitle: "杏桃花蜂蜜香氛蠟燭　｜　 秋天最適合的香調，讓您沉浸於甜美花香與蜂蜜的完美結合",
+                content: "當杏桃花邂逅甜美的蜂蜜，這款蠟燭選用天然蜂蠟與高品質的杏桃花精油製成，無添加任何人工香料，為您帶來最純粹、自然的嗅覺享受。",
                 link: "./news-page.html",
                 imgName: "product-5.jpg",
             },
@@ -158,9 +250,9 @@
                 id: 9,
                 date: "2023.08.01",
                 type: "商品情報",
-                shortTitle: "玫瑰面膜",
-                longTitle: "玫瑰面膜　｜　沉浸玫瑰的香氛中，享受來自大自然的呵護，打造柔嫩健康的肌膚",
-                content: "玫瑰面膜甄選珍貴玫瑰精華，結合多種天然保濕成分，富含抗氧化劑，提升肌膚彈性，撫平細紋，打造柔嫩光滑的健康肌膚。",
+                shortTitle: "薰衣草面膜",
+                longTitle: "薰衣草面膜　｜　在一天的忙碌後，讓薰衣草面膜帶您進入寧靜與放鬆的世界",
+                content: "薰衣草面膜特別選用優質的薰衣草精油與天然成分，為您的肌膚提供深層滋養和修復，讓您享受專業級的護膚體驗。",
                 link: "./news-page.html",
                 imgName: "product-7.jpg",
             },
@@ -227,10 +319,10 @@
         ]
 
         // 元件：文章卡片 
-        const ArticleCard = ({ className, imgName, imgAlt, title, content, date, pageLink }) => {
+        const ArticleCard = ({ className, imgName, imgAlt, title, content, date, link }) => {
             return (
                 <article className={`article-card ${className}`}>
-                    <a href={pageLink}>
+                    <a href={link}>
                         <img className="article-img" src={`./images/${imgName}`} alt={imgAlt} />
                         <div className="content">
                             <h2 className="ch-sans-thin-l">{title}</h2>
@@ -255,7 +347,7 @@
                 <div className="articles-box">
                     {
                         filteredArticles.map((article, index) => {
-                            return <ArticleCard key={article.id} className={(index % 2 === 0) ? "up" : "down"} imgName={article.imgName} imgAlt={article.shortTitle} title={article.shortTitle} content={article.content} date={article.date} pageLink={article.pageLink} />
+                            return <ArticleCard key={article.id} className={(index % 2 === 0) ? "up" : "down"} imgName={article.imgName} imgAlt={article.shortTitle} title={article.shortTitle} content={article.content} date={article.date} link={article.link} />
                         })
                     }
                 </div>
@@ -311,7 +403,7 @@
             return (
 
                 <div className="article-list">
-                    <ArticlePage pageNumber={1} isActive={activePage === 1} startId={1} endId={5}/>
+                    <ArticlePage pageNumber={1} isActive={activePage === 1} startId={1} endId={5} />
                     <ArticlePage pageNumber={2} isActive={activePage === 2} startId={6} endId={10} />
                     <ArticlePage pageNumber={3} isActive={activePage === 3} startId={11} endId={15} />
 
@@ -386,8 +478,10 @@
                                     <img className="banner-logo" src="./images/LOGO-11_A.png" alt="Lume Fragrance" />
                                 </div>
                                 <div className="title-l">
-                                    <h2 className="en-sans-light-xl">News</h2>
-                                    <h1 className="serif-medium-xxl">最新消息</h1>
+                                    <div>
+                                        <h2 className="en-sans-light-xl">News</h2>
+                                    </div>
+                                    <h1 className="serif-medium-xxl"><span>最新消息</span> </h1>
                                     <img src="./images/gradient.png" alt="漸層" />
                                 </div>
                             </div>
@@ -404,36 +498,29 @@
 
                             <section id="events">
                                 <TitleM sectionCn="活動訊息" sectionEn="Events" />
-                                <a className="events-box" href="./news-page.html">
-                                    <div>
-                                        <div className="serif-medium-m">
-                                            <p>5.1 ~ 5.15</p>
-                                            <h2>母親節獻禮優惠</h2>
-                                            <p>香水類 限時7折</p>
-                                        </div>
-                                        <BtnWhite text="more" />
-                                    </div>
-                                </a>
+                                <CarouselEvent />
                             </section>
 
                             <section id="members-only">
                                 <TitleM sectionCn="會員獨享" sectionEn="Members Only" />
-                                <a className="members-box" href="./membership.html">
-                                    <div className="serif-medium-m">
-                                        <div className="star">
-                                            <img src="./images/star.svg" alt="星星" />
-                                            <span className="star-line"></span>
+                                <div className="members-outer-box">
+                                    <a className="members-box" href="./membership.html">
+                                        <div className="serif-medium-m">
+                                            <div className="star">
+                                                <img src="./images/star.svg" alt="星星" />
+                                                <span className="star-line"></span>
+                                            </div>
+                                            <h2>加入會員 享多重優惠</h2>
+                                            <p>單筆結帳 最高85折</p>
+                                            <p>生日禮券 最高$800</p>
+                                            <div className="star star-down">
+                                                <span className="star-line"></span>
+                                                <img src="./images/star.svg" alt="星星" />
+                                            </div>
                                         </div>
-                                        <h2>加入會員 享多重優惠</h2>
-                                        <p>單筆結帳 最高85折</p>
-                                        <p>生日禮券 最高$800</p>
-                                        <div className="star star-down">
-                                            <span className="star-line"></span>
-                                            <img src="./images/star.svg" alt="星星" />
-                                        </div>
-                                    </div>
-                                    <BtnWhite text="會員制度" />
-                                </a>
+                                        <BtnWhite text="會員制度" />
+                                    </a>
+                                </div>
                             </section>
 
                             <section id="articles">
