@@ -144,8 +144,8 @@ table {
     --white: #fff;
     --black: #000;
     --font-grey: #666;
-    /* 主色調 
-    --primary-color:; */
+    /* 主色調 */
+    --primary-color: #88cfee; 
     /* 背景漸層 */
     --gradient:
         linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
@@ -603,6 +603,7 @@ section {
 .title-l h2 {
     position: relative;
     z-index: 2;
+    overflow: hidden;
 }
 
 .title-l h2::after {
@@ -610,9 +611,13 @@ section {
     height: 68px;
     margin: 40px 0 32px;
     display: block;
-    position: relative;
     z-index: 2;
     border-right: 1px solid var(--font-grey);
+}
+
+.title-l h1 span {
+    display: block;
+    animation: titleMove 1s 0.3s both;
 }
 
 .title-l img {
@@ -623,6 +628,11 @@ section {
     object-fit: fill;
     opacity: 0.6;
     transform: rotate(250deg);
+}
+
+@keyframes titleMove{
+    from {transform: translateY(100%)}
+    to {transform: translateY(0)}
 }
 
 
@@ -819,12 +829,12 @@ section {
     mix-blend-mode: overlay;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.8s;
+    transition: width 0.8s;
 }
 
 .events-box:hover:after,
 .members-box:hover::after {
-    width: 120%
+    width: 120%;
 }
 
 .events-box>div,
@@ -863,7 +873,7 @@ section {
     left: -100%;
     top: 0;
     background: var(--gradient);
-    transition: all 0.5s;
+    transition: left 0.5s;
 }
 
 .events-box:hover .btn-white::after,
@@ -894,16 +904,50 @@ section {
 }
 
 /* 活動訊息區 */
+.carousel-event {
+    position: relative;
+}
+
 .events-box {
+    display: none;
+}
+
+.events-box.active {
+    display: flex;
+    animation: slideFade 3s both;
+}
+
+.event1 {
     align-items: flex-end;
     background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 65%),
-        url("../images/bg-events.jpg") center;
+        url("../images/bg-events.jpg");
     background-size: cover;
+    background-position: right;
+}
+
+.event2 {
+    padding: 0 12%;
+    /* align-items: flex-end; */
+    background:
+        linear-gradient(90deg, rgba(136, 207, 238, 0.5), rgba(136, 207, 238, 0.1) 65%),
+        url("../images/bg-events2.jpg") ;
+    background-size: cover;
+    background-position: top right;
+}
+
+.event3 {
+    padding: 0 12%;
+    align-items: flex-end;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 65%),
+        url("../images/bg-events3.jpg") ;
+    background-size: cover;
+    background-position: left bottom 5% ;
 }
 
 .events-box h2 {
-    width: auto;
+    width: fit-content;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--font-grey);
 }
@@ -916,6 +960,11 @@ section {
         linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)),
         url("../images/bg-members-only.jpg") center;
     background-size: cover;
+}
+
+.members-outer-box {
+    overflow: hidden;   /* 內層 overflow: hidden 失效 */
+    border-radius: 100px 0 100px 0;
 }
 
 .members-box h2,
@@ -947,7 +996,18 @@ section {
 
 @media (max-width: 1200px) {
 
-    .events-box,
+    .navigation.events {
+        bottom: 24px;
+    }   
+
+    .event1 {
+        padding: 0 6%;
+    }
+    
+    .event2, .event3 {
+        padding: 0 10%;
+    }
+
     .members-box {
         padding: 0 4%;
     }
@@ -961,12 +1021,22 @@ section {
     .members-box .btn-white {
         margin-top: 8px;
     }
-
 }
 
 @media (max-width: 992px) {
 
-    .events-box,
+    .event1 {
+        padding: 0 10%;
+    }
+
+    .event2, .event3 {
+        padding: 0 12%;
+    }
+
+    .navigation.events {
+        bottom: 16px;
+    }   
+
     .members-box {
         padding: 0 6%;
     }
@@ -1014,7 +1084,6 @@ section {
         margin: 0 8px;
         bottom: 16px;
     }
-
 }
 
 @media (max-width: 576px) {
@@ -1026,16 +1095,24 @@ section {
         background-size: 120%;
     }
 
-    .events-box {
-        background-position: right;
+    .event1 {
+        padding: 0 8%;
+    }
+
+    .event2 {
+        background-position: top left;
+    }
+
+    .event3 {
+        background-position: right 20% bottom;
     }
 
     .members-box {
         background-position: left;
     }
 
-    .events-box {
-        padding: 0 4%;
+    .members-outer-box {
+        border-radius: 60px 0 60px 0;
     }
 
     .events-box p,
@@ -1096,7 +1173,6 @@ section {
         margin: 0 2px;
         bottom: 10px;
     }
-
 }
 
 /* 文章專欄區 */
@@ -1312,7 +1388,7 @@ section {
     white-space: nowrap;
 }
 
-.article-row >p {
+.article-row>p {
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -1400,6 +1476,7 @@ section {
 }
 
 @media (max-width: 992px) {}
+
 @media (max-width: 768px) {}
 
 @media (max-width: 576px) {
@@ -1407,19 +1484,22 @@ section {
         padding: 3vh 0;
     }
 
-    .article-row >p {
+    .article-row>p {
         margin-top: 1.2vh;
         white-space: wrap;
         text-align: justify;
-        display: -webkit-box;	/*多行省略*/
-        -webkit-box-orient: vertical;	/*多行省略*/
-        -webkit-line-clamp: 2;	/*多行省略*/
+        display: -webkit-box;
+        /*多行省略*/
+        -webkit-box-orient: vertical;
+        /*多行省略*/
+        -webkit-line-clamp: 2;
+        /*多行省略*/
     }
 
     .pagination {
         padding-top: 16px;
     }
-    
+
     .arrow-prev,
     .arrow-next,
     .page-number {
