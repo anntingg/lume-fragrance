@@ -620,7 +620,7 @@ section {
 
 .title-l h2 span {
     display: block;
-    animation: titleMove 1s 1s both;
+    animation: titleMove 1s 0.8s both;
 }
 
 /* .title-l h2::after {
@@ -739,7 +739,7 @@ section {
     align-items: center;
     position: relative;
     flex: 1;
-    animation: coverFade 1s 1s both;
+    animation: coverFade 1s 0.8s both;
 }
 
 .anchor::before,
