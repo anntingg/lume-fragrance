@@ -37,7 +37,7 @@ nav {
     position: absolute;
     /* 使用固定定位 */
     z-index: 1000;
-    margin: 40px 50px;
+    margin: 17px;
     right: 0;
     display: flex;
     justify-content: center;
@@ -87,25 +87,17 @@ nav {
 
 .menu-label img {
     display: block;
-    /* 确保图像显示为块级元素，以便设置其宽度和高度 */
     margin: 0 auto;
-    /* 水平居中 */
 }
 
 .menu-label::before {
     content: "MENU";
     display: block;
-    /* 将伪元素设置为块级元素 */
     text-align: center;
-    /* 文本水平居中 */
     position: absolute;
-    /* 相对于父元素 .menu-label 定位 */
     bottom: -20px;
-    /* 距离父元素底部的距离，根据需要调整 */
     left: 0;
-    /* 水平居中 */
     right: 0;
-    /* 水平居中 */
 }
 
 
@@ -137,7 +129,7 @@ nav {
     z-index: 999;
     /* 畫面靠右 */
     right: 0;
-    margin: 30px;
+    margin: 10px;
     padding: 0 30px;
 
 
@@ -244,11 +236,11 @@ li .enText {
 /* 平板 (769-) 992px */
 @media (max-width: 992px) {
     .menu {
-        width: 55%;
+        width: 43%;
     }
 
     input:checked~.menu {
-        width: 55%;
+        width: 43%;
         height: 80%;
     }
 }
@@ -256,12 +248,12 @@ li .enText {
 /* 手機 (577-) 768px */
 @media (max-width: 768px) {
     .menu {
-        width: 55%;
+        width: 53%;
     }
 
     input:checked~.menu {
         height: 80%;
-        width: 55%;
+        width: 53%;
     }
 
 
