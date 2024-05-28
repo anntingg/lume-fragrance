@@ -548,7 +548,6 @@ section {
     to {transform: translateY(0)}
 }
 
-
 @keyframes coverFade {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -1760,7 +1759,12 @@ section {
     /* 高度寫在 RWD */
     margin-top: 10vh;
     position: relative;
+    animation: coverFade 1s both;
 }
+
+/* .banner-bg-p, .navigation, .btn-prev, .btn-next {
+    animation: coverFade 2s both;
+} */
 
 .banner-bg-p {
     width: 100%;
@@ -1899,6 +1903,7 @@ section {
     left: -120px;
     object-fit: fill;
     transform: rotate(250deg);
+    animation: coverFade 1s 0.8s both;
 }
 
 .banner-logo-p {
@@ -1908,6 +1913,7 @@ section {
     top: -28px;
     left: -56px;
     object-fit: contain;
+    animation: coverFade 1s 0.5s both;
 }
 
 @media (min-width: 1201px) {
@@ -2015,8 +2021,23 @@ section {
     flex: 1;
 }
 
+.title-p h2 {
+    overflow: hidden;
+}
+
+.title-p h2 span {
+    display: block;
+    animation: titleMove 1s 0.5s both;
+}
+
 .title-p h1 {
     margin-top: 4px;
+    overflow: hidden;
+}
+
+.title-p h1 span {
+    display: block;
+    animation: titleMove 1s both;
 }
 
 @media (max-width: 576px) {
