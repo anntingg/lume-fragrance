@@ -42,6 +42,41 @@
 
         const { useState, useEffect } = React;
 
+        // 元件：banner 圖取圓角
+        const BannerBox = () => {
+            const [shortValue, setshortValue] = useState(0);
+
+            useEffect(() => {
+
+                const handleShortValue = () => {
+                    // 設定 cover 圓角數值 => 取得高度和寬度
+                    const coverRadius = document.querySelector('.banner-box');
+                    const coverRadiusWidth = coverRadius.offsetWidth;
+                    const coverRadiusHeight = coverRadius.offsetHeight;
+
+                    // 取短邊 => 設定 CSS --short-value 數值 
+                    setshortValue(Math.min(coverRadiusWidth, coverRadiusHeight) - 1);
+                    coverRadius.style.setProperty("--short-value", shortValue + "px");
+                }
+
+                // 視窗改變時 => 重新抓取 shortValue 值
+                handleShortValue();
+                window.addEventListener("resize", handleShortValue);
+
+                // Cleanup 函式，下次執行前先清除
+                return () => {
+                    window.removeEventListener('resize', handleShortValue);
+                };
+            }, [shortValue]); 
+
+            return (
+                <div className="banner-box" >
+                    <img className="banner-bg" src="./images/banner-5.jpg" alt="香水" />
+                    <img className="banner-logo" src="./images/LOGO-11_A.png" alt="Lume Fragrance" />
+                </div >
+            )
+        }
+
         // 元件：錨點按鈕
         const Anchor = ({ sectionId, sectionCn }) => {
             return (
@@ -473,10 +508,7 @@
                         <div className="cover">
 
                             <div className="top-box">
-                                <div className="banner-box">
-                                    <img className="banner-bg" src="./images/banner-5.jpg" alt="香水" />
-                                    <img className="banner-logo" src="./images/LOGO-11_A.png" alt="Lume Fragrance" />
-                                </div>
+                                <BannerBox />
                                 <div className="title-l">
                                     <h2 className="en-sans-light-xl"><span>News</span></h2>
                                     <div className="title-line"><span></span></div>
