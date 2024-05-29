@@ -67,7 +67,7 @@
                 return () => {
                     window.removeEventListener('resize', handleShortValue);
                 };
-            }, [shortValue]); 
+            }, [shortValue]);
 
             return (
                 <div className="banner-box" >
@@ -283,7 +283,7 @@
             },
             {
                 id: 9,
-                date: "2023.08.01",
+                date: "2023.08.12",
                 type: "商品情報",
                 shortTitle: "薰衣草面膜",
                 longTitle: "薰衣草面膜　｜　在一天的忙碌後，讓薰衣草面膜帶您進入寧靜與放鬆的世界",
@@ -293,7 +293,7 @@
             },
             {
                 id: 10,
-                date: "2023.07.01",
+                date: "2023.07.18",
                 type: "新品上市",
                 shortTitle: "山茶花香氛蠟燭",
                 longTitle: "山茶花香氛蠟燭　｜　2023 夏季新選擇，讓您的生活充滿花香氣息",
@@ -303,7 +303,7 @@
             },
             {
                 id: 11,
-                date: "2023.02.28",
+                date: "2023.06.28",
                 type: "商品情報",
                 shortTitle: "神聖森林香水",
                 longTitle: "神聖森林香水　｜　 2023 春天最適合的香調！讓您感受以大自然的沉穩氣息",
@@ -422,8 +422,10 @@
             const [activePage, setActivePage] = useState(1);
             const showArticlePage = (pageNumber) => setActivePage(pageNumber);
 
+            const showArticles = 5;
+            const totalPages = Math.ceil(articleList.length / showArticles);
+            
             const changePage = (changeNumber) => {
-                const totalPages = Math.ceil(articleList.length / 5);
                 let newPageNumber = activePage + changeNumber;
 
                 if (newPageNumber < 1) {
@@ -438,9 +440,9 @@
             return (
 
                 <div className="article-list">
-                    <ArticlePage pageNumber={1} isActive={activePage === 1} startId={1} endId={5} />
-                    <ArticlePage pageNumber={2} isActive={activePage === 2} startId={6} endId={10} />
-                    <ArticlePage pageNumber={3} isActive={activePage === 3} startId={11} endId={15} />
+                    <ArticlePage pageNumber={1} isActive={activePage === 1} startId={1} endId={showArticles} />
+                    <ArticlePage pageNumber={2} isActive={activePage === 2} startId={showArticles + 1} endId={showArticles * 2} />
+                    <ArticlePage pageNumber={3} isActive={activePage === 3} startId={showArticles * 2 + 1} endId={showArticles * 3} />
 
                     <div className="pagination serif-medium-s ">
                         <div className="arrow-prev" onClick={() => changePage(-1)}><img src="./images/icon-arrow-grey.svg" alt="" /></div>

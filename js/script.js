@@ -10,6 +10,7 @@ const scrollToTop = () => {
     });
 };
 
+// Top 按鈕
 $(function () {
     $(window).scroll(function () {
 
@@ -33,7 +34,7 @@ $(function () {
         } else {
             $('.btn-top').removeClass("position");
         };       
-        */    
+        */
 
     });
 

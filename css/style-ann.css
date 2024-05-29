@@ -597,7 +597,7 @@ section {
     z-index: 3;
     object-fit: contain;
     mix-blend-mode: color-dodge;
-    animation: logoMove 1s both;
+    animation: logoMove 1.5s both;
 }
 
 

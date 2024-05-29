@@ -346,8 +346,6 @@ section {
     width: 100%;
 }
 
-
-
 #contact img {
     width: auto;
     display: inline-block;
@@ -356,20 +354,22 @@ section {
 
 #contact .contact-bg {
     width: 100%;
+    padding: 0;
     margin: auto auto;
     position: absolute;
     z-index: -1;
 }
 
 #contact .contact-bg img {
+    padding: 0;
     width: 100%;
+    height: 55rem;
 }
 
 #contact .list-box {
-    padding: 0 260px 0;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
-    width: 100%;
+    width: 1100px;
 }
 
 #contact .list-box .box {
@@ -402,39 +402,37 @@ section {
 
 /* RWD 斷點 */
 /* 電腦 1200px 以上 */
-@media (min-width: 1201px) {
-    #contact {
-        max-width: 1440px;
-        margin: 0 auto;
-    }
+/* @media (min-width: 1201px) {} */
 
+@media (max-width: 1200px) {
     #contact .list-box {
-        padding: 0 230px;
-        max-width: 1440px;
+        width: 85%;
     }
-
 }
 
 /* 平板 (769-) 992px */
 @media (max-width: 992px) {
-
     #contact {
-        width: 120%;
+        width: 80%;
+        margin: 0 auto;
     }
 
     #contact .contact-bg {
         bottom: 0;
-        width: 105%;
+        width: 100%;
     }
 
+    #contact .contact-bg {
+        display: none;
+    }
 
     #contact .list-box {
-        padding: 0 120px;
+        padding: 0;
         display: block;
     }
 
     #contact .list-box iframe {
-        width: 80%;
+        width: 100%;
     }
 }
 
@@ -444,18 +442,12 @@ section {
         width: 100%;
     }
 
-    #contact .contact-bg {
-        display: none;
-    }
-
-
     #contact .list-box {
-        padding: 0 60px;
         display: block;
     }
 
     #contact .list-box iframe {
-        width: 90%;
+        width: 100%;
     }
 }
 
@@ -470,7 +462,7 @@ section {
     }
 
     #contact .list-box {
-        padding: 0 20px;
+        padding: 0;
         display: block;
     }
 }
@@ -488,28 +480,32 @@ section {
 .background .from-bg-L {
     position: absolute;
     z-index: -1;
-    width: 12%;
+    width: 300px;
     left: 0;
     top: 15rem;
 }
 
 .background .from-line {
     width: 100%;
-    height: 10%;
-    margin: auto auto;
+    height: 20%;
+    margin: 0 auto;
     position: absolute;
     z-index: -3;
-    top: 1300px;
-    bottom: 0;
+    bottom: 10rem;
 }
 
 .background .from-bg-R {
     position: absolute;
     right: 0;
-    top: 90rem;
-    width: 12%;
+    width: 300px;
+    bottom: 0;
     /* 反轉圖片 */
     transform: scaleY(-1) scaleX(-1);
+}
+
+.background fieldset {
+    width: 80%;
+    margin: 0 auto;
 }
 
 /* title */
@@ -577,6 +573,17 @@ section {
     background-color: #F8F8F8;
     width: 100%;
     padding: 35px;
+    color: var(--font-grey);
+    border: 1px solid transparent;
+}
+
+.cover-form input[type="text"]:focus,
+.cover-form input[type="tel"]:focus,
+.cover-form input[type="email"]:focus {
+    border: 1px solid #89D1EF;
+    outline: none;
+    color: var(--font-grey);
+    background-color: var(--white);
 }
 
 /* 必填格設計 */
@@ -641,18 +648,24 @@ section {
 
 .cover-form fieldset form .box .lat-case textarea {
     margin-left: 50px;
-    width: 80%;
+    width: 85%;
     border: none;
     border-radius: 30px;
     background-color: #F8F8F8;
-
-    /* 調整內外邊距 */
+    color: var(--font-grey);
     padding: 40px;
-    /* margin: 0 120px; */
-
-    /* 設置文字框的垂直滾動條 */
     overflow-y: auto;
+    border: 1px solid transparent;
 }
+
+.cover-form .box .lat-case textarea:focus {
+    background-color: var(--white);
+    color: var(--font-grey);
+    outline: none;
+    border: 1px solid #89D1EF;
+}
+
+
 
 /* 性別 */
 .cover-form .box-male {
@@ -670,9 +683,10 @@ section {
 
 .cover-form .box-male .lat-radio {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 0 auto;
-    width: 35%;
+    max-width: 1000px;
+    width: 65%;
     position: absolute;
     left: 120px;
     right: 0;
@@ -731,6 +745,19 @@ section {
     background-position: 95% center;
     padding-right: 20px;
     background-color: #F8F8F8;
+    border: 1px solid transparent;
+}
+
+.cover-form select:focus {
+    border: 1px solid #89D1EF;
+    outline: none;
+    color: #89D1EF;
+    background-color: var(--white);
+}
+
+.cover-form select option {
+    background-color: var(--white);
+    color: var(--font-grey);
 }
 
 /* 隱私權政策 */
@@ -790,17 +817,57 @@ section {
 
 
 /* 按鈕 */
-.cover-form .submit input {
-    display: block;
-    width: 30%;
-    height: 50px;
+.cover-form fieldset form {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.cover-form fieldset form .submit {
+    width: 50%;
+    margin: 50px auto;
+    position: relative;
+}
+
+.cover-form fieldset form .submit input {
+    width: 100%;
+    height: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
     background: var(--gradient);
     border-radius: 99px 0 99px 0;
     border: none;
-    /* 將按鈕水平置中 */
-    margin: 50px auto;
-    /* 滑鼠滑上去後，會有鼠標的變化 */
     cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    font-family: "Noto Serif TC", serif;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    font-size: 20px;
+    color: #666;
+}
+
+.cover-form fieldset form .submit::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 99px 0 99px 0;
+    position: absolute;
+    top: 0;
+    background: var(--white);
+    transition: all 0.5s;
+}
+
+.cover-form fieldset form .submit:hover::after {
+    width: 100%;
+    height: 100%;
+    filter: brightness(120%);
+    box-shadow: .5px .5px 5px var(--font-grey);
 }
 
 
@@ -808,7 +875,7 @@ section {
 /* 電腦 1200px 以上 */
 @media (min-width: 1201px) {
     .cover-form {
-        margin: auto auto;
+        margin: 0 auto;
         max-width: 1440px;
     }
 }
@@ -819,12 +886,30 @@ section {
         width: 100%;
     }
 
-    .background fieldset {
-        position: relative;
-        left: 8rem;
-        width: 80%;
+    .background .from-bg-L {
+        left: 0;
+        width: 20%;
     }
 
+    .background .from-line {
+        display: none;
+    }
+
+    .background .from-bg-R {
+        width: 20%;
+        bottom: 0;
+        right: 0;
+    }
+
+    .background fieldset {
+        position: relative;
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .cover-form .box-male .lat-radio {
+        width: 80%;
+    }
 }
 
 /* 平板 (769-) 992px */
@@ -833,22 +918,9 @@ section {
         width: 100%;
     }
 
-    .background .from-bg-L {
-        width: 150px;
-    }
-
-    .background .from-line {
-        display: none;
-    }
-
-    .background .from-bg-R {
-        width: 150px;
-        top: 1500px;
-        left: 840px;
-    }
-
     .background fieldset {
-        width: 100%;
+        width: 90%;
+        margin: 0 auto;
     }
 
     .background fieldset .box-male {
@@ -856,8 +928,17 @@ section {
     }
 
     .background fieldset .box-male .lat-radio {
-        margin-left: 150px;
-        width: 50%;
+        width: 65%;
+    }
+
+    .background fieldset .box .lat-case #message {
+        margin-left: 60px;
+        width: 81.5%;
+    }
+
+    .background fieldset .submit #member-reset {
+        width: 100%;
+        padding: 0;
     }
 }
 
@@ -874,19 +955,18 @@ section {
     }
 
     .background fieldset {
-        width: 95%;
+        width: 75%;
         left: 0;
         margin: 0 auto;
-        left: 50px;
     }
 
-    .background fieldset .box-male .txt {
+    .background fieldset .box-male .gui .txt {
         margin-left: 35px;
     }
 
     .background fieldset .box-male .lat-radio {
         margin: 0;
-        width: 80%;
+        width: 70%;
     }
 
     .background fieldset .box {
@@ -907,6 +987,11 @@ section {
         height: 50px;
     }
 
+    .background fieldset .box .lat select {
+        margin-top: 20px;
+        padding: 25px 35px;
+    }
+
     .background fieldset .box .gui-case {
         position: relative;
         margin-top: 30px;
@@ -923,7 +1008,8 @@ section {
         width: 100%;
     }
 
-    .background fieldset .box .lat-case textarea {
+    .background fieldset .box .lat-case #message {
+        left: 0;
         margin: 0;
         width: 100%;
     }
@@ -932,241 +1018,49 @@ section {
         margin-top: 50px;
     }
 
+    .background fieldset .submit #member-reset {
+        margin: 30px auto;
+        width: 40%;
+        padding: 0;
+    }
+    .background fieldset .submit #member-reset {
+        width: 100%;
+        padding: 0;
+    }
 }
 
 /* 小型手機 576px 以下 */
 @media (max-width: 576px) {
-    .background {
-        width: 80%;
-    }
-
-    .background .from-bg-L,
-    .background .from-line,
-    .background .from-bg-R {
-        display: none;
-    }
-
     .background fieldset {
-        width: 100%;
+        width: 85%;
         margin: 0 auto;
-        left: 60px;
     }
 
     .background fieldset .box-male {
-        margin-bottom: 50px;
+        height: 100px;
     }
 
-    .background fieldset .box-male .gui .txt {
-        margin-left: 65px;
+    .background .title {
+        margin: 0;
     }
 
     .background fieldset .box-male .lat-radio {
-        width: 60%;
-    }
-
-    .background fieldset .box {
-        position: relative;
-        padding: 0 30px;
+        margin: 0;
         display: block;
     }
 
-    .background fieldset .box .lat {
+    .background fieldset .submit {
         width: 100%;
     }
 
-    .background fieldset .box .lat input {
-        margin: 20px 0;
-        height: 50px;
-    }
-
-    .background fieldset .box .gui-case {
-        position: relative;
-        margin-top: 30px;
-    }
-
-    .background fieldset .box .gui-case .txt-case {
-        top: 0;
-    }
-
-    .background fieldset .box .lat-case {
-        margin-left: 0;
-        margin-top: 40px;
-        padding-top: 35px;
+    .background fieldset .submit #member-reset {
         width: 100%;
+        padding: 0;
     }
 
-    .background fieldset .box .lat-case textarea {
-        margin: 0;
-        width: 100%;
-    }
-
-    .background fieldset .box-declare {
-        margin-top: 50px;
-    }
 }
 
 /* 聯絡我們-結束 */
-
-/* 頁尾 */
-footer {
-    display: flex;
-    background: var(--gradient);
-    height: 340px;
-    padding: 30px;
-
-    position: relative;
-}
-
-footer .bg {
-    object-fit: contain;
-    width: fit-content;
-    height: 100%;
-    position: absolute;
-    left: 80px;
-    top: 0;
-
-    opacity: 0.5;
-}
-
-footer .star-1 {
-    object-fit: contain;
-    width: fit-content;
-    height: 120px;
-    position: absolute;
-    right: 600px;
-    bottom: 20px;
-
-    opacity: 0.4;
-}
-
-footer .star-2 {
-    object-fit: contain;
-    width: fit-content;
-    height: 70px;
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
-
-    opacity: 0.4;
-}
-
-footer .star-3 {
-    object-fit: contain;
-    width: fit-content;
-    height: 35px;
-    position: absolute;
-    right: 100px;
-    bottom: 60px;
-
-    opacity: 0.4;
-}
-
-footer .star-4 {
-    object-fit: contain;
-    width: fit-content;
-    height: 35px;
-    position: absolute;
-    right: 30px;
-    top: 30px;
-
-    opacity: 0.4;
-}
-
-footer .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: 0 150px;
-    /* width: 1140px; */
-
-    z-index: 1;
-}
-
-footer .content img {
-    object-fit: contain;
-    width: 220px;
-}
-
-footer .center {
-    align-self: flex-end;
-}
-
-footer .social {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-footer .center img {
-    width: 30px;
-}
-
-footer .serif-medium-footer {
-    display: flex;
-    justify-content: space-between;
-    align-content: space-between;
-    flex-wrap: wrap;
-    width: 240px;
-    height: 140px;
-}
-
-footer .serif-medium-footer a:nth-child(odd) {
-    margin-right: 60px;
-}
-
-/* 電腦 1401px */
-@media (min-width: 1401px) {}
-
-/* 電腦 (993-) 1400px */
-@media (max-width: 1400px) {}
-
-/* 平板 (992-) 1200px */
-@media (max-width: 1200px) {
-    footer .content {
-        margin: 0 auto;
-        width: 80%;
-    }
-}
-
-/* 平板 (768-) 992px */
-@media (max-width: 992px) {
-    footer .content {
-        margin: 0 auto;
-        width: 90%;
-    }
-
-    footer .bg {
-        left: 0;
-    }
-}
-
-/* 小型手機 768px 以下 */
-@media (max-width: 768px) {
-    footer {
-        height: 450px;
-    }
-
-    footer .content {
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-
-    footer .content>img {
-        width: 100px;
-        order: 0;
-    }
-
-    footer .content .center {
-        align-self: center;
-        order: 3;
-    }
-
-    footer .content .serif-medium-footer {
-        margin: 30px 0;
-    }
-}
 
 
 /* RWD 斷點 */
@@ -1184,3 +1078,5 @@ footer .serif-medium-footer a:nth-child(odd) {
 
 /* 小型手機 576px 以下 */
 /* @media (max-width: 576px) {} */
+
+/* 刪除 footer */

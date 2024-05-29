@@ -62,6 +62,23 @@
 }
 
 /* 會員制度和最新消息 - cover 上方區塊 */
+/* 動畫 */
+@keyframes logoMove {
+    from { left: -300px;}
+    to { left: 0;}
+}
+
+@keyframes titleMove{
+    from {transform: translateY(100%)}
+    to {transform: translateY(0)}
+}
+
+@keyframes coverFade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* 左方圖 */
 .top-box {
     display: flex;
     justify-content: space-between;
@@ -69,14 +86,14 @@
     position: relative;
 }
 
-/* 左方圖 */
 .banner-box {
     width: 76%;
     aspect-ratio: 1.5 / 1;
     /* max-height: 540px; */
     position: relative;
     overflow: hidden;
-    border-radius: 0 0 90% 0;
+    border-radius: 0 0 var(--short-value, 0) 0;
+    animation: coverFade 1.5s both;
 }
 
 .banner-bg {
@@ -96,26 +113,18 @@
     mix-blend-mode: overlay;
 }
 
-
 .banner-logo {
     width: auto;
     height: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
     z-index: 3;
     object-fit: contain;
     mix-blend-mode: color-dodge;
-    animation: logoMove 1s 0.3s both;
+    animation: logoMove 1.5s both;
 }
 
-@keyframes logoMove {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}
 
 /* 右方標題 */
 .title-l {
@@ -126,19 +135,44 @@
 }
 
 .title-l h1,
-.title-l h2 {
+.title-l h2,
+.title-l >div {
     position: relative;
     z-index: 2;
+    overflow: hidden;
 }
 
-.title-l h2::after {
+.title-l h2 span {
+    display: block;
+    animation: titleMove 1s 0.8s both;
+}
+
+/* .title-l h2::after {
     content: "";
     height: 68px;
     margin: 40px 0 32px;
     display: block;
-    position: relative;
     z-index: 2;
     border-right: 1px solid var(--font-grey);
+} */
+
+.title-l .title-line {
+    height: 68px;
+    margin: 40px 0 32px;
+    z-index: 2;
+}
+
+.title-l .title-line span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-right: 1px solid var(--font-grey);
+    animation: titleMove 1s 0.5s both;
+}
+
+.title-l h1 span {
+    display: block;
+    animation: titleMove 1s both;
 }
 
 .title-l img {
@@ -149,6 +183,7 @@
     object-fit: fill;
     opacity: 0.6;
     transform: rotate(250deg);
+    animation: coverFade 1s 0.5s both;
 }
 
 
@@ -157,10 +192,10 @@
         width: 70%;
     }
 
-    .title-l h2::after {
+    .title-l .title-line {
         height: 56px;
         margin: 32px 0 24px;
-    } 
+    }
 
     .title-l img {
         width: 240px;
@@ -170,10 +205,24 @@
 }
 
 @media (max-width: 992px) {
-    .title-l h2::after {
+    .title-l .title-line {
         height: 40px;
         margin: 24px 0 16px;
-    } 
+    }
+
+    .title-l img {
+        width: 84%;
+        right: -60px;
+        bottom: -50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title-l img {
+        width: 80%;
+        right: -40px;
+        bottom: -40px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -192,7 +241,7 @@
         text-align: center;
     }
 
-    .title-l h2::after {
+    .title-l .title-line {
         display: none;
     }
 
@@ -214,6 +263,7 @@
     align-items: center;
     position: relative;
     flex: 1;
+    animation: coverFade 1s 0.8s both;
 }
 
 .anchor::before,
