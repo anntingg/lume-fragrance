@@ -195,8 +195,8 @@
                 )
             }
 
-            const App = () => {
-
+            // --------------- Main 整體內容 => 加入淡入效果---------------------
+            const MainContent = () => {
                 // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
                 const typeList = [
                     {
@@ -238,6 +238,86 @@
                         typeEn: "Facial Mask",
                     },
                 ]
+
+                // 滾動監聽 => 標題浮出效果
+                useEffect(() => {
+
+                    const moveTitles = document.querySelectorAll('.product-title a');
+
+                    // 設定偵測螢幕高度是否超過 cover 300px
+                    const handleFirstTitle = () => {
+                        const cover = document.querySelector(".cover");
+                        const coverHeight = cover.offsetHeight;
+
+                        if (window.innerHeight > coverHeight + 200) {
+                            moveTitles[0].classList.add("scroll-effect");
+                        } else {
+                            moveTitles[0].classList.remove("scroll-effect");
+                        }
+                    };
+                    handleFirstTitle();
+                    window.addEventListener("resize", handleFirstTitle);
+
+                    // 設定效果函式
+                    const handleTitleMove = () => {
+                        moveTitles.forEach(title => {
+                            const titleTop = title.getBoundingClientRect().top;
+
+                            if (titleTop < window.innerHeight - 200) {
+                                title.classList.add('scroll-effect');
+                            } else {
+                                title.classList.remove('scroll-effect');
+                            }
+                        });
+                    };
+                    window.addEventListener("scroll", handleTitleMove);
+
+                    return () => {
+                        window.removeEventListener("scroll", handleTitleMove);
+                        window.removeEventListener("resize", handleFirstTitle);
+                    };
+                }, []);
+
+                return (
+                    <main>
+                        <div className="cover">
+                            <div className="banner-box-p">
+                                <Carousel />
+                                <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
+                                <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
+                            </div>
+                            <div id="products" className="title-p">
+                                <h2 className="en-sans-light-l"><span>Products</span></h2>
+                                <h1 className="serif-medium-l"><span>商品總覽</span></h1>
+                            </div>
+                        </div>
+
+                        <div className="container products">
+                            <div className="anchor-p ch-sans-light-m">
+                                <AnchorP typeId="products" typeCn="商品總覽" typeEn="Products" />
+                                {
+                                    typeList.map((type) => {
+                                        return <AnchorP key={type.id} typeId={type.typeId} typeCn={type.typeCn} typeEn={type.typeEn} />
+                                    })
+                                }
+                            </div>
+
+                            <div className="all-products">
+                                {
+                                    typeList.map((type) => {
+                                        return <Section key={type.id} typeCn={type.typeCn} typeId={type.typeId} series1={type.series1} series2={type.series2} series3={type.series3} />
+                                    })
+                                }
+                            </div>
+
+                        </div>
+                    </main>
+                )
+            }
+
+            const App = () => {
+
+
 
                 return (
                     <>
@@ -286,39 +366,8 @@
                                 </ul>
                             </nav>
                         </header>
-                        <main>
-                            <div className="cover">
-                                <div className="banner-box-p">
-                                    <Carousel />
-                                    <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
-                                    <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
-                                </div>
-                                <div id="products" className="title-p">
-                                    <h2 className="en-sans-light-l"><span>Products</span></h2>
-                                    <h1 className="serif-medium-l"><span>商品總覽</span></h1>
-                                </div>
-                            </div>
 
-                            <div className="container products">
-                                <div className="anchor-p ch-sans-light-m">
-                                    <AnchorP typeId="products" typeCn="商品總覽" typeEn="Products" />
-                                    {
-                                        typeList.map((type) => {
-                                            return <AnchorP key={type.id} typeId={type.typeId} typeCn={type.typeCn} typeEn={type.typeEn} />
-                                        })
-                                    }
-                                </div>
-
-                                <div className="all-products">
-                                    {
-                                        typeList.map((type) => {
-                                            return <Section key={type.id} typeCn={type.typeCn} typeId={type.typeId} series1={type.series1} series2={type.series2} series3={type.series3} />
-                                        })
-                                    }
-                                </div>
-
-                            </div>
-                        </main>
+                        <MainContent />
 
                         <footer>
                             <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />

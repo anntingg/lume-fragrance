@@ -2146,14 +2146,19 @@ section {
 /* 分類標題 */
 .product-title {
     margin: 40px 0 60px;
+    overflow: hidden;
 }
 
 .product-title a {
-    width: auto;
     display: flex;
     align-items: center;
     position: relative;
     transition: all 0.5s;
+    transform: translateY(100%);
+}
+
+.product-title a.scroll-effect {
+    animation: titleMove 0.5s both;
 }
 
 .product-title h1 {
