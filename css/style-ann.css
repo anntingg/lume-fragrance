@@ -508,6 +508,20 @@ section {
     margin-top: 8px;
 }
 
+/* 淡入效果 */
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.first-section {
+    animation: coverFade 2s both;
+}
+
+.fade-in-show {
+    opacity: 1;
+}
+
 /* 共用 cover 區 */
 .cover {
     max-width: 1440px;

@@ -42,6 +42,7 @@
 
         const { useState, useEffect } = React;
 
+        // --------------------------頁首--------------------------
         // 元件：banner 圖取圓角
         const BannerBox = () => {
             const [shortValue, setshortValue] = useState(0);
@@ -87,6 +88,7 @@
             )
         }
 
+        // ----------------------內容區元件-------------------
         // 元件：Section 標題
         const TitleM = ({ sectionCn, sectionEn }) => {
             return (
@@ -424,7 +426,7 @@
 
             const showArticles = 5;
             const totalPages = Math.ceil(articleList.length / showArticles);
-            
+
             const changePage = (changeNumber) => {
                 let newPageNumber = activePage + changeNumber;
 
@@ -452,6 +454,114 @@
                         <div className="arrow-next" onClick={() => changePage(1)}><img className="arrow-right" src="./images/icon-arrow-grey.svg" alt="" /></div>
                     </div>
                 </div>
+            )
+        }
+
+        // --------------- Main 整體內容 => 加入淡入效果---------------------
+        const MainContent = () => {
+
+            const [coverHeight, setcoverHeight] = useState(0);
+            const [isWindowHeightGreater, setIsWindowHeightGreater] = useState(false);
+
+            // 淡入效果
+            useEffect(() => {
+                // 設定淡入函式
+                const handleFadeIn = () => {
+                    const fadeInSections = document.querySelectorAll('.fade-in');
+
+                    fadeInSections.forEach(section => {
+                        const sectionTop = section.getBoundingClientRect().top;
+
+                        if (sectionTop < window.innerHeight - 300) {
+                            section.classList.add('fade-in-show');
+                        } else {
+                            section.classList.remove('fade-in-show');
+                        }
+                    });
+                };
+
+                // 設定偵測螢幕高度是否超過 cover 300px
+                const handleWindowHeight = () => {
+                    const cover = document.querySelector(".cover");
+                    const coverHeight = cover.offsetHeight;
+
+                    if (window.innerHeight > coverHeight + 200) {
+                        setIsWindowHeightGreater(true);
+                    } else {
+                        setIsWindowHeightGreater(false);
+                    }
+                };
+                handleWindowHeight();
+
+                window.addEventListener("resize", handleWindowHeight);
+                window.addEventListener("scroll", handleFadeIn);
+                
+                return () => {
+                    window.removeEventListener("scroll", handleFadeIn);
+                    window.removeEventListener("resize", handleWindowHeight);
+                };
+            }, []);
+
+            return (
+                <main>
+
+                    <div className="cover">
+
+                        <div className="top-box">
+                            <BannerBox />
+                            <div className="title-l">
+                                <h2 className="en-sans-light-xl"><span>News</span></h2>
+                                <div className="title-line"><span></span></div>
+                                <h1 className="serif-medium-xxl"><span>最新消息</span> </h1>
+                                <img src="./images/gradient.png" alt="漸層" />
+                            </div>
+                        </div>
+
+                        <div className="anchor">
+                            <Anchor sectionId="#events" sectionCn="活動消息" />
+                            <Anchor sectionId="#members-only" sectionCn="會員獨享" />
+                            <Anchor sectionId="#articles" sectionCn="文章專欄" />
+                        </div>
+
+                    </div>
+
+                    <div className="container">
+
+                        <section id="events" className={isWindowHeightGreater ? "first-section" : "fade-in"}>
+                            <TitleM sectionCn="活動訊息" sectionEn="Events" />
+                            <CarouselEvent />
+                        </section>
+
+                        <section id="members-only"  className="fade-in">
+                            <TitleM sectionCn="會員獨享" sectionEn="Members Only" />
+                            <div className="members-outer-box">
+                                <a className="members-box" href="./membership.html">
+                                    <div className="serif-medium-m">
+                                        <div className="star">
+                                            <img src="./images/star.svg" alt="星星" />
+                                            <span className="star-line"></span>
+                                        </div>
+                                        <h2>加入會員 享多重優惠</h2>
+                                        <p>單筆結帳 最高85折</p>
+                                        <p>生日禮券 最高$800</p>
+                                        <div className="star star-down">
+                                            <span className="star-line"></span>
+                                            <img src="./images/star.svg" alt="星星" />
+                                        </div>
+                                    </div>
+                                    <BtnWhite text="會員制度" />
+                                </a>
+                            </div>
+                        </section>
+
+                        <section id="articles"  className="fade-in">
+                            <TitleM sectionCn="文章專欄" sectionEn="Articles" />
+                            <ArticleBox />
+                            <ArticleListBox />
+                        </section>
+
+                    </div>
+                </main>
             )
         }
 
@@ -505,65 +615,7 @@
                         </nav>
                     </header>
 
-                    <main>
-
-                        <div className="cover">
-
-                            <div className="top-box">
-                                <BannerBox />
-                                <div className="title-l">
-                                    <h2 className="en-sans-light-xl"><span>News</span></h2>
-                                    <div className="title-line"><span></span></div>
-                                    <h1 className="serif-medium-xxl"><span>最新消息</span> </h1>
-                                    <img src="./images/gradient.png" alt="漸層" />
-                                </div>
-                            </div>
-
-                            <div className="anchor">
-                                <Anchor sectionId="#events" sectionCn="活動消息" />
-                                <Anchor sectionId="#members-only" sectionCn="會員獨享" />
-                                <Anchor sectionId="#articles" sectionCn="文章專欄" />
-                            </div>
-
-                        </div>
-
-                        <div className="container">
-
-                            <section id="events">
-                                <TitleM sectionCn="活動訊息" sectionEn="Events" />
-                                <CarouselEvent />
-                            </section>
-
-                            <section id="members-only">
-                                <TitleM sectionCn="會員獨享" sectionEn="Members Only" />
-                                <div className="members-outer-box">
-                                    <a className="members-box" href="./membership.html">
-                                        <div className="serif-medium-m">
-                                            <div className="star">
-                                                <img src="./images/star.svg" alt="星星" />
-                                                <span className="star-line"></span>
-                                            </div>
-                                            <h2>加入會員 享多重優惠</h2>
-                                            <p>單筆結帳 最高85折</p>
-                                            <p>生日禮券 最高$800</p>
-                                            <div className="star star-down">
-                                                <span className="star-line"></span>
-                                                <img src="./images/star.svg" alt="星星" />
-                                            </div>
-                                        </div>
-                                        <BtnWhite text="會員制度" />
-                                    </a>
-                                </div>
-                            </section>
-
-                            <section id="articles">
-                                <TitleM sectionCn="文章專欄" sectionEn="Articles" />
-                                <ArticleBox />
-                                <ArticleListBox />
-                            </section>
-
-                        </div>
-                    </main>
+                    <MainContent/>
 
                     <footer>
                         <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />

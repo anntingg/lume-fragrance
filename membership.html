@@ -42,6 +42,7 @@
 
         const { useState, useEffect } = React;
 
+        // --------------------------頁首--------------------------
         // 元件：banner 圖取圓角
         const BannerBox = () => {
             const [shortValue, setshortValue] = useState(0);
@@ -87,6 +88,7 @@
             )
         }
 
+        // ----------------------內容區元件-----------------------
         // 元件：Section 標題
         const TitleM = ({ sectionCn, sectionEn }) => {
             return (
@@ -129,7 +131,8 @@
             )
         }
 
-        const App = () => {
+        // --------------- Main 整體內容 => 加入淡入效果---------------------
+        const MainContent = () => {
 
             // 陣列：會員項目內容 => 使用 map 跑會員等級卡片
             const levelList = [
@@ -170,6 +173,112 @@
                     item5: "消費滿$2000",
                 }
             ]
+
+            const [coverHeight, setcoverHeight] = useState(0);
+            const [isWindowHeightGreater, setIsWindowHeightGreater] = useState(false);
+
+            // 淡入效果
+            useEffect(() => {
+                // 設定淡入函式
+                const handleFadeIn = () => {
+                    const fadeInSections = document.querySelectorAll('.fade-in');
+
+                    fadeInSections.forEach(section => {
+                        const sectionTop = section.getBoundingClientRect().top;
+
+                        if (sectionTop < window.innerHeight - 300) {
+                            section.classList.add('fade-in-show');
+                        } else {
+                            section.classList.remove('fade-in-show');
+                        }
+                    });
+                };
+
+                // 設定偵測螢幕高度是否超過 cover 300px
+                const handleWindowHeight = () => {
+                    const cover = document.querySelector(".cover");
+                    const coverHeight = cover.offsetHeight;
+
+                    if (window.innerHeight > coverHeight + 200) {
+                        setIsWindowHeightGreater(true);
+                    } else {
+                        setIsWindowHeightGreater(false);
+                    }
+                };
+                handleWindowHeight();
+
+                window.addEventListener("resize", handleWindowHeight);
+                window.addEventListener("scroll", handleFadeIn);
+                
+                return () => {
+                    window.removeEventListener("scroll", handleFadeIn);
+                    window.removeEventListener("resize", handleWindowHeight);
+                };
+            }, []);
+
+            return (
+                <main>
+                    <div className="cover">
+
+                        <div className="top-box">
+                            <BannerBox />
+                            <div className="title-l">
+                                <h2 className="en-sans-light-xl"><span>Membership</span></h2>
+                                <div className="title-line"><span></span></div>
+                                <h1 className="serif-medium-xxl"><span>會員制度</span> </h1>
+                                <img src="./images/gradient.png" alt="漸層" />
+                            </div>
+                        </div>
+
+                        <div className="anchor">
+                            <Anchor sectionId="#levels" sectionCn="會員等級" />
+                            <Anchor sectionId="#notes" sectionCn="權益說明" />
+                        </div>
+
+                    </div>
+
+                    <div className="container">
+
+                        <section id="levels" className={isWindowHeightGreater ? "first-section" : "fade-in"}>
+                            <TitleM sectionCn="會員等級" sectionEn="Levels" />
+
+                            <div className="levels-box">
+                                {
+                                    levelList.map((level) => {
+                                        return <LevelCard key={level.id} className={level.className} name={level.name} info={level.info} item1={level.item1} item2={level.item2} item3a={level.item3a} item3b={level.item3b} item4={level.item4} item5={level.item5} />
+                                    })
+                                }
+                            </div>
+                        </section>
+
+                        <section id="notes" className="fade-in">
+                            <TitleM sectionCn="權益說明" sectionEn="Notes" />
+
+                            <div className="notes-box ch-sans-light-m">
+                                <ul>
+                                    <li>如欲成為 Lume Fragrance 會員，詳細註冊手續請洽 Line 官方帳號。</li>
+                                    <li>會員升等後，等級效期為升等後一年，原消費金額將繼續累積計算。</li>
+                                    <li>須於等級效期內，達續等消費門檻，方可獲得續等資格。</li>
+                                    <li>若等級效期屆滿時，消費未達續等門檻，白金會員將降為一般會員，鑽石會員則降為白金會員。</li>
+                                    <li>生日前註冊會員，即可獲得生日禮券。</li>
+                                    <li>會員相關制度皆由 Lume Fragrance 制定，Lume Fragrance 保有內容修改、變更之權益，如有任何變更，內容將公告於本網站，恕不另行通知，且不溯及既往，敬請見諒。</li>
+                                    <li>更多會員相關權益問題，請洽 Line 官方帳號。</li>
+                                </ul>
+                                <div className="follow-us">
+                                    <a href="#">
+                                        <img src="./images/line.svg" alt="line官方帳號" />
+                                        <h3 className="ch-sans-thin-l">立即加入 Lume Fragrance Line 官方帳號，隨時掌握最新消息。</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </main>
+            )
+        }
+
+        const App = () => {
 
             return (
                 <>
@@ -219,64 +328,7 @@
                         </nav>
                     </header>
 
-                    <main>
-                        <div className="cover">
-
-                            <div className="top-box">
-                                <BannerBox/>
-                                <div className="title-l">
-                                    <h2 className="en-sans-light-xl"><span>Membership</span></h2>
-                                    <div className="title-line"><span></span></div>
-                                    <h1 className="serif-medium-xxl"><span>會員制度</span> </h1>
-                                    <img src="./images/gradient.png" alt="漸層" />
-                                </div>
-                            </div>
-
-                            <div className="anchor">
-                                <Anchor sectionId="#levels" sectionCn="會員等級" />
-                                <Anchor sectionId="#notes" sectionCn="權益說明" />
-                            </div>
-
-                        </div>
-
-                        <div className="container">
-
-                            <section id="levels">
-                                <TitleM sectionCn="會員等級" sectionEn="Levels" />
-
-                                <div className="levels-box">
-                                    {
-                                        levelList.map((level) => {
-                                            return <LevelCard key={level.id} className={level.className} name={level.name} info={level.info} item1={level.item1} item2={level.item2} item3a={level.item3a} item3b={level.item3b} item4={level.item4} item5={level.item5} />
-                                        })
-                                    }
-                                </div>
-                            </section>
-
-                            <section id="notes">
-                                <TitleM sectionCn="權益說明" sectionEn="Notes" />
-
-                                <div className="notes-box ch-sans-light-m">
-                                    <ul>
-                                        <li>如欲成為 Lume Fragrance 會員，詳細註冊手續請洽 Line 官方帳號。</li>
-                                        <li>會員升等後，等級效期為升等後一年，原消費金額將繼續累積計算。</li>
-                                        <li>須於等級效期內，達續等消費門檻，方可獲得續等資格。</li>
-                                        <li>若等級效期屆滿時，消費未達續等門檻，白金會員將降為一般會員，鑽石會員則降為白金會員。</li>
-                                        <li>生日前註冊會員，即可獲得生日禮券。</li>
-                                        <li>會員相關制度皆由 Lume Fragrance 制定，Lume Fragrance 保有內容修改、變更之權益，如有任何變更，內容將公告於本網站，恕不另行通知，且不溯及既往，敬請見諒。</li>
-                                        <li>更多會員相關權益問題，請洽 Line 官方帳號。</li>
-                                    </ul>
-                                    <div className="follow-us">
-                                        <a href="#">
-                                            <img src="./images/line.svg" alt="line官方帳號" />
-                                            <h3 className="ch-sans-thin-l">立即加入 Lume Fragrance Line 官方帳號，隨時掌握最新消息。</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </section>
-
-                        </div>
-                    </main>
+                    <MainContent />
 
                     <footer>
                         <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />
