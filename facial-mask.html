@@ -53,6 +53,7 @@
             // 將 JSON 資料丟給 products 變數 => 單項商品詳細資料
             const products = request.response;
 
+            //-------------------------內容區元件------------------------
             // 元件：錨點按鈕
             const AnchorP = ({ typeLink, typeCn, typeEn }) => {
                 return (
@@ -149,7 +150,8 @@
                 )
             }
 
-            const App = () => {
+            // --------------- Main 整體內容 => 加入淡入效果---------------------
+            const MainContent = () => {
 
                 // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
                 const anchorList = [
@@ -196,6 +198,89 @@
                         typeEn: "Facial Mask",
                     },
                 ]
+
+                const [isWindowHeightGreater, setIsWindowHeightGreater] = useState(false);
+
+                // 淡入效果
+                useEffect(() => {
+                    // 設定淡入函式
+                    const handleFadeIn = () => {
+                        const fadeInSections = document.querySelectorAll('.fade-in');
+
+                        fadeInSections.forEach(section => {
+                            const sectionTop = section.getBoundingClientRect().top;
+
+                            if (sectionTop < window.innerHeight - 300) {
+                                section.classList.add('fade-in-show');
+                            } else {
+                                section.classList.remove('fade-in-show');
+                            }
+                        });
+                    };
+
+                    // 設定偵測螢幕高度是否超過 cover 300px
+                    const handleWindowHeight = () => {
+                        const cover = document.querySelector(".cover");
+                        const coverHeight = cover.offsetHeight;
+
+                        if (window.innerHeight > coverHeight + 200) {
+                            setIsWindowHeightGreater(true);
+                        } else {
+                            setIsWindowHeightGreater(false);
+                        }
+                    };
+                    handleWindowHeight();
+
+                    window.addEventListener("resize", handleWindowHeight);
+                    window.addEventListener("scroll", handleFadeIn);
+
+                    return () => {
+                        window.removeEventListener("scroll", handleFadeIn);
+                        window.removeEventListener("resize", handleWindowHeight);
+                    };
+                }, []);
+
+                return (
+                    <main>
+                        <div className="cover">
+                            <div className="banner-box-p">
+                                <Carousel />
+                                <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
+                                <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
+                            </div>
+                            <div id="facial-mask" className="title-p">
+                                <h2 className="en-sans-light-l"><span>Facial Mask</span></h2>
+                                <h1 className="serif-medium-l"><span>面膜</span></h1>
+                            </div>
+                        </div>
+
+                        <div className={`container products ${isWindowHeightGreater ? "first-section" : "fade-in"}`}>
+                            <div className="anchor-p ch-sans-light-m">
+                                {
+                                    anchorList.map((anchor) => {
+                                        return <AnchorP key={anchor.id} typeLink={anchor.typeLink} typeCn={anchor.typeCn} typeEn={anchor.typeEn} />
+                                    })
+                                }
+                            </div>
+
+                            <div className="all-products">
+                                <section className="subtype">
+                                    <ProductBox showType="面膜" showSeries="" />
+                                </section>
+
+                                <a className="btn-color ch-sans-thin-l" href="./products.html">
+                                    <span>返回商品總覽</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </main>
+                )
+            }
+
+
+            const App = () => {
+
 
                 return (
                     <>
@@ -245,40 +330,7 @@
                             </nav>
                         </header>
 
-                        <main>
-                            <div className="cover">
-                                <div className="banner-box-p">
-                                    <Carousel />
-                                    <img className="banner-logo-p" src="./images/LOGO-07.png" alt="Lume Fragrance" />
-                                    <img className="banner-gradient" src="./images/gradient.png" alt="漸層" />
-                                </div>
-                                <div id="facial-mask" className="title-p">
-                                    <h2 className="en-sans-light-l"><span>Facial Mask</span></h2>
-                                    <h1 className="serif-medium-l"><span>面膜</span></h1>
-                                </div>
-                            </div>
-
-                            <div className="container products">
-                                <div className="anchor-p ch-sans-light-m">
-                                    {
-                                        anchorList.map((anchor) => {
-                                            return <AnchorP key={anchor.id} typeLink={anchor.typeLink} typeCn={anchor.typeCn} typeEn={anchor.typeEn} />
-                                        })
-                                    }
-                                </div>
-
-                                <div className="all-products">
-                                    <section className="subtype">
-                                        <ProductBox showType="面膜" showSeries="" />
-                                    </section>
-
-                                    <a className="btn-color ch-sans-thin-l" href="./products.html">
-                                        <span>返回商品總覽</span><div><img src="./images/arrow-right.svg" alt="箭頭" /></div>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </main>
+                        <MainContent />
 
                         <footer>
                             <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />

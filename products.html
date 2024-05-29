@@ -54,6 +54,7 @@
             // 將 JSON 資料丟給 products 變數 => 單項商品詳細資料
             const products = request.response;
 
+            //-------------------------內容區元件------------------------
             // 元件：錨點按鈕
             const AnchorP = ({ typeId, typeCn, typeEn }) => {
                 return (
@@ -195,7 +196,7 @@
                 )
             }
 
-            // --------------- Main 整體內容 => 加入淡入效果---------------------
+            // --------------- Main 整體內容 => 加入效果---------------------
             const MainContent = () => {
                 // 陣列：建立子分類資料 => return 中使用 map 跑錨點按鈕和 Section 元件
                 const typeList = [
@@ -316,8 +317,6 @@
             }
 
             const App = () => {
-
-
 
                 return (
                     <>
