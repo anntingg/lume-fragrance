@@ -553,6 +553,11 @@ section {
     to {opacity: 1;}
 }
 
+@keyframes lineMove {
+    from {width: 0;}
+    to {width: 18%;}
+}
+
 /* 左方圖 */
 .top-box {
     display: flex;
@@ -749,6 +754,7 @@ section {
     position: absolute;
     top: 50%;
     background: var(--font-grey);
+    animation: lineMove 1s 1s both;
 }
 
 .anchor::before {
