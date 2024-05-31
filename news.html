@@ -460,15 +460,8 @@
         // --------------- Main 整體內容 => 加入效果---------------------
         const MainContent = () => {
 
-            const [fadeInPosition, setfadeInPosition] = useState(window.innerHeight / 3);
-
             // 淡入效果
             useEffect(() => {
-                // setfadeInPosition(window.innerHeight / 3);
-                // const handleFadeInPosition = () =>{
-                //     setfadeInPosition(window.innerHeight / 3);
-                // }
-                window.addEventListener("resize", ()=>setfadeInPosition(window.innerHeight / 3) );
 
                 // 設定淡入函式
                 const handleFadeIn = () => {
@@ -477,25 +470,24 @@
                     fadeInSections.forEach(section => {
                         const sectionTop = section.getBoundingClientRect().top;
 
-                        if (sectionTop < (window.innerHeight - fadeInPosition)) {
+                        if (sectionTop < (window.innerHeight - window.innerHeight / 3.2)) {
                             section.classList.add('fade-in-show');
                         } else {
                             section.classList.remove('fade-in-show');
                         }
                     });
+
                 };
-                console.log( fadeInPosition);
 
                 handleFadeIn();
                 window.addEventListener("scroll", handleFadeIn);
                 window.addEventListener("resize", handleFadeIn);
-              
+
                 return () => {
                     window.removeEventListener("scroll", handleFadeIn);
                     window.removeEventListener("resize", handleFadeIn);
-                    // window.removeEventListener("resize", handleFadeInPosition );
                 };
-            }, [fadeInPosition]);
+            }, []);
 
 
             // 捲動到指定 ID 位置
