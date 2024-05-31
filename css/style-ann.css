@@ -2158,8 +2158,9 @@ section {
 }
 
 .product-title a.scroll-effect {
-    animation: titleMove 0.5s both;
+    transform: translateY(0)
 }
+
 
 .product-title h1 {
     width: 320px;
@@ -2201,10 +2202,6 @@ section {
 .product-title a:hover {
     filter: brightness(110%)
 }
-
-/* .product-title a:hover::after {
-    animation: buttonMove 2s ease-out infinite;
-} */
 
 @keyframes buttonMove {
     0% {
