@@ -457,13 +457,19 @@
             )
         }
 
-        // --------------- Main 整體內容 => 加入淡入效果---------------------
+        // --------------- Main 整體內容 => 加入效果---------------------
         const MainContent = () => {
 
-            const [isWindowHeightGreater, setIsWindowHeightGreater] = useState(false);
+            const [fadeInPosition, setfadeInPosition] = useState(window.innerHeight / 3);
 
             // 淡入效果
             useEffect(() => {
+                // setfadeInPosition(window.innerHeight / 3);
+                // const handleFadeInPosition = () =>{
+                //     setfadeInPosition(window.innerHeight / 3);
+                // }
+                window.addEventListener("resize", ()=>setfadeInPosition(window.innerHeight / 3) );
+
                 // 設定淡入函式
                 const handleFadeIn = () => {
                     const fadeInSections = document.querySelectorAll('.fade-in');
@@ -471,35 +477,43 @@
                     fadeInSections.forEach(section => {
                         const sectionTop = section.getBoundingClientRect().top;
 
-                        if (sectionTop < window.innerHeight - 300) {
+                        if (sectionTop < (window.innerHeight - fadeInPosition)) {
                             section.classList.add('fade-in-show');
                         } else {
                             section.classList.remove('fade-in-show');
                         }
                     });
                 };
+                console.log( fadeInPosition);
 
-                // 設定偵測螢幕高度是否超過 cover 300px
-                const handleWindowHeight = () => {
-                    const cover = document.querySelector(".cover");
-                    const coverHeight = cover.offsetHeight;
-
-                    if (window.innerHeight > coverHeight + 200) {
-                        setIsWindowHeightGreater(true);
-                    } else {
-                        setIsWindowHeightGreater(false);
-                    }
-                };
-                handleWindowHeight();
-
-                window.addEventListener("resize", handleWindowHeight);
+                handleFadeIn();
                 window.addEventListener("scroll", handleFadeIn);
-                
+                window.addEventListener("resize", handleFadeIn);
+              
                 return () => {
                     window.removeEventListener("scroll", handleFadeIn);
-                    window.removeEventListener("resize", handleWindowHeight);
+                    window.removeEventListener("resize", handleFadeIn);
+                    // window.removeEventListener("resize", handleFadeInPosition );
                 };
-            }, []);
+            }, [fadeInPosition]);
+
+
+            // 捲動到指定 ID 位置
+            useEffect(() => {
+                // 網址列的 # 內容
+                const hash = window.location.hash;
+
+                // 檢查 hash 是否存在，並抓出目標 ID Section
+                if (hash) {
+                    const targetSection = document.querySelector(hash);
+
+                    // 檢查目標 Section 是否存在
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+
+            }, []); // 當 DOM 完成渲染，只執行一次
 
             return (
                 <main>
@@ -526,12 +540,12 @@
 
                     <div className="container">
 
-                        <section id="events" className={isWindowHeightGreater ? "first-section" : "fade-in"}>
+                        <section id="events" className="fade-in">
                             <TitleM sectionCn="活動訊息" sectionEn="Events" />
                             <CarouselEvent />
                         </section>
 
-                        <section id="members-only"  className="fade-in">
+                        <section id="members-only" className="fade-in">
                             <TitleM sectionCn="會員獨享" sectionEn="Members Only" />
                             <div className="members-outer-box">
                                 <a className="members-box" href="./membership.html">
@@ -553,7 +567,7 @@
                             </div>
                         </section>
 
-                        <section id="articles"  className="fade-in">
+                        <section id="articles" className="fade-in">
                             <TitleM sectionCn="文章專欄" sectionEn="Articles" />
                             <ArticleBox />
                             <ArticleListBox />
@@ -614,7 +628,7 @@
                         </nav>
                     </header>
 
-                    <MainContent/>
+                    <MainContent />
 
                     <footer>
                         <img className="bg" src="./img/LOGO-w-cut-12.png" alt="" />

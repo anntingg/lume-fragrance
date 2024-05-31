@@ -279,6 +279,23 @@
                     };
                 }, []);
 
+                // 捲動到指定 ID 位置
+                useEffect(() => {
+                    // 網址列的 # 內容
+                    const hash = window.location.hash;
+
+                    // 檢查 hash 是否存在，並抓出目標 ID Section
+                    if (hash) {
+                        const targetSection = document.querySelector(hash);
+
+                        // 檢查目標 Section 是否存在
+                        if (targetSection) {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+
+                }, []); // 當 DOM 完成渲染，只執行一次
+
                 return (
                     <main>
                         <div className="cover">

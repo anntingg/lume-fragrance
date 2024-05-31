@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.35 // 滑到目標30%時，執行監聽動畫。
+        threshold: 0.35 // 滑到目標35%時，執行監聽動畫。
     };
 
     const callback = (entries, observer) => {
@@ -20,15 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const observer = new IntersectionObserver(callback, options);
 
     // 需要淡入淡出的區塊、內容
-    const targets = document.querySelectorAll('.cover, .cover-2 .box2 ,.cover-3 .box3,.cover2 .box article');
+    const targets = document.querySelectorAll('.cover, .cover-2 .box2 ,.cover-3 .box3,.cover2 .box article ,#contact,.background');
     targets.forEach(target => {
         observer.observe(target);
     });
 
-
-// 聯絡我們頁面，監聽動畫:
-
-
-
-
 });
+
+

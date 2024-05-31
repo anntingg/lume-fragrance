@@ -338,6 +338,13 @@ section {
     margin-top: 8px;
 }
 
+/* 監聽效果-淡入淡出 */
+#contact,
+.background {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
 /* 聯絡我們-開始 */
 
 /* 聯絡資訊 */
@@ -347,8 +354,10 @@ section {
 }
 
 #contact img {
-    width: auto;
+    width: 42px;
     display: inline-block;
+    justify-content: center;
+    align-items: center;
     padding-right: 20px;
 }
 
@@ -382,7 +391,7 @@ section {
 }
 
 #contact .list-box .box .bon {
-    margin-top: 50px;
+    margin: 30px 0;
 }
 
 #contact .list-box .box h2 {
@@ -390,7 +399,7 @@ section {
 }
 
 #contact .list-box .box p {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 
@@ -448,6 +457,7 @@ section {
 
     #contact .list-box iframe {
         width: 100%;
+        height: 35vh;
     }
 }
 
@@ -456,6 +466,17 @@ section {
     #contact {
         width: 100%;
     }
+
+    #contact .list-box .box,
+    #contact .list-box .bon {
+        margin: 0;
+    }
+
+    #contact .list-box .box p {
+        font-size: 16px;
+        display: flex;
+    }
+
 
     #contact .contact-bg {
         display: none;
@@ -510,10 +531,6 @@ section {
 
 /* title */
 /* Lume Fragrance 字樣 */
-.cover-form .title {
-    margin-top: 150px;
-}
-
 .cover-form .logotext {
     display: flex;
     justify-content: center;
@@ -817,16 +834,13 @@ section {
 
 
 /* 按鈕 */
-.cover-form fieldset form {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-}
-
 .cover-form fieldset form .submit {
     width: 50%;
     margin: 50px auto;
     position: relative;
+    overflow: hidden;
+    border-radius: 99px 0 99px 0;
+
 }
 
 .cover-form fieldset form .submit input {
@@ -856,18 +870,27 @@ section {
     content: "";
     width: 100%;
     height: 100%;
-    border-radius: 99px 0 99px 0;
     position: absolute;
+    left: -100%;
     top: 0;
-    background: var(--white);
-    transition: all 0.5s;
+    background: var(--gradient);
+    transition: all 0.8s;
+    z-index: -1;
 }
 
 .cover-form fieldset form .submit:hover::after {
-    width: 100%;
-    height: 100%;
+    left: 0;
     filter: brightness(120%);
-    box-shadow: .5px .5px 5px var(--font-grey);
+}
+
+@keyframes arrowMove {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
 
@@ -1023,6 +1046,7 @@ section {
         width: 40%;
         padding: 0;
     }
+
     .background fieldset .submit #member-reset {
         width: 100%;
         padding: 0;
@@ -1078,5 +1102,25 @@ section {
 
 /* 小型手機 576px 以下 */
 /* @media (max-width: 576px) {} */
+
+
+
+
+/* 滾輪樣式 */
+select::-webkit-scrollbar {
+    width: 12px;
+
+}
+
+select::-webkit-scrollbar-thumb {
+    background: var(--font-grey);
+    border-radius: 99px;
+}
+
+select::-webkit-scrollbar-track {
+    background: #cacacc;
+    border: 1px solid var(--white);
+}
+
 
 /* 刪除 footer */

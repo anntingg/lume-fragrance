@@ -198,10 +198,16 @@
                     },
                 ]
 
-                const [isWindowHeightGreater, setIsWindowHeightGreater] = useState(false);
+                const [fadeInPosition, setfadeInPosition] = useState(window.innerHeight / 3);
 
                 // 淡入效果
                 useEffect(() => {
+                    // setfadeInPosition(window.innerHeight / 3);
+                    // const handleFadeInPosition = () =>{
+                    //     setfadeInPosition(window.innerHeight / 3);
+                    // }
+                    window.addEventListener("resize", () => setfadeInPosition(window.innerHeight / 3));
+
                     // 設定淡入函式
                     const handleFadeIn = () => {
                         const fadeInSections = document.querySelectorAll('.fade-in');
@@ -209,35 +215,25 @@
                         fadeInSections.forEach(section => {
                             const sectionTop = section.getBoundingClientRect().top;
 
-                            if (sectionTop < window.innerHeight - 300) {
+                            if (sectionTop < (window.innerHeight - fadeInPosition)) {
                                 section.classList.add('fade-in-show');
                             } else {
                                 section.classList.remove('fade-in-show');
                             }
                         });
                     };
+                    console.log(fadeInPosition);
 
-                    // 設定偵測螢幕高度是否超過 cover 300px
-                    const handleWindowHeight = () => {
-                        const cover = document.querySelector(".cover");
-                        const coverHeight = cover.offsetHeight;
-
-                        if (window.innerHeight > coverHeight + 200) {
-                            setIsWindowHeightGreater(true);
-                        } else {
-                            setIsWindowHeightGreater(false);
-                        }
-                    };
-                    handleWindowHeight();
-
-                    window.addEventListener("resize", handleWindowHeight);
+                    handleFadeIn();
                     window.addEventListener("scroll", handleFadeIn);
+                    window.addEventListener("resize", handleFadeIn);
 
                     return () => {
                         window.removeEventListener("scroll", handleFadeIn);
-                        window.removeEventListener("resize", handleWindowHeight);
+                        window.removeEventListener("resize", handleFadeIn);
+                        // window.removeEventListener("resize", handleFadeInPosition );
                     };
-                }, []);
+                }, [fadeInPosition]);
 
                 return (
                     <main>
@@ -253,7 +249,7 @@
                             </div>
                         </div>
 
-                        <div className={`container products ${isWindowHeightGreater ? "first-section" : "fade-in"}`}>
+                        <div className="container products fade-in">
                             <div className="anchor-p ch-sans-light-m">
                                 {
                                     anchorList.map((anchor) => {

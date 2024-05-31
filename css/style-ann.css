@@ -514,10 +514,6 @@ section {
     transition: opacity 1s ease-in-out;
 }
 
-.first-section {
-    animation: coverFade 2s both;
-}
-
 .fade-in-show {
     opacity: 1;
 }
@@ -565,6 +561,11 @@ section {
 @keyframes coverFade {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+@keyframes gradientFade {
+    from {opacity: 0;}
+    to {opacity: 0.6;}
 }
 
 @keyframes lineMove {
@@ -677,7 +678,7 @@ section {
     object-fit: fill;
     opacity: 0.6;
     transform: rotate(250deg);
-    animation: coverFade 1s 0.5s both;
+    animation: gradientFade 1s 0.5s both;
 }
 
 
