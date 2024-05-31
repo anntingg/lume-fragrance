@@ -245,20 +245,6 @@
 
                     const moveTitles = document.querySelectorAll('.product-title a');
 
-                    // 設定偵測螢幕高度是否超過 cover 300px
-                    const handleFirstTitle = () => {
-                        const cover = document.querySelector(".cover");
-                        const coverHeight = cover.offsetHeight;
-
-                        if (window.innerHeight > coverHeight + 200) {
-                            moveTitles[0].classList.add("scroll-effect");
-                        } else {
-                            moveTitles[0].classList.remove("scroll-effect");
-                        }
-                    };
-                    handleFirstTitle();
-                    window.addEventListener("resize", handleFirstTitle);
-
                     // 設定效果函式
                     const handleTitleMove = () => {
                         moveTitles.forEach(title => {
@@ -271,11 +257,13 @@
                             }
                         });
                     };
+                    handleTitleMove();
                     window.addEventListener("scroll", handleTitleMove);
+                    window.addEventListener("resize", handleTitleMove);
 
                     return () => {
                         window.removeEventListener("scroll", handleTitleMove);
-                        window.removeEventListener("resize", handleFirstTitle);
+                        window.removeEventListener("resize", handleTitleMove);
                     };
                 }, []);
 
