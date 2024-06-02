@@ -148,13 +148,13 @@ table {
     --primary-color:; */
     /* 背景漸層 */
     --gradient:
-        linear-gradient(120deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-        linear-gradient(210deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%),
-        linear-gradient(340deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%);
+        linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%);
     --gradient-2:
-        linear-gradient(120deg, rgba(238, 179, 208, .25) 30%, rgba(238, 179, 208, 0) 60%),
-        linear-gradient(210deg, rgba(164, 213, 190, .25) 30%, rgba(164, 213, 190, 0) 60%),
-        linear-gradient(340deg, rgba(137, 209, 239, .25) 30%, rgba(137, 209, 239, 0) 60%);
+        linear-gradient(120deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(210deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(340deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%);
     /* 遮色片漸層 */
     --overlay:
         linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
@@ -1452,4 +1452,5 @@ a {
     }
 }
 
-/* 修改 var(--dark) */
+/* 修改 var(--dark) 
+gradient 改 0.3*/

@@ -24,7 +24,6 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/style-menu.css">
-    <link rel="stylesheet" href="./css/style-footer.css">
     <link rel="stylesheet" href="./css/style-btntop.css">
 
 </head>
@@ -80,17 +79,22 @@
         <!-- 封面 -->
         <section id="cover">
             <div class="cover-logo">
-                <img src="./img/LOGO-07.png" alt="">
+                <div class="logo">
+                    <img src="./img/LOGO-07.png" alt="">
+                </div>
+
 
                 <!-- 下方文字 -->
-                <div>
-                    <p class="ch-sans-light-s">
-                        In life, the sense of smell carries emotional memories.<br>
-                        like a sponge,<br>
-                        Absorbing each person's unique feelings and memories of specific scents.
-                    </p>
-                    <span></span><!-- 畫線 -->
-                    <img src="./img/gradient.png" alt="">
+                <div class="p">
+                    <span class="text">
+                        <p class="ch-sans-light-s">
+                            In life, the sense of smell carries emotional memories.<br>
+                            like a sponge,<br>
+                            Absorbing each person's unique feelings and memories of specific scents.
+                        </p>
+                    </span>
+                    <span class="line"></span><!-- 畫線 -->
+                    <img class="gradient" src="./img/gradient.png" alt="">
                 </div>
             </div>
 
@@ -107,7 +111,9 @@
 
                 <!-- 右上引號文字 -->
                 <div class="cover-quotes">
-                    <img src="./img/quotes.svg" alt="">
+                    <span>
+                        <img src="./img/quotes.svg" alt="">
+                    </span>
                     <p class="ch-sans-light-s">Fragrance is more than just a taste;<br>It is also a companion in life.
                     </p>
                 </div>
@@ -116,24 +122,33 @@
 
         <!-- 介紹文字 -->
         <section id="introduce">
-            <img class="bg-logo" src="./img/LOGO-w-cut-12.png" alt="">
+            <img class="bg-logo animate" src="./img/LOGO-w-cut-12.png" alt="">
 
-            <img class="star-red" src="./img/introduce-star-red.svg" alt="">
-            <img class="star-blue" src="./img/introduce-star-blue.svg" alt="">
-            <img class="star-green" src="./img/introduce-star-green.svg" alt="">
+            <img class="star-red shine" src="./img/introduce-star-red.svg" alt="">
+            <img class="star-blue shine" src="./img/introduce-star-blue.svg" alt="">
+            <img class="star-green shine-2" src="./img/introduce-star-green.svg" alt="">
 
             <div class="left">
                 <div class="top">
-                    <h3 class="en-sans-light-s">About Lume Fragrance</h3>
-                    <h1 class="serif-medium-l">每一瓶香水，<br>都是一場私密的心靈之旅。</h1>
+                    <span class="h3 animate">
+                        <h3 class="en-sans-light-s">About Lume Fragrance</h3>
+                    </span>
+                    <span class="h1">
+                        <h1 class="serif-medium-l animate">每一瓶香水，<br></h1>
+                    </span>
+                    <span class="h1">
+                        <h1 class="serif-medium-l animate">都是一場私密的心靈之旅。</h1>
+                    </span>
                 </div>
 
                 <div class="bottom">
-                    <span></span>
-                    <p class="ch-sans-light-s">
-                        進入「Healing Life」的領域，女性在這個快節奏的時代裡，利用香氛尋找療癒與平靜。<br>
-                        每一瓶香水都是一場私密的心靈之旅，讓每位女性都能在外展現創造力和堅強的同時，尋找內心的寧靜與療癒。
-                    </p>
+                    <span class="line animate"></span>
+                    <span class="p">
+                        <p class="ch-sans-light-s animate">
+                            進入「Healing Life」的領域，女性在這個快節奏的時代裡，利用香氛尋找療癒與平靜。<br>
+                            每一瓶香水都是一場私密的心靈之旅，讓每位女性都能在外展現創造力和堅強的同時，尋找內心的寧靜與療癒。
+                        </p>
+                    </span>
                 </div>
             </div>
 
@@ -155,41 +170,76 @@
 
         <section id="carousel">
             <div class="title">
-                <h1 class="serif-medium-m">
-                    香氛不僅僅是一種味道，更是生活中的陪伴者。
-                    <img src="./img/quotes.svg" alt="">
-                </h1>
-                <h2 class="en-sans-light-l">Fragrance is not only a taste, but also a companion in life.</h2>
+                <span class="h1-relative">
+                    <span class="h1">
+                        <h1 class="serif-medium-m animate">
+                            香氛不僅僅是一種味道，更是生活中的陪伴者。
+                        </h1>
+                    </span>
+                    <span class="quotes-span">
+                        <img class="quotes animate" src="./img/quotes.svg" alt="">
+                    </span>
+                </span>
+
+                <span class="h2">
+                    <h2 class="en-sans-light-l animate">Fragrance is not only a taste, but also a companion in life.
+                    </h2>
+                </span>
+
             </div>
 
             <div class="carousel">
                 <div class="img center">
-                    <img class="item-1" src="./img/3D-1.jpg" alt="">
-                    <img src="./img/3D-2.jpg" alt="">
-                    <img src="./img/3D-3.jpg" alt="">
-                    <img src="./img/3D-1.jpg" alt="">
+                    <a class="item-1" href="./diffuse-nectarine.html">
+                        <img src="./img/3D-1.jpg" alt="">
+                        <span>
+                            <h4 class="ch-sans-thin-xl">香水</h4>
+                            <h3 class="serif-medium-l">山茶花</h3>
+                        </span>
+                    </a>
+                    <a href="./diffuse-nectarine.html">
+                        <img src="./img/3D-2.jpg" alt="">
+                        <span>
+                            <h4 class="ch-sans-thin-xl">針管香水</h4>
+                            <h3 class="serif-medium-l">沙漠玫瑰</h3>
+                        </span>
+                    </a>
+                    <a href="./diffuse-nectarine.html">
+                        <img src="./img/3D-3.jpg" alt="">
+                        <span>
+                            <h4 class="ch-sans-thin-xl">室內擴香</h4>
+                            <h3 class="serif-medium-l">杏桃花蜂蜜</h3>
+                        </span>
+                    </a>
+                    <a href="./diffuse-nectarine.html">
+                        <img src="./img/3D-1.jpg" alt="">
+                        <span>
+                            <h4 class="ch-sans-thin-xl">香水</h4>
+                            <h3 class="serif-medium-l">山茶花</h3>
+                        </span>
+                    </a>
                 </div>
 
                 <div class="img left">
-                    <img src="./img/3D-1.jpg" alt="">
-                    <img src="./img/3D-2.jpg" alt="">
-                    <img class="item" src="./img/3D-3.jpg" alt="">
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-1.jpg" alt=""></a>
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-2.jpg" alt=""></a>
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-3.jpg" alt=""></a>
                 </div>
 
                 <div class="img right">
-                    <img src="./img/3D-2.jpg" alt="">
-                    <img src="./img/3D-3.jpg" alt="">
-                    <img src="./img/3D-1.jpg" alt="">
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-2.jpg" alt=""></a>
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-3.jpg" alt=""></a>
+                    <a href="./diffuse-nectarine.html"><img src="./img/3D-1.jpg" alt=""></a>
                 </div>
             </div>
 
             <img class="gradient-line-1" src="./img/gradient-line-w.svg" alt="">
             <img class="gradient-line-2" src="./img/gradient-line-w.svg" alt="">
-            <img class="star-w-1" src="./img/star-w.svg" alt="">
-            <img class="star-w-2" src="./img/star-w.svg" alt="">
-            <img class="star-w-3" src="./img/star-w.svg" alt="">
-            <img class="star-w-4" src="./img/star-w.svg" alt="">
-            <img class="star-w-5" src="./img/star-w.svg" alt="">
+            <img class="star-w-1 shine" src="./img/star-w.svg" alt="">
+            <img class="star-w-2 shine-2" src="./img/star-w.svg" alt="">
+            <img class="star-w-3 shine" src="./img/star-w.svg" alt="">
+            <img class="star-w-4 shine-2" src="./img/star-w.svg" alt="">
+            <img class="star-w-5 shine" src="./img/star-w.svg" alt="">
         </section>
 
         <img class="carousel-corner corner-2" src="./img/carousel-bottom.svg" alt="">
@@ -198,22 +248,36 @@
         <section id="product">
             <!-- 錨點選單 -->
             <div id="anchor">
-                <img src="./img/anchor-star.svg" alt="">
-                <h3 class="serif-medium-m">Product</h3>
-                <span></span>
+                <img class="animate" src="./img/anchor-star.svg" alt="">
+                <span class="h3-w">
+                    <span class="h3 animate">
+                        <h3 class="serif-medium-m">Product</h3>
+                    </span>
+                </span>
+
+                <span class="line animate"></span>
                 <div class="buttom">
                     <a href="#index-perfume">
-                        <h2 class="serif-medium-s">香水</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">香水</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
 
                     <a href="#index-diffuse">
-                        <h2 class="serif-medium-s">擴香</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">擴香</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
 
                     <a href="#index-facecare">
-                        <h2 class="serif-medium-s">保養</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">保養</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
                 </div>
@@ -223,7 +287,9 @@
             <div class="product-bg">
                 <div class="index-product-left" id="index-perfume">
                     <div class="img">
-                        <p class="product-number">01</p>
+                        <span class="product-number-span">
+                            <p class="product-number animate">01</p>
+                        </span>
                     </div>
 
                     <div class="text">
@@ -231,7 +297,7 @@
                             <h2 class="en-sans-light-l">Perfume</h2>
                             <h1 class="serif-medium-xxl">
                                 香水
-                                <img src="./img/gradient.png" alt="">
+                                <img class="animate gradient" src="./img/gradient.png" alt="">
                             </h1>
                         </div>
                         <p class="serif-medium-s">瓶裝香水／針管香水</p>
@@ -249,7 +315,9 @@
             <div class="product-bg">
                 <div class="index-product-right" id="index-diffuse">
                     <div class="img">
-                        <p class="product-number">02</p>
+                        <span class="product-number-span">
+                            <p class="product-number animate">02</p>
+                        </span>
                     </div>
 
                     <div class="text">
@@ -257,7 +325,7 @@
                             <h2 class="en-sans-light-l">Diffuse</h2>
                             <h1 class="serif-medium-xxl">
                                 擴香
-                                <img src="./img/gradient.png" alt="">
+                                <img class="animate gradient" src="./img/gradient.png" alt="">
                             </h1>
 
                         </div>
@@ -276,7 +344,9 @@
             <div class="product-bg">
                 <div class="index-product-left" id="index-facecare">
                     <div class="img">
-                        <p class="product-number">03</p>
+                        <span class="product-number-span">
+                            <p class="product-number animate">03</p>
+                        </span>
                     </div>
 
                     <div class="text">
@@ -284,7 +354,7 @@
                             <h2 class="en-sans-light-l">Face Care</h2>
                             <h1 class="serif-medium-xxl">
                                 保養
-                                <img src="./img/gradient.png" alt="">
+                                <img class="animate gradient" src="./img/gradient.png" alt="">
                             </h1>
                         </div>
                         <p class="serif-medium-s">面膜／脣油</p>
@@ -304,22 +374,36 @@
         <section id="news">
             <!-- 錨點選單 -->
             <div id="anchor">
-                <img src="./img/anchor-star.svg" alt="">
-                <h3 class="serif-medium-m">News</h3>
-                <span></span>
+                <img class="animate" src="./img/anchor-star.svg" alt="">
+                <span class="h3-w">
+                    <span class="h3 animate">
+                        <h3 class="serif-medium-m">News</h3>
+                    </span>
+                </span>
+
+                <span class="line animate"></span>
                 <div class="buttom">
                     <a href="" class="button1">
-                        <h2 class="serif-medium-s">活動資訊</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">活動資訊</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
 
                     <a href="" class="button2">
-                        <h2 class="serif-medium-s">會員獨享</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">會員獨享</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
 
                     <a href="" class="button3">
-                        <h2 class="serif-medium-s">文章專欄</h2>
+                        <span class="h2">
+                            <h2 class="serif-medium-s animate">文章專欄</h2>
+                        </span>
+
                         <img src="./img/gradient.png" alt="">
                     </a>
                 </div>
@@ -342,7 +426,7 @@
                         </li>
 
                         <li>
-                            <a href="./news-page.html#">
+                            <a href="./news-page.html">
                                 <p class="ch-sans-light-m">2023.04.05</p>
                                 <h3 class="ch-sans-light-m">母親節獻禮優惠　｜　4.28 ~ 5.15　香水類商品限時7折</h3>
                             </a>
@@ -459,12 +543,11 @@
         <section id="contact">
             <div class="content">
                 <div class="text">
-                    <h3 class="en-sans-light-l">Contact</h3>
-                    <h2 class="serif-medium-xxl">聯繫我們</h2>
-                    <p class="ch-sans-thin-l">若有任何需求或諮詢，請隨時與我們聯繫。</p>
-                    <img src="./img/gradient.png" alt="">
+                    <h3 class="en-sans-light-l animate">Contact</h3>
+                    <h2 class="serif-medium-xxl animate">聯繫我們</h2>
+                    <p class="ch-sans-thin-l animate">若有任何需求或諮詢，請隨時與我們聯繫。</p>
+                    <img class="animate" src="./img/gradient.png" alt="">
                 </div>
-
                 <div class="button-shadow">
                     <a class="leaf-btn-w" href="./contact.html">
                         <h5 class="ch-sans-thin-l">more</h5>
@@ -473,16 +556,17 @@
                         </div>
                     </a>
                 </div>
+
             </div>
         </section>
 
         <!-- 頁尾 -->
         <footer>
-            <img class="bg" src="./img/LOGO-w-cut-12.png" alt="">
-            <img class="star-1" src="./img/star-w.svg" alt="">
-            <img class="star-2" src="./img/star-w.svg" alt="">
-            <img class="star-3" src="./img/star-w.svg" alt="">
-            <img class="star-4" src="./img/star-w.svg" alt="">
+            <img class="bg animate" src="./img/LOGO-w-cut-12.png" alt="">
+            <img class="star-1 shine-2" src="./img/star-w.svg" alt="">
+            <img class="star-2 shine-2" src="./img/star-w.svg" alt="">
+            <img class="star-3 shine" src="./img/star-w.svg" alt="">
+            <img class="star-4 shine" src="./img/star-w.svg" alt="">
             <div class="content">
                 <a href="./index.html"><img src="./img/LOGO-07.png" alt=""></a>
                 <div class="center">
@@ -516,9 +600,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/script3.js"></script>
+
+    <script src="./js/script3-for-test-2.js"></script>
     <script src="./js/script-tab.js"></script>
     <script src="./js/script-carousel.js"></script>
+    <script src="./js/script-animate.js"></script>
 </body>
 
 </html>
