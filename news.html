@@ -41,7 +41,7 @@
     <!-- React -->
     <script type="text/babel">
 
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useRef } = React;
 
         // --------------------------頁首--------------------------
         // 元件：banner 圖取圓角
@@ -375,19 +375,146 @@
             )
         }
 
-        // 元件：文章卡片區塊
+        // 元件：文章卡片區塊 => 輪播
         const ArticleBox = () => {
 
-            // 篩選需要帶入的文章 => 去除活動消息類別後的前 4 個
-            const filteredArticles = articleList.filter(article => article.type !== "活動消息").slice(0, 4);
+            // ------------變數設定------------
+            // 篩選需要帶入的文章 => 去除活動消息類別後的前 8 個
+            const filteredArticles = articleList.filter(article => article.type !== "活動消息").slice(0, 8);
+
+            const [currentCardIndex, setCurrentCardIndex] = useState(0);    // 目前的項目編號 => 起始為 0
+            const [shownCardNumber, setShownCardNumber] = useState(4);      // 一次顯示的數量 => 監聽螢幕尺寸改變時，會重新計算
+            const [cardWidth, setCardWidth] = useState(0);                  // 卡片寬度 = 移動的距離 => 監聽螢幕尺寸改變時，會重新計算
+            const cardToDuplicate = 4;                                      // 需複製的數量，取最大數 4 個
+
+            // 使用 useRef 操作 DOM 元素
+            const articlesBoxRef = useRef(null);
+            const intervalIdCardRef = useRef(null);
+
+            // ------------基本函式------------
+            function getOuterWidth(element) {
+                const style = getComputedStyle(element);
+                const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+                return element.offsetWidth + margin;
+            }
+
+            function restartInterval() {
+                if (intervalIdCardRef.current) {
+                    clearInterval(intervalIdCardRef.current);
+                    intervalIdCardRef.current = null;
+                }
+                intervalIdCardRef.current = setInterval(showNextCard, 3000);
+            }
+
+            // 依據螢幕寬度，抓取卡片寬度 & 顯示數量
+            function getSettings() {
+                setCardWidth(getOuterWidth(articlesBoxRef.current.children[0]));
+
+                if (window.innerWidth > 1200) {
+                    setShownCardNumber(4);
+                } else if (window.innerWidth > 992) {
+                    setShownCardNumber(3);
+                } else if (window.innerWidth > 576) {
+                    setShownCardNumber(2);
+                } else {
+                    setShownCardNumber(1);
+                }
+            }
+
+            useEffect(() => {
+                getSettings();
+                window.addEventListener("resize", getSettings);
+                return () => {
+                    window.removeEventListener("resize", getSettings);
+                };
+            }, []);
+
+            // ------------播放下一張------------
+            // 取得項目寬度，設定移動的距離等同項目寬度 => 每次執行時重抓寬度
+            function moveOffset(index) {
+                const offset = -(index * cardWidth);
+                articlesBoxRef.current.style.transform = `translateX(${offset}px)`;
+            }
+
+            const showNextCard = () => {
+                setCurrentCardIndex(prevIndex => {
+                    const nextIndex = prevIndex + 1;
+                    moveOffset(nextIndex);
+
+                    if (nextIndex === filteredArticles.length) {
+                        setTimeout(() => {
+                            articlesBoxRef.current.style.transition = "none";
+                            setCurrentCardIndex(0);
+                            moveOffset(0);
+
+                            setTimeout(() => {
+                                articlesBoxRef.current.style.transition = "all 0.5s ease-in-out";
+                            }, 50);
+                        }, 500);
+                    }
+                    return nextIndex;
+                });
+            };
+
+            // ------------初始值設定------------
+            // 複製項目，並新增到最後 => 跑到最後一個項目時的重疊項目
+            function startCardCarousel() {
+                for (let i = 0; i < shownCardNumber; i++) {
+                    const cloneCard = articlesBoxRef.current.children[i].cloneNode(true);     // true 代表複製所有內容，含子元素等
+                    articlesBoxRef.current.appendChild(cloneCard);                            // 新增複製項目至框框中
+                }
+
+                if (!intervalIdCardRef.current) {
+                    intervalIdCardRef.current = setInterval(showNextCard, 3000);
+                }
+            }
+
+            useEffect(() => {
+                startCardCarousel();
+
+                return () => {
+                    if (intervalIdCardRef.current) {
+                        clearInterval(intervalIdCardRef.current);
+                        intervalIdCardRef.current = null;
+                    }
+                };
+            }, [shownCardNumber, cardWidth]);
+
+            // ------------前後按鈕------------
+            function clickNextCard() {
+                showNextCard();
+                restartInterval();
+            }
+
+            function clickPrevCard() {
+                if (currentCardIndex === 0) {
+                    setCurrentCardIndex(filteredArticles.length - shownCardNumber + 1);
+                    articlesBoxRef.current.style.opacity = 0.5;
+
+                    setTimeout(() => {
+                        articlesBoxRef.current.style.opacity = 1;
+                    }, 500);
+                }
+
+                setCurrentCardIndex(prevIndex => {
+                    const newIndex = prevIndex - 1;
+                    moveOffset(newIndex);
+                    return newIndex;
+                });
+                restartInterval();
+            }
 
             return (
-                <div className="articles-box">
-                    {
-                        filteredArticles.map((article, index) => {
-                            return <ArticleCard key={article.id} className={(index % 2 === 0) ? "up" : "down"} imgName={article.imgName} imgAlt={article.shortTitle} title={article.shortTitle} content={article.content} date={article.date} link={article.link} />
-                        })
-                    }
+                <div className="carousel-articles">
+                    <div className="articles-box" ref={articlesBoxRef}>
+                        {
+                            filteredArticles.map((article, index) => {
+                                return <ArticleCard key={article.id} className={(index % 2 === 0) ? "up" : "down"} imgName={article.imgName} imgAlt={article.shortTitle} title={article.shortTitle} content={article.content} date={article.date} link={article.link} />
+                            })
+                        }
+                    </div>
+                    <button className="btn-prev-card" onClick={clickPrevCard}><img src="./images/icon-arrow.svg" alt="" /></button>
+                    <button className="btn-next-card" onClick={clickNextCard}><img src="./images/icon-arrow.svg" alt="" /></button>
                 </div>
             )
         }
@@ -624,38 +751,38 @@
                     <MainContent />
 
                     <footer>
-                            <img className="bg animate" src="./img/LOGO-w-cut-12.png" alt="" />
-                            <img className="star-1 shine-2" src="./img/star-w.svg" alt="" />
-                            <img className="star-2 shine-2" src="./img/star-w.svg" alt="" />
-                            <img className="star-3 shine" src="./img/star-w.svg" alt="" />
-                            <img className="star-4 shine" src="./img/star-w.svg" alt="" />
-                            <div className="content">
-                                <a href="./index.html"><img src="./img/LOGO-07.png" alt="" /></a>
-                                <div className="center">
-                                    <div className="social">
-                                        <a href="#">
-                                            <img src="./img/icon/FB.svg" alt="" />
-                                        </a>
-                                        <a href="#">
-                                            <img src="./img/icon/IG.svg" alt="" />
-                                        </a>
-                                        <a href="#">
-                                            <img src="./img/icon/LINE.svg" alt="" />
-                                        </a>
-                                    </div>
-                                    <small className="en-sans-light-m">© 2024 Lumé, inc</small>
+                        <img className="bg animate" src="./img/LOGO-w-cut-12.png" alt="" />
+                        <img className="star-1 shine-2" src="./img/star-w.svg" alt="" />
+                        <img className="star-2 shine-2" src="./img/star-w.svg" alt="" />
+                        <img className="star-3 shine" src="./img/star-w.svg" alt="" />
+                        <img className="star-4 shine" src="./img/star-w.svg" alt="" />
+                        <div className="content">
+                            <a href="./index.html"><img src="./img/LOGO-07.png" alt="" /></a>
+                            <div className="center">
+                                <div className="social">
+                                    <a href="#">
+                                        <img src="./img/icon/FB.svg" alt="" />
+                                    </a>
+                                    <a href="#">
+                                        <img src="./img/icon/IG.svg" alt="" />
+                                    </a>
+                                    <a href="#">
+                                        <img src="./img/icon/LINE.svg" alt="" />
+                                    </a>
                                 </div>
-                                <div className="serif-medium-footer">
-                                    <a href="./index.html">首頁</a>
-                                    <a href="./news.html">最新消息</a>
-                                    <a href="./products.html">商品總覽</a>
-                                    <a href="./membership.html">會員制度</a>
-                                    <a href="./story.html">品牌故事</a>
-                                    <a href="./contact.html">聯絡我們</a>
-                                </div>
+                                <small className="en-sans-light-m">© 2024 Lumé, inc</small>
                             </div>
-                            <button className="btn-top" onClick={scrollToTop}></button>
-                        </footer>
+                            <div className="serif-medium-footer">
+                                <a href="./index.html">首頁</a>
+                                <a href="./news.html">最新消息</a>
+                                <a href="./products.html">商品總覽</a>
+                                <a href="./membership.html">會員制度</a>
+                                <a href="./story.html">品牌故事</a>
+                                <a href="./contact.html">聯絡我們</a>
+                            </div>
+                        </div>
+                        <button className="btn-top" onClick={scrollToTop}></button>
+                    </footer>
 
                 </>
             )

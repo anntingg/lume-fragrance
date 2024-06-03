@@ -533,6 +533,7 @@
 	#anchor a h2 {
 		transform: translateY(110%);
 		transition: all 1s 1s ease-in-out;
+		white-space: nowrap;
 	}
 
 	#anchor a h2.animate.animation{
@@ -568,7 +569,7 @@
 		}
 
 		#anchor .line {
-			width: 300px;
+			width: 250px;
 			margin: 0 50px;
 		}
 	}
@@ -780,13 +781,18 @@
 	}
 
 	.cover-logo .p .text {
+		width: 250px;
+		display: block;
+	}
+
+	.cover-logo .p .text .p-span{
 		display: block;
 		width: 0;
 		overflow: hidden;
 		animation: text 1.3s .5s ease-in-out forwards;
 	}
 
-	.cover-logo .p .text>p {
+	.cover-logo .p .text .p-span>p {
 		width: 250px;
 	}
 
@@ -1944,6 +1950,13 @@
 		padding: 12px 0;
 	}
 
+	.color-block-text li a h3{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 440px;
+		overflow: hidden;
+	}
+
 	.color-block-text .leaf-btn-w {
 		align-self: flex-end;
 		z-index: 10;
@@ -1951,10 +1964,10 @@
 
 	.color-block-text.item2 {
 		position: relative;
-
-		background: url(./img/bg-members-only.jpg);
-		background-position: left;
-		background-size: 120%;
+		background:linear-gradient(rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.4)),url(./img/1.jpg);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 
 	.color-block-text.item2>h3 {
@@ -1962,15 +1975,6 @@
 		text-align: center;
 		z-index: 10;
 	}
-
-	/* .color-block-text.item2>img{
-		position: absolute;
-		opacity: .5;
-		width: 200px;
-		left:215px;
-		bottom: 20px;
-		transform: rotate(-25deg);
-	} */
 
 	/* 電腦 1401px */
 	@media (min-width: 1401px) {}
@@ -2015,11 +2019,15 @@
 	/* 小型手機 768px 以下 */
 	@media (max-width: 768px) {
 
-
-
 		.color-block-text li a {
 			flex-direction: column;
 			width: 100%;
+		}
+
+		.color-block-text li a h3{
+
+			white-space: wrap;
+	
 		}
 
 		.color-block-text li:nth-last-child(1),
@@ -2138,6 +2146,7 @@
 
 		.button-shadow {
 			transform: translateX(0);
+			transform: translateY(-32px);
 		}
 	}
 
@@ -2568,7 +2577,7 @@
 			align-items: center;
 		}
 
-		#pd-cover .notes .item {
+		#pd-cover .notes .item-n {
 			padding: 20px 0px;
 		}
 
@@ -2763,11 +2772,21 @@
 		display: flex;
 		justify-content: space-between;
 		width: 75%;
+		z-index: 10;
+	}
+
+	#pd-related .arrow a{
+		display: flex;
+		align-items: center;
+		background-color:rgba(0, 0, 0, 0.2);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
 	}
 
 	#pd-related .arrow img {
-		height: 30px;
-		width: auto;
+		height: 20px;
+		
 	}
 
 	#pd-related .arrow a:nth-of-type(1) {
@@ -2987,6 +3006,6 @@
 	/* 
 	合併後修改： 
 	footer .content>a img 
-	width: auto => width: auto
+	width: fit-content => width: auto
 	.button-shadow => @media (max-width: 992px) 
 	*/
