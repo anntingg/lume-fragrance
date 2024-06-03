@@ -1238,13 +1238,65 @@ section {
 }
 
 /* 文章專欄區 */
-.articles-box {
-    display: flex;
-    justify-content: space-between;
+.carousel-articles {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    transition: all 0.5s ease-in-out;
 }
 
+/* 拖移效果
+.carousel-articles.dragging {
+    opacity: 0.6;
+    cursor: grabbing;
+} */
+
+.articles-box {
+    display: flex;
+    transition: all 0.5s ease-in-out;
+}
+
+/* 前後按鈕 */
+.btn-prev-card, .btn-next-card {
+    width: 48px;
+    height: 48px;
+    /* 手機版時裡面圖片置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.btn-prev-card img, .btn-next-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btn-prev-card {
+    left: 0;
+}
+
+.btn-next-card {
+    right: 0;
+}
+
+.btn-next-card img {
+    transform: rotateY(180deg);
+}
+
+/* 指示長條 */
+
+/* 文章卡片 */
 .article-card {
-    width: 24%;
+    min-width: 23.5%;
+    margin-right: calc((100% - 23.5% * 4) / 8);
+    margin-left: calc((100% - 23.5% * 4) / 8);
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1263,22 +1315,33 @@ section {
 }
 
 @media (max-width: 1200px) {
-    .article-card:last-child {
-        display: none;
+    .btn-prev-card {
+        left: 4px;
+    }
+    
+    .btn-next-card {
+        right: 4px;
     }
 
     .article-card {
-        width: 30%;
+        min-width: 30%;
+        margin-right: calc((100% - 30% * 3) / 6);
+        margin-left: calc((100% - 30% * 3) / 6);
     }
 }
 
 @media (max-width: 992px) {
-    .article-card:nth-child(n+3) {
-        display: none;
+    .btn-prev-card {
+        left: 12px;
+    }
+    
+    .btn-next-card {
+        right: 12px;
     }
 
     .article-card {
-        width: 45%;
+        min-width: 44%;
+        margin: 0 calc((100% - 44% * 2) / 4);
     }
 
     .down {
@@ -1291,18 +1354,15 @@ section {
 }
 
 @media (max-width: 576px) {
-    .articles-box {
-        justify-content: center;
+    .btn-prev-card img, .btn-next-card img{
+        width: 88%;
+        height: 88%;
     }
-
-    .article-card:nth-child(n+2) {
-        display: none;
-    }
-
+    
     .article-card {
-        width: 80%;
+        min-width: 88%;
+        margin: 0 calc((100% - 88%) / 2);
     }
-
 }
 
 /* 卡片內部的排版 */
@@ -1843,6 +1903,7 @@ section {
 .btn-next img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .btn-prev {

@@ -139,6 +139,8 @@ function images3() {
 
 
 // cover 圓角數值
+
+function coverShortWidth(){
 // 選取 cover-banner 元素
 var coverBanner = document.querySelector('.cover-banner');
 
@@ -147,10 +149,12 @@ var coverBannerWidth = coverBanner.offsetWidth;
 var coverBannerHeight = coverBanner.offsetHeight;
 
 // 獲取較短的邊
-var shortSide = Math.min(coverBannerWidth, coverBannerHeight);
+var shortSide = Math.min(coverBannerWidth, coverBannerHeight) -1;
 
 // 設置 CSS 變量 --short-side
 coverBanner.style.setProperty('--short-side', shortSide + 'px');
+}
 
-
+coverShortWidth();
+window.addEventListener('resize', coverShortWidth);
 
