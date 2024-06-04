@@ -561,6 +561,8 @@
                     } else if (touchDistance < 50) {
                         showPrevCard();
                     }
+
+                    restartInterval();
                 }
             }
 
@@ -576,10 +578,6 @@
                     onTouchEnd={endTouch}
                     onMouseLeave={(event) => {
                         endDrag(event);
-                        restartInterval();
-                    }}
-                    onTouchCancel={(event) => {
-                        endTouch(event);
                         restartInterval();
                     }}
                 >
