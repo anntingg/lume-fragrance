@@ -385,6 +385,7 @@
             const [currentCardIndex, setCurrentCardIndex] = useState(0);    // 目前的項目編號 => 起始為 0
             const [shownCardNumber, setShownCardNumber] = useState(4);      // 一次顯示的數量 => 監聽螢幕尺寸改變時，會重新計算
             const [cardWidth, setCardWidth] = useState(0);                  // 卡片寬度 = 移動的距離 => 監聽螢幕尺寸改變時，會重新計算
+            const [indicatorsAll, setIndicatorsAll] = useState([]);         // 所有指示條，為一組空陣列，在下方以 forEach 產生每個長條
             const cardToDuplicate = 4;                                      // 需複製的數量，取最大數 4 個
 
             // 使用 useRef 操作 DOM 元素
@@ -411,7 +412,22 @@
                 intervalIdCardRef.current = setInterval(showNextCard, 3000);
             }
 
-            // 依據螢幕寬度，抓取卡片寬度 & 顯示數量
+            function activateIndicator(n) {
+                indicatorsAll.forEach(element => element.classList.remove("active"));
+                indicatorsAll[n].classList.add("active");
+            }
+
+            // 設定移動的距離 = 項目寬度的倍數 => 每次執行時重抓寬度
+            function moveOffset(index) {
+                const offset = -(index * cardWidth);
+                articlesBoxRef.current.style.transform = `translateX(${offset}px)`;
+
+                console.log("index", index);
+                console.log("offset", offset);
+                console.log("執行");
+            }
+
+            // ------------resize 監聽 => 依據螢幕寬度，抓取卡片寬度 & 顯示數量------------
             function getSettings() {
                 setCardWidth(getOuterWidth(articlesBoxRef.current.children[0]));
 
@@ -435,18 +451,14 @@
             }, []);
 
             // ------------播放下一張------------
-            // 取得項目寬度，設定移動的距離等同項目寬度 => 每次執行時重抓寬度
-            function moveOffset(index) {
-                const offset = -(index * cardWidth);
-                articlesBoxRef.current.style.transform = `translateX(${offset}px)`;
-            }
-
             const showNextCard = () => {
                 setCurrentCardIndex(prevIndex => {
                     const nextIndex = prevIndex + 1;
                     moveOffset(nextIndex);
 
                     if (nextIndex === filteredArticles.length) {
+                        activateIndicator(0);
+
                         setTimeout(() => {
                             articlesBoxRef.current.style.transition = "none";
                             setCurrentCardIndex(0);
@@ -456,6 +468,8 @@
                                 articlesBoxRef.current.style.transition = "all 0.5s ease-in-out";
                             }, 50);
                         }, 500);
+                    } else {
+                        activateIndicator(nextIndex);
                     }
                     return nextIndex;
                 });
@@ -475,32 +489,49 @@
                 setCurrentCardIndex(prevIndex => {
                     const newIndex = prevIndex - 1;
                     moveOffset(newIndex);
+                    activateIndicator(newIndex);
+
                     return newIndex;
                 });
             }
 
+            // ------------指示燈------------
+            function createIndicator() {
+                const navigationCard = document.querySelector('.navigation-card');
+
+                // 建立指示長條 => 以 forEach 迴圈，讓每個輪播圖都建立對應的長條
+                filteredArticles.forEach((element, index) => {
+                    let indicatorEach = document.createElement("span");
+                    indicatorEach.classList.add("indicator-card");
+                    navigationCard.appendChild(indicatorEach);      // 把 indicator 加到 navigation 中
+                    indicatorsAll.push(indicatorEach);              // 將個別的 indicator 加到原本 indicators 空陣列中
+                });
+            }
+
             // ------------初始值設定------------
-            // 複製項目，並新增到最後 => 跑到最後一個項目時的重疊項目
-            function startCardCarousel() {
+            // 渲染後只執行一次：複製項目，並新增到最後 + 建立指示燈
+            useEffect(() => {
                 for (let i = 0; i < shownCardNumber; i++) {
                     const cloneCard = articlesBoxRef.current.children[i].cloneNode(true);     // true 代表複製所有內容，含子元素等
                     articlesBoxRef.current.appendChild(cloneCard);                            // 新增複製項目至框框中
                 }
 
+                createIndicator();
+                activateIndicator(currentCardIndex);
+            }, []);
+
+            // 當螢幕寬度改變時，重新執行：自動輪播
+            useEffect(() => {
                 if (!intervalIdCardRef.current) {
                     intervalIdCardRef.current = setInterval(showNextCard, 3000);
                 }
-            }
-
-            useEffect(() => {
-                startCardCarousel();
 
                 return () => {
                     clearIntervalCard();
                 };
             }, [shownCardNumber, cardWidth]);
 
-            // ------------滑鼠進入／離開／拖移------------
+            // ------------滑鼠進入／離開 + 拖移效果------------
             const [isDragging, setIsDragging] = useState(false);
             const [startX, setStartX] = useState(0);
 
@@ -522,15 +553,10 @@
 
                     const dragDistance = event.clientX - startX;
 
-                    console.log("startX", startX);
-                    console.log("dragDistance", dragDistance);
-
                     if (dragDistance < -100) {
                         showNextCard();
-                        console.log("下一張");
                     } else if (dragDistance > 100) {
                         showPrevCard();
-                        console.log("上一張");
                     }
                 }
             }
@@ -541,8 +567,6 @@
 
                 setIsDragging(true);
                 setStartX(event.changedTouches[0].clientX);
-
-                console.log(event);
             }
 
             const endTouch = (event) => {
@@ -552,9 +576,6 @@
                     setIsDragging(false);
 
                     const touchDistance = event.changedTouches[0].clientX - startX;
-                    
-                    console.log("touchStartX", startX);
-                    console.log("touchDistance", touchDistance);
 
                     if (touchDistance < -50) {
                         showNextCard();
@@ -573,7 +594,10 @@
                     onMouseEnter={clearIntervalCard}
                     onMouseDown={startDrag}
                     onTouchStart={startTouch}
-                    onMouseMove={(event) => event.preventDefault()}
+                    onMouseMove={(event) => {
+                        event.preventDefault();
+                        clearIntervalCard();
+                    }}
                     onMouseUp={endDrag}
                     onTouchEnd={endTouch}
                     onMouseLeave={(event) => {
@@ -588,18 +612,19 @@
                             })
                         }
                     </div>
-                    <button 
-                        className="btn-prev-card" 
-                        onClick={()=>{
+                    <button
+                        className="btn-prev-card"
+                        onClick={() => {
                             showPrevCard();
                             restartInterval();
                         }}><img src="./images/icon-arrow.svg" alt="" /></button>
-                    <button 
-                        className="btn-next-card" 
-                        onClick={()=>{
+                    <button
+                        className="btn-next-card"
+                        onClick={() => {
                             showNextCard();
                             restartInterval();
                         }}><img src="./images/icon-arrow.svg" alt="" /></button>
+                    <div className="navigation-card"></div>
                 </div>
             )
         }
