@@ -1246,11 +1246,11 @@ section {
     transition: all 0.5s ease-in-out;
 }
 
-/* 拖移效果
+/* 拖移效果*/
 .carousel-articles.dragging {
     opacity: 0.6;
     cursor: grabbing;
-} */
+} 
 
 .articles-box {
     display: flex;
@@ -1291,9 +1291,9 @@ section {
 
 /* 指示長條 */
 .navigation-card {
-    margin: auto;
-    width: max-content;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .indicator-card {

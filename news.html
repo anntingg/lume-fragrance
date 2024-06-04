@@ -505,12 +505,14 @@
 
             // 點擊事件的涵式 => 抓取點擊到的序號
             function handleIndicator(event) {
-                const index = indicatorsAll.indexOf(event.target);
+                if (event.target.classList.contains("indicator-card")) {
+                    const index = indicatorsAll.indexOf(event.target);
 
-                setCurrentCardIndex(index);
-                moveOffset(index);
-                activateIndicator(index);
-                restartInterval();
+                    setCurrentCardIndex(index);
+                    moveOffset(index);
+                    activateIndicator(index);
+                    restartInterval();
+                }
             }
 
             // ------------初始值設定------------
