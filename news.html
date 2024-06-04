@@ -503,8 +503,6 @@
             // ------------滑鼠進入／離開／拖移------------
             const [isDragging, setIsDragging] = useState(false);
             const [startX, setStartX] = useState(0);
-            const [isTouching, setIsTouching] = useState(false);
-            const [touchStartX, setTouchStartX] = useState(0);
 
             const startDrag = (event) => {
                 event.preventDefault();
@@ -539,19 +537,24 @@
 
             const startTouch = (event) => {
                 clearIntervalCard();
-                event.preventDefault();
+                // event.preventDefault();
 
-                setIsTouching(true);
-                setTouchStartX(event.touches[0].clientX);
+                setIsDragging(true);
+                setStartX(event.changedTouches[0].clientX);
+
+                console.log(event);
             }
 
             const endTouch = (event) => {
-                event.preventDefault();
+                // event.preventDefault();
 
-                if (isTouching) {
-                    setIsTouching(false);
+                if (isDragging) {
+                    setIsDragging(false);
 
-                    const touchDistance = event.touches[0].clientX - touchStartX;
+                    const touchDistance = event.changedTouches[0].clientX - startX;
+                    
+                    console.log("touchStartX", startX);
+                    console.log("touchDistance", touchDistance);
 
                     if (touchDistance > 50) {
                         showNextCard();
@@ -569,14 +572,13 @@
                     onMouseDown={startDrag}
                     onTouchStart={startTouch}
                     onMouseMove={(event) => event.preventDefault()}
-                    onTouchMove={(event) => event.preventDefault()}
                     onMouseUp={endDrag}
                     onTouchEnd={endTouch}
                     onMouseLeave={(event) => {
                         endDrag(event);
                         restartInterval();
                     }}
-                    onTouchCancel={() => {
+                    onTouchCancel={(event) => {
                         endTouch(event);
                         restartInterval();
                     }}
