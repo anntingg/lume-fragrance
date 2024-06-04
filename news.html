@@ -525,10 +525,10 @@
                     console.log("startX", startX);
                     console.log("dragDistance", dragDistance);
 
-                    if (dragDistance > 100) {
+                    if (dragDistance > -100) {
                         showNextCard();
                         console.log("下一張");
-                    } else if (dragDistance < -100) {
+                    } else if (dragDistance < 100) {
                         showPrevCard();
                         console.log("上一張");
                     }
@@ -556,9 +556,9 @@
                     console.log("touchStartX", startX);
                     console.log("touchDistance", touchDistance);
 
-                    if (touchDistance > 50) {
+                    if (touchDistance > -50) {
                         showNextCard();
-                    } else if (touchDistance < -50) {
+                    } else if (touchDistance < 50) {
                         showPrevCard();
                     }
                 }
