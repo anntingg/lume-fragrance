@@ -1291,9 +1291,10 @@ section {
 
 /* 指示長條 */
 .navigation-card {
+    margin: auto;
+    width: max-content;
     display: flex;
-    justify-content: center;
-    align-items: center;}
+}
 
 .indicator-card {
     width: 12px;
