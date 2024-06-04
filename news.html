@@ -394,37 +394,32 @@
             const intervalIdCardRef = useRef(null);
 
             // ------------基本函式------------
-            function getOuterWidth(element) {
+            function getOuterWidth(element) {   // 取得含 margin 寬度
                 const style = getComputedStyle(element);
                 const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
                 return element.offsetWidth + margin;
             }
 
-            function clearIntervalCard() {
+            function clearIntervalCard() {  // 停止輪播
                 if (intervalIdCardRef.current) {
                     clearInterval(intervalIdCardRef.current);
                     intervalIdCardRef.current = null;
                 }
             }
 
-            function restartInterval() {
+            function restartInterval() {    // 重啟輪播
                 clearIntervalCard();
                 intervalIdCardRef.current = setInterval(showNextCard, 3000);
             }
 
-            function activateIndicator(n) {
+            function activateIndicator(n) {    // 指示燈 actuve 狀態
                 indicatorsAll.forEach(element => element.classList.remove("active"));
                 indicatorsAll[n].classList.add("active");
             }
 
-            // 設定移動的距離 = 項目寬度的倍數 => 每次執行時重抓寬度
-            function moveOffset(index) {
+            function moveOffset(index) {     // 設定移動的距離 = 項目寬度的倍數
                 const offset = -(index * cardWidth);
                 articlesBoxRef.current.style.transform = `translateX(${offset}px)`;
-
-                console.log("index", index);
-                console.log("offset", offset);
-                console.log("執行");
             }
 
             // ------------resize 監聽 => 依據螢幕寬度，抓取卡片寬度 & 顯示數量------------
@@ -452,8 +447,8 @@
 
             // ------------播放下一張------------
             const showNextCard = () => {
-                setCurrentCardIndex(prevIndex => {
-                    const nextIndex = prevIndex + 1;
+                setCurrentCardIndex( currentIndex => {
+                    const nextIndex = currentIndex + 1;
                     moveOffset(nextIndex);
 
                     if (nextIndex === filteredArticles.length) {
@@ -486,12 +481,12 @@
                     }, 500);
                 }
 
-                setCurrentCardIndex(prevIndex => {
-                    const newIndex = prevIndex - 1;
-                    moveOffset(newIndex);
-                    activateIndicator(newIndex);
+                setCurrentCardIndex(currentIndex => {
+                    const prevIndex = currentIndex - 1;
+                    moveOffset(prevIndex);
+                    activateIndicator(prevIndex);
 
-                    return newIndex;
+                    return prevIndex;
                 });
             }
 
@@ -561,6 +556,7 @@
                 }
             }
 
+            // ------------觸控拖移效果------------
             const startTouch = (event) => {
                 clearIntervalCard();
                 // event.preventDefault();
