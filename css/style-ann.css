@@ -1302,7 +1302,7 @@ section {
     display: block;
     border: 2px solid #1EA7E1;
     border-radius: 50%;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
 .indicator-card.active {

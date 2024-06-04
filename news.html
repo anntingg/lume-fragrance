@@ -445,9 +445,9 @@
                 };
             }, []);
 
-            // ------------播放下一張------------
+            // ------------播放下一張 => 複製項目到達最左側時，重置位移並暫停 transition ------------
             const showNextCard = () => {
-                setCurrentCardIndex( currentIndex => {
+                setCurrentCardIndex(currentIndex => {
                     const nextIndex = currentIndex + 1;
                     moveOffset(nextIndex);
 
@@ -470,10 +470,10 @@
                 });
             };
 
-            // ------------播放前一項 => 前後按鈕使用------------
+            // ------------播放前一項：按鈕使用 => 第一項位移至最後一項時，帶透明度------------
             function showPrevCard() {
                 if (currentCardIndex === 0) {
-                    setCurrentCardIndex(filteredArticles.length - shownCardNumber + 1);
+                    setCurrentCardIndex(filteredArticles.length);
                     articlesBoxRef.current.style.opacity = 0.5;
 
                     setTimeout(() => {
@@ -503,6 +503,16 @@
                 });
             }
 
+            // 點擊事件的涵式 => 抓取點擊到的序號
+            function handleIndicator(event) {
+                const index = indicatorsAll.indexOf(event.target);
+
+                setCurrentCardIndex(index);
+                moveOffset(index);
+                activateIndicator(index);
+                restartInterval();
+            }
+
             // ------------初始值設定------------
             // 渲染後只執行一次：複製項目，並新增到最後 + 建立指示燈
             useEffect(() => {
@@ -530,6 +540,7 @@
             const [isDragging, setIsDragging] = useState(false);
             const [startX, setStartX] = useState(0);
 
+            // 滑鼠按下 => 偵測按下的座標位置
             const startDrag = (event) => {
                 event.preventDefault();
 
@@ -539,6 +550,7 @@
                 setStartX(event.clientX);
             }
 
+            // 滑鼠放開 => 偵測放開座標位置，相減算出拖移距離
             const endDrag = (event) => {
                 event.preventDefault();
 
@@ -620,7 +632,7 @@
                             showNextCard();
                             restartInterval();
                         }}><img src="./images/icon-arrow.svg" alt="" /></button>
-                    <div className="navigation-card"></div>
+                    <div className="navigation-card" onClick={handleIndicator}></div>
                 </div>
             )
         }
