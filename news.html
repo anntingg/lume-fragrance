@@ -503,6 +503,8 @@
             // ------------滑鼠進入／離開／拖移------------
             const [isDragging, setIsDragging] = useState(false);
             const [startX, setStartX] = useState(0);
+            const [isTouching, setIsTouching] = useState(false);
+            const [touchStartX, setTouchStartX] = useState(0);
 
             const startDrag = (event) => {
                 event.preventDefault();
@@ -539,21 +541,21 @@
                 clearIntervalCard();
                 event.preventDefault();
 
-                setIsDragging(true);
-                setStartX(event.touches[0].clientX);
+                setIsTouching(true);
+                setTouchStartX(event.touches[0].clientX);
             }
 
             const endTouch = () => {
                 event.preventDefault();
 
-                if (isDragging) {
-                    setIsDragging(false);
+                if (isTouching) {
+                    setIsTouching(false);
 
-                    const dragDistance = event.touches[0].clientX - startX;
+                    const touchDistance = event.touches[0].clientX - touchStartX;
 
-                    if (dragDistance > 50) {
+                    if (touchDistance > 50) {
                         showNextCard();
-                    } else if (dragDistance < -50) {
+                    } else if (touchDistance < -50) {
                         showPrevCard();
                     }
                 }
