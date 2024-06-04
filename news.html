@@ -388,6 +388,7 @@
             const cardToDuplicate = 4;                                      // 需複製的數量，取最大數 4 個
 
             // 使用 useRef 操作 DOM 元素
+            const carouselArticlesRef = useRef(null);
             const articlesBoxRef = useRef(null);
             const intervalIdCardRef = useRef(null);
 
@@ -398,11 +399,15 @@
                 return element.offsetWidth + margin;
             }
 
-            function restartInterval() {
+            function clearIntervalCard() {
                 if (intervalIdCardRef.current) {
                     clearInterval(intervalIdCardRef.current);
                     intervalIdCardRef.current = null;
                 }
+            }
+
+            function restartInterval() {
+                clearIntervalCard();
                 intervalIdCardRef.current = setInterval(showNextCard, 3000);
             }
 
@@ -456,6 +461,24 @@
                 });
             };
 
+            // ------------播放前一項 => 前後按鈕使用------------
+            function showPrevCard() {
+                if (currentCardIndex === 0) {
+                    setCurrentCardIndex(filteredArticles.length - shownCardNumber + 1);
+                    articlesBoxRef.current.style.opacity = 0.5;
+
+                    setTimeout(() => {
+                        articlesBoxRef.current.style.opacity = 1;
+                    }, 500);
+                }
+
+                setCurrentCardIndex(prevIndex => {
+                    const newIndex = prevIndex - 1;
+                    moveOffset(newIndex);
+                    return newIndex;
+                });
+            }
+
             // ------------初始值設定------------
             // 複製項目，並新增到最後 => 跑到最後一個項目時的重疊項目
             function startCardCarousel() {
@@ -473,39 +496,89 @@
                 startCardCarousel();
 
                 return () => {
-                    if (intervalIdCardRef.current) {
-                        clearInterval(intervalIdCardRef.current);
-                        intervalIdCardRef.current = null;
-                    }
+                    clearIntervalCard();
                 };
             }, [shownCardNumber, cardWidth]);
 
-            // ------------前後按鈕------------
-            function clickNextCard() {
-                showNextCard();
-                restartInterval();
+            // ------------滑鼠進入／離開／拖移------------
+            const [isDragging, setIsDragging] = useState(false);
+            const [startX, setStartX] = useState(0);
+
+            const startDrag = (event) => {
+                event.preventDefault();
+
+                setIsDragging(true);
+                carouselArticlesRef.current.classList.add("dragging");
+
+                setStartX(event.clientX);
             }
 
-            function clickPrevCard() {
-                if (currentCardIndex === 0) {
-                    setCurrentCardIndex(filteredArticles.length - shownCardNumber + 1);
-                    articlesBoxRef.current.style.opacity = 0.5;
+            const endDrag = (event) => {
+                event.preventDefault();
 
-                    setTimeout(() => {
-                        articlesBoxRef.current.style.opacity = 1;
-                    }, 500);
+                if (isDragging) {
+                    setIsDragging(false);
+                    carouselArticlesRef.current.classList.remove("dragging");
+
+                    const dragDistance = event.clientX - startX;
+
+                    console.log("startX", startX);
+                    console.log("dragDistance", dragDistance);
+
+                    if (dragDistance > 100) {
+                        showNextCard();
+                        console.log("下一張");
+                    } else if (dragDistance < -100) {
+                        showPrevCard();
+                        console.log("上一張");
+                    }
                 }
+            }
 
-                setCurrentCardIndex(prevIndex => {
-                    const newIndex = prevIndex - 1;
-                    moveOffset(newIndex);
-                    return newIndex;
-                });
-                restartInterval();
+            const startTouch = () => {
+                clearIntervalCard();
+                event.preventDefault();
+
+                setIsDragging(true);
+                setStartX(event.touches[0].clientX);
+            }
+
+            const endTouch = () => {
+                event.preventDefault();
+
+                if (isDragging) {
+                    setIsDragging(false);
+
+                    const dragDistance = event.touches[0].clientX - startX;
+
+                    if (dragDistance > 50) {
+                        showNextCard();
+                    } else if (dragDistance < -50) {
+                        showPrevCard();
+                    }
+                }
             }
 
             return (
-                <div className="carousel-articles">
+                <div
+                    className="carousel-articles"
+                    ref={carouselArticlesRef}
+                    onMouseEnter={clearIntervalCard}
+                    onMouseDown={startDrag}
+                    onTouchStart={startTouch}
+                    onMouseMove={(event) => event.preventDefault()}
+                    onTouchMove={(event) => event.preventDefault()}
+                    onMouseUp={endDrag}
+                    onTouchEnd={endTouch}
+                    onMouseLeave={(event) => {
+                        endDrag(event);
+                        restartInterval();
+                    }}
+                    onTouchCancel={() => {
+                        endTouch(event);
+                        restartInterval();
+                    }}
+                >
                     <div className="articles-box" ref={articlesBoxRef}>
                         {
                             filteredArticles.map((article, index) => {
@@ -513,8 +586,18 @@
                             })
                         }
                     </div>
-                    <button className="btn-prev-card" onClick={clickPrevCard}><img src="./images/icon-arrow.svg" alt="" /></button>
-                    <button className="btn-next-card" onClick={clickNextCard}><img src="./images/icon-arrow.svg" alt="" /></button>
+                    <button 
+                        className="btn-prev-card" 
+                        onClick={()=>{
+                            showPrevCard();
+                            restartInterval();
+                        }}><img src="./images/icon-arrow.svg" alt="" /></button>
+                    <button 
+                        className="btn-next-card" 
+                        onClick={()=>{
+                            showNextCard();
+                            restartInterval();
+                        }}><img src="./images/icon-arrow.svg" alt="" /></button>
                 </div>
             )
         }
