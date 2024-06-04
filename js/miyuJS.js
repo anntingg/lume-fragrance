@@ -1,4 +1,4 @@
-// 品牌故事頁面，監聽動畫:
+// 品牌故事、聯絡我們頁面，監聽動畫:
 document.addEventListener('DOMContentLoaded', function () {
     const options = {
         root: null,
@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const callback = (entries, observer) => {
         // 監聽事件
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.intersectionRatio > 0.35) {
                 entry.target.style.opacity = '1';
-            } else {
+            } else if (entry.intersectionRatio <= 0.35 && entry.boundingClientRect.top > 0) {
                 entry.target.style.opacity = '0';
             }
         });
