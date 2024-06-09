@@ -23,19 +23,6 @@ $(function () {
             $(".btn-top").stop().fadeTo("fast", 0);
         }
 
-        /*
-        // 取出 footer 和視窗底部位置
-        let footerPos = $("footer").offset().top;
-        let currentBottomPos = $(this).scrollTop() + window.innerHeight;
-
-        // 當視窗底部抵達 footer 時，Top 按鈕新增 class="position" 覆蓋原本定位
-        if (currentBottomPos >= (footerPos)) {
-            $('.btn-top').addClass("position");
-        } else {
-            $('.btn-top').removeClass("position");
-        };       
-        */
-
     });
 
 })
