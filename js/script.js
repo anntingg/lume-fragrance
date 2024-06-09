@@ -1,67 +1,41 @@
-// hamburger menu & top button
-$(function () {
-    $(".nav-toggle").click(function () {
-        $(".line").toggleClass("active");
-        $(".navbar").toggleClass("active");
+// 若在 React 框架中，直接用 onClick 事件呼叫函式
+const scrollToTop = () => {
+    document.body.scrollTo({
+        top: 0,
+        behavior: "smooth" // This animates the scroll behavior
     });
-
-    $("#btn-top").click(function () {
-        $("html, body").animate({ scrollTop: 0 }, "fast");
-    });
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $("#btn-top").stop().fadeTo("fast", 1);
-        } else {
-            $("#btn-top").stop().fadeOut();
-        }
-    });
-})
-
-// navbar effect
-const handleNavbar = () => {
-    const navbar = document.querySelector(".navbar");
-
-    if (window.scrollY > 200) {
-        navbar.classList.add("background");
-    } else {
-        navbar.classList.remove("background");
-    }
-}
-window.addEventListener("scroll", handleNavbar);
-
-// title-m effect
-const handleTitleM = () => {
-    const titleM = document.querySelectorAll('.title-m');
-
-    titleM.forEach(title => {
-        const titleTop = title.getBoundingClientRect().top;
-
-        if (titleTop < (window.innerHeight / 2)) {
-            title.classList.add("active");
-        } else {
-            title.classList.remove("active");
-        }
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: "smooth" // This animates the scroll behavior
     });
 };
-handleTitleM();
-window.addEventListener("scroll", handleTitleM);
-window.addEventListener("resize", handleTitleM);
 
-// booking section - circle effect
-const steps = document.querySelectorAll(".step");
+// Top 按鈕
+$(function () {
+    $(window).scroll(function () {
 
-const handleStep = () => {
-    steps.forEach(step => {
-        const stepTop = step.getBoundingClientRect().top;
-
-        if (stepTop < (window.innerHeight / 2)) {
-            step.classList.add("active");
+        // ------------Top 按鈕--------------
+        // Top 按鈕捲動超過 200px 時，按鈕才出現
+        let showTop = 200;
+        if ($(this).scrollTop() > showTop) {
+            $(".btn-top").stop().fadeTo("fast", 1);
         } else {
-            step.classList.remove("active");
+            $(".btn-top").stop().fadeTo("fast", 0);
         }
+
+        /*
+        // 取出 footer 和視窗底部位置
+        let footerPos = $("footer").offset().top;
+        let currentBottomPos = $(this).scrollTop() + window.innerHeight;
+
+        // 當視窗底部抵達 footer 時，Top 按鈕新增 class="position" 覆蓋原本定位
+        if (currentBottomPos >= (footerPos)) {
+            $('.btn-top').addClass("position");
+        } else {
+            $('.btn-top').removeClass("position");
+        };       
+        */
+
     });
-}
-handleStep();
-window.addEventListener("scroll", handleStep);
-window.addEventListener("resize", handleStep);
+
+})
