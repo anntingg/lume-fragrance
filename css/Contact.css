@@ -1,0 +1,1127 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@500&display=swap');
+
+/* eric/css/reset/ */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    overflow-x: hidden;
+}
+
+ol,
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* eric/css/reset/end */
+
+
+/* ann */
+
+/* 顏色 */
+:root {
+    /* 灰階 */
+    --white: #fff;
+    --black: #000;
+    --font-grey: #666;
+    /* 主色調 
+    --primary-color:; */
+    /* 背景漸層 */
+    --gradient:
+        linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%);
+    --gradient-2:
+        linear-gradient(120deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(210deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(340deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%);
+    /* 遮色片漸層 */
+    --overlay:
+        linear-gradient(120deg, rgba(164, 213, 190, .3) 30%, rgba(164, 213, 190, 0) 60%),
+        linear-gradient(210deg, rgba(137, 209, 239, .3) 30%, rgba(137, 209, 239, 0) 60%),
+        linear-gradient(340deg, rgba(238, 179, 208, .3) 30%, rgba(238, 179, 208, 0) 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, .3) 30%, rgba(255, 255, 255, .8) 20%, rgba(255, 255, 255, .3) 30%);
+
+}
+
+/* 字型 */
+/* 內文(黑體) */
+.ch-sans-light-s {
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    /* 增加了字距 */
+    line-height: 190%;
+    font-size: 14px;
+    /* color: #000;  body 預設為黑色*/
+}
+
+.ch-sans-light-m {
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 190%;
+    font-size: 16px;
+    /* color: #000;  body 預設為黑色*/
+}
+
+.ch-sans-thin-l {
+    /*葉形按鈕*/
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    font-size: 20px;
+    /* color: #000;  body 預設為黑色*/
+}
+
+.ch-sans-thin-xl {
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    font-size: 24px;
+    /* color: #000;  body 預設為黑色*/
+}
+
+.en-sans-light-s {
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 12px;
+}
+
+.en-sans-light-m {
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 14px;
+}
+
+.en-sans-light-l {
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 20px;
+}
+
+.en-sans-light-xl {
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 24px;
+}
+
+/* 標題(明體) */
+.serif-medium-footer {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 20px;
+}
+
+.serif-medium-s {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    color: #666;
+    font-size: 24px;
+}
+
+.serif-medium-m {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 150%;
+    color: #666;
+    font-size: 32px;
+}
+
+.serif-medium-l {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 150%;
+    color: #666;
+    font-size: 44px;
+}
+
+.serif-medium-xl {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 140%;
+    color: #666;
+    font-size: 64px;
+}
+
+.serif-medium-xxl {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 120%;
+    color: #666;
+    font-size: 72px;
+}
+
+/* 共用區 */
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    scroll-behavior: smooth;
+
+}
+
+body {
+    overflow-X: hidden;
+    font-family: "Noto Sans TC", "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+    font-style: normal;
+    color: var(--black);
+}
+
+.container {
+    padding: 0 144px;
+    margin: auto auto;
+    max-width: 1440px;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    display: block;
+    color: var(--black);
+    text-decoration: none;
+}
+
+
+/* 內容共用區 */
+section {
+    padding: 40px 0;
+}
+
+.title-m {
+    margin-bottom: 50px;
+}
+
+.title-m h1 {
+    margin-top: 8px;
+}
+
+/* 監聽效果-淡入淡出 */
+#contact,
+.background {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 聯絡我們-開始 */
+
+/* 聯絡資訊 */
+#contact {
+    position: relative;
+    width: 100%;
+}
+
+#contact img {
+    width: 42px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+}
+
+#contact .contact-bg {
+    width: 100%;
+    padding: 0;
+    margin: auto auto;
+    position: absolute;
+    z-index: -1;
+}
+
+#contact .contact-bg img {
+    padding: 0;
+    width: 100%;
+    height: 55rem;
+}
+
+#contact .list-box {
+    margin: 0 auto;
+    display: flex;
+    width: 1100px;
+}
+
+#contact .list-box .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    margin: 20px;
+    height: auto;
+}
+
+#contact .list-box .box .bon {
+    margin: 30px 0;
+}
+
+#contact .list-box .box h2 {
+    margin-bottom: 50px;
+}
+
+#contact .list-box .box p {
+    margin-bottom: 30px;
+}
+
+
+#contact .list-box iframe {
+    width: 90%;
+    height: 320px;
+    border-radius: 99px 0 99px 0;
+}
+
+/* RWD 斷點 */
+/* 電腦 1200px 以上 */
+/* @media (min-width: 1201px) {} */
+
+@media (max-width: 1200px) {
+    #contact .list-box {
+        width: 85%;
+    }
+}
+
+/* 平板 (769-) 992px */
+@media (max-width: 992px) {
+    #contact {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #contact .contact-bg {
+        bottom: 0;
+        width: 100%;
+    }
+
+    #contact .contact-bg {
+        display: none;
+    }
+
+    #contact .list-box {
+        padding: 0;
+        display: block;
+    }
+
+    #contact .list-box iframe {
+        width: 100%;
+    }
+}
+
+/* 手機 (577-) 768px */
+@media (max-width: 768px) {
+    #contact {
+        width: 100%;
+    }
+
+    #contact .list-box {
+        display: block;
+    }
+
+    #contact .list-box iframe {
+        width: 100%;
+        height: 35vh;
+    }
+}
+
+/* 小型手機 576px 以下 */
+@media (max-width: 576px) {
+    #contact {
+        width: 100%;
+    }
+
+    #contact .list-box .box,
+    #contact .list-box .bon {
+        margin: 0;
+    }
+
+    #contact .list-box .box p {
+        font-size: 16px;
+        display: flex;
+    }
+
+
+    #contact .contact-bg {
+        display: none;
+    }
+
+    #contact .list-box {
+        padding: 0;
+        display: block;
+    }
+}
+
+
+/* 提供意見 */
+/* 背景 */
+.background {
+    position: relative;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.background .from-bg-L {
+    position: absolute;
+    z-index: -1;
+    width: 300px;
+    left: 0;
+    top: 15rem;
+}
+
+.background .from-line {
+    width: 100%;
+    height: 20%;
+    margin: 0 auto;
+    position: absolute;
+    z-index: -3;
+    bottom: 10rem;
+}
+
+.background .from-bg-R {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    bottom: 0;
+    /* 反轉圖片 */
+    transform: scaleY(-1) scaleX(-1);
+}
+
+.background fieldset {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* title */
+/* Lume Fragrance 字樣 */
+.cover-form .logotext {
+    display: flex;
+    justify-content: center;
+}
+
+/* 提交意見 字樣 */
+.cover-form .text {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 5px;
+}
+
+/* 提供意見的三原色色塊 */
+.cover-form .text img {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    z-index: -1;
+    margin-right: 135px;
+    margin-top: -25px;
+    transform: rotate(130deg);
+}
+
+/* 直線條 */
+.cover-form .element {
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 15px;
+    color: #666;
+}
+
+/* 文字描述列 */
+.cover-form .hint {
+    margin: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 表單區域 */
+.cover-form .box {
+    padding: 55px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 輸入格 */
+.cover-form input[type="text"],
+.cover-form input[type="tel"],
+.cover-form input[type="email"] {
+    border: none;
+    border-radius: 99px;
+    background-color: #F8F8F8;
+    width: 100%;
+    padding: 35px;
+    color: var(--font-grey);
+    border: 1px solid transparent;
+}
+
+.cover-form input[type="text"]:focus,
+.cover-form input[type="tel"]:focus,
+.cover-form input[type="email"]:focus {
+    border: 1px solid #89D1EF;
+    outline: none;
+    color: var(--font-grey);
+    background-color: var(--white);
+}
+
+/* 必填格設計 */
+.cover-form .must {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gradient);
+    border-radius: 99px;
+    background-size: cover;
+    padding: 5px 20px;
+    margin: 0 20px;
+    height: 30px;
+}
+
+.cover-form .must p {
+    width: 32px;
+    font-size: 14px;
+    color: #666;
+}
+
+.cover-form .box .gui {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+}
+
+.cover-form .box .gui .txt {
+    width: 100%;
+    margin: auto auto;
+}
+
+.cover-form .box .gui .txt label {
+    width: 200px;
+}
+
+.cover-form .box .lat {
+    width: 70%;
+    margin-right: 55px;
+}
+
+.cover-form .box {
+    position: relative;
+    width: 100%;
+}
+
+.cover-form .box .gui-case {
+    width: 200px;
+}
+
+.cover-form .box .gui-case .txt-case {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    margin: auto auto;
+}
+
+.cover-form fieldset form .box .lat-case {
+    width: 100%;
+}
+
+.cover-form fieldset form .box .lat-case textarea {
+    margin-left: 50px;
+    width: 85%;
+    border: none;
+    border-radius: 30px;
+    background-color: #F8F8F8;
+    color: var(--font-grey);
+    padding: 40px;
+    overflow-y: auto;
+    border: 1px solid transparent;
+}
+
+.cover-form .box .lat-case textarea:focus {
+    background-color: var(--white);
+    color: var(--font-grey);
+    outline: none;
+    border: 1px solid #89D1EF;
+}
+
+
+
+/* 性別 */
+.cover-form .box-male {
+    display: flex;
+}
+
+.cover-form .box-male .gui {
+    width: 230px;
+}
+
+.cover-form .box-male .gui .txt {
+    margin: 0 auto;
+    width: 55%;
+}
+
+.cover-form .box-male .lat-radio {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 65%;
+    position: absolute;
+    left: 120px;
+    right: 0;
+}
+
+
+/* 設計radio按鈕樣式 */
+.cover-form input[type="radio"] {
+    appearance: none;
+    /* 讓被點選後的內容可以抓到這個固定位子 */
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 99px;
+    background: var(--gradient);
+    /* 讓文字與點選格兩者水平置中 */
+    vertical-align: middle;
+}
+
+.cover-form input[type="radio"]:checked+label {
+    /* 移除選中狀態的背景顏色、邊框顏色 */
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.cover-form input[type="radio"]::before {
+    /* 做一個沒被點選時的空值 */
+    content: "";
+    /* 讓被點選後的按鈕浮在漸層背景上 */
+    position: absolute;
+    /* 讓被點選後的按鈕置中於圓圈中 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 圓圈的大小與圓角 */
+    width: 10px;
+    height: 10px;
+    border-radius: 99px;
+}
+
+.cover-form input[type="radio"]:checked::before {
+    background-color: #89D1EF;
+}
+
+/* 選擇想了解的品項 */
+/* 下拉式選單樣式 */
+.cover-form select {
+    border: none;
+    border-radius: 99px;
+    width: 100%;
+    padding: 35px;
+    appearance: none;
+    background: url(../images/optgroup-arrow.svg) no-repeat;
+    background-position: 95% center;
+    padding-right: 20px;
+    background-color: #F8F8F8;
+    border: 1px solid transparent;
+}
+
+.cover-form select:focus {
+    border: 1px solid #89D1EF;
+    outline: none;
+    color: #89D1EF;
+    background-color: var(--white);
+}
+
+.cover-form select option {
+    background-color: var(--white);
+    color: var(--font-grey);
+}
+
+/* 隱私權政策 */
+.cover-form .box-declare {
+    display: flex;
+    justify-content: center;
+}
+
+.cover-form .box-declare .order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-form .box-declare .order a {
+    text-decoration: underline;
+    color: #89D1EF;
+}
+
+.cover-form .box-declare .order label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-form input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 99px;
+    background: var(--gradient);
+    vertical-align: middle;
+}
+
+.cover-form input[type="checkbox"]:checked+label {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.cover-form input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 99px;
+}
+
+.cover-form input[type="checkbox"]:checked::before {
+    background-color: #89D1EF;
+}
+
+
+/* 按鈕 */
+.cover-form fieldset form .submit {
+    width: 50%;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 99px 0 99px 0;
+
+}
+
+.cover-form fieldset form .submit input {
+    width: 100%;
+    height: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    background: var(--gradient);
+    border-radius: 99px 0 99px 0;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+
+    font-family: "Noto Serif TC", serif;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    font-size: 20px;
+    color: #666;
+}
+
+.cover-form fieldset form .submit::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -100%;
+    top: 0;
+    background: var(--gradient);
+    transition: all 0.8s;
+    z-index: -1;
+}
+
+.cover-form fieldset form .submit:hover::after {
+    left: 0;
+    filter: brightness(120%);
+}
+
+@keyframes arrowMove {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* RWD 斷點 : FORM */
+/* 電腦 1200px 以上 */
+@media (min-width: 1201px) {
+    .cover-form {
+        margin: 0 auto;
+        max-width: 1440px;
+    }
+}
+
+/* 大型平板 (993-) 1200px */
+@media (max-width: 1200px) {
+    .background {
+        width: 100%;
+    }
+
+    .background .from-bg-L {
+        left: 0;
+        width: 20%;
+    }
+
+    .background .from-line {
+        display: none;
+    }
+
+    .background .from-bg-R {
+        width: 20%;
+        bottom: 0;
+        right: 0;
+    }
+
+    .background fieldset {
+        position: relative;
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .cover-form .box-male .lat-radio {
+        width: 80%;
+    }
+}
+
+/* 平板 (769-) 992px */
+@media (max-width: 992px) {
+    .background {
+        width: 100%;
+    }
+
+    .background fieldset {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .background fieldset .box-male {
+        margin: 30px 0;
+    }
+
+    .background fieldset .box-male .lat-radio {
+        width: 65%;
+    }
+
+    .background fieldset .box .lat-case #message {
+        margin-left: 60px;
+        width: 81.5%;
+    }
+
+    .background fieldset .submit #member-reset {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* 手機 (577-) 768px */
+@media (max-width: 768px) {
+    .background {
+        width: 100%;
+    }
+
+    .background .from-bg-L,
+    .background .from-line,
+    .background .from-bg-R {
+        display: none;
+    }
+
+    .background fieldset {
+        width: 75%;
+        left: 0;
+        margin: 0 auto;
+    }
+
+    .background fieldset .box-male .gui .txt {
+        margin-left: 35px;
+    }
+
+    .background fieldset .box-male .lat-radio {
+        margin: 0;
+        width: 70%;
+    }
+
+    .background fieldset .box {
+        padding: 0;
+        display: block;
+    }
+
+    .background fieldset .box .gui {
+        margin-left: 35px;
+    }
+
+    .background fieldset .box .lat {
+        width: 100%;
+    }
+
+    .background fieldset .box .lat input {
+        margin: 20px 0;
+        height: 50px;
+    }
+
+    .background fieldset .box .lat select {
+        margin-top: 20px;
+        padding: 25px 35px;
+    }
+
+    .background fieldset .box .gui-case {
+        position: relative;
+        margin-top: 30px;
+    }
+
+    .background fieldset .box .gui-case .txt-case {
+        top: 0;
+        margin-left: 35px;
+    }
+
+    .background fieldset .box .lat-case {
+        margin-left: 0;
+        padding-top: 35px;
+        width: 100%;
+    }
+
+    .background fieldset .box .lat-case #message {
+        left: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .background fieldset .box-declare {
+        margin-top: 50px;
+    }
+
+    .background fieldset .submit #member-reset {
+        margin: 30px auto;
+        width: 40%;
+        padding: 0;
+    }
+
+    .background fieldset .submit #member-reset {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* 小型手機 576px 以下 */
+@media (max-width: 576px) {
+    .background fieldset {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .background fieldset .box-male {
+        height: 100px;
+    }
+
+    .background .title {
+        margin: 0;
+    }
+
+    .background fieldset .box-male .lat-radio {
+        margin: 0;
+        display: block;
+    }
+
+    .background fieldset .submit {
+        width: 100%;
+    }
+
+    .background fieldset .submit #member-reset {
+        width: 100%;
+        padding: 0;
+    }
+
+}
+
+/* 聯絡我們-結束 */
+
+
+/* RWD 斷點 */
+/* 電腦 1200px 以上 */
+/* @media (min-width: 1201px) {} */
+
+/* 大型平板 (993-) 1200px */
+/* @media (max-width: 1200px) {} */
+
+/* 平板 (769-) 992px */
+/* @media (max-width: 992px) {} */
+
+/* 手機 (577-) 768px */
+/* @media (max-width: 768px) {} */
+
+/* 小型手機 576px 以下 */
+/* @media (max-width: 576px) {} */
+
+
+
+
+/* 滾輪樣式 */
+select::-webkit-scrollbar {
+    width: 12px;
+
+}
+
+select::-webkit-scrollbar-thumb {
+    background: var(--font-grey);
+    border-radius: 99px;
+}
+
+select::-webkit-scrollbar-track {
+    background: #cacacc;
+    border: 1px solid var(--white);
+}
+
+
+/* 刪除 footer 
+gradient 改 0.3*/
