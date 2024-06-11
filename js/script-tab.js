@@ -18,14 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
     button1.addEventListener('click', (event) => {
         event.preventDefault(); // 阻止按鈕的預設行為
         showItem(item1);
+        button1.classList.add("active")
+        button2.classList.remove("active")
+        button3.classList.remove("active")
+        console.log(button1.style)
     });
     button2.addEventListener('click', (event) => {
         event.preventDefault(); // 阻止按鈕的預設行為
         showItem(item2);
+        button2.classList.add("active")
+        button1.classList.remove("active")
+        button3.classList.remove("active")
     });
     button3.addEventListener('click', (event) => {
         event.preventDefault(); // 阻止按鈕的預設行為
         showItem(item3);
+        button3.classList.add("active")
+        button2.classList.remove("active")
+        button1.classList.remove("active")
     });
 
     // 初始顯示第一個item
