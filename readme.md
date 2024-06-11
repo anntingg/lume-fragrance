@@ -79,8 +79,9 @@
 
 ### 聯絡我們
 > [contact.html](https://anntingg.github.io/lume-fragrance/contact.html)
-- 相關聯絡資訊。
+- 品牌聯絡資訊。
 - 提交意見表單：可選擇有興趣商品，及洽詢內容。
+
 
 ## 使用技術
 - React 框架：商品總覽、商品子類別、最新消息、會員制度。
