@@ -7,7 +7,7 @@
 - 點擊星形按鈕，可開啟或關閉選單。
 
 ### 首頁 
-> 點此查看[首頁 index.html](/index.html/)
+> 點此查看[首頁 index.html](https://anntingg.github.io/lume-fragrance/)
 
 - banner 輪播圖：自動輪播的同時，讀條進度顯示，並可點擊進度條跳轉。
 - 商品輪播（位於頁面中段）：
