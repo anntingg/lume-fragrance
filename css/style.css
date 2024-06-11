@@ -510,17 +510,17 @@
 		/* margin: 35px; */
 		border-bottom: solid 2px transparent;
 		border-top: solid 2px transparent;
-
 		position: relative;
-
 		transition: all .5s;
+
+		opacity: 0;
 	}
 
 	#anchor a:hover {
 		border-bottom: 2px solid #666;
 	}
 
-	#anchor a .h2{
+	#anchor a .h2 {
 		display: block;
 		overflow: hidden;
 		margin: 20px 0;
@@ -530,10 +530,12 @@
 		transform: translateY(110%);
 		transition: all 1s 1s ease-in-out;
 		white-space: nowrap;
+		opacity: 0;
 	}
 
-	#anchor a h2.animate.animation{
+	#anchor a h2.animate.animation {
 		transform: translateY(0%);
+		opacity: 1;
 	}
 
 	#anchor a img {
@@ -550,6 +552,15 @@
 
 	#anchor a:hover img {
 		opacity: .5;
+	}
+
+	#anchor .active {
+		border-bottom: 2px solid #666;
+		transition: all 1s 1s ease-in-out;
+	}
+
+	#anchor a.animate.animation {
+		opacity: 1;
 	}
 
 	/* 電腦 1401px */
@@ -630,7 +641,7 @@
 		transition: all 1s ease-in-out;
 	}
 
-	.title-gradient.animate.animation{
+	.title-gradient.animate.animation {
 		opacity: 1;
 	}
 
@@ -781,7 +792,7 @@
 		display: block;
 	}
 
-	.cover-logo .p .text .p-span{
+	.cover-logo .p .text .p-span {
 		display: block;
 		width: 0;
 		overflow: hidden;
@@ -1663,18 +1674,18 @@
 		text-align: right;
 	}
 
-	#product .product-number-span{
+	#product .product-number-span {
 		display: block;
 		overflow: hidden;
 	}
 
-	#product .product-number{
+	#product .product-number {
 		transform: translateY(100%);
 		opacity: 0;
 		transition: all 1.3s ease-in-out;
 	}
 
-	#product .product-number.animate.animation{
+	#product .product-number.animate.animation {
 		transform: translateY(0%);
 		opacity: 1;
 	}
@@ -1710,12 +1721,12 @@
 		z-index: -1;
 	}
 
-	#product .gradient{
+	#product .gradient {
 		opacity: 0;
 		transition: all 1s .5s ease-in-out;
 	}
 
-	#product .gradient.animate.animation{
+	#product .gradient.animate.animation {
 		opacity: 1;
 	}
 
@@ -1916,7 +1927,7 @@
 		min-height: 273px;
 	}
 
-	
+
 
 	.color-block-text .title {
 		display: flex;
@@ -1940,7 +1951,7 @@
 		padding: 12px 0;
 	}
 
-	.color-block-text li a h3{
+	.color-block-text li a h3 {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		max-width: 440px;
@@ -1954,7 +1965,7 @@
 
 	.color-block-text.item2 {
 		position: relative;
-		background:linear-gradient(rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.4)),url(../images/index/1.jpg);
+		background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url(../images/index/1.jpg);
 		background-position: center;
 		background-size: cover;
 		background-repeat: no-repeat;
@@ -2014,10 +2025,10 @@
 			width: 100%;
 		}
 
-		.color-block-text li a h3{
+		.color-block-text li a h3 {
 
 			white-space: wrap;
-	
+
 		}
 
 		.color-block-text li:nth-last-child(1),
@@ -2077,17 +2088,17 @@
 		rotate: 200deg;
 	}
 
-	#contact .content .text img.animate{
+	#contact .content .text img.animate {
 		opacity: 0;
 		transition: all 1s .5s ease-in-out;
 	}
 
-	#contact .content .text .animate{
+	#contact .content .text .animate {
 		opacity: 0;
 		transition: all 1s ease-in-out;
 	}
 
-	#contact .content .text .animate.animation{
+	#contact .content .text .animate.animation {
 		opacity: 1;
 	}
 
@@ -2179,7 +2190,7 @@
 		transition: all 1s ease-in-out;
 	}
 
-	footer .bg.animate.animation{
+	footer .bg.animate.animation {
 		opacity: 0.5;
 	}
 
@@ -2360,12 +2371,13 @@
 		margin-bottom: 10px;
 	}
 
-	#pd-cover .text .h2{
+	#pd-cover .text .h2 {
 		display: block;
 		overflow: hidden;
 	}
 
-	#pd-cover .text .h1 h1,#pd-cover .text .h2 h2{
+	#pd-cover .text .h1 h1,
+	#pd-cover .text .h2 h2 {
 		transform: translateY(100%);
 		animation: logo 1.5s .5s ease-in-out forwards;
 	}
@@ -2409,7 +2421,7 @@
 		position: relative;
 	}
 
-	#pd-cover .text .introduction p{
+	#pd-cover .text .introduction p {
 		opacity: 0;
 		animation: opacity 1s ease-in-out forwards;
 	}
@@ -2422,8 +2434,8 @@
 		left: -20px;
 		top: -35px;
 	}
-	
-	#pd-cover .text .quotes{
+
+	#pd-cover .text .quotes {
 		transform: translateY(-100%);
 		animation: cover-quotes 1s ease-in-out forwards;
 	}
@@ -2437,7 +2449,6 @@
 		border-radius: 999px 999px 0 0;
 
 		position: relative;
-
 	}
 
 	#pd-cover .img::after {
@@ -2692,10 +2703,10 @@
 		overflow: hidden;
 	}
 
-	#pd-related .item .img::after{
+	#pd-related .item .img::after {
 		content: "";
 		display: block;
-		background:var(--gradient);
+		background: var(--gradient);
 		width: 100%;
 		height: 100%;
 		position: absolute;
@@ -2704,7 +2715,7 @@
 		transition: all .3s ease-in-out;
 	}
 
-	#pd-related .item .img:hover::after{
+	#pd-related .item .img:hover::after {
 
 		opacity: 1;
 	}
@@ -2763,10 +2774,10 @@
 		z-index: 10;
 	}
 
-	#pd-related .arrow a{
+	#pd-related .arrow a {
 		display: flex;
 		align-items: center;
-		background-color:rgba(0, 0, 0, 0.2);
+		background-color: rgba(0, 0, 0, 0.2);
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
@@ -2774,7 +2785,7 @@
 
 	#pd-related .arrow img {
 		height: 20px;
-		
+
 	}
 
 	#pd-related .arrow a:nth-of-type(1) {
@@ -2811,18 +2822,20 @@
 		justify-content: space-between;
 	}
 
-	#news-page .text .title span{
+	#news-page .text .title span {
 		display: block;
 		overflow: hidden;
 	}
 
-	#news-page .text .title span h1,#news-page .text .title span h2{
+	#news-page .text .title span h1,
+	#news-page .text .title span h2 {
 		transform: translateY(100%);
 		opacity: 0;
 		transition: all 1.5s ease-in-out;
 	}
 
-	#news-page .text .title span h1.animate.animation,#news-page .text .title span h2.animate.animation{
+	#news-page .text .title span h1.animate.animation,
+	#news-page .text .title span h2.animate.animation {
 		transform: translateY(0%);
 		opacity: 1;
 	}
@@ -2990,10 +3003,9 @@
 	/* 小型手機 576px 以下 */
 	@media (max-width: 576px) {}
 
-
 	/* 
 	合併後修改： 
 	footer .content>a img 
-	width: fit-content => width: auto
+	width: auto => width: auto
 	.button-shadow => @media (max-width: 992px) 
 	*/
