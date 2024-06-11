@@ -21,6 +21,8 @@
     - 點擊文章或活動標題，可跳轉至文章頁面。
 
 ### 商品總覽
+> [商品總覽 products.html](https://anntingg.github.io/lume-fragrance/products.html)
+
 - banner 輪播圖：
     - 除自動輪播之外，也可點擊前後按鈕切換。
     - 動態進度條：同時可點擊跳轉。
