@@ -32,11 +32,11 @@
 - 子類別標題：點擊標題可跳轉至個別的子類別頁面（香水、針管香水...等）。
 
 ### 商品子類別
-> [perfume.html](https://anntingg.github.io/lume-fragrance/perfume.html)
-> [travel-spray.html](https://anntingg.github.io/lume-fragrance/travel-spray.html) 
-> [diffuse.html](https://anntingg.github.io/lume-fragrance/diffuse.html)
-> [candle.html](https://anntingg.github.io/lume-fragrance/candle.html)
-> [lip-gloss.html](https://anntingg.github.io/lume-fragrance/lip-gloss.html)
+> [perfume.html](https://anntingg.github.io/lume-fragrance/perfume.html) | 
+> [travel-spray.html](https://anntingg.github.io/lume-fragrance/travel-spray.html) | 
+> [diffuse.html](https://anntingg.github.io/lume-fragrance/diffuse.html) | 
+> [candle.html](https://anntingg.github.io/lume-fragrance/candle.html) | 
+> [lip-gloss.html](https://anntingg.github.io/lume-fragrance/lip-gloss.html) | 
 > [facial-mask.html](https://anntingg.github.io/lume-fragrance/facial-mask.html)
 - 商品子類別的個別頁面，讓使用者可針對有興趣的類別單獨瀏覽。
 
