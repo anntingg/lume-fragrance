@@ -7,7 +7,7 @@
 - 點擊星形按鈕，可開啟或關閉選單。
 
 ### 首頁 
-> 點此查看[首頁 index.html](https://anntingg.github.io/lume-fragrance/)
+> [index.html](https://anntingg.github.io/lume-fragrance/)
 
 - banner 輪播圖：自動輪播的同時，讀條進度顯示，並可點擊進度條跳轉。
 - 商品輪播（位於頁面中段）：
@@ -21,7 +21,7 @@
     - 點擊文章或活動標題，可跳轉至文章頁面。
 
 ### 商品總覽
-> [商品總覽 products.html](https://anntingg.github.io/lume-fragrance/products.html)
+> [products.html](https://anntingg.github.io/lume-fragrance/products.html)
 
 - banner 輪播圖：
     - 除自動輪播之外，也可點擊前後按鈕切換。
@@ -32,19 +32,28 @@
 - 子類別標題：點擊標題可跳轉至個別的子類別頁面（香水、針管香水...等）。
 
 ### 商品子類別
+> [perfume.html](https://anntingg.github.io/lume-fragrance/perfume.html)
+> [travel-spray.html](https://anntingg.github.io/lume-fragrance/travel-spray.html) 
+> [diffuse.html](https://anntingg.github.io/lume-fragrance/diffuse.html)
+> [candle.html](https://anntingg.github.io/lume-fragrance/candle.html)
+> [lip-gloss.html](https://anntingg.github.io/lume-fragrance/lip-gloss.html)
+> [facial-mask.html](https://anntingg.github.io/lume-fragrance/facial-mask.html)
 - 商品子類別的個別頁面，讓使用者可針對有興趣的類別單獨瀏覽。
 
 ### 單一商品頁
+> [diffuse-nectarine.html](https://anntingg.github.io/lume-fragrance/diffuse-nectarine.html)
 - 商品介紹：香調及注意事項。
 - 相關商品輪播：
     - 除自動輪播外，也可手動點擊前後按鈕切換。
     - 另可滑動切換，手機／平板操作更順暢。
 
 ### 品牌故事
+> [story.html](https://anntingg.github.io/lume-fragrance/story.html)
 - 品牌宣言及理念。
 - 連結至最新消息：可於頁面下方直接跳轉至最新消息頁。
 
 ### 最新消息
+> [news.html](https://anntingg.github.io/lume-fragrance/news.html)
 - 錨點按鈕：方便使用者直接跳轉至子目錄。
 - 活動消息輪播：
     - 自動輪播，也可點擊前後按鈕切換，並有進度條可點擊跳轉。
@@ -61,12 +70,15 @@
     - 點擊文章可跳轉至文章頁面。
 
 ### 單一文章頁
+> [news-page.html](https://anntingg.github.io/lume-fragrance/news-page.html)
 - 活動消息或文章專欄內文。
 
 ### 會員制度
+> [membership.html](https://anntingg.github.io/lume-fragrance/membership.html)
 - 會員等級介紹，及權益說明。
 
 ### 聯絡我們
+> [contact.html](https://anntingg.github.io/lume-fragrance/contact.html)
 - 相關聯絡資訊。
 - 提交意見表單：可選擇有興趣商品，及洽詢內容。
 
