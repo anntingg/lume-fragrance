@@ -50,7 +50,7 @@
 ### 品牌故事
 > [story.html](https://anntingg.github.io/lume-fragrance/story.html)
 - 品牌宣言及理念。
-- 連結至最新消息：可於頁面下方直接跳轉至最新消息頁。
+- 連結至最新消息／會員制度：可點擊頁面下方的按鈕跳轉。
 
 ### 最新消息
 > [news.html](https://anntingg.github.io/lume-fragrance/news.html)
